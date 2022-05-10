@@ -12,8 +12,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int)
 	while (Library::Engine::Instance()->GetWindows()->ProcessMessage() == false)
 	{
 		//•`‰æ
-		Library::Render::Instance()->ClearScreen();
-		Library::Render::Instance()->ScreenFlip();
+		Library::Engine::Instance()->GetRender()->ClearScreen();
+		Library::Engine::Instance()->GetRender()->ScreenFlip();
 	}
 
 	//Library::Engine::Instance()->End();

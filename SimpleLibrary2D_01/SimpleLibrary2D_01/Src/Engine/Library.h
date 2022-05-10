@@ -8,6 +8,8 @@ namespace Library
 	class Graphics
 	{
 
+
+	
 	};
 
 	class Windows
@@ -31,6 +33,21 @@ namespace Library
 	private:
 		bool isClosed;
 		bool isRecievedMessage;
+	};
+
+	class Render
+	{
+	public:
+		Render()
+		{
+		}
+
+		~Render()
+		{
+		}
+
+		VOID ClearScreen();
+		VOID ScreenFlip();
 	};
 
 	class Engine
@@ -57,6 +74,16 @@ namespace Library
 			return &windows;
 		}
 
+		Render* GetRender()
+		{
+			return &render;
+		}
+
+		Graphics* GetGraphics()
+		{
+			return &graphics;
+		}
+
 		//ウィンドウの初期化
 		HRESULT InitFactory(UINT &dxgiFactoryFlags);
 		HRESULT InitAdapter();
@@ -64,7 +91,6 @@ namespace Library
 		HRESULT InitFance();
 		HRESULT InitRtvHeapDesc();
 		
-
 	public:
 		//ComPtrはスマートポインタなのでいちいちメモリ開放する必要がない。
 		//フレームカウントは最低2から(フロントバッファ・バックバッファ)
@@ -104,19 +130,8 @@ namespace Library
 		D3D12_DESCRIPTOR_HEAP_DESC rtvHeapDesc = {};
 
 		Windows windows;
-	};
-
-	class Render
-	{
-	public:
-		static Render* Instance()
-		{
-			static Render instance;
-			return &instance;
-		}
-
-		VOID ClearScreen();
-		VOID ScreenFlip();
+		Render render;
+		Graphics graphics;
 	};
 }
 #endif
