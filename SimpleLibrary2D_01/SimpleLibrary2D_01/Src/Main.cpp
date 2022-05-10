@@ -9,14 +9,15 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int)
 		return 0;
 	}
 
-	while (Library::Engine::Instance()->GetWindows()->ProcessMessage() == false)
+	while (Library::Engine::Instance()->GetWindows()->IsClosed() == false)
 	{
+		Library::Engine::Instance()->GetWindows()->Update();
 		//•`‰æ
 		Library::Engine::Instance()->GetRender()->ClearScreen();
 		Library::Engine::Instance()->GetRender()->ScreenFlip();
 	}
 
-	//Library::Engine::Instance()->End();
+	Library::Engine::Instance()->End();
 	return 0;
 
 

@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Src\Engine\Engine.cpp" />
+    <ClCompile Include="Src\Engine\Graphics.cpp" />
     <ClCompile Include="Src\Engine\Windows.cpp" />
     <ClCompile Include="Src\Main.cpp" />
   </ItemGroup>

@@ -14,7 +14,7 @@ LRESULT CALLBACK Library::Windows::WindowProc(HWND hwnd, UINT nMsg, WPARAM wPara
 	return DefWindowProc(hwnd, nMsg, wParam, lParam);
 }
 
-HRESULT Library::Windows::InitWindows()
+HRESULT Library::Windows::InitializeWindows()
 {
 	WNDCLASSEX windowClass;
 	RECT windowRect;
@@ -54,14 +54,14 @@ HRESULT Library::Windows::InitWindows()
 		return E_FAIL;
 	}
 
-	return S_OK;
-}
-
-bool Library::Windows::ProcessMessage()
-{
 	//ウィンドウの表示
 	ShowWindow(FindWindow(WINDOW_TITLE, nullptr), SW_SHOW);
 
+	return S_OK;
+}
+
+void Library::Windows::Update()
+{
 	MSG msg = {};
 	//メインループ
 			//キュー内のメッセージを処理
@@ -81,14 +81,5 @@ bool Library::Windows::ProcessMessage()
 	else
 	{
 		isRecievedMessage = false;
-	}
-
-	if (isClosed == true)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
 	}
 }

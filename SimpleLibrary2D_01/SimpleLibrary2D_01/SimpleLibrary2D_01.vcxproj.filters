@@ -14,6 +14,9 @@
       <Filter>Engine</Filter>
     </ClCompile>
     <ClCompile Include="Src\Main.cpp" />
+    <ClCompile Include="Src\Engine\Graphics.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Engine\CommonDifinition.h">
