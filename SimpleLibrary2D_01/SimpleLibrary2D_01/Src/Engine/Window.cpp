@@ -1,11 +1,12 @@
-#include "Library.h"
+#include "Window.h"
+#include "Engine.h"
 
-LRESULT CALLBACK Library::Windows::WindowProc(HWND hwnd, UINT nMsg, WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK Window::WindowProc(HWND hwnd, UINT nMsg, WPARAM wParam, LPARAM lParam)
 {
 	switch (nMsg)
 	{
 	case WM_DESTROY:	//終了時
-		Library::Engine::Instance()->End();//解放
+		Engine::Instance()->FinalizeEngine();//解放
 		PostQuitMessage(0);
 		return 0;
 	}
@@ -14,7 +15,7 @@ LRESULT CALLBACK Library::Windows::WindowProc(HWND hwnd, UINT nMsg, WPARAM wPara
 	return DefWindowProc(hwnd, nMsg, wParam, lParam);
 }
 
-HRESULT Library::Windows::InitializeWindows()
+HRESULT Window::InitializeWindows()
 {
 	WNDCLASSEX windowClass;
 	RECT windowRect;
@@ -60,7 +61,7 @@ HRESULT Library::Windows::InitializeWindows()
 	return S_OK;
 }
 
-void Library::Windows::Update()
+void Window::Update()
 {
 	MSG msg = {};
 	//メインループ

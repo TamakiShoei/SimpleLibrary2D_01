@@ -1,12 +1,7 @@
-#include "Library.h"
+#include "Graphics.h"
 
-HRESULT Library::Graphics::Initialize()
+HRESULT Graphics::Initialize()
 {
-	if (FAILED(Library::Engine::Instance()->GetWindows()->InitializeWindows()))
-	{
-		return E_FAIL;
-	}
-
 	UINT dxgiFactoryFlags = 0;
 	InitializeFactory(dxgiFactoryFlags);
 
@@ -65,22 +60,7 @@ HRESULT Library::Graphics::Initialize()
 	return S_OK;
 }
 
-//VOID Library::Graphics::Finalize()
-//{
-//	device.ReleaseAndGetAddressOf();
-//	swapChain.ReleaseAndGetAddressOf();
-//	renderTargets->ReleaseAndGetAddressOf();
-//	commandAllocator.ReleaseAndGetAddressOf();
-//	commandQueue.ReleaseAndGetAddressOf();
-//	rtvHeap.ReleaseAndGetAddressOf();
-//	pipelineState.ReleaseAndGetAddressOf();
-//	commandList.ReleaseAndGetAddressOf();
-//	factory.ReleaseAndGetAddressOf();
-//	hardwareAdapter.ReleaseAndGetAddressOf();
-//	adapter.ReleaseAndGetAddressOf();
-//}
-
-HRESULT Library::Graphics::InitializeFactory(UINT& dxgiFactoryFlags)
+HRESULT Graphics::InitializeFactory(UINT& dxgiFactoryFlags)
 {
 	//ファクトリを作成
 	if (FAILED(CreateDXGIFactory2(dxgiFactoryFlags, IID_PPV_ARGS(factory.GetAddressOf()))))
@@ -90,7 +70,7 @@ HRESULT Library::Graphics::InitializeFactory(UINT& dxgiFactoryFlags)
 	}
 }
 
-HRESULT Library::Graphics::InitializeAdapter()
+HRESULT Graphics::InitializeAdapter()
 {
 	//DirectX12がサポートする利用可能なハードウェアアダプタを検索し取得
 	HRESULT hr;
@@ -132,21 +112,21 @@ HRESULT Library::Graphics::InitializeAdapter()
 	}
 }
 
-HRESULT Library::Graphics::InitializeCommandQueue()
+HRESULT Graphics::InitializeCommandQueue()
 {
 	//コマンドキューの設定
-	queueDesc.Flags = D3D12_COMMAND_QUEUE_FLAG_NONE;
-	queueDesc.Type = D3D12_COMMAND_LIST_TYPE_DIRECT;
+	commandQueueDesc.Flags = D3D12_COMMAND_QUEUE_FLAG_NONE;
+	commandQueueDesc.Type = D3D12_COMMAND_LIST_TYPE_DIRECT;
 
 	//コマンドキューを作成
-	if (FAILED(device->CreateCommandQueue(&queueDesc, IID_PPV_ARGS(commandQueue.GetAddressOf()))))
+	if (FAILED(device->CreateCommandQueue(&commandQueueDesc, IID_PPV_ARGS(commandQueue.GetAddressOf()))))
 	{
 		MessageBox(NULL, L"コマンドキューを作成できませんでした。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
 		return E_FAIL;
 	}
 }
 
-HRESULT Library::Graphics::InitializeSwapChain()
+HRESULT Graphics::InitializeSwapChain()
 {
 	//スワップチェインの作成
 	swapChainDesc.BufferCount = frameCount;
@@ -174,7 +154,7 @@ HRESULT Library::Graphics::InitializeSwapChain()
 	frameIndex = swapChain->GetCurrentBackBufferIndex();
 }
 
-HRESULT Library::Graphics::InitializeFance()
+HRESULT Graphics::InitializeFance()
 {
 	// フェンスを作成
 	if (FAILED(Graphics::device->CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(Graphics::fence.GetAddressOf()))))
@@ -197,7 +177,7 @@ HRESULT Library::Graphics::InitializeFance()
 	// 待つ際にWindowsのEventを利用
 }
 
-HRESULT Library::Graphics::InitializeRtvHeapDesc()
+HRESULT Graphics::InitializeRtvHeapDesc()
 {
 	//レンダーターゲットビュー用のディスクリプターヒープの設定
 	rtvHeapDesc.NumDescriptors = Graphics::frameCount;
@@ -222,7 +202,7 @@ HRESULT Library::Graphics::InitializeRtvHeapDesc()
 
 }
 
-HRESULT Library::Graphics::CreateRenderTargetView()
+HRESULT Graphics::CreateRenderTargetView()
 {
 	//フレームリソースのハンドルを取得
 	CD3DX12_CPU_DESCRIPTOR_HANDLE rtvHandle(rtvHeap->GetCPUDescriptorHandleForHeapStart());

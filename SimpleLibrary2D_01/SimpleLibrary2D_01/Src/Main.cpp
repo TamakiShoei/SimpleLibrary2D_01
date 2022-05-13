@@ -1,23 +1,28 @@
-#include "Engine/Library.h"
+#include "Engine/Engine.h"
 
 //ƒƒCƒ“ŠÖ”
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int)
 {
-	if (FAILED(Library::Engine::Instance()->OnInit()))	//DirectX‚Ì‰Šú‰»
+	if (Engine::Instance()->InitializeEngine() == false)	//DirectX‚Ì‰Šú‰»
 	{
-		Library::Engine::Instance()->End();
+		Engine::Instance()->FinalizeEngine();
 		return 0;
 	}
 
-	while (Library::Engine::Instance()->GetWindows()->IsClosed() == false)
+	while (Engine::Instance()->IsClosedWindow() == false)
 	{
-		Library::Engine::Instance()->GetWindows()->Update();
+		Engine::Instance()->Update();
 		//•`‰æ
-		Library::Engine::Instance()->GetRender()->ClearScreen();
-		Library::Engine::Instance()->GetRender()->ScreenFlip();
+		Engine::Instance()->ClearScreen();
+
+		//------------------------------------------------//
+		//				  ‚±‚±‚É•`‰æˆ—					  //
+		//------------------------------------------------//
+
+		Engine::Instance()->ScreenFlip();
 	}
 
-	Library::Engine::Instance()->End();
+	Engine::Instance()->FinalizeEngine();
 	return 0;
 
 
