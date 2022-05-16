@@ -149,7 +149,6 @@
   <ItemGroup>
     <ClCompile Include="Src\Engine\Engine.cpp" />
     <ClCompile Include="Src\Engine\Graphics.cpp" />
-    <ClCompile Include="Src\Engine\Render.cpp" />
     <ClCompile Include="Src\Engine\Window.cpp" />
     <ClCompile Include="Src\Main.cpp" />
   </ItemGroup>
@@ -157,8 +156,6 @@
     <ClInclude Include="Src\Engine\CommonDifinition.h" />
     <ClInclude Include="Src\Engine\Engine.h" />
     <ClInclude Include="Src\Engine\Graphics.h" />
-    <ClInclude Include="Src\Engine\Library.h" />
-    <ClInclude Include="Src\Engine\Render.h" />
     <ClInclude Include="Src\Engine\Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

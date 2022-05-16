@@ -1,9 +1,8 @@
-#ifndef ENGINE_H
+ï»¿#ifndef ENGINE_H
 #define	ENGINE_H
 
 #include "Graphics.h"
 #include "Window.h"
-#include "Render.h"
 
 class Engine
 {
@@ -14,36 +13,31 @@ public:
 		return &instance;
 	}
 
-	bool InitializeEngine();
+	bool Initialize();
 	void Update();
-	void FinalizeEngine();
+	void Finalize();
 
 	bool IsClosedWindow();
 	void ClearScreen();
 	void ScreenFlip();
 
-	//ƒtƒŒ[ƒ€Œãˆ—
-	VOID WaitForPreviousFrame();
-	//‰ğ•ú
-	VOID OnDestroy();
+private:
+	//ãƒ•ãƒ¬ãƒ¼ãƒ å¾Œå‡¦ç†
+	void WaitForPreviousFrame();
+	//è§£æ”¾
+	void OnDestroy();
 
-	Window* GetWindows()
+	inline Window* GetWindows()
 	{
 		return &window;
 	}
 
-	Render* GetRender()
-	{
-		return &render;
-	}
-
-	Graphics* GetGraphics()
+	inline Graphics* GetGraphics()
 	{
 		return &graphics;
 	}
 
 	Window window;
-	Render render;
 	Graphics graphics;
 };
 

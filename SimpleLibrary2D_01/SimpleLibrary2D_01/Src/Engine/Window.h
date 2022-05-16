@@ -1,4 +1,4 @@
-#ifndef WINDOW_H
+﻿#ifndef WINDOW_H
 #define WINDOW_H
 
 #include "CommonDifinition.h"
@@ -10,9 +10,9 @@ public:
 	{
 	}
 
-	static LRESULT CALLBACK WindowProc(HWND hwnd, UINT nMsg, WPARAM wParam, LPARAM lParam);
+	static LRESULT CALLBACK WindowProc(HWND hwnd, UINT n_msg, WPARAM w_param, LPARAM l_param);
 
-	HRESULT InitializeWindows();
+	bool Initialize();
 
 	void Update();
 

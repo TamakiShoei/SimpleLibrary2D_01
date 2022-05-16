@@ -1,23 +1,26 @@
-#ifndef COMMON_DIFINITION_H 
+Ôªø#ifndef COMMON_DIFINITION_H 
 #define	COMMON_DIFINITION_H
 
 #include <windows.h>
 #include <wrl.h>
 
-//DirectX12ÇÃÉRÅ[ÉhÉZÉbÉg
+//DirectX12„ÅÆ„Ç≥„Éº„Éâ„Çª„ÉÉ„Éà
 #include <d3d12.h>
 #include <dxgi1_4.h>
 #include "d3dx12.h"
 
-//ÉâÉCÉuÉâÉä
+//„É©„Ç§„Éñ„É©„É™
 #pragma comment(lib, "d3d12.lib")
 #pragma comment(lib, "dxgi.lib")
 
-#define WINDOW_CLASS	L"èâä˙âª(ÉuÉãÅ[âÊñ )"
+#define B_SUCCEEDED(bo)   (((bool)(bo)) >= 0)
+#define B_FAILED(bo)      (((bool)(bo)) < 0)
+
+#define WINDOW_CLASS	L"ÂàùÊúüÂåñ(„Éñ„É´„ÉºÁîªÈù¢)"
 #define WINDOW_TITLE	WINDOW_CLASS
 #define WINDOW_WIDTH	750
 #define WINDOW_HEIGHT	500
 
-//usingÉfÉBÉåÉNÉeÉBÉu
+//using„Éá„Ç£„É¨„ÇØ„ÉÜ„Ç£„Éñ
 using Microsoft::WRL::ComPtr;
 #endif

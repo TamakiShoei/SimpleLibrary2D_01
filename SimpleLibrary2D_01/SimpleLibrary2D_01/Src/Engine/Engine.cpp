@@ -1,12 +1,12 @@
-#include "Engine.h"
+ï»¿#include "Engine.h"
 
-bool Engine::InitializeEngine()
+bool Engine::Initialize()
 {
-	if (FAILED(window.InitializeWindows()))
+	if (B_FAILED(window.Initialize()))
 	{
 		return false;
 	}
-	if (FAILED(graphics.Initialize()))
+	if (B_FAILED(graphics.Initialize()))
 	{
 		return false;
 	}
@@ -18,29 +18,29 @@ void Engine::Update()
 	window.Update();
 }
 
-VOID Engine::WaitForPreviousFrame()
+void Engine::WaitForPreviousFrame()
 {
 	const UINT64 fence = Engine::Instance()->GetGraphics()->fenceValue;
 	Engine::Instance()->GetGraphics()->commandQueue->Signal(Engine::Instance()->GetGraphics()->fence.Get(), fence);
 	Engine::Instance()->GetGraphics()->fenceValue++;
 
-	// ‘O‚ÌƒtƒŒ[ƒ€‚ªI—¹‚·‚é‚Ü‚Å‘Ò‹@
+	// å‰ã®ãƒ•ãƒ¬ãƒ¼ãƒ ãŒçµ‚äº†ã™ã‚‹ã¾ã§å¾…æ©Ÿ
 	if (Engine::Instance()->GetGraphics()->fence->GetCompletedValue() < fence) {
 		Engine::Instance()->GetGraphics()->fence->SetEventOnCompletion(fence, Engine::Instance()->GetGraphics()->fenceEvent);
 		WaitForSingleObject(Engine::Instance()->GetGraphics()->fenceEvent, INFINITE);
 	}
 
-	// ƒoƒbƒNƒoƒbƒtƒ@‚ÌƒCƒ“ƒfƒbƒNƒX‚ðŠi”[
+	// ãƒãƒƒã‚¯ãƒãƒƒãƒ•ã‚¡ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’æ ¼ç´
 	Engine::Instance()->GetGraphics()->frameIndex = Engine::Instance()->GetGraphics()->swapChain->GetCurrentBackBufferIndex();
 }
 
-VOID Engine::OnDestroy()
+void Engine::OnDestroy()
 {
 	WaitForPreviousFrame();
 	//CloseHandle(GetGraphics()->fenceEvent);
 }
 
-void Engine::FinalizeEngine()
+void Engine::Finalize()
 {
 	OnDestroy();
 }
@@ -56,10 +56,13 @@ bool Engine::IsClosedWindow()
 
 void Engine::ClearScreen()
 {
-	render.ClearScreen();
+	graphics.ClearScreen();
 }
 
 void Engine::ScreenFlip()
 {
-	render.ScreenFlip();
+	graphics.ScreenFlip();
+
+	// ãƒ•ãƒ¬ãƒ¼ãƒ å¾Œå‡¦ç†
+	Engine::Instance()->WaitForPreviousFrame();
 }

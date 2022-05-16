@@ -3,9 +3,9 @@
 //メイン関数
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int)
 {
-	if (Engine::Instance()->InitializeEngine() == false)	//DirectXの初期化
+	if (Engine::Instance()->Initialize() == false)	//DirectXの初期化
 	{
-		Engine::Instance()->FinalizeEngine();
+		Engine::Instance()->Finalize();
 		return 0;
 	}
 
@@ -22,7 +22,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int)
 		Engine::Instance()->ScreenFlip();
 	}
 
-	Engine::Instance()->FinalizeEngine();
+	Engine::Instance()->Finalize();
 	return 0;
 
 

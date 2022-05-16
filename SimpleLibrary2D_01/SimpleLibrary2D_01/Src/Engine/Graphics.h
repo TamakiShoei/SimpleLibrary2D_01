@@ -1,4 +1,4 @@
-#ifndef GRAPHICS_H
+ï»¿#ifndef GRAPHICS_H
 #define	GRAPHICS_H
 
 #include "CommonDifinition.h"
@@ -13,20 +13,23 @@ public:
 	{
 	}
 
-	//ƒEƒBƒ“ƒhƒE‚Ì‰Šú‰»
-	HRESULT Initialize();
+	//ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®åˆæœŸåŒ–
+	bool Initialize();
+
+	void ClearScreen();
+	void ScreenFlip();
 
 public:
-	//ƒtƒŒ[ƒ€ƒJƒEƒ“ƒg‚ÍÅ’á2‚©‚ç(ƒtƒƒ“ƒgƒoƒbƒtƒ@EƒoƒbƒNƒoƒbƒtƒ@)
+	//ãƒ•ãƒ¬ãƒ¼ãƒ ã‚«ã‚¦ãƒ³ãƒˆã¯æœ€ä½2ã‹ã‚‰(ãƒ•ãƒ­ãƒ³ãƒˆãƒãƒƒãƒ•ã‚¡ãƒ»ãƒãƒƒã‚¯ãƒãƒƒãƒ•ã‚¡)
 	static const UINT frameCount = 2;
 
-	//GPU“¯ŠúƒIƒuƒWƒFƒNƒg
-	UINT				frameIndex = 0;	//ƒtƒŒ[ƒ€ƒCƒ“ƒfƒbƒNƒX
-	HANDLE				fenceEvent;		//ƒtƒFƒ“ƒXƒnƒ“ƒhƒ‹
-	ComPtr<ID3D12Fence>	fence;			//ƒtƒFƒ“ƒX(GPU‚Æ“¯Šú‚µ‚ÄÀsŠ®—¹‘Ò‚¿‚ğs‚¤)
-	UINT64				fenceValue;		//ƒtƒFƒ“ƒX’l
+	//GPUåŒæœŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+	UINT				frameIndex = 0;	//ãƒ•ãƒ¬ãƒ¼ãƒ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+	HANDLE				fenceEvent;		//ãƒ•ã‚§ãƒ³ã‚¹ãƒãƒ³ãƒ‰ãƒ«
+	ComPtr<ID3D12Fence>	fence;			//ãƒ•ã‚§ãƒ³ã‚¹(GPUã¨åŒæœŸã—ã¦å®Ÿè¡Œå®Œäº†å¾…ã¡ã‚’è¡Œã†)
+	UINT64				fenceValue;		//ãƒ•ã‚§ãƒ³ã‚¹å€¤
 
-	//ƒpƒCƒvƒ‰ƒCƒ“ƒIƒuƒWƒFƒNƒg
+	//ãƒ‘ã‚¤ãƒ—ãƒ©ã‚¤ãƒ³ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	ComPtr<ID3D12Device>				device;
 	ComPtr<IDXGISwapChain3>				swapChain;
 	ComPtr<ID3D12Resource>				renderTargets[frameCount];
@@ -36,28 +39,28 @@ public:
 	ComPtr<ID3D12PipelineState>			pipelineState;
 	ComPtr<ID3D12GraphicsCommandList>	commandList;
 	UINT								rtvDescriptorSize = 0;
-	// ƒpƒCƒvƒ‰ƒCƒ“ƒXƒe[ƒg‚Æ‚ÍA•`‰æƒpƒCƒvƒ‰ƒCƒ“‚Ì—¬‚ê‚ğw’è‚·‚é‹@”\B
-	// E•`‰æ‚Ég—p‚·‚éŠeíƒVƒF[ƒ_ƒR[ƒh‚Ìİ’è
-	// Eƒ‰ƒXƒ^ƒ‰ƒCƒY‚Ìİ’è
-	// EƒuƒŒƒ“ƒh•û–@‚Ìİ’è
-	// E’¸“_ƒŒƒCƒAƒEƒg‚Ìİ’è
-	// Eg—p‚·‚éRootSignature‚Ìİ’è
-	// E[“xƒXƒeƒ“ƒVƒ‹‚Ìİ’è
-	// ‚±‚Ì‚æ‚¤‚È•`‰æ‚Ìˆê˜A‚Ì—¬‚ê‚ğw’è‚·‚éB
+	// ãƒ‘ã‚¤ãƒ—ãƒ©ã‚¤ãƒ³ã‚¹ãƒ†ãƒ¼ãƒˆã¨ã¯ã€æç”»ãƒ‘ã‚¤ãƒ—ãƒ©ã‚¤ãƒ³ã®æµã‚Œã‚’æŒ‡å®šã™ã‚‹æ©Ÿèƒ½ã€‚
+	// ãƒ»æç”»ã«ä½¿ç”¨ã™ã‚‹å„ç¨®ã‚·ã‚§ãƒ¼ãƒ€ã‚³ãƒ¼ãƒ‰ã®è¨­å®š
+	// ãƒ»ãƒ©ã‚¹ã‚¿ãƒ©ã‚¤ã‚ºã®è¨­å®š
+	// ãƒ»ãƒ–ãƒ¬ãƒ³ãƒ‰æ–¹æ³•ã®è¨­å®š
+	// ãƒ»é ‚ç‚¹ãƒ¬ã‚¤ã‚¢ã‚¦ãƒˆã®è¨­å®š
+	// ãƒ»ä½¿ç”¨ã™ã‚‹RootSignatureã®è¨­å®š
+	// ãƒ»æ·±åº¦ã‚¹ãƒ†ãƒ³ã‚·ãƒ«ã®è¨­å®š
+	// ã“ã®ã‚ˆã†ãªæç”»ã®ä¸€é€£ã®æµã‚Œã‚’æŒ‡å®šã™ã‚‹ã€‚
 
 	ComPtr<IDXGIFactory4> factory;
 	ComPtr<IDXGIAdapter1> hardwareAdapter = nullptr;
 	ComPtr<IDXGIAdapter1> adapter;
 
 private:
-	HRESULT InitializeFactory(UINT& dxgiFactoryFlags);
-	HRESULT InitializeAdapter();
-	HRESULT InitializeCommandQueue();
-	HRESULT InitializeSwapChain();
-	HRESULT InitializeFance();
-	HRESULT InitializeRtvHeapDesc();
-
-	HRESULT CreateRenderTargetView();
+	bool InitializeFactory(UINT& dxgi_factory_flags);
+	bool InitializeAdapter();
+	bool InitializeCommandQueue();
+	bool InitializeSwapChain();
+	bool InitializeFence();
+	bool InitializeRtvHeapDesc();
+	
+	bool CreateRenderTargetView();
 
 private:
 	D3D12_COMMAND_QUEUE_DESC commandQueueDesc = {};

@@ -1,134 +1,197 @@
-#include "Graphics.h"
+ï»¿#include "Graphics.h"
 
-HRESULT Graphics::Initialize()
+bool Graphics::Initialize()
 {
 	UINT dxgiFactoryFlags = 0;
 	InitializeFactory(dxgiFactoryFlags);
 
 #if defined(_DEBUG)
-	//DirectX12‚ÌƒfƒoƒbƒOƒŒƒCƒ„[‚ğ—LŒø
+	//DirectX12ã®ãƒ‡ãƒãƒƒã‚°ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’æœ‰åŠ¹
 	{
 		ComPtr<ID3D12Debug> debugController;
 		if (SUCCEEDED(D3D12GetDebugInterface(IID_PPV_ARGS(debugController.GetAddressOf()))))
 		{
 			debugController->EnableDebugLayer();
 
-			//’Ç‰Á‚ÌƒfƒoƒbƒOƒŒƒCƒ„[‚ğ—LŒø
+			//è¿½åŠ ã®ãƒ‡ãƒãƒƒã‚°ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’æœ‰åŠ¹
 			dxgiFactoryFlags |= DXGI_CREATE_FACTORY_DEBUG;
 		}
 	}
 #endif
 
-	InitializeAdapter();
-	InitializeCommandQueue();
-	InitializeSwapChain();
+	if (B_FAILED(InitializeAdapter()))
+	{
+		return false;
+	}
+	if (B_FAILED(InitializeCommandQueue()))
+	{
+		return false;
+	}
+	if (B_FAILED(InitializeSwapChain()))
+	{
+		return false;
+	}
 
-	//Alt+Enter‚É‚æ‚é‘S‰æ–Ê‘JˆÚ‚ğ‚Å‚«‚È‚¢‚æ‚¤‚É‚·‚é
+	//Alt+Enterã«ã‚ˆã‚‹å…¨ç”»é¢é·ç§»ã‚’ã§ããªã„ã‚ˆã†ã«ã™ã‚‹
 	if (FAILED(factory->MakeWindowAssociation(FindWindow(WINDOW_TITLE, nullptr), DXGI_MWA_NO_ALT_ENTER)))
 	{
-		MessageBox(NULL, L"‰æ–Ê‚Ìİ’è‚ª‚Å‚«‚Ü‚¹‚ñB", WINDOW_TITLE, MB_OK | MB_ICONERROR);
-		return E_FAIL;
+		MessageBox(NULL, L"ç”»é¢ã®è¨­å®šãŒã§ãã¾ã›ã‚“ã€‚", WINDOW_TITLE, MB_OK | MB_ICONERROR);
+		return false;
 	}
 
-	// ƒfƒBƒXƒNƒŠƒvƒ^ƒq[ƒv‚Æ‚¢‚¤‚Ì‚ÍAGPUã‚Éì‚ç‚ê‚éƒfƒXƒNƒŠƒvƒ^‚ğ•Û‘¶‚·‚é‚½‚ß‚Ì”z—ñB
-	// GPUƒƒ‚ƒŠã‚É‘¶İ‚·‚éA—lX‚Èƒf[ƒ^‚âƒoƒbƒtƒ@‚Ìí—Ş‚âˆÊ’uA‘å‚«‚³‚ğ¦‚·\‘¢‘Ì‚Ì‚æ‚¤‚È‚à‚ÌB
-	// ‰½‚ç‚©‚Ìƒf[ƒ^”z—ñ‚Æ‚µ‚Ä•\‚³‚ê‚Ä‚¢‚é‚Æ‚¢‚¤‚±‚Æ‚É‚È‚éB
-	// ‚±‚Ì‚æ‚¤‚É–¾¦“I‚É‹æØ‚é‚±‚Æ‚É‚æ‚Á‚ÄA‚»‚Ì’†‚Ì\‘¢‘Ì‚Ì‚æ‚¤‚È”z—ñ‚©‚çƒf[ƒ^‚ğQÆ‚µ‚â‚·‚­‚µ‚Ä‚¢‚éB
-	InitializeRtvHeapDesc();
-	CreateRenderTargetView();
+	// ãƒ‡ã‚£ã‚¹ã‚¯ãƒªãƒ—ã‚¿ãƒ’ãƒ¼ãƒ—ã¨ã„ã†ã®ã¯ã€GPUä¸Šã«ä½œã‚‰ã‚Œã‚‹ãƒ‡ã‚¹ã‚¯ãƒªãƒ—ã‚¿ã‚’ä¿å­˜ã™ã‚‹ãŸã‚ã®é…åˆ—ã€‚
+	// GPUãƒ¡ãƒ¢ãƒªä¸Šã«å­˜åœ¨ã™ã‚‹ã€æ§˜ã€…ãªãƒ‡ãƒ¼ã‚¿ã‚„ãƒãƒƒãƒ•ã‚¡ã®ç¨®é¡ã‚„ä½ç½®ã€å¤§ãã•ã‚’ç¤ºã™æ§‹é€ ä½“ã®ã‚ˆã†ãªã‚‚ã®ã€‚
+	// ä½•ã‚‰ã‹ã®ãƒ‡ãƒ¼ã‚¿é…åˆ—ã¨ã—ã¦è¡¨ã•ã‚Œã¦ã„ã‚‹ã¨ã„ã†ã“ã¨ã«ãªã‚‹ã€‚
+	// ã“ã®ã‚ˆã†ã«æ˜ç¤ºçš„ã«åŒºåˆ‡ã‚‹ã“ã¨ã«ã‚ˆã£ã¦ã€ãã®ä¸­ã®æ§‹é€ ä½“ã®ã‚ˆã†ãªé…åˆ—ã‹ã‚‰ãƒ‡ãƒ¼ã‚¿ã‚’å‚ç…§ã—ã‚„ã™ãã—ã¦ã„ã‚‹ã€‚
+	if (B_FAILED(InitializeRtvHeapDesc()))
+	{
+		return false;
+	}
+	if (B_FAILED(CreateRenderTargetView()))
+	{
+		return false;
+	}
 
-	// ƒRƒ}ƒ“ƒhƒAƒƒP[ƒ^[‚ğì¬
+	// ã‚³ãƒãƒ³ãƒ‰ã‚¢ãƒ­ã‚±ãƒ¼ã‚¿ãƒ¼ã‚’ä½œæˆ
 	if (FAILED(device->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT, IID_PPV_ARGS(commandAllocator.GetAddressOf()))))
 	{
-		MessageBox(NULL, L"ƒRƒ}ƒ“ƒhƒAƒƒP[ƒ^‚ğì¬‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½B", WINDOW_TITLE, MB_OK | MB_ICONERROR);
-		return E_FAIL;
+		MessageBox(NULL, L"ã‚³ãƒãƒ³ãƒ‰ã‚¢ãƒ­ã‚±ãƒ¼ã‚¿ã‚’ä½œæˆã§ãã¾ã›ã‚“ã§ã—ãŸã€‚", WINDOW_TITLE, MB_OK | MB_ICONERROR);
+		return false;
 	}
 
-	// ƒRƒ}ƒ“ƒhƒŠƒXƒg‚ğì¬
+	// ã‚³ãƒãƒ³ãƒ‰ãƒªã‚¹ãƒˆã‚’ä½œæˆ
 	if (FAILED(device->CreateCommandList(0, D3D12_COMMAND_LIST_TYPE_DIRECT, commandAllocator.Get(), nullptr, IID_PPV_ARGS(commandList.GetAddressOf()))))
 	{
-		MessageBox(NULL, L"ƒRƒ}ƒ“ƒhƒŠƒXƒg‚ğì¬‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½B", WINDOW_TITLE, MB_OK | MB_ICONERROR);
-		return E_FAIL;
+		MessageBox(NULL, L"ã‚³ãƒãƒ³ãƒ‰ãƒªã‚¹ãƒˆã‚’ä½œæˆã§ãã¾ã›ã‚“ã§ã—ãŸã€‚", WINDOW_TITLE, MB_OK | MB_ICONERROR);
+		return false;
 	}
 
-	// ƒRƒ}ƒ“ƒhƒŠƒXƒg‚ğƒNƒ[ƒY
+	// ã‚³ãƒãƒ³ãƒ‰ãƒªã‚¹ãƒˆã‚’ã‚¯ãƒ­ãƒ¼ã‚º
 	commandList->Close();
-	// ƒRƒ}ƒ“ƒhƒŠƒXƒg‚Í‹L˜^ó‘Ô‚Åì¬‚³‚ê‚é‚ªA¡‰ñ‚Í‰Šú‰»“à‚Å‚»‚±‚É‰½‚à“ü‚ê‚È‚¢‚Ì‚Å‚·‚®‚É•Â‚¶‚éB
+	// ã‚³ãƒãƒ³ãƒ‰ãƒªã‚¹ãƒˆã¯è¨˜éŒ²çŠ¶æ…‹ã§ä½œæˆã•ã‚Œã‚‹ãŒã€ä»Šå›ã¯åˆæœŸåŒ–å†…ã§ãã“ã«ä½•ã‚‚å…¥ã‚Œãªã„ã®ã§ã™ãã«é–‰ã˜ã‚‹ã€‚
 
-	InitializeFance();
-
-	return S_OK;
-}
-
-HRESULT Graphics::InitializeFactory(UINT& dxgiFactoryFlags)
-{
-	//ƒtƒ@ƒNƒgƒŠ‚ğì¬
-	if (FAILED(CreateDXGIFactory2(dxgiFactoryFlags, IID_PPV_ARGS(factory.GetAddressOf()))))
+	if (B_FAILED(InitializeFence()))
 	{
-		MessageBox(NULL, L"ƒtƒ@ƒNƒgƒŠ‚ğì¬‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½B", WINDOW_TITLE, MB_OK | MB_ICONERROR);
-		return E_FAIL;
+		return false;
 	}
+
+	return true;
 }
 
-HRESULT Graphics::InitializeAdapter()
+void Graphics::ClearScreen()
 {
-	//DirectX12‚ªƒTƒ|[ƒg‚·‚é—˜—p‰Â”\‚Èƒn[ƒhƒEƒFƒAƒAƒ_ƒvƒ^‚ğŒŸõ‚µæ“¾
+	// ã‚³ãƒãƒ³ãƒ‰ã‚¢ãƒ­ã‚±ãƒ¼ã‚¿ã‚’ãƒªã‚»ãƒƒãƒˆ
+	commandAllocator->Reset();
+
+	// ã‚³ãƒãƒ³ãƒ‰ãƒªã‚¹ãƒˆã‚’ãƒªã‚»ãƒƒãƒˆ
+	commandList->Reset(commandAllocator.Get(), pipelineState.Get());
+
+	// ãƒãƒƒã‚¯ãƒãƒƒãƒ•ã‚¡ã‚’ãƒ¬ãƒ³ãƒ€ãƒ¼ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã¨ã—ã¦ä½¿ç”¨
+	auto barrier = CD3DX12_RESOURCE_BARRIER::Transition(renderTargets[frameIndex].Get(), D3D12_RESOURCE_STATE_PRESENT, D3D12_RESOURCE_STATE_RENDER_TARGET);
+	commandList->ResourceBarrier(1, &barrier);
+	// ãƒªã‚½ãƒ¼ã‚¹ãƒãƒªã‚¢ã¨ã¯ã€GPUå´ã§æ‰±ã†ãƒªã‚½ãƒ¼ã‚¹ã®çŠ¶æ³ã‚’åŒæœŸã•ã›ã‚‹æ©Ÿèƒ½ã€‚
+	// ãƒãƒ«ãƒã‚¹ãƒ¬ãƒƒãƒ‰ã‚’å‰æã¨ã—ãŸå‹•ããªã®ã§ã€GPUå´ã®å‹•ä½œã‚‚è¤‡æ•°ã®ã‚¢ã‚¯ã‚»ã‚¹ãŒåŒæ™‚ã«è¡Œã‚ã‚Œã‚‹ã“ã¨ã‚’æƒ³å®šã—ãŸæ©Ÿèƒ½ã ã¨ã„ã†ã“ã¨ã€‚
+
+	// ãƒ¬ãƒ³ãƒ€ãƒ¼ã‚¿ãƒ¼ã‚²ãƒƒãƒˆãƒ“ãƒ¥ãƒ¼ã®ãƒãƒ³ãƒ‰ãƒ«ã‚’ä½œæˆ
+	CD3DX12_CPU_DESCRIPTOR_HANDLE rtvHandle(rtvHeap->GetCPUDescriptorHandleForHeapStart(), frameIndex, rtvDescriptorSize);
+
+	// ãƒãƒƒã‚¯ãƒãƒƒãƒ•ã‚¡ã«æç”»(ã‚³ãƒãƒ³ãƒ‰ã‚’è¨˜éŒ²)
+	const FLOAT	clearColor[] = { 0.0f, 0.2f, 0.4f, 1.0f };		// é’ã£ã½ã„è‰²
+	commandList->ClearRenderTargetView(rtvHandle, clearColor, 0, nullptr);
+}
+
+void Graphics::ScreenFlip()
+{
+	// ãƒãƒƒã‚¯ãƒãƒƒãƒ•ã‚¡ã‚’è¡¨ç¤º
+	auto barrier = CD3DX12_RESOURCE_BARRIER::Transition(renderTargets[frameIndex].Get(), D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PRESENT);
+	commandList->ResourceBarrier(1, &barrier);
+
+	// ã‚³ãƒãƒ³ãƒ‰ãƒªã‚¹ãƒˆã‚’ã‚¯ãƒ­ãƒ¼ã‚º
+	commandList->Close();
+
+	// ã‚³ãƒãƒ³ãƒ‰ãƒªã‚¹ãƒˆã‚’å®Ÿè¡Œ
+	ID3D12CommandList* ppCommandLists[] = { commandList.Get() };
+	commandQueue->ExecuteCommandLists(_countof(ppCommandLists), ppCommandLists);
+
+	// ãƒ•ãƒ¬ãƒ¼ãƒ ã‚’æœ€çµ‚å‡ºåŠ›
+	swapChain->Present(1, 0);
+}
+
+bool Graphics::InitializeFactory(UINT& dxgi_factory_flags)
+{
+	//ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚’ä½œæˆ
+	if (FAILED(CreateDXGIFactory2(dxgi_factory_flags, IID_PPV_ARGS(factory.GetAddressOf()))))
+	{
+		MessageBox(NULL, L"ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚’ä½œæˆã§ãã¾ã›ã‚“ã§ã—ãŸã€‚", WINDOW_TITLE, MB_OK | MB_ICONERROR);
+		return false;
+	}
+
+	return true;
+}
+
+bool Graphics::InitializeAdapter()
+{
+	//DirectX12ãŒã‚µãƒãƒ¼ãƒˆã™ã‚‹åˆ©ç”¨å¯èƒ½ãªãƒãƒ¼ãƒ‰ã‚¦ã‚§ã‚¢ã‚¢ãƒ€ãƒ—ã‚¿ã‚’æ¤œç´¢ã—å–å¾—
 	HRESULT hr;
 	for (UINT adapterIndex = 0; DXGI_ERROR_NOT_FOUND != factory->EnumAdapters1(adapterIndex, adapter.GetAddressOf()); ++adapterIndex)
 	{
 		DXGI_ADAPTER_DESC1 adapterDesc;
 		adapter->GetDesc1(&adapterDesc);
 
-		//‚Ç‚¿‚ç‚©‚ªFALSE‚È‚çFALSE‚ÅƒXƒ‹[
+		//ã©ã¡ã‚‰ã‹ãŒFALSEãªã‚‰FALSEã§ã‚¹ãƒ«ãƒ¼
 		if (adapterDesc.Flags & DXGI_ADAPTER_FLAG_SOFTWARE) continue;
 
-		//ƒAƒ_ƒvƒ^‚ªDirectX12‚É‘Î‰‚µ‚Ä‚¢‚é‚©Šm”F
+		//ã‚¢ãƒ€ãƒ—ã‚¿ãŒDirectX12ã«å¯¾å¿œã—ã¦ã„ã‚‹ã‹ç¢ºèª
 		hr = D3D12CreateDevice(adapter.Get(), D3D_FEATURE_LEVEL_11_0, __uuidof(ID3D12Device), nullptr);
 		if (SUCCEEDED(hr))
 		{
-			//ƒfƒoƒCƒX‚ğì¬
+			//ãƒ‡ãƒã‚¤ã‚¹ã‚’ä½œæˆ
 			if (FAILED(D3D12CreateDevice(hardwareAdapter.Get(), D3D_FEATURE_LEVEL_11_0, IID_PPV_ARGS(Graphics::device.GetAddressOf()))))
 			{
-				MessageBox(NULL, L"‘I‘ğ‚µ‚½ƒn[ƒhƒEƒFƒAƒfƒoƒCƒX‚ªDIrectX12‚É‘Î‰‚µ‚Ä‚¢‚Ü‚¹‚ñB", WINDOW_TITLE, MB_OK | MB_ICONERROR);
-				return E_FAIL;
+				MessageBox(NULL, L"é¸æŠã—ãŸãƒãƒ¼ãƒ‰ã‚¦ã‚§ã‚¢ãƒ‡ãƒã‚¤ã‚¹ãŒDIrectX12ã«å¯¾å¿œã—ã¦ã„ã¾ã›ã‚“ã€‚", WINDOW_TITLE, MB_OK | MB_ICONERROR);
+				return false;
 			}
 			break;
 		}
 	}
 
-	//ŠÖ˜A•t‚¯‰ğœ
+	//é–¢é€£ä»˜ã‘è§£é™¤
 	hardwareAdapter = adapter.Detach();
 
-	//ƒn[ƒhƒEƒFƒA‚Å‘Î‰‚Å‚«‚È‚¢ê‡‚ÍWARPƒfƒoƒCƒX(ƒ\ƒtƒgƒEƒFƒA)‚Ì•û‚ğ—p‚¢‚é
+	//ãƒãƒ¼ãƒ‰ã‚¦ã‚§ã‚¢ã§å¯¾å¿œã§ããªã„å ´åˆã¯WARPãƒ‡ãƒã‚¤ã‚¹(ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢)ã®æ–¹ã‚’ç”¨ã„ã‚‹
 	if (FAILED(hr))
 	{
 		ComPtr<IDXGIAdapter> warpAdapter;
 		factory->EnumWarpAdapter(IID_PPV_ARGS(warpAdapter.GetAddressOf()));
 		if (FAILED(D3D12CreateDevice(warpAdapter.Get(), D3D_FEATURE_LEVEL_11_0, IID_PPV_ARGS(Graphics::device.GetAddressOf()))))
 		{
-			MessageBox(NULL, L"‘I‘ğ‚µ‚½WARPƒfƒoƒCƒX‚Ü‚Å‚à‚ªDirectX12‚É‘Î‰‚µ‚Ä‚¢‚Ü‚¹‚ñB", WINDOW_TITLE, MB_OK | MB_ICONERROR);
-			return E_FAIL;
+			MessageBox(NULL, L"é¸æŠã—ãŸWARPãƒ‡ãƒã‚¤ã‚¹ã¾ã§ã‚‚ãŒDirectX12ã«å¯¾å¿œã—ã¦ã„ã¾ã›ã‚“ã€‚", WINDOW_TITLE, MB_OK | MB_ICONERROR);
+			return false;
 		}
 	}
+
+	return true;
 }
 
-HRESULT Graphics::InitializeCommandQueue()
+bool Graphics::InitializeCommandQueue()
 {
-	//ƒRƒ}ƒ“ƒhƒLƒ…[‚Ìİ’è
+	//ã‚³ãƒãƒ³ãƒ‰ã‚­ãƒ¥ãƒ¼ã®è¨­å®š
 	commandQueueDesc.Flags = D3D12_COMMAND_QUEUE_FLAG_NONE;
 	commandQueueDesc.Type = D3D12_COMMAND_LIST_TYPE_DIRECT;
 
-	//ƒRƒ}ƒ“ƒhƒLƒ…[‚ğì¬
+	//ã‚³ãƒãƒ³ãƒ‰ã‚­ãƒ¥ãƒ¼ã‚’ä½œæˆ
 	if (FAILED(device->CreateCommandQueue(&commandQueueDesc, IID_PPV_ARGS(commandQueue.GetAddressOf()))))
 	{
-		MessageBox(NULL, L"ƒRƒ}ƒ“ƒhƒLƒ…[‚ğì¬‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½B", WINDOW_TITLE, MB_OK | MB_ICONERROR);
-		return E_FAIL;
+		MessageBox(NULL, L"ã‚³ãƒãƒ³ãƒ‰ã‚­ãƒ¥ãƒ¼ã‚’ä½œæˆã§ãã¾ã›ã‚“ã§ã—ãŸã€‚", WINDOW_TITLE, MB_OK | MB_ICONERROR);
+		return false;
 	}
+
+	return true;
 }
 
-HRESULT Graphics::InitializeSwapChain()
+bool Graphics::InitializeSwapChain()
 {
-	//ƒXƒƒbƒvƒ`ƒFƒCƒ“‚Ìì¬
+	//ã‚¹ãƒ¯ãƒƒãƒ—ãƒã‚§ã‚¤ãƒ³ã®ä½œæˆ
 	swapChainDesc.BufferCount = frameCount;
 	swapChainDesc.Width = WINDOW_WIDTH;
 	swapChainDesc.Height = WINDOW_HEIGHT;
@@ -136,91 +199,96 @@ HRESULT Graphics::InitializeSwapChain()
 	swapChainDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
 	swapChainDesc.SwapEffect = DXGI_SWAP_EFFECT_FLIP_DISCARD;
 	swapChainDesc.SampleDesc.Count = 1;
-	//ƒXƒƒbƒvƒ`ƒFƒCƒ“‚Æ‚ÍAƒŒƒ“ƒ_ƒŠƒ“ƒOŒ‹‰Ê‚ğo—Í‚·‚é‚½‚ß‚ÌƒIƒuƒWƒFƒNƒg
-	//•R‚Ã‚¢‚½ƒrƒfƒIƒAƒ_ƒvƒ^‚âƒEƒBƒ“ƒhƒE‚É‘Î‚µ‚ÄƒŒƒ“ƒ_ƒŠƒ“ƒOŒ‹‰Ê‚ğo—Í‚·‚é
+	//ã‚¹ãƒ¯ãƒƒãƒ—ãƒã‚§ã‚¤ãƒ³ã¨ã¯ã€ãƒ¬ãƒ³ãƒ€ãƒªãƒ³ã‚°çµæœã‚’å‡ºåŠ›ã™ã‚‹ãŸã‚ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+	//ç´ã¥ã„ãŸãƒ“ãƒ‡ã‚ªã‚¢ãƒ€ãƒ—ã‚¿ã‚„ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã«å¯¾ã—ã¦ãƒ¬ãƒ³ãƒ€ãƒªãƒ³ã‚°çµæœã‚’å‡ºåŠ›ã™ã‚‹
 
-	//ƒXƒƒbƒvƒ`ƒFƒCƒ“‚ğì¬
+	//ã‚¹ãƒ¯ãƒƒãƒ—ãƒã‚§ã‚¤ãƒ³ã‚’ä½œæˆ
 	ComPtr<IDXGISwapChain1>	tmpSwapChain;
 	if (FAILED(factory->CreateSwapChainForHwnd(commandQueue.Get(), FindWindow(WINDOW_TITLE, nullptr), &swapChainDesc, nullptr, nullptr, tmpSwapChain.GetAddressOf())))
 	{
-		MessageBox(NULL, L"ƒXƒƒbƒvƒ`ƒFƒCƒ“‚ğì¬‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½B", WINDOW_TITLE, MB_OK | MB_ICONERROR);
-		return E_FAIL;
+		MessageBox(NULL, L"ã‚¹ãƒ¯ãƒƒãƒ—ãƒã‚§ã‚¤ãƒ³ã‚’ä½œæˆã§ãã¾ã›ã‚“ã§ã—ãŸã€‚", WINDOW_TITLE, MB_OK | MB_ICONERROR);
+		return false;
 	}
 
-	//ƒXƒƒbƒvƒ`ƒFƒCƒ“‚ğƒLƒƒƒXƒg
+	//ã‚¹ãƒ¯ãƒƒãƒ—ãƒã‚§ã‚¤ãƒ³ã‚’ã‚­ãƒ£ã‚¹ãƒˆ
 	tmpSwapChain.As(&swapChain);
 
-	//ƒoƒbƒNƒoƒbƒtƒ@‚ÌƒCƒ“ƒfƒbƒNƒX‚ğŠi”[
+	//ãƒãƒƒã‚¯ãƒãƒƒãƒ•ã‚¡ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’æ ¼ç´
 	frameIndex = swapChain->GetCurrentBackBufferIndex();
+
+	return true;
 }
 
-HRESULT Graphics::InitializeFance()
+bool Graphics::InitializeFence()
 {
-	// ƒtƒFƒ“ƒX‚ğì¬
+	// ãƒ•ã‚§ãƒ³ã‚¹ã‚’ä½œæˆ
 	if (FAILED(Graphics::device->CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(Graphics::fence.GetAddressOf()))))
 	{
-		MessageBox(NULL, L"ƒtƒFƒ“ƒX‚ğì¬‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½B", WINDOW_TITLE, MB_OK | MB_ICONERROR);
-		return E_FAIL;
+		MessageBox(NULL, L"ãƒ•ã‚§ãƒ³ã‚¹ã‚’ä½œæˆã§ãã¾ã›ã‚“ã§ã—ãŸã€‚", WINDOW_TITLE, MB_OK | MB_ICONERROR);
+		return false;
 	}
-	// ƒtƒFƒ“ƒX‚Æ‚ÍA“¯ŠúƒIƒuƒWƒFƒNƒg‚Æ‚µ‚ÄƒŠƒ\[ƒX‚ªGPU‚ÉƒAƒbƒvƒ[ƒh‚³‚ê‚é‚Ü‚Å‘Ò‹@‚·‚é‚à‚ÌB
+	// ãƒ•ã‚§ãƒ³ã‚¹ã¨ã¯ã€åŒæœŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã—ã¦ãƒªã‚½ãƒ¼ã‚¹ãŒGPUã«ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã•ã‚Œã‚‹ã¾ã§å¾…æ©Ÿã™ã‚‹ã‚‚ã®ã€‚
 
-	// ƒtƒFƒ“ƒX’l‚ğ1‚Éİ’è
+	// ãƒ•ã‚§ãƒ³ã‚¹å€¤ã‚’1ã«è¨­å®š
 	Graphics::fenceValue = 1;
 
-	// ƒtƒŒ[ƒ€“¯Šú‚Ég—p‚·‚éƒCƒxƒ“ƒgƒnƒ“ƒhƒ‰‚ğì¬
+	// ãƒ•ãƒ¬ãƒ¼ãƒ åŒæœŸã«ä½¿ç”¨ã™ã‚‹ã‚¤ãƒ™ãƒ³ãƒˆãƒãƒ³ãƒ‰ãƒ©ã‚’ä½œæˆ
 	Graphics::fenceEvent = CreateEvent(nullptr, FALSE, FALSE, nullptr);
 	if (Graphics::fenceEvent == nullptr)
 	{
-		MessageBox(NULL, L"ƒtƒFƒ“ƒXƒCƒxƒ“ƒgƒnƒ“ƒhƒ‰‚ğì¬‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½B", WINDOW_TITLE, MB_OK | MB_ICONERROR);
-		return E_FAIL;
+		MessageBox(NULL, L"ãƒ•ã‚§ãƒ³ã‚¹ã‚¤ãƒ™ãƒ³ãƒˆãƒãƒ³ãƒ‰ãƒ©ã‚’ä½œæˆã§ãã¾ã›ã‚“ã§ã—ãŸã€‚", WINDOW_TITLE, MB_OK | MB_ICONERROR);
+		return false;
 	}
-	// ‘Ò‚ÂÛ‚ÉWindows‚ÌEvent‚ğ—˜—p
+	return true;
 }
 
-HRESULT Graphics::InitializeRtvHeapDesc()
+bool Graphics::InitializeRtvHeapDesc()
 {
-	//ƒŒƒ“ƒ_[ƒ^[ƒQƒbƒgƒrƒ…[—p‚ÌƒfƒBƒXƒNƒŠƒvƒ^[ƒq[ƒv‚Ìİ’è
+	//ãƒ¬ãƒ³ãƒ€ãƒ¼ã‚¿ãƒ¼ã‚²ãƒƒãƒˆãƒ“ãƒ¥ãƒ¼ç”¨ã®ãƒ‡ã‚£ã‚¹ã‚¯ãƒªãƒ—ã‚¿ãƒ¼ãƒ’ãƒ¼ãƒ—ã®è¨­å®š
 	rtvHeapDesc.NumDescriptors = Graphics::frameCount;
 	rtvHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_RTV;
 	rtvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;
-	// ƒfƒBƒXƒNƒŠƒvƒ^‚Æ‚ÍAGPU‚ÆƒŠƒ\[ƒX‚Ì‹´“n‚µ‚ğs‚¤–ğŠ„‚Ì‚à‚ÌB
-	// DX11‚Ü‚Å‚Í‰B•Á‚³‚ê‚Ä‚¢‚½B
-	// ƒfƒBƒXƒNƒŠƒvƒ^‚É‚Í3‚Â‚ÌŠT”O‚ª‘¶İ‚·‚éB
-	// DescriptorFƒeƒNƒXƒ`ƒƒ‚È‚Ç‚ÌƒŠƒ\[ƒX‚ğGPU‚Æ•R‚Ã‚¯‚éB
-	// DescriptorHeapFDescriptorHeap‚©‚çDescriptor‚ğì¬‚·‚éBŠÇ—‚Å‚«‚éDescriptor‚Ìí—Ş‚â”‚Í–‘O‚Éw’èB
-	// DescriptorTableFGPUã‚Åg—p‚·‚éDescriptor‚Ì”‚â”z’u‚ğ§Œä‚·‚éBDescriptorTable‚ÍRootSignature‚Åİ’è‚·‚éB
+	// ãƒ‡ã‚£ã‚¹ã‚¯ãƒªãƒ—ã‚¿ã¨ã¯ã€GPUã¨ãƒªã‚½ãƒ¼ã‚¹ã®æ©‹æ¸¡ã—ã‚’è¡Œã†å½¹å‰²ã®ã‚‚ã®ã€‚
+	// DX11ã¾ã§ã¯éš è”½ã•ã‚Œã¦ã„ãŸã€‚
+	// ãƒ‡ã‚£ã‚¹ã‚¯ãƒªãƒ—ã‚¿ã«ã¯3ã¤ã®æ¦‚å¿µãŒå­˜åœ¨ã™ã‚‹ã€‚
+	// Descriptorï¼šãƒ†ã‚¯ã‚¹ãƒãƒ£ãªã©ã®ãƒªã‚½ãƒ¼ã‚¹ã‚’GPUã¨ç´ã¥ã‘ã‚‹ã€‚
+	// DescriptorHeapï¼šDescriptorHeapã‹ã‚‰Descriptorã‚’ä½œæˆã™ã‚‹ã€‚ç®¡ç†ã§ãã‚‹Descriptorã®ç¨®é¡ã‚„æ•°ã¯äº‹å‰ã«æŒ‡å®šã€‚
+	// DescriptorTableï¼šGPUä¸Šã§ä½¿ç”¨ã™ã‚‹Descriptorã®æ•°ã‚„é…ç½®ã‚’åˆ¶å¾¡ã™ã‚‹ã€‚DescriptorTableã¯RootSignatureã§è¨­å®šã™ã‚‹ã€‚
 
-	// ƒfƒBƒXƒNƒŠƒvƒ^ƒq[ƒv‚ğì¬
+	// ãƒ‡ã‚£ã‚¹ã‚¯ãƒªãƒ—ã‚¿ãƒ’ãƒ¼ãƒ—ã‚’ä½œæˆ
 	if (FAILED(Graphics::device->CreateDescriptorHeap(&rtvHeapDesc, IID_PPV_ARGS(Graphics::rtvHeap.GetAddressOf()))))
 	{
-		MessageBox(NULL, L"ƒfƒBƒXƒNƒŠƒvƒ^ƒq[ƒv‚ğì¬‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½B", WINDOW_TITLE, MB_OK | MB_ICONERROR);
-		return E_FAIL;
+		MessageBox(NULL, L"ãƒ‡ã‚£ã‚¹ã‚¯ãƒªãƒ—ã‚¿ãƒ’ãƒ¼ãƒ—ã‚’ä½œæˆã§ãã¾ã›ã‚“ã§ã—ãŸã€‚", WINDOW_TITLE, MB_OK | MB_ICONERROR);
+		return false;
 	}
 
-	//ƒfƒBƒXƒNƒŠƒvƒ^‚ÌƒTƒCƒY‚ğæ“¾
+	//ãƒ‡ã‚£ã‚¹ã‚¯ãƒªãƒ—ã‚¿ã®ã‚µã‚¤ã‚ºã‚’å–å¾—
 	Graphics::rtvDescriptorSize = Graphics::device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_RTV);
 
+	return true;
 }
 
-HRESULT Graphics::CreateRenderTargetView()
+bool Graphics::CreateRenderTargetView()
 {
-	//ƒtƒŒ[ƒ€ƒŠƒ\[ƒX‚Ìƒnƒ“ƒhƒ‹‚ğæ“¾
+	//ãƒ•ãƒ¬ãƒ¼ãƒ ãƒªã‚½ãƒ¼ã‚¹ã®ãƒãƒ³ãƒ‰ãƒ«ã‚’å–å¾—
 	CD3DX12_CPU_DESCRIPTOR_HANDLE rtvHandle(rtvHeap->GetCPUDescriptorHandleForHeapStart());
 
-	// ƒtƒŒ[ƒ€ƒoƒbƒtƒ@‚ÆƒoƒbƒNƒoƒbƒtƒ@‚ÌƒŒƒ“ƒ_[ƒ^[ƒQƒbƒgƒrƒ…[‚ğì¬
+	// ãƒ•ãƒ¬ãƒ¼ãƒ ãƒãƒƒãƒ•ã‚¡ã¨ãƒãƒƒã‚¯ãƒãƒƒãƒ•ã‚¡ã®ãƒ¬ãƒ³ãƒ€ãƒ¼ã‚¿ãƒ¼ã‚²ãƒƒãƒˆãƒ“ãƒ¥ãƒ¼ã‚’ä½œæˆ
 	for (UINT i = 0; i < frameCount; i++)
 	{
-		// RTVƒoƒbƒtƒ@‚ğæ“¾
+		// RTVãƒãƒƒãƒ•ã‚¡ã‚’å–å¾—
 		if (FAILED(swapChain->GetBuffer(i, IID_PPV_ARGS(renderTargets[i].GetAddressOf()))))
 		{
-			MessageBox(NULL, L"RTVƒoƒbƒtƒ@‚ğæ“¾‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½B", WINDOW_TITLE, MB_OK | MB_ICONERROR);
-			return E_FAIL;
+			MessageBox(NULL, L"RTVãƒãƒƒãƒ•ã‚¡ã‚’å–å¾—ã§ãã¾ã›ã‚“ã§ã—ãŸã€‚", WINDOW_TITLE, MB_OK | MB_ICONERROR);
+			return false;
 		}
 
-		// ƒŒƒ“ƒ_[ƒ^[ƒQƒbƒgƒrƒ…[‚ğì¬
+		// ãƒ¬ãƒ³ãƒ€ãƒ¼ã‚¿ãƒ¼ã‚²ãƒƒãƒˆãƒ“ãƒ¥ãƒ¼ã‚’ä½œæˆ
 		device->CreateRenderTargetView(renderTargets[i].Get(), nullptr, rtvHandle);
 
-		// ƒnƒ“ƒhƒ‹‚ÌƒIƒtƒZƒbƒg
+		// ãƒãƒ³ãƒ‰ãƒ«ã®ã‚ªãƒ•ã‚»ãƒƒãƒˆ
 		rtvHandle.Offset(1, rtvDescriptorSize);
 	}
+
+	return true;
 }

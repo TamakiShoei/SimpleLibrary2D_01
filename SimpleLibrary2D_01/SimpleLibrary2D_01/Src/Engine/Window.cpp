@@ -1,26 +1,26 @@
-#include "Window.h"
+ï»¿#include "Window.h"
 #include "Engine.h"
 
-LRESULT CALLBACK Window::WindowProc(HWND hwnd, UINT nMsg, WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK Window::WindowProc(HWND hwnd, UINT n_msg, WPARAM w_param, LPARAM l_param)
 {
-	switch (nMsg)
+	switch (n_msg)
 	{
-	case WM_DESTROY:	//I—¹
-		Engine::Instance()->FinalizeEngine();//‰ğ•ú
+	case WM_DESTROY:	//çµ‚äº†æ™‚
+		Engine::Instance()->Finalize();//è§£æ”¾
 		PostQuitMessage(0);
 		return 0;
 	}
 
-	//switch•¶‚ªˆ—‚µ‚È‚©‚Á‚½ƒƒbƒZ[ƒW‚ğˆ—
-	return DefWindowProc(hwnd, nMsg, wParam, lParam);
+	//switchæ–‡ãŒå‡¦ç†ã—ãªã‹ã£ãŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡¦ç†
+	return DefWindowProc(hwnd, n_msg, w_param, l_param);
 }
 
-HRESULT Window::InitializeWindows()
+bool Window::Initialize()
 {
 	WNDCLASSEX windowClass;
 	RECT windowRect;
 
-	//ƒEƒBƒ“ƒhƒEƒNƒ‰ƒX‚Ì‰Šú‰»
+	//ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚¯ãƒ©ã‚¹ã®åˆæœŸåŒ–
 	windowClass = {};
 	windowClass.cbSize = sizeof(WNDCLASSEX);
 	windowClass.style = CS_HREDRAW | CS_VREDRAW;
@@ -30,12 +30,12 @@ HRESULT Window::InitializeWindows()
 	windowClass.lpszClassName = WINDOW_CLASS;
 	RegisterClassEx(&windowClass);
 
-	//ƒEƒBƒ“ƒhƒE‚ÌƒTƒCƒY‚ğ‹‚ß‚é
+	//ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ã‚µã‚¤ã‚ºã‚’æ±‚ã‚ã‚‹
 	windowRect = { 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT };
 	AdjustWindowRect(&windowRect, WS_OVERLAPPEDWINDOW, FALSE);
 
 	HWND hwnd;
-	//ƒEƒBƒ“ƒhƒEƒnƒ“ƒhƒ‹‚ğì¬
+	//ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãƒãƒ³ãƒ‰ãƒ«ã‚’ä½œæˆ
 	hwnd = CreateWindow(
 		WINDOW_CLASS,
 		WINDOW_TITLE,
@@ -52,20 +52,20 @@ HRESULT Window::InitializeWindows()
 
 	if (hwnd == nullptr)
 	{
-		return E_FAIL;
+		return false;
 	}
 
-	//ƒEƒBƒ“ƒhƒE‚Ì•\¦
+	//ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®è¡¨ç¤º
 	ShowWindow(FindWindow(WINDOW_TITLE, nullptr), SW_SHOW);
 
-	return S_OK;
+	return true;
 }
 
 void Window::Update()
 {
 	MSG msg = {};
-	//ƒƒCƒ“ƒ‹[ƒv
-			//ƒLƒ…[“à‚ÌƒƒbƒZ[ƒW‚ğˆ—
+	//ãƒ¡ã‚¤ãƒ³ãƒ«ãƒ¼ãƒ—
+			//ã‚­ãƒ¥ãƒ¼å†…ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡¦ç†
 	if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
 	{
 		if (msg.message == WM_QUIT)

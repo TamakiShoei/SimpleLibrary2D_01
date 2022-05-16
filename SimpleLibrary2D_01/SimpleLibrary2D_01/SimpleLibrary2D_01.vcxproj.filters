@@ -17,15 +17,9 @@
     <ClCompile Include="Src\Engine\Graphics.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Engine\Render.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Engine\CommonDifinition.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Engine\Library.h">
       <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="Src\Engine\Engine.h">
@@ -35,9 +29,6 @@
       <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="Src\Engine\Window.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Engine\Render.h">
       <Filter>Engine</Filter>
     </ClInclude>
   </ItemGroup>
