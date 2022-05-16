@@ -1,9 +1,9 @@
-#include "Engine/Engine.h"
+ï»¿#include "Engine/Engine.h"
 
-//ƒƒCƒ“ŠÖ”
+//ãƒ¡ã‚¤ãƒ³é–¢æ•°
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int)
 {
-	if (Engine::Instance()->InitializeEngine() == false)	//DirectX‚Ì‰Šú‰»
+	if (Engine::Instance()->InitializeEngine() == false)	//DirectXã®åˆæœŸåŒ–
 	{
 		Engine::Instance()->FinalizeEngine();
 		return 0;
@@ -12,11 +12,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int)
 	while (Engine::Instance()->IsClosedWindow() == false)
 	{
 		Engine::Instance()->Update();
-		//•`‰æ
+		//æç”»
 		Engine::Instance()->ClearScreen();
 
 		//------------------------------------------------//
-		//				  ‚±‚±‚É•`‰æˆ—					  //
+		//				  ã“ã“ã«æç”»å‡¦ç†					  //
 		//------------------------------------------------//
 
 		Engine::Instance()->ScreenFlip();
@@ -26,6 +26,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int)
 	return 0;
 
 
-	////WM_QUITƒƒbƒZ[ƒW‚Ì•”•ª‚ğwindows‚É•Ô‚·
+	////WM_QUITãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®éƒ¨åˆ†ã‚’windowsã«è¿”ã™
 	////return static_cast<INT8>(msg.wParam);
 }
