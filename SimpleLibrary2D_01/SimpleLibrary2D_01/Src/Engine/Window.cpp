@@ -1,18 +1,18 @@
 ﻿#include "Window.h"
 #include "Engine.h"
 
-LRESULT CALLBACK Window::WindowProc(HWND hwnd, UINT n_msg, WPARAM w_param, LPARAM l_param)
+LRESULT CALLBACK Window::WindowProc(HWND hwnd, UINT msg, WPARAM w_param, LPARAM l_param)
 {
-	switch (n_msg)
+	switch (msg)
 	{
 	case WM_DESTROY:	//終了時
-		Engine::Instance()->Finalize();//解放
+		Engine::Finalize();//解放
 		PostQuitMessage(0);
 		return 0;
 	}
 
 	//switch文が処理しなかったメッセージを処理
-	return DefWindowProc(hwnd, n_msg, w_param, l_param);
+	return DefWindowProc(hwnd, msg, w_param, l_param);
 }
 
 bool Window::Initialize()

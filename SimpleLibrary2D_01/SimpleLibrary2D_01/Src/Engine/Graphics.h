@@ -1,4 +1,11 @@
-﻿#ifndef GRAPHICS_H
+﻿/**
+* @file Graphics.h
+* @brief <pre>
+* グラフィッククラスの宣言
+* Engineクラスでインスタンスを作成するため、使用者が宣言する必要はない
+*/
+
+#ifndef GRAPHICS_H
 #define	GRAPHICS_H
 
 #include "CommonDifinition.h"
@@ -13,10 +20,31 @@ public:
 	{
 	}
 
-	//ウィンドウの初期化
+	/**
+	* @brief Graphicsクラスの初期化関数
+	* @details 描画を使用するための初期化を行う
+	* @retval true 初期化成功
+	* @retval false 初期化失敗
+	*/
 	bool Initialize();
 
+	/**
+	* @brief 描画開始関数
+	* @details <pre>
+	* バックバッファのクリアを行う
+	* この関数は必ず描画処理前に実行する必要がある
+	* また、実行後にClearScreen関数を実行する必要がある
+	* </pre>
+	*/
 	void ClearScreen();
+
+	/**
+	* @brief 描画終了関数
+	* @details <pre>
+	* バックバッファとフロントバッファを入れ替える
+	* この関数は必ずClearScreenの後に実行する必要がある
+	* </pre>
+	*/
 	void ScreenFlip();
 
 public:

@@ -3,26 +3,26 @@
 //メイン関数
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int)
 {
-	if (Engine::Instance()->Initialize() == false)	//DirectXの初期化
+	if (Engine::Initialize() == false)	//DirectXの初期化
 	{
-		Engine::Instance()->Finalize();
+		Engine::Finalize();
 		return 0;
 	}
 
-	while (Engine::Instance()->IsClosedWindow() == false)
+	while (Engine::IsClosedWindow() == false)
 	{
-		Engine::Instance()->Update();
+		Engine::Update();
 		//描画
-		Engine::Instance()->ClearScreen();
+		Engine::ClearScreen();
 
 		//------------------------------------------------//
 		//				  ここに描画処理					  //
 		//------------------------------------------------//
 
-		Engine::Instance()->ScreenFlip();
+		Engine::ScreenFlip();
 	}
 
-	Engine::Instance()->Finalize();
+	Engine::Finalize();
 	return 0;
 
 

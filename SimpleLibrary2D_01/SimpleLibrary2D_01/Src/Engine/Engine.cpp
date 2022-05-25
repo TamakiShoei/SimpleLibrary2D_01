@@ -1,12 +1,16 @@
 ﻿#include "Engine.h"
 
+Engine* Engine::instance = nullptr;
+
 bool Engine::Initialize()
 {
-	if (B_FAILED(window.Initialize()))
+	instance = new Engine();
+
+	if (B_FAILED(instance->window.Initialize()))
 	{
 		return false;
 	}
-	if (B_FAILED(graphics.Initialize()))
+	if (B_FAILED(instance->graphics.Initialize()))
 	{
 		return false;
 	}
@@ -15,54 +19,45 @@ bool Engine::Initialize()
 
 void Engine::Update()
 {
-	window.Update();
+	instance->window.Update();
 }
 
 void Engine::WaitForPreviousFrame()
 {
-	const UINT64 fence = Engine::Instance()->GetGraphics()->fenceValue;
-	Engine::Instance()->GetGraphics()->commandQueue->Signal(Engine::Instance()->GetGraphics()->fence.Get(), fence);
-	Engine::Instance()->GetGraphics()->fenceValue++;
+	const UINT64 fence = instance->graphics.fenceValue;
+	instance->graphics.commandQueue->Signal(instance->graphics.fence.Get(), fence);
+	instance->graphics.fenceValue++;
 
 	// 前のフレームが終了するまで待機
-	if (Engine::Instance()->GetGraphics()->fence->GetCompletedValue() < fence) {
-		Engine::Instance()->GetGraphics()->fence->SetEventOnCompletion(fence, Engine::Instance()->GetGraphics()->fenceEvent);
-		WaitForSingleObject(Engine::Instance()->GetGraphics()->fenceEvent, INFINITE);
+	if (instance->graphics.fence->GetCompletedValue() < fence) {
+		instance->graphics.fence->SetEventOnCompletion(fence, instance->graphics.fenceEvent);
+		WaitForSingleObject(instance->graphics.fenceEvent, INFINITE);
 	}
 
 	// バックバッファのインデックスを格納
-	Engine::Instance()->GetGraphics()->frameIndex = Engine::Instance()->GetGraphics()->swapChain->GetCurrentBackBufferIndex();
-}
-
-void Engine::OnDestroy()
-{
-	WaitForPreviousFrame();
-	//CloseHandle(GetGraphics()->fenceEvent);
+	instance->graphics.frameIndex = instance->graphics.swapChain->GetCurrentBackBufferIndex();
 }
 
 void Engine::Finalize()
 {
-	OnDestroy();
+	WaitForPreviousFrame();
+	//delete instance;//問題点
 }
 
 bool Engine::IsClosedWindow()
 {
-	if (window.IsClosed() == false)
-	{
-		return false;
-	}
-	return true;
+	return instance->window.IsClosed();
 }
 
 void Engine::ClearScreen()
 {
-	graphics.ClearScreen();
+	instance->graphics.ClearScreen();
 }
 
 void Engine::ScreenFlip()
 {
-	graphics.ScreenFlip();
+	instance->graphics.ScreenFlip();
 
 	// フレーム後処理
-	Engine::Instance()->WaitForPreviousFrame();
+	instance->WaitForPreviousFrame();
 }

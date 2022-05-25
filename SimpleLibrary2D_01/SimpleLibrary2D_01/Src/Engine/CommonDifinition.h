@@ -13,8 +13,8 @@
 #pragma comment(lib, "d3d12.lib")
 #pragma comment(lib, "dxgi.lib")
 
-#define B_SUCCEEDED(bo)   (((bool)(bo)) >= 0)
-#define B_FAILED(bo)      (((bool)(bo)) < 0)
+#define B_SUCCEEDED(bl)   (((bool)(bl)) >= 0)
+#define B_FAILED(bl)      (((bool)(bl)) < 0)
 
 #define WINDOW_CLASS	L"初期化(ブルー画面)"
 #define WINDOW_TITLE	WINDOW_CLASS
