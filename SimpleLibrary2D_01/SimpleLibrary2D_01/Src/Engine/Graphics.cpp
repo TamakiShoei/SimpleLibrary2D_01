@@ -295,3 +295,29 @@ bool Graphics::CreateRenderTargetView()
 
 	return true;
 }
+
+void Graphics::WaitForPreviousFrame()
+{
+	const UINT64 tmpFence = fenceValue;
+	commandQueue->Signal(fence.Get(), tmpFence);
+	IncrementFenceVal();
+
+	// 前のフレームが終了するまで待機
+	if (fence->GetCompletedValue() < tmpFence) {
+		fence->SetEventOnCompletion(tmpFence, fenceEvent);
+		WaitForSingleObject(fenceEvent, INFINITE);
+	}
+
+	// バックバッファのインデックスを格納
+	frameIndex = swapChain->GetCurrentBackBufferIndex();
+}
+
+UINT64 Graphics::GetFenceVal()
+{
+	return fenceValue;
+}
+
+void Graphics::IncrementFenceVal()
+{
+	fenceValue++;
+}

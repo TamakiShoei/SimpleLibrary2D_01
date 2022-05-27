@@ -47,6 +47,23 @@ public:
 	*/
 	void ScreenFlip();
 
+	/**
+	* @brief GPU待ち関数
+	* @details CommandListの完了を検知する
+	*/
+	void WaitForPreviousFrame();
+
+	/**
+	* @brief Fence値の加算関数
+	* @details FenceValueをインクリメントする
+	*/
+	void IncrementFenceVal();
+
+	/**
+	* @brief FenceValのGetter
+	*/
+	UINT64 GetFenceVal();
+
 public:
 	//フレームカウントは最低2から(フロントバッファ・バックバッファ)
 	static const UINT frameCount = 2;
@@ -55,7 +72,6 @@ public:
 	UINT				frameIndex = 0;	//フレームインデックス
 	HANDLE				fenceEvent;		//フェンスハンドル
 	ComPtr<ID3D12Fence>	fence;			//フェンス(GPUと同期して実行完了待ちを行う)
-	UINT64				fenceValue;		//フェンス値
 
 	//パイプラインオブジェクト
 	ComPtr<ID3D12Device>				device;
@@ -90,7 +106,8 @@ private:
 	
 	bool CreateRenderTargetView();
 
-private:
+private:	
+	UINT64	fenceValue;		//フェンス値
 	D3D12_COMMAND_QUEUE_DESC commandQueueDesc = {};
 	DXGI_SWAP_CHAIN_DESC1 swapChainDesc = {};
 	D3D12_DESCRIPTOR_HEAP_DESC rtvHeapDesc = {};

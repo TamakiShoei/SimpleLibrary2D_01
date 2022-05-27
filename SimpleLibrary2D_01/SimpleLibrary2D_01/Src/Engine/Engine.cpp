@@ -25,25 +25,9 @@ void Engine::Update()
 	instance->window.Update();
 }
 
-void Engine::WaitForPreviousFrame()
-{
-	const UINT64 fence = instance->graphics.fenceValue;
-	instance->graphics.commandQueue->Signal(instance->graphics.fence.Get(), fence);
-	instance->graphics.fenceValue++;
-
-	// 前のフレームが終了するまで待機
-	if (instance->graphics.fence->GetCompletedValue() < fence) {
-		instance->graphics.fence->SetEventOnCompletion(fence, instance->graphics.fenceEvent);
-		WaitForSingleObject(instance->graphics.fenceEvent, INFINITE);
-	}
-
-	// バックバッファのインデックスを格納
-	instance->graphics.frameIndex = instance->graphics.swapChain->GetCurrentBackBufferIndex();
-}
-
 void Engine::Finalize()
 {
-	WaitForPreviousFrame();
+	instance->graphics.WaitForPreviousFrame();
 	//delete instance;//問題点
 }
 
@@ -74,5 +58,5 @@ void Engine::ScreenFlip()
 	instance->graphics.ScreenFlip();
 
 	// フレーム後処理
-	instance->WaitForPreviousFrame();
+	instance->graphics.WaitForPreviousFrame();
 }

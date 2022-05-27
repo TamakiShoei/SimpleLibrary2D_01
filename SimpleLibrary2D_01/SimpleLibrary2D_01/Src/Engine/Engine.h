@@ -8,7 +8,6 @@
 #include "Graphics.h"
 #include "Window.h"
 
-/** @brief エンジンクラス */
 class Engine
 {
 public:
@@ -78,32 +77,6 @@ public:
 	* </pre>
 	*/
 	static void ScreenFlip();
-
-private:
-	
-	/**
-	* @brief GPU待ち関数
-	* @details CommandListの完了を検知する
-	*/
-	static void WaitForPreviousFrame();
-
-	/**
-	* @brief WindowインスタンスのGetter関数
-	* @retval windowインスタンス
-	*/
-	inline Window* GetWindows()
-	{
-		return &window;
-	}
-
-	/**
-	* @brief WindowインスタンスのGetter関数
-	* @retval windowインスタンス
-	*/
-	inline Graphics* GetGraphics()
-	{
-		return &graphics;
-	}
 
 private:
 	static Engine* instance;
