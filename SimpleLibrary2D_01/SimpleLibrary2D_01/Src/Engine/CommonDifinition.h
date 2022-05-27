@@ -18,8 +18,8 @@
 
 #define WINDOW_CLASS	L"初期化(ブルー画面)"
 #define WINDOW_TITLE	WINDOW_CLASS
-#define WINDOW_WIDTH	750
-#define WINDOW_HEIGHT	500
+//#define WINDOW_WIDTH	750
+//#define WINDOW_HEIGHT	500
 
 //usingディレクティブ
 using Microsoft::WRL::ComPtr;

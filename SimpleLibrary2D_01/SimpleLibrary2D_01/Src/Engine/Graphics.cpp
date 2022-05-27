@@ -191,10 +191,13 @@ bool Graphics::InitializeCommandQueue()
 
 bool Graphics::InitializeSwapChain()
 {
+	RECT rect;
+	GetClientRect(FindWindow(WINDOW_TITLE, nullptr), &rect);
+
 	//スワップチェインの作成
 	swapChainDesc.BufferCount = frameCount;
-	swapChainDesc.Width = WINDOW_WIDTH;
-	swapChainDesc.Height = WINDOW_HEIGHT;
+	swapChainDesc.Width = rect.right;
+	swapChainDesc.Height = rect.bottom;
 	swapChainDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
 	swapChainDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
 	swapChainDesc.SwapEffect = DXGI_SWAP_EFFECT_FLIP_DISCARD;

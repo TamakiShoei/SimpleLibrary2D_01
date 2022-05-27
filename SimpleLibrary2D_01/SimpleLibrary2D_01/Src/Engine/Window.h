@@ -14,7 +14,11 @@
 class Window
 {
 public:
-	Window() : isClosed(false), isRecievedMessage(false)
+	Window() : 
+		isClosed(false), 
+		isRecievedMessage(false),
+		width(800),
+		height(600)
 	{
 	}
 
@@ -43,6 +47,14 @@ public:
 	void Update();
 
 	/**
+	* @brief ウィンドウサイズ設定関数
+	* @引数をもとにウィンドウのサイズを設定する
+	* @param[in] width_size ウィンドウの横幅
+	* @param[in] height_size ウィンドウの縦幅
+	*/
+	void SetWindowSize(int width_size, int height_size);
+
+	/**
 	* @brief ウィンドウの閉鎖チェック関数
 	* @details ウィンドウが閉じられているかどうかを返す
 	* @retval true 閉じている
@@ -54,6 +66,8 @@ public:
 	}
 
 private:
+	int width;
+	int height;
 	bool isClosed;
 	bool isRecievedMessage;
 };

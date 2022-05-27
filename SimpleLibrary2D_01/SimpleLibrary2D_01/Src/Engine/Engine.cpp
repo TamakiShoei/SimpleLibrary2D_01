@@ -4,7 +4,10 @@ Engine* Engine::instance = nullptr;
 
 bool Engine::Initialize()
 {
-	instance = new Engine();
+	if (instance == nullptr)
+	{
+		instance = new Engine();
+	}
 
 	if (B_FAILED(instance->window.Initialize()))
 	{
@@ -44,11 +47,23 @@ void Engine::Finalize()
 	//delete instance;//問題点
 }
 
+//Windowクラス関係の関数
 bool Engine::IsClosedWindow()
 {
 	return instance->window.IsClosed();
 }
 
+void Engine::SetWindowSize(int width_size, int height_size)
+{
+	if (instance == nullptr)
+	{
+		instance = new Engine();
+	}
+
+	return instance->window.SetWindowSize(width_size, height_size);
+}
+
+//Graphicsクラス関係の関数
 void Engine::ClearScreen()
 {
 	instance->graphics.ClearScreen();

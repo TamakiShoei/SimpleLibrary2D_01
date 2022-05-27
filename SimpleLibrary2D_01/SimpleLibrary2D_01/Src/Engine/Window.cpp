@@ -31,7 +31,7 @@ bool Window::Initialize()
 	RegisterClassEx(&windowClass);
 
 	//ウィンドウのサイズを求める
-	windowRect = { 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT };
+	windowRect = { 0, 0, width, height};
 	AdjustWindowRect(&windowRect, WS_OVERLAPPEDWINDOW, FALSE);
 
 	HWND hwnd;
@@ -59,6 +59,12 @@ bool Window::Initialize()
 	ShowWindow(FindWindow(WINDOW_TITLE, nullptr), SW_SHOW);
 
 	return true;
+}
+
+void Window::SetWindowSize(int width_size, int height_size)
+{
+	width = width_size;
+	height = height_size;
 }
 
 void Window::Update()

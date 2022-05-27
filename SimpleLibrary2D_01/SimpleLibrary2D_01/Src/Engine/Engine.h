@@ -51,6 +51,14 @@ public:
 	*/
 	static bool IsClosedWindow();
 
+	/**
+	* @brief ウィンドウサイズ設定関数
+	* @引数をもとにウィンドウのサイズを設定する
+	* @param[in] width_size ウィンドウの横幅
+	* @param[in] height_size ウィンドウの縦幅
+	*/
+	static void SetWindowSize(int width_size, int height_size);
+
 	//描画関係の関数
 	/**
 	* @brief 描画開始関数

@@ -3,6 +3,8 @@
 //メイン関数
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int)
 {
+	//Engine::SetWindowSize(400, 200);
+
 	if (Engine::Initialize() == false)	//DirectXの初期化
 	{
 		Engine::Finalize();
