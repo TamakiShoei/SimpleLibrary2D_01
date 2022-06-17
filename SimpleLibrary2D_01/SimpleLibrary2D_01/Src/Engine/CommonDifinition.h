@@ -6,7 +6,7 @@
 
 //DirectX12のコードセット
 #include <d3d12.h>
-#include <dxgi1_4.h>
+#include <dxgi1_6.h>
 #include "d3dx12.h"
 
 //ライブラリ
@@ -18,10 +18,15 @@
 //引数がfalseかを判定
 #define B_FAILED(val)      (((bool)(val)) < 0)
 
+struct VECTOR
+{
+	float x;
+	float y;
+	float z;
+};
+
 #define WINDOW_CLASS	L"初期化(ブルー画面)"
 #define WINDOW_TITLE	WINDOW_CLASS
-//#define WINDOW_WIDTH	750
-//#define WINDOW_HEIGHT	500
 
 //usingディレクティブ
 using Microsoft::WRL::ComPtr;

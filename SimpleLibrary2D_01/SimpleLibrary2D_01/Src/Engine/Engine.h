@@ -78,6 +78,8 @@ public:
 	*/
 	static void ScreenFlip();
 
+	static void DrawTriangle(VECTOR lower_left, VECTOR upper_left, VECTOR lower_right);
+
 private:
 	static Engine* instance;
 

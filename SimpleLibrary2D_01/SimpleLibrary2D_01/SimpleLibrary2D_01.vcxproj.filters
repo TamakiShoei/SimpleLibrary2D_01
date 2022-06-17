@@ -5,6 +5,12 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Res">
+      <UniqueIdentifier>{cd4fad1b-518c-4320-9e98-33ad26e9d1e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Res\Shader">
+      <UniqueIdentifier>{aa6dc8d5-104f-4383-a447-62a180ad5c60}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Engine\Engine.cpp">
@@ -31,5 +37,13 @@
     <ClInclude Include="Src\Engine\Window.h">
       <Filter>Engine</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Res\Shader\VertexShader.hlsl">
+      <Filter>Res\Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Res\Shader\PixelShader.hlsl">
+      <Filter>Res\Shader</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

@@ -56,7 +56,9 @@ void Engine::ClearScreen()
 void Engine::ScreenFlip()
 {
 	instance->graphics.ScreenFlip();
+}
 
-	// フレーム後処理
-	instance->graphics.WaitForPreviousFrame();
+void Engine::DrawTriangle(VECTOR lower_left, VECTOR upper_left, VECTOR lower_right)
+{
+	instance->graphics.DrawTriangle(lower_left, upper_left, lower_right);
 }

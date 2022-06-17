@@ -3,7 +3,7 @@
 //メイン関数
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int)
 {
-	//Engine::SetWindowSize(400, 200);
+	Engine::SetWindowSize(800, 600);
 
 	if (Engine::Initialize() == false)	//DirectXの初期化
 	{
@@ -11,16 +11,20 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int)
 		return 0;
 	}
 
+	VECTOR lower_left = { -1.0f, -1.0f, 0.0f };
+	VECTOR upper_left = { -1.0f, 1.0f, 0.0f };
+	VECTOR lower_right = { 1.0f, -1.0f, 0.0f };
+
 	while (Engine::IsClosedWindow() == false)
 	{
 		Engine::Update();
 		//描画
 		Engine::ClearScreen();
 
+		Engine::DrawTriangle(lower_left, upper_left, lower_right);
 		//------------------------------------------------//
 		//				  ここに描画処理					  //
 		//------------------------------------------------//
-
 		Engine::ScreenFlip();
 	}
 

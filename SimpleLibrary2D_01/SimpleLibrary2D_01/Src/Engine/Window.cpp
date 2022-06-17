@@ -47,9 +47,7 @@ bool Window::Initialize()
 		nullptr,
 		nullptr,
 		GetModuleHandle(nullptr),
-		nullptr
-	);
-
+		nullptr);
 	if (hwnd == nullptr)
 	{
 		return false;

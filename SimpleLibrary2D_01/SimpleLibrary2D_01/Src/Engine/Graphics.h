@@ -46,23 +46,14 @@ public:
 	* </pre>
 	*/
 	void ScreenFlip();
+	
+	void DrawTriangle(VECTOR lower_left, VECTOR upper_left, VECTOR lower_right);
 
 	/**
 	* @brief GPU待ち関数
 	* @details CommandListの完了を検知する
 	*/
 	void WaitForPreviousFrame();
-
-	/**
-	* @brief Fence値の加算関数
-	* @details FenceValueをインクリメントする
-	*/
-	void IncrementFenceVal();
-
-	/**
-	* @brief FenceValのGetter
-	*/
-	UINT64 GetFenceVal();
 
 public:
 	//フレームカウントは最低2から(フロントバッファ・バックバッファ)
@@ -75,11 +66,12 @@ public:
 
 	//パイプラインオブジェクト
 	ComPtr<ID3D12Device>				device;
-	ComPtr<IDXGISwapChain3>				swapChain;
+	ComPtr<IDXGISwapChain4>				swapChain;
 	ComPtr<ID3D12Resource>				renderTargets[frameCount];
 	ComPtr<ID3D12CommandAllocator>		commandAllocator;
 	ComPtr<ID3D12CommandQueue>			commandQueue;
 	ComPtr<ID3D12DescriptorHeap>		rtvHeap;
+	ComPtr<ID3D12RootSignature>			rootSignature;
 	ComPtr<ID3D12PipelineState>			pipelineState;
 	ComPtr<ID3D12GraphicsCommandList>	commandList;
 	UINT								rtvDescriptorSize = 0;
@@ -96,21 +88,32 @@ public:
 	ComPtr<IDXGIAdapter1> hardwareAdapter = nullptr;
 	ComPtr<IDXGIAdapter1> adapter;
 
+	D3D12_VIEWPORT viewport;
+	D3D12_RECT scissorRect;
+	D3D12_VERTEX_BUFFER_VIEW vbView = {};
+
 private:
 	bool InitializeFactory(UINT& dxgi_factory_flags);
 	bool InitializeAdapter();
 	bool InitializeCommandQueue();
 	bool InitializeSwapChain();
 	bool InitializeFence();
-	bool InitializeRtvHeapDesc();
-	
+
+	bool CreateRtvHeap();
 	bool CreateRenderTargetView();
+	bool CreateVertexBuffer();
+	bool CreatePipeline();
+
+	void SetDrawArea();
 
 private:	
+	ID3D12Resource* vertBuff = nullptr;
+	CD3DX12_CPU_DESCRIPTOR_HANDLE rtvHandle;
+	CD3DX12_RESOURCE_BARRIER barrier;
+	D3D12_DESCRIPTOR_HEAP_DESC rtvHeapDesc = {};
 	UINT64	fenceValue;		//フェンス値
 	D3D12_COMMAND_QUEUE_DESC commandQueueDesc = {};
 	DXGI_SWAP_CHAIN_DESC1 swapChainDesc = {};
-	D3D12_DESCRIPTOR_HEAP_DESC rtvHeapDesc = {};
 };
 
 
