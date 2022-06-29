@@ -25,7 +25,7 @@ struct VECTOR
 	float z;
 };
 
-#define WINDOW_CLASS	L"初期化(ブルー画面)"
+#define WINDOW_CLASS	L"DirectX12 自作ライブラリ"
 #define WINDOW_TITLE	WINDOW_CLASS
 
 //usingディレクティブ

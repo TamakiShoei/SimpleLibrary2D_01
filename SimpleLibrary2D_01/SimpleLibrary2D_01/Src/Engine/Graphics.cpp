@@ -51,7 +51,7 @@ bool Graphics::Initialize()
 	{
 		return false;
 	}
-	if (B_FAILED(CreateRtvHeap()))
+	if (B_FAILED(CreateRtvDescHeap()))
 	{
 		return false;
 	}
@@ -216,7 +216,7 @@ bool Graphics::InitializeFence()
 	return true;
 }
 
-bool Graphics::CreateRtvHeap()
+bool Graphics::CreateRtvDescHeap()
 {
 	//レンダーターゲットビュー用のディスクリプターヒープの設定
 	rtvHeapDesc.NumDescriptors = frameCount;

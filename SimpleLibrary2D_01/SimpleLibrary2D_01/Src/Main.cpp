@@ -11,9 +11,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int)
 		return 0;
 	}
 
-	VECTOR lower_left = { -1.0f, -1.0f, 0.0f };
-	VECTOR upper_left = { -1.0f, 1.0f, 0.0f };
-	VECTOR lower_right = { 1.0f, -1.0f, 0.0f };
+	VECTOR lower_left = { -0.5f, -0.5f, 0.0f };
+	VECTOR upper_left = { -0.5f, 0.5f, 0.0f };
+	VECTOR lower_right = { 0.5f, -0.5f, 0.0f };
 
 	while (Engine::IsClosedWindow() == false)
 	{

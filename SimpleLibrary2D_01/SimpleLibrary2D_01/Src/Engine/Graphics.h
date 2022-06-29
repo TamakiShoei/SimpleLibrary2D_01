@@ -47,6 +47,13 @@ public:
 	*/
 	void ScreenFlip();
 	
+	/**
+	* @brief 三角形描画関数
+	* @details 引数で受け取った頂点をもとに三角形を描画する
+	* @param[in] lower_left 左下頂点座標
+	* @param[in] upper_left 左上頂点座標
+	* @param[in] lower_right 右下頂点座標
+	*/
 	void DrawTriangle(VECTOR lower_left, VECTOR upper_left, VECTOR lower_right);
 
 	/**
@@ -93,18 +100,75 @@ public:
 	D3D12_VERTEX_BUFFER_VIEW vbView = {};
 
 private:
+	/**
+	* @brief ファクトリーの初期化関数
+	* @details 描画を使用するための初期化を行う
+	* @param[in] dxgi_factory_flags デバッグモードの指定フラグ
+	* @retval true 初期化成功
+	* @retval false 初期化失敗
+	*/
 	bool InitializeFactory(UINT& dxgi_factory_flags);
+
+	/**
+	* @brief アダプタの初期化関数
+	* @details 描画を使用するための初期化を行う
+	* @retval true 初期化成功
+	* @retval false 初期化失敗
+	*/
 	bool InitializeAdapter();
+
+	/**
+	* @brief コマンドキューの初期化関数
+	* @details 描画を使用するための初期化を行う
+	* @retval true 初期化成功
+	* @retval false 初期化失敗
+	*/
 	bool InitializeCommandQueue();
+
+	/**
+	* @brief スワップチェインの初期化関数
+	* @details 描画を使用するための初期化を行う
+	* @retval true 初期化成功
+	* @retval false 初期化失敗
+	*/
 	bool InitializeSwapChain();
+
+	/**
+	* @brief フェンスの初期化関数
+	* @details 描画を使用するための初期化を行う
+	* @retval true 初期化成功
+	* @retval false 初期化失敗
+	*/
 	bool InitializeFence();
 
-	bool CreateRtvHeap();
-	bool CreateRenderTargetView();
-	bool CreateVertexBuffer();
-	bool CreatePipeline();
-
+	/**
+	* @brief シザー矩形とビューポートの設定
+	*/
 	void SetDrawArea();
+
+	/**
+	* @brief レンダーターゲットビューのディスクリプタヒープの生成関数
+	* @details 描画を使用するための初期化を行う
+	* @retval true 初期化成功
+	* @retval false 初期化失敗
+	*/
+	bool CreateRtvDescHeap();
+
+	/**
+	* @brief レンダーターゲットビューの生成関数
+	* @details 描画を使用するための初期化を行う
+	* @retval true 初期化成功
+	* @retval false 初期化失敗
+	*/
+	bool CreateRenderTargetView();
+
+	/**
+	* @brief グラフィックスパイプラインの生成関数
+	* @details 描画を使用するための初期化を行う
+	* @retval true 初期化成功
+	* @retval false 初期化失敗
+	*/
+	bool CreatePipeline();
 
 private:	
 	ID3D12Resource* vertBuff = nullptr;
