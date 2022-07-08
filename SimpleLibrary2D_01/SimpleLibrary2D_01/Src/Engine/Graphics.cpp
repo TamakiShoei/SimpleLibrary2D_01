@@ -484,10 +484,7 @@ void Graphics::DrawTriangle(VECTOR lower_left, VECTOR upper_left, VECTOR lower_r
 	}
 
 	DirectX::XMFLOAT3* vertMap = nullptr;
-	if (FAILED(vertBuff->Map(0, nullptr, (void**)&vertMap)))
-	{
-		return;
-	}
+	vertBuff->Map(0, nullptr, (void**)&vertMap);
 	std::copy(std::begin(vertices), std::end(vertices), vertMap);
 	vertBuff->Unmap(0, nullptr);
 
@@ -499,6 +496,90 @@ void Graphics::DrawTriangle(VECTOR lower_left, VECTOR upper_left, VECTOR lower_r
 	commandList->IASetVertexBuffers(0, 1, &vbView);
 
 	commandList->DrawInstanced(3, 1, 0, 0);
+}
+
+void Graphics::DrawRect(VECTOR lower_left, VECTOR upper_left, VECTOR upper_right, VECTOR lower_right)
+{
+	DirectX::XMFLOAT3 vertices[4] =
+	{
+		{lower_left.x, lower_left.y, lower_left.z},		//左下
+		{upper_left.x, upper_left.y, upper_left.z},		//左上
+		{lower_right.x, lower_right.y, lower_right.z},	//右下
+		{upper_right.x, upper_right.y, upper_right.z},	//右上
+	};
+
+	D3D12_HEAP_PROPERTIES heapProp = {};
+	heapProp.Type = D3D12_HEAP_TYPE_UPLOAD;
+	heapProp.CPUPageProperty = D3D12_CPU_PAGE_PROPERTY_UNKNOWN;
+	heapProp.MemoryPoolPreference = D3D12_MEMORY_POOL_UNKNOWN;
+
+	D3D12_RESOURCE_DESC resDesc = {};
+	resDesc.Dimension = D3D12_RESOURCE_DIMENSION_BUFFER;
+	resDesc.Width = sizeof(vertices);
+	resDesc.Height = 1;
+	resDesc.DepthOrArraySize = 1;
+	resDesc.MipLevels = 1;
+	resDesc.Format = DXGI_FORMAT_UNKNOWN;
+	resDesc.SampleDesc.Count = 1;
+	resDesc.Flags = D3D12_RESOURCE_FLAG_NONE;
+	resDesc.Layout = D3D12_TEXTURE_LAYOUT_ROW_MAJOR;
+
+	ID3D12Resource* vertBuff = nullptr;
+	if (FAILED(device->CreateCommittedResource(
+		&heapProp,
+		D3D12_HEAP_FLAG_NONE,
+		&resDesc,
+		D3D12_RESOURCE_STATE_GENERIC_READ,
+		nullptr,
+		IID_PPV_ARGS(&vertBuff))))
+	{
+		return;
+	}
+
+	DirectX::XMFLOAT3* vertMap = nullptr;
+	vertBuff->Map(0, nullptr, (void**)&vertMap);
+	std::copy(std::begin(vertices), std::end(vertices), vertMap);
+	vertBuff->Unmap(0, nullptr);
+
+	vbView.BufferLocation = vertBuff->GetGPUVirtualAddress();
+	vbView.SizeInBytes = sizeof(vertices);
+	vbView.StrideInBytes = sizeof(vertices[0]);
+
+	unsigned short indices[] =
+	{
+		0, 1, 2,
+		2, 1, 3,
+	};
+
+	resDesc.Width = sizeof(indices);
+
+	ID3D12Resource* idxBuff = nullptr;
+
+	//インデックスバッファーの作成
+	device->CreateCommittedResource(
+		&heapProp,
+		D3D12_HEAP_FLAG_NONE,
+		&resDesc,
+		D3D12_RESOURCE_STATE_GENERIC_READ,
+		nullptr,
+		IID_PPV_ARGS(&idxBuff));
+
+	//バッファーにインデックスデータをコピー
+	unsigned short* mappedIdx = nullptr;
+	idxBuff->Map(0, nullptr, (void**)&mappedIdx);
+	std::copy(std::begin(indices), std::end(indices), mappedIdx);
+	idxBuff->Unmap(0, nullptr);
+
+	//インデックスバッファービューの作成
+	D3D12_INDEX_BUFFER_VIEW ibView = {};
+	ibView.BufferLocation = idxBuff->GetGPUVirtualAddress();
+	ibView.Format = DXGI_FORMAT_R16_UINT;
+	ibView.SizeInBytes = sizeof(indices);
+
+	commandList->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	commandList->IASetVertexBuffers(0, 1, &vbView);
+	commandList->IASetIndexBuffer(&ibView);
+	commandList->DrawIndexedInstanced(6, 1, 0, 0, 0);
 }
 
 void Graphics::WaitForPreviousFrame()

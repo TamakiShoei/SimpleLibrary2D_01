@@ -4,7 +4,6 @@
 * グラフィッククラスの宣言
 * Engineクラスでインスタンスを作成するため、使用者が宣言する必要はない
 */
-
 #ifndef GRAPHICS_H
 #define	GRAPHICS_H
 
@@ -55,6 +54,8 @@ public:
 	* @param[in] lower_right 右下頂点座標
 	*/
 	void DrawTriangle(VECTOR lower_left, VECTOR upper_left, VECTOR lower_right);
+
+	void DrawRect(VECTOR lower_left, VECTOR upper_left, VECTOR upper_right, VECTOR lower_right);
 
 	/**
 	* @brief GPU待ち関数
@@ -143,6 +144,7 @@ private:
 
 	/**
 	* @brief シザー矩形とビューポートの設定
+	* @details 描画をする範囲を設定する
 	*/
 	void SetDrawArea();
 

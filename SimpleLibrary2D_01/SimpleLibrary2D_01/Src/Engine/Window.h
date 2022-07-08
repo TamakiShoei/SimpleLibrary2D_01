@@ -5,7 +5,6 @@
 * Engineクラスでインスタンスを作成するため、使用者が宣言する必要はない
 * </pre>
 */
-
 #ifndef WINDOW_H
 #define WINDOW_H
 

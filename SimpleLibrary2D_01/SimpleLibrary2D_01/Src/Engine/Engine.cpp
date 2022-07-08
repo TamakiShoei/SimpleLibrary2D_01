@@ -62,3 +62,8 @@ void Engine::DrawTriangle(VECTOR lower_left, VECTOR upper_left, VECTOR lower_rig
 {
 	instance->graphics.DrawTriangle(lower_left, upper_left, lower_right);
 }
+
+void Engine::DrawRect(VECTOR lower_left, VECTOR upper_left, VECTOR upper_right, VECTOR lower_right)
+{
+	instance->graphics.DrawRect(lower_left, upper_left, upper_right, lower_right);
+}

@@ -13,6 +13,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int)
 
 	VECTOR lower_left = { -0.5f, -0.5f, 0.0f };
 	VECTOR upper_left = { -0.5f, 0.5f, 0.0f };
+	VECTOR upper_right = { 0.5f, 0.5f, 0.0f };
 	VECTOR lower_right = { 0.5f, -0.5f, 0.0f };
 
 	while (Engine::IsClosedWindow() == false)
@@ -21,7 +22,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int)
 		//描画
 		Engine::ClearScreen();
 
-		Engine::DrawTriangle(lower_left, upper_left, lower_right);
+		//Engine::DrawTriangle(lower_left, upper_left, lower_right);
+		Engine::DrawRect(lower_left, upper_left, upper_right, lower_right);
 		//------------------------------------------------//
 		//				  ここに描画処理					  //
 		//------------------------------------------------//
