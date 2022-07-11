@@ -24,6 +24,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int)
 
 		//Engine::DrawTriangle(lower_left, upper_left, lower_right);
 		Engine::DrawRect(lower_left, upper_left, upper_right, lower_right);
+		//Engine::DrawTexture(lower_left, upper_left, upper_right, lower_right);
 		//------------------------------------------------//
 		//				  ここに描画処理					  //
 		//------------------------------------------------//

@@ -67,3 +67,8 @@ void Engine::DrawRect(VECTOR lower_left, VECTOR upper_left, VECTOR upper_right, 
 {
 	instance->graphics.DrawRect(lower_left, upper_left, upper_right, lower_right);
 }
+
+void Engine::DrawTexture(VECTOR lower_left, VECTOR upper_left, VECTOR upper_right, VECTOR lower_right)
+{
+	instance->graphics.DrawTexture(lower_left, upper_left, upper_right, lower_right);
+}

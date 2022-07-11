@@ -46,4 +46,9 @@
       <Filter>Res\Shader</Filter>
     </FxCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\Shader\ShaderHeader.hlsli">
+      <Filter>Res\Shader</Filter>
+    </None>
+  </ItemGroup>
 </Project>
