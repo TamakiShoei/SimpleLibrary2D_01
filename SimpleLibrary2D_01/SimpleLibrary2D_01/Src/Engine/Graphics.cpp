@@ -288,7 +288,7 @@ bool Graphics::CreatePipeline()
 {
 	ID3DBlob* vsBlob = nullptr;
 	ID3DBlob* psBlob = nullptr;
-	ID3DBlob* rootSigBlob = nullptr;
+	ID3DBlob* rootSignatureBlob = nullptr;
 	ID3DBlob* errorBlob = nullptr;
 
 	if (FAILED(D3DCompileFromFile(
@@ -330,21 +330,53 @@ bool Graphics::CreatePipeline()
 		},
 	};
 
-	D3D12_ROOT_SIGNATURE_DESC rootSignatureDesc = {};
+	//ディスクリプタレンジの設定
+	D3D12_DESCRIPTOR_RANGE descTblRange = {};
+	descTblRange.NumDescriptors = 1;
+	descTblRange.RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_SRV;
+	descTblRange.BaseShaderRegister = 0;
+	descTblRange.OffsetInDescriptorsFromTableStart = D3D12_DESCRIPTOR_RANGE_OFFSET_APPEND;
 
+	//ルートパラメーターの設定
+	D3D12_ROOT_PARAMETER rootParam = {};
+	rootParam.ParameterType = D3D12_ROOT_PARAMETER_TYPE_DESCRIPTOR_TABLE;
+	rootParam.ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
+	rootParam.DescriptorTable.pDescriptorRanges = &descTblRange;
+	rootParam.DescriptorTable.NumDescriptorRanges = 1;
+
+	//サンプラーの設定
+	D3D12_STATIC_SAMPLER_DESC samplerDesc = {};
+	samplerDesc.AddressU = D3D12_TEXTURE_ADDRESS_MODE_WRAP;	//アドレッシングモードは繰り返し
+	samplerDesc.AddressV = D3D12_TEXTURE_ADDRESS_MODE_WRAP;	//アドレッシングモードは繰り返し
+	samplerDesc.AddressW = D3D12_TEXTURE_ADDRESS_MODE_WRAP;	//アドレッシングモードは繰り返し
+	samplerDesc.BorderColor = D3D12_STATIC_BORDER_COLOR_TRANSPARENT_BLACK;
+	samplerDesc.Filter = D3D12_FILTER_MIN_MAG_MIP_LINEAR;	//線形保管
+	samplerDesc.MaxLOD = D3D12_FLOAT32_MAX;	//ミップマップ最大値
+	samplerDesc.MinLOD = 0.0f;
+	samplerDesc.ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
+	samplerDesc.ComparisonFunc = D3D12_COMPARISON_FUNC_NEVER;
+
+	D3D12_ROOT_SIGNATURE_DESC rootSignatureDesc = {};
 	rootSignatureDesc.Flags = D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT;
+	rootSignatureDesc.pParameters = &rootParam;
+	rootSignatureDesc.NumParameters = 1;
+	rootSignatureDesc.pStaticSamplers = &samplerDesc;
+	rootSignatureDesc.NumStaticSamplers = 1;
+
 	if (FAILED(D3D12SerializeRootSignature(
 		&rootSignatureDesc,
 		D3D_ROOT_SIGNATURE_VERSION_1_0,
-		&rootSigBlob, &errorBlob)))
+		&rootSignatureBlob, &errorBlob)))
 	{
 		return false;
 	}
 
-	device->CreateRootSignature(
+	HRESULT result;
+
+	result = device->CreateRootSignature(
 		0,
-		rootSigBlob->GetBufferPointer(),
-		rootSigBlob->GetBufferSize(),
+		rootSignatureBlob->GetBufferPointer(),
+		rootSignatureBlob->GetBufferSize(),
 		IID_PPV_ARGS(&rootSignature));
 
 	D3D12_RENDER_TARGET_BLEND_DESC renderTargetBlendDesc = {};
@@ -375,8 +407,6 @@ bool Graphics::CreatePipeline()
 	graphicsPipeline.RTVFormats[0] = DXGI_FORMAT_R8G8B8A8_UNORM;
 	graphicsPipeline.SampleDesc.Count = 1;
 	graphicsPipeline.SampleDesc.Quality = 0;
-
-	HRESULT result;
 
 	if (FAILED(device->CreateGraphicsPipelineState(
 		&graphicsPipeline, IID_PPV_ARGS(pipelineState.GetAddressOf()))))
@@ -660,6 +690,81 @@ void Graphics::DrawTexture(VECTOR lower_left, VECTOR upper_left, VECTOR upper_ri
 	ibView.Format = DXGI_FORMAT_R16_UINT;
 	ibView.SizeInBytes = sizeof(indices);
 
+	struct TexRGBA
+	{
+		unsigned char R, G, B, A;
+	};
+
+	std::vector<TexRGBA> textureData(256 * 256);
+
+	for (auto& rgba : textureData)
+	{
+		rgba.R = rand() % 256;
+		rgba.G = rand() % 256;
+		rgba.B = rand() % 256;
+		rgba.A = rand() % 256;
+	}
+
+	//WriteToSubresourceで転送するためのヒープ設定
+	heapProp.Type = D3D12_HEAP_TYPE_CUSTOM;		//Typeはカスタム
+	heapProp.CPUPageProperty = D3D12_CPU_PAGE_PROPERTY_WRITE_BACK;
+	heapProp.MemoryPoolPreference = D3D12_MEMORY_POOL_L0;		//転送はCPU側から
+	//単一アダプターのため0
+	heapProp.CreationNodeMask = 0;
+	heapProp.VisibleNodeMask = 0;
+
+	resDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM; //RGBAフォーマット
+	resDesc.Width = 256;
+	resDesc.Height = 256;
+	resDesc.DepthOrArraySize = 1;	//2Dで配列でもないため1
+	resDesc.SampleDesc.Count = 1;	//アンチエイリアシングしない
+	resDesc.SampleDesc.Quality = 0;	//クオリティは最低
+	resDesc.MipLevels = 1;	//ミップマップしないのでミップ数は1
+	resDesc.Dimension = D3D12_RESOURCE_DIMENSION_TEXTURE2D;	//2Dテクスチャ用
+	resDesc.Layout = D3D12_TEXTURE_LAYOUT_UNKNOWN;	//レイアウトは決定しない
+	resDesc.Flags = D3D12_RESOURCE_FLAG_NONE;
+
+	ID3D12Resource* texBuff = nullptr;
+
+	device->CreateCommittedResource(
+		&heapProp,
+		D3D12_HEAP_FLAG_NONE,
+		&resDesc,
+		D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE,
+		nullptr,
+		IID_PPV_ARGS(&texBuff));
+
+	texBuff->WriteToSubresource(
+		0,
+		nullptr,
+		textureData.data(),
+		sizeof(TexRGBA) * 256,
+		sizeof(TexRGBA) * textureData.size());
+
+	D3D12_DESCRIPTOR_HEAP_DESC descHeapDesc = {};
+
+	descHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;		//シェーダーから見えるように
+	descHeapDesc.NodeMask = 0;
+	descHeapDesc.NumDescriptors = 1;
+	descHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;
+	//シェーダーリソースビュー用のディスクリプタヒープの作成
+	device->CreateDescriptorHeap(&descHeapDesc, IID_PPV_ARGS(&texDescHeap));
+
+	D3D12_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
+
+	srvDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+	srvDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
+	srvDesc.ViewDimension = D3D12_SRV_DIMENSION_TEXTURE2D;
+	srvDesc.Texture2D.MipLevels = 1;
+
+	device->CreateShaderResourceView(
+		texBuff,
+		&srvDesc,
+		texDescHeap->GetCPUDescriptorHandleForHeapStart());
+
+	commandList->SetGraphicsRootSignature(rootSignature.Get());
+	commandList->SetGraphicsRootDescriptorTable(0, texDescHeap->GetGPUDescriptorHandleForHeapStart());
+	commandList->SetDescriptorHeaps(1, &texDescHeap);
 	commandList->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	commandList->IASetVertexBuffers(0, 1, &vbView);
 	commandList->IASetIndexBuffer(&ibView);

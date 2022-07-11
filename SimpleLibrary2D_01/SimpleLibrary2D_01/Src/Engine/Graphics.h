@@ -184,12 +184,13 @@ private:
 
 private:	
 	ID3D12Resource* vertBuff = nullptr;
+	ID3D12DescriptorHeap* texDescHeap = nullptr;
 	CD3DX12_CPU_DESCRIPTOR_HANDLE rtvHandle;
 	CD3DX12_RESOURCE_BARRIER barrier;
-	D3D12_DESCRIPTOR_HEAP_DESC rtvHeapDesc = {};
-	UINT64	fenceValue;		//フェンス値
 	D3D12_COMMAND_QUEUE_DESC commandQueueDesc = {};
+	D3D12_DESCRIPTOR_HEAP_DESC rtvHeapDesc = {};
 	DXGI_SWAP_CHAIN_DESC1 swapChainDesc = {};
+	UINT64	fenceValue;		//フェンス値
 };
 
 
