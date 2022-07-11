@@ -26,6 +26,7 @@ bool Window::Initialize()
 	windowClass.style = CS_HREDRAW | CS_VREDRAW;
 	windowClass.lpfnWndProc = WindowProc;
 	windowClass.hInstance = GetModuleHandle(nullptr);
+	windowClass.lpszClassName = WINDOW_CLASS_NAME;
 	windowClass.hCursor = LoadCursor(NULL, IDC_ARROW);
 	windowClass.lpszClassName = WINDOW_CLASS;
 	RegisterClassEx(&windowClass);

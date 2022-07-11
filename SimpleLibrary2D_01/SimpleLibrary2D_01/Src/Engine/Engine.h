@@ -5,6 +5,7 @@
 #ifndef ENGINE_H
 #define	ENGINE_H
 
+#include "CommonDifinition.h"
 #include "Graphics.h"
 #include "Window.h"
 

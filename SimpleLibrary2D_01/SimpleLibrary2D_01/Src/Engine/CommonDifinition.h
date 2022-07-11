@@ -37,7 +37,8 @@ struct Vertex
 	DirectX::XMFLOAT2 uv;	//uv座標
 };
 
-#define WINDOW_CLASS	L"DirectX12 自作ライブラリ"
-#define WINDOW_TITLE	WINDOW_CLASS
+#define WINDOW_CLASS		L"DirectX12 自作ライブラリ"
+#define WINDOW_TITLE		WINDOW_CLASS
+#define WINDOW_CLASS_NAME	WINDOW_CLASS
 
 #endif
