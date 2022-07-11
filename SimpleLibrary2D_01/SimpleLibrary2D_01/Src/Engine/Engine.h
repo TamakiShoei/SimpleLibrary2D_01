@@ -98,6 +98,14 @@ public:
 	*/
 	static void DrawRect(VECTOR lower_left, VECTOR upper_left, VECTOR upper_right, VECTOR lower_right);
 
+	/**
+	* @brief テクスチャ描画関数
+	* @details 引数で受け取った頂点をもとにテクスチャを描画する
+	* @param[in] lower_left 左下頂点座標
+	* @param[in] upper_left 左上頂点座標
+	* @param[in] upper_right 右上頂点座標
+	* @param[in] lower_right 右下頂点座標
+	*/
 	static void DrawTexture(VECTOR lower_left, VECTOR upper_left, VECTOR upper_right, VECTOR lower_right);
 
 private:

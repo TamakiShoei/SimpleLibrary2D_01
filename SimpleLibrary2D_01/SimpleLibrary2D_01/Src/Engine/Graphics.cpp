@@ -243,6 +243,10 @@ bool Graphics::CreateRenderTargetView()
 	//フレームリソースのハンドルを取得
 	CD3DX12_CPU_DESCRIPTOR_HANDLE rtvHandle(rtvHeap->GetCPUDescriptorHandleForHeapStart());
 
+	D3D12_RENDER_TARGET_VIEW_DESC rtvDesc = {};
+	rtvDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM_SRGB;	//ガンマ補正あり(SRGB)
+	rtvDesc.ViewDimension = D3D12_RTV_DIMENSION_TEXTURE2D;
+
 	// フレームバッファとバックバッファのレンダーターゲットビューを作成
 	for (UINT i = 0; i < frameCount; i++)
 	{
@@ -254,7 +258,7 @@ bool Graphics::CreateRenderTargetView()
 		}
 
 		// レンダーターゲットビューを作成
-		device->CreateRenderTargetView(renderTargets[i].Get(), nullptr, rtvHandle);
+		device->CreateRenderTargetView(renderTargets[i].Get(), &rtvDesc, rtvHandle);
 
 		// ハンドルのオフセット
 		rtvHandle.Offset(1, rtvDescriptorSize);
@@ -705,6 +709,21 @@ void Graphics::DrawTexture(VECTOR lower_left, VECTOR upper_left, VECTOR upper_ri
 		rgba.A = rand() % 256;
 	}
 
+	CoInitializeEx(0, COINIT_MULTITHREADED);
+
+	//WICテクスチャのロード
+	DirectX::TexMetadata metadata = {};
+	DirectX::ScratchImage scratchImg = {};
+
+	auto result = DirectX::LoadFromWICFile(
+		L"Res/Texture/Test3.png",
+		DirectX::WIC_FLAGS_NONE,
+		&metadata,
+		scratchImg);
+
+	//生データの抽出
+	auto img = scratchImg.GetImage(0, 0, 0);
+
 	//WriteToSubresourceで転送するためのヒープ設定
 	heapProp.Type = D3D12_HEAP_TYPE_CUSTOM;		//Typeはカスタム
 	heapProp.CPUPageProperty = D3D12_CPU_PAGE_PROPERTY_WRITE_BACK;
@@ -713,14 +732,14 @@ void Graphics::DrawTexture(VECTOR lower_left, VECTOR upper_left, VECTOR upper_ri
 	heapProp.CreationNodeMask = 0;
 	heapProp.VisibleNodeMask = 0;
 
-	resDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM; //RGBAフォーマット
-	resDesc.Width = 256;
-	resDesc.Height = 256;
-	resDesc.DepthOrArraySize = 1;	//2Dで配列でもないため1
+	resDesc.Format = metadata.format; //画像データのフォーマット
+	resDesc.Width = metadata.width;
+	resDesc.Height = metadata.height;
+	resDesc.DepthOrArraySize = metadata.arraySize;	//2Dで配列でもないため1
 	resDesc.SampleDesc.Count = 1;	//アンチエイリアシングしない
 	resDesc.SampleDesc.Quality = 0;	//クオリティは最低
-	resDesc.MipLevels = 1;	//ミップマップしないのでミップ数は1
-	resDesc.Dimension = D3D12_RESOURCE_DIMENSION_TEXTURE2D;	//2Dテクスチャ用
+	resDesc.MipLevels = metadata.mipLevels;	//ミップマップしないのでミップ数は1
+	resDesc.Dimension = static_cast<D3D12_RESOURCE_DIMENSION>(metadata.dimension);	//2Dテクスチャ用
 	resDesc.Layout = D3D12_TEXTURE_LAYOUT_UNKNOWN;	//レイアウトは決定しない
 	resDesc.Flags = D3D12_RESOURCE_FLAG_NONE;
 
@@ -737,9 +756,9 @@ void Graphics::DrawTexture(VECTOR lower_left, VECTOR upper_left, VECTOR upper_ri
 	texBuff->WriteToSubresource(
 		0,
 		nullptr,
-		textureData.data(),
-		sizeof(TexRGBA) * 256,
-		sizeof(TexRGBA) * textureData.size());
+		img->pixels,		//全データのアドレス
+		img->rowPitch,		//1ラインサイズ
+		img->slicePitch);	//一枚のサイズ
 
 	D3D12_DESCRIPTOR_HEAP_DESC descHeapDesc = {};
 
@@ -752,7 +771,7 @@ void Graphics::DrawTexture(VECTOR lower_left, VECTOR upper_left, VECTOR upper_ri
 
 	D3D12_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
 
-	srvDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+	srvDesc.Format = metadata.format;
 	srvDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
 	srvDesc.ViewDimension = D3D12_SRV_DIMENSION_TEXTURE2D;
 	srvDesc.Texture2D.MipLevels = 1;
