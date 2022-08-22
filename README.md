@@ -4,7 +4,10 @@
 C/C++
 
 ## 開発環境
-Windows10, VisualStudio2019, x64
+Windows10, VisualStudio2022, x64
+
+## 実行環境の構築
+DirectXTexとd3dx12.hを導入していただく必要があります。
 
 # コーディング規約
 
