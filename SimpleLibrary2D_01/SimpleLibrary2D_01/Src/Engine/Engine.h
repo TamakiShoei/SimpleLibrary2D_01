@@ -6,6 +6,7 @@
 #define	ENGINE_H
 
 #include "CommonDifinition.h"
+#include "InputDataDefinition.h"
 #include "Graphics.h"
 #include "Window.h"
 
@@ -59,6 +60,33 @@ public:
 	*/
 	static void SetWindowSize(int width_size, int height_size);
 
+	/**
+	* @brief キーボード押下チェック関数
+	* @details キーボードが押された瞬間を検知する
+	* @param[in] key 調べたいキーの定数
+	* @retval true 検知された
+	* @retval false 検知されていない
+	*/
+	static bool IsPushedKey(int key);
+	
+	/**
+	* @brief キーボー押下チェック関数
+	* @details キーボードが押され続けているかを検知する
+	* @param[in] key 調べたいキーの定数
+	* @retval true 検知された
+	* @retval false 検知されていない
+	*/
+	static bool IsHeldKey(int key);
+
+	/**
+	* @brief キーボー押下チェック関数
+	* @details キーボードが押されなくなった瞬間を検知する
+	* @param[in] key 調べたいキーの定数
+	* @retval true 検知された
+	* @retval false 検知されていない
+	*/
+	static bool IsReleasedKey(int key);
+
 	//描画関係の関数
 	/**
 	* @brief 描画開始関数
@@ -101,17 +129,16 @@ public:
 	/**
 	* @brief テクスチャ描画関数
 	* @details 引数で受け取った頂点をもとにテクスチャを描画する
-	* @param[in] lower_left 左下頂点座標
-	* @param[in] upper_left 左上頂点座標
-	* @param[in] upper_right 右上頂点座標
-	* @param[in] lower_right 右下頂点座標
+	* @param[in] pos_x 左上頂点のx座標
+	* @param[in] pos_y 左上頂点のy座標
 	*/
-	static void DrawTexture(VECTOR lower_left, VECTOR upper_left, VECTOR upper_right, VECTOR lower_right);
+	static void DrawTexture(float pos_x, float pos_y, const char* file_path);
 
 private:
 	static Engine* instance;
 
 	Window window;
+	Input input;
 	Graphics graphics;
 };
 

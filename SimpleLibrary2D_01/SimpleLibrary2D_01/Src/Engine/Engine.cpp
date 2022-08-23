@@ -22,6 +22,7 @@ bool Engine::Initialize()
 
 void Engine::Update()
 {
+	instance->input.Update();
 	instance->window.Update();
 }
 
@@ -29,7 +30,6 @@ void Engine::Finalize()
 {
 	UnregisterClass(WINDOW_CLASS_NAME, GetModuleHandle(nullptr));
 	instance->graphics.WaitForPreviousFrame();
-	//delete instance;//問題点
 }
 
 //Windowクラス関係の関数
@@ -46,6 +46,36 @@ void Engine::SetWindowSize(int width_size, int height_size)
 	}
 
 	return instance->window.SetWindowSize(width_size, height_size);
+}
+
+bool Engine::IsPushedKey(int key)
+{
+	if (instance->input.IsPushed(key) == true)
+	{
+		return true;
+	}
+
+	return false;
+}
+
+bool Engine::IsHeldKey(int key)
+{
+	if (instance->input.IsHeld(key) == true)
+	{
+		return true;
+	}
+
+	return false;
+}
+
+bool Engine::IsReleasedKey(int key)
+{
+	if (instance->input.IsReleased(key) == true)
+	{
+		return true;
+	}
+
+	return false;
 }
 
 //Graphicsクラス関係の関数
@@ -69,7 +99,7 @@ void Engine::DrawRect(VECTOR lower_left, VECTOR upper_left, VECTOR upper_right, 
 	instance->graphics.DrawRect(lower_left, upper_left, upper_right, lower_right);
 }
 
-void Engine::DrawTexture(VECTOR lower_left, VECTOR upper_left, VECTOR upper_right, VECTOR lower_right)
+void Engine::DrawTexture(float pos_x, float pos_y, const char* file_path)
 {
-	instance->graphics.DrawTexture(lower_left, upper_left, upper_right, lower_right);
+	instance->graphics.DrawTexture(pos_x, pos_y, file_path);
 }

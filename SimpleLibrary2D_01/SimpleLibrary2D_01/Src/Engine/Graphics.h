@@ -68,12 +68,10 @@ public:
 	/**
 	* @brief テクスチャ描画関数
 	* @details 引数で受け取った頂点をもとにテクスチャを描画する
-	* @param[in] lower_left 左下頂点座標
-	* @param[in] upper_left 左上頂点座標
-	* @param[in] upper_right 右上頂点座標
-	* @param[in] lower_right 右下頂点座標
+	* @param[in] pos_x 左下頂点x座標
+	* @param[in] pos_y 左上頂点y座標
 	*/
-	void DrawTexture(VECTOR lower_left, VECTOR upper_left, VECTOR upper_right, VECTOR lower_right);
+	void DrawTexture(float pos_x, float pos_y, const char* file_path);
 
 	/**
 	* @brief GPU待ち関数
@@ -161,6 +159,17 @@ private:
 	bool InitializeFence();
 
 	/**
+	* @brief アライメントにそろえたサイズを返す
+	* @param size[in] 元のサイズ
+	* @param alignment[in] アライメントサイズ
+	* @retval アライメントをそろえたサイズ
+	*/
+	size_t AlignmentedSize(size_t size, size_t alignment)
+	{
+		return size + alignment - size % alignment;
+	}
+
+	/**
 	* @brief シザー矩形とビューポートの設定
 	* @details 描画をする範囲を設定する
 	*/
@@ -192,7 +201,6 @@ private:
 
 private:	
 	ID3D12Resource* vertBuff = nullptr;
-	ID3D12DescriptorHeap* texDescHeap = nullptr;
 	CD3DX12_CPU_DESCRIPTOR_HANDLE rtvHandle;
 	CD3DX12_RESOURCE_BARRIER barrier;
 	D3D12_COMMAND_QUEUE_DESC commandQueueDesc = {};

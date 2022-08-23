@@ -9,6 +9,7 @@
 #define WINDOW_H
 
 #include "CommonDifinition.h"
+#include "Input.h"
 
 class Window
 {
