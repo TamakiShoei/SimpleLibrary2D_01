@@ -3,8 +3,7 @@
 
 class
 {
-private:
-	
+
 };
 
 #endif

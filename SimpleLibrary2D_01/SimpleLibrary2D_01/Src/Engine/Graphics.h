@@ -8,8 +8,9 @@
 #define	GRAPHICS_H
 
 #include "CommonDifinition.h"
+#include "Buffer/VertexBuffer.h"
 
-class Graphics
+class Graphics : public VertexBuffer
 {
 public:
 	Graphics()

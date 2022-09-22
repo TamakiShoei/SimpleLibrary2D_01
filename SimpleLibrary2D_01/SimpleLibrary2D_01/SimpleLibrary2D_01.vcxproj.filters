@@ -11,6 +11,9 @@
     <Filter Include="Res\Shader">
       <UniqueIdentifier>{aa6dc8d5-104f-4383-a447-62a180ad5c60}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Buffer">
+      <UniqueIdentifier>{c81ca7e6-9cdc-478d-8575-d31b8b49c5fb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Engine\Engine.cpp">
@@ -25,6 +28,21 @@
     </ClCompile>
     <ClCompile Include="Src\Engine\Input.cpp">
       <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Engine\Buffer\BufferManager.cpp">
+      <Filter>Engine\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Engine\Buffer\ConstBuffer.cpp">
+      <Filter>Engine\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Engine\Buffer\IndexBuffer.cpp">
+      <Filter>Engine\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Engine\Buffer\TexBuffer.cpp">
+      <Filter>Engine\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Engine\Buffer\VertexBuffer.cpp">
+      <Filter>Engine\Buffer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -45,6 +63,21 @@
     </ClInclude>
     <ClInclude Include="Src\Engine\InputDataDefinition.h">
       <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Engine\Buffer\BufferManager.h">
+      <Filter>Engine\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Engine\Buffer\ConstBuffer.h">
+      <Filter>Engine\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Engine\Buffer\IndexBuffer.h">
+      <Filter>Engine\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Engine\Buffer\TexBuffer.h">
+      <Filter>Engine\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Engine\Buffer\VertexBuffer.h">
+      <Filter>Engine\Buffer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
