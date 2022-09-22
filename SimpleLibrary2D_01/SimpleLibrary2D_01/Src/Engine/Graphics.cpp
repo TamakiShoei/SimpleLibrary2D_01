@@ -1,6 +1,8 @@
 ﻿#include <locale>
 #include "Graphics.h"
 
+bool counter = false;
+
 bool Graphics::Initialize()
 {
 	UINT dxgiFactoryFlags = 0;
@@ -641,10 +643,11 @@ void Graphics::DrawTexture(float pos_x, float pos_y, const char* file_path)
 	DirectX::ScratchImage scratchImg = {};
 
 	//const char* から const wchar_t*に変換
-	wchar_t wFilePath[500];
+	const int MaxChar = 150;
+	wchar_t wFilePath[MaxChar];
 	size_t ret;
 	setlocale(LC_CTYPE, "jpn");
-	mbstowcs_s(&ret, wFilePath, 500, file_path, _TRUNCATE);
+	mbstowcs_s(&ret, wFilePath, MaxChar, file_path, _TRUNCATE);
 
 	auto result = DirectX::LoadFromWICFile(
 		wFilePath,
@@ -766,7 +769,7 @@ void Graphics::DrawTexture(float pos_x, float pos_y, const char* file_path)
 		img->pixels,		//全データのアドレス
 		img->rowPitch,		//1ラインサイズ
 		img->slicePitch);	//一枚のサイズ
-
+	
 	ID3D12Resource* constBuff = nullptr;
 	DirectX::XMMATRIX matrix = DirectX::XMMatrixIdentity();
 	heapProp = CD3DX12_HEAP_PROPERTIES(D3D12_HEAP_TYPE_UPLOAD);

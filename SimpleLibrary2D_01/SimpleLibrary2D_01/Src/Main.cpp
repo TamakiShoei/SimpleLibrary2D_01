@@ -11,8 +11,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int)
 		return 0;
 	}
 
-	int counter = 0;
-
 	while (Engine::IsClosedWindow() == false)
 	{
 		Engine::Update();
@@ -21,8 +19,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int)
 
 		Engine::DrawTexture(0.0f, 0.0f, "Res/Texture/Test4.jpg");
 
-		counter++;
-		Engine::DrawTexture(counter, 100.0f, "Res/Texture/Test3.png");
+		Engine::DrawTexture(50.0f, 100.0f, "Res/Texture/Test3.png");
 
 		Engine::ScreenFlip();
 	}
