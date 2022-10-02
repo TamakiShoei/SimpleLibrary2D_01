@@ -99,6 +99,11 @@ void Engine::DrawRect(VECTOR lower_left, VECTOR upper_left, VECTOR upper_right, 
 	instance->graphics.DrawRect(lower_left, upper_left, upper_right, lower_right);
 }
 
+int Engine::LoadTexture(const char* file_path)
+{
+	return instance->graphics.LoadTexture(file_path);
+}
+
 void Engine::DrawTexture(float pos_x, float pos_y, const char* file_path)
 {
 	instance->graphics.DrawTexture(pos_x, pos_y, file_path);

@@ -121,6 +121,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\DirectXTex-master\DirectXTex-master\DirectXTex</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -148,7 +149,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Src\Engine\Buffer\BufferManager.cpp" />
-    <ClCompile Include="Src\Engine\Buffer\ConstBuffer.cpp" />
+    <ClCompile Include="Src\Engine\Buffer\ConstantBuffer.cpp" />
     <ClCompile Include="Src\Engine\Buffer\IndexBuffer.cpp" />
     <ClCompile Include="Src\Engine\Buffer\TexBuffer.cpp" />
     <ClCompile Include="Src\Engine\Buffer\VertexBuffer.cpp" />
@@ -160,7 +161,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Engine\Buffer\BufferManager.h" />
-    <ClInclude Include="Src\Engine\Buffer\ConstBuffer.h" />
+    <ClInclude Include="Src\Engine\Buffer\ConstantBuffer.h" />
     <ClInclude Include="Src\Engine\Buffer\IndexBuffer.h" />
     <ClInclude Include="Src\Engine\Buffer\TexBuffer.h" />
     <ClInclude Include="Src\Engine\Buffer\VertexBuffer.h" />

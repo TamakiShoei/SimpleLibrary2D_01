@@ -126,6 +126,8 @@ public:
 	*/
 	static void DrawRect(VECTOR lower_left, VECTOR upper_left, VECTOR upper_right, VECTOR lower_right);
 
+	static int LoadTexture(const char* file_path);
+
 	/**
 	* @brief テクスチャ描画関数
 	* @details 引数で受け取った頂点をもとにテクスチャを描画する

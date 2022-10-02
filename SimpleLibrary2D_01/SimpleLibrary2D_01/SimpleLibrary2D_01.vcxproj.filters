@@ -32,7 +32,7 @@
     <ClCompile Include="Src\Engine\Buffer\BufferManager.cpp">
       <Filter>Engine\Buffer</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Engine\Buffer\ConstBuffer.cpp">
+    <ClCompile Include="Src\Engine\Buffer\ConstantBuffer.cpp">
       <Filter>Engine\Buffer</Filter>
     </ClCompile>
     <ClCompile Include="Src\Engine\Buffer\IndexBuffer.cpp">
@@ -67,7 +67,7 @@
     <ClInclude Include="Src\Engine\Buffer\BufferManager.h">
       <Filter>Engine\Buffer</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Engine\Buffer\ConstBuffer.h">
+    <ClInclude Include="Src\Engine\Buffer\ConstantBuffer.h">
       <Filter>Engine\Buffer</Filter>
     </ClInclude>
     <ClInclude Include="Src\Engine\Buffer\IndexBuffer.h">

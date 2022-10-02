@@ -17,9 +17,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int)
 
 		Engine::ClearScreen();
 
-		Engine::DrawTexture(0.0f, 0.0f, "Res/Texture/Test4.jpg");
+		//int handle = Engine::LoadTexture("Res/Texture/Test4.jpg");
 
-		Engine::DrawTexture(50.0f, 100.0f, "Res/Texture/Test3.png");
+		Engine::DrawTexture(0.0f, 0.0f, "Res/Texture/Test4.jpg");
 
 		Engine::ScreenFlip();
 	}

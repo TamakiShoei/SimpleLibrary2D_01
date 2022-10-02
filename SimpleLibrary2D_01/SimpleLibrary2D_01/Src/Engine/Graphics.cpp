@@ -1,10 +1,15 @@
 ﻿#include <locale>
+#include <time.h>
+#include <random>
 #include "Graphics.h"
 
-bool counter = false;
+//std::map<int, WICTextureData*> Graphics::WICData;
+std::map<int, CanvasData> BufferManager::canvasData;
 
 bool Graphics::Initialize()
 {
+	srand((unsigned)time(NULL));
+
 	UINT dxgiFactoryFlags = 0;
 	InitializeFactory(dxgiFactoryFlags);
 
@@ -633,10 +638,42 @@ void Graphics::DrawRect(VECTOR lower_left, VECTOR upper_left, VECTOR upper_right
 	commandList->DrawIndexedInstanced(6, 1, 0, 0, 0);
 }
 
+int Graphics::LoadTexture(const char* file_path)
+{
+	//CoInitializeEx(0, COINIT_MULTITHREADED);
+
+	//WICTextureData tmpData;
+	////const char* から const wchar_t*に変換
+	//const int MaxChar = 150;
+	//wchar_t wFilePath[MaxChar];
+	//size_t ret;
+	//setlocale(LC_CTYPE, "jpn");
+	//mbstowcs_s(&ret, wFilePath, MaxChar, file_path, _TRUNCATE);
+
+	//auto result = DirectX::LoadFromWICFile(
+	//	wFilePath,
+	//	DirectX::WIC_FLAGS_NONE,
+	//	&tmpData.metadata,
+	//	tmpData.scratchImg);
+
+	int tmpkey = 0;
+
+	//while (true)
+	//{
+	//	tmpkey = rand() % 1000000000;
+
+	//	if (WICData.contains(tmpkey) == false)
+	//	{
+	//		break;
+	//	}
+	//}
+	//WICData.insert(std::make_pair(tmpkey, &tmpData));
+
+	return tmpkey;
+}
+
 void Graphics::DrawTexture(float pos_x, float pos_y, const char* file_path)
 {
-	CoInitializeEx(0, COINIT_MULTITHREADED);
-	CreatePipeline();
 
 	//WICテクスチャのロード
 	DirectX::TexMetadata metadata = {};
@@ -655,6 +692,11 @@ void Graphics::DrawTexture(float pos_x, float pos_y, const char* file_path)
 		&metadata,
 		scratchImg);
 
+	//生データの抽出
+	auto img = scratchImg.GetImage(0, 0, 0);
+
+	BufferManager::Instance()->CreateCanvas(metadata, img, device.Get());
+
 	Vertex vertices[4] =
 	{
 		{{pos_x, pos_y + metadata.height, 0.0f}, {0.0f, 1.0f}},	//左下
@@ -663,10 +705,9 @@ void Graphics::DrawTexture(float pos_x, float pos_y, const char* file_path)
 		{{pos_x + metadata.width, pos_y, 0.0f}, {1.0f, 0.0f} },	//右上
 	};
 
-	VertexBuffer vert;
-	vert.CreateBuffer(1234567, device.Get());
+	ID3D12Resource* vertBuff = nullptr;
 
-	ID3D12Resource* vertBuff = GetBuffer(1234567);
+	vertBuff = BufferManager::Instance()->GetVertexBuffer();
 
 	Vertex* vertMap = nullptr;
 	vertBuff->Map(0, nullptr, (void**)&vertMap);
@@ -676,6 +717,7 @@ void Graphics::DrawTexture(float pos_x, float pos_y, const char* file_path)
 	vbView.BufferLocation = vertBuff->GetGPUVirtualAddress();
 	vbView.SizeInBytes = sizeof(vertices);
 	vbView.StrideInBytes = sizeof(vertices[0]);
+	
 
 	unsigned short indices[] =
 	{
@@ -683,33 +725,7 @@ void Graphics::DrawTexture(float pos_x, float pos_y, const char* file_path)
 		2, 1, 3,
 	};
 
-	D3D12_HEAP_PROPERTIES heapProp = {};
-	heapProp.Type = D3D12_HEAP_TYPE_UPLOAD;
-	heapProp.CPUPageProperty = D3D12_CPU_PAGE_PROPERTY_UNKNOWN;
-	heapProp.MemoryPoolPreference = D3D12_MEMORY_POOL_UNKNOWN;
-
-	D3D12_RESOURCE_DESC resDesc = {};
-	resDesc.Dimension = D3D12_RESOURCE_DIMENSION_BUFFER;
-	resDesc.Width = sizeof(indices);
-	resDesc.Height = 1;
-	resDesc.DepthOrArraySize = 1;
-	resDesc.MipLevels = 1;
-	resDesc.Format = DXGI_FORMAT_UNKNOWN;
-	resDesc.SampleDesc.Count = 1;
-	resDesc.Flags = D3D12_RESOURCE_FLAG_NONE;
-	resDesc.Layout = D3D12_TEXTURE_LAYOUT_ROW_MAJOR;
-	
-
-	ID3D12Resource* idxBuff = nullptr;
-
-	//インデックスバッファーの作成
-	device->CreateCommittedResource(
-		&heapProp,
-		D3D12_HEAP_FLAG_NONE,
-		&resDesc,
-		D3D12_RESOURCE_STATE_GENERIC_READ,
-		nullptr,
-		IID_PPV_ARGS(&idxBuff));
+	ID3D12Resource* idxBuff = BufferManager::Instance()->GetIndexBuffer();
 
 	//バッファーにインデックスデータをコピー
 	unsigned short* mappedIdx = nullptr;
@@ -723,37 +739,7 @@ void Graphics::DrawTexture(float pos_x, float pos_y, const char* file_path)
 	ibView.Format = DXGI_FORMAT_R16_UINT;
 	ibView.SizeInBytes = sizeof(indices);
 
-	//生データの抽出
-	auto img = scratchImg.GetImage(0, 0, 0);
-
-	//WriteToSubresourceで転送するためのヒープ設定
-	heapProp.Type = D3D12_HEAP_TYPE_CUSTOM;		//Typeはカスタム
-	heapProp.CPUPageProperty = D3D12_CPU_PAGE_PROPERTY_WRITE_BACK;
-	heapProp.MemoryPoolPreference = D3D12_MEMORY_POOL_L0;		//転送はCPU側から
-	//単一アダプターのため0
-	heapProp.CreationNodeMask = 0;
-	heapProp.VisibleNodeMask = 0;
-
-	resDesc.Format = metadata.format; //画像データのフォーマット
-	resDesc.Width = metadata.width;
-	resDesc.Height = metadata.height;
-	resDesc.DepthOrArraySize = metadata.arraySize;	//2Dで配列でもないため1
-	resDesc.SampleDesc.Count = 1;	//アンチエイリアシングしない
-	resDesc.SampleDesc.Quality = 0;	//クオリティは最低
-	resDesc.MipLevels = metadata.mipLevels;	//ミップマップしないのでミップ数は1
-	resDesc.Dimension = static_cast<D3D12_RESOURCE_DIMENSION>(metadata.dimension);	//2Dテクスチャ用
-	resDesc.Layout = D3D12_TEXTURE_LAYOUT_UNKNOWN;	//レイアウトは決定しない
-	resDesc.Flags = D3D12_RESOURCE_FLAG_NONE;
-
-	ID3D12Resource* texBuff = nullptr;
-
-	device->CreateCommittedResource(
-		&heapProp,
-		D3D12_HEAP_FLAG_NONE,
-		&resDesc,
-		D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE,
-		nullptr,
-		IID_PPV_ARGS(&texBuff));
+	ID3D12Resource* texBuff = BufferManager::Instance()->GetTexBuffer();
 
 	texBuff->WriteToSubresource(
 		0,
@@ -762,22 +748,13 @@ void Graphics::DrawTexture(float pos_x, float pos_y, const char* file_path)
 		img->rowPitch,		//1ラインサイズ
 		img->slicePitch);	//一枚のサイズ
 	
-	ID3D12Resource* constBuff = nullptr;
+	ID3D12Resource* constBuff = BufferManager::Instance()->GetConstantBuffer();
 	DirectX::XMMATRIX matrix = DirectX::XMMatrixIdentity();
-	heapProp = CD3DX12_HEAP_PROPERTIES(D3D12_HEAP_TYPE_UPLOAD);
-	resDesc = CD3DX12_RESOURCE_DESC::Buffer((sizeof(matrix) + 0xff) & ~0xff);
-	device->CreateCommittedResource(
-		&heapProp,
-		D3D12_HEAP_FLAG_NONE,
-		&resDesc,
-		D3D12_RESOURCE_STATE_GENERIC_READ,
-		nullptr,
-		IID_PPV_ARGS(&constBuff));
 
 	//座標返還
 	matrix.r[0].m128_f32[0] = 2.0f / viewport.Width;
 	matrix.r[1].m128_f32[1] = -2.0f / viewport.Height;
-	
+
 	matrix.r[3].m128_f32[0] = -1.0f;
 	matrix.r[3].m128_f32[1] = 1.0f;
 

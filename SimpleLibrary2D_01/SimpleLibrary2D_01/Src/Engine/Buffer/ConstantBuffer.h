@@ -1,16 +1,16 @@
-#ifndef VERTEX_BUFFER
-#define VERTEX_BUFFER
+#ifndef CONSTANT_BUFFER
+#define CONSTANT_BUFFER
 
 #include <map>
 #include "../CommonDifinition.h"
 
-class VertexBuffer
+class ConstantBuffer
 {
 public:
-	VertexBuffer();
-	~VertexBuffer();
+	ConstantBuffer();
+	~ConstantBuffer();
 
-	bool CreateBuffer(int key,ID3D12Device* device);
+	bool CreateBuffer(int key, ID3D12Device* device);
 
 	ID3D12Resource* GetBuffer(int key);
 

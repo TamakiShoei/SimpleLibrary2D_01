@@ -7,10 +7,11 @@
 #ifndef GRAPHICS_H
 #define	GRAPHICS_H
 
+#include <map>
 #include "CommonDifinition.h"
-#include "Buffer/VertexBuffer.h"
+#include "Buffer/BufferManager.h"
 
-class Graphics : public VertexBuffer
+class Graphics : VertexBuffer
 {
 public:
 	Graphics()
@@ -65,6 +66,8 @@ public:
 	* @param[in] lower_right 右下頂点座標
 	*/
 	void DrawRect(VECTOR lower_left, VECTOR upper_left, VECTOR upper_right, VECTOR lower_right);
+
+	int LoadTexture(const char* file_path);
 
 	/**
 	* @brief テクスチャ描画関数
@@ -201,7 +204,8 @@ private:
 	bool CreatePipeline();
 
 private:	
-	ID3D12Resource* vertBuff = nullptr;
+	//static std::map<int, WICTextureData*> WICData;
+	//ID3D12Resource* vertBuff = nullptr;
 	CD3DX12_CPU_DESCRIPTOR_HANDLE rtvHandle;
 	CD3DX12_RESOURCE_BARRIER barrier;
 	D3D12_COMMAND_QUEUE_DESC commandQueueDesc = {};
