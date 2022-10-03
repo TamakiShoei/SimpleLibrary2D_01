@@ -1,5 +1,7 @@
 ﻿#include "Engine/Engine.h"
 
+float posx;
+
 //メイン関数
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int)
 {
@@ -17,9 +19,15 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int)
 
 		Engine::ClearScreen();
 
-		//int handle = Engine::LoadTexture("Res/Texture/Test4.jpg");
+		posx++;
 
-		Engine::DrawTexture(0.0f, 0.0f, "Res/Texture/Test4.jpg");
+		int handle = Engine::LoadTexture("Res/Texture/Test4.jpg");
+		int handle2 = Engine::LoadTexture("Res/Texture/Test3.png");
+		int handle3 = Engine::LoadTexture("Res/Texture/Test.png");
+
+		Engine::DrawTexture(posx, 0.0f, handle);
+		Engine::DrawTexture(0.0f, 100.0f, handle2);
+		Engine::
 
 		Engine::ScreenFlip();
 	}

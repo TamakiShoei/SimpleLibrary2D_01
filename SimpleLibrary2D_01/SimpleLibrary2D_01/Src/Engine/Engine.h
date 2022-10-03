@@ -134,7 +134,7 @@ public:
 	* @param[in] pos_x 左上頂点のx座標
 	* @param[in] pos_y 左上頂点のy座標
 	*/
-	static void DrawTexture(float pos_x, float pos_y, const char* file_path);
+	static void DrawTexture(float pos_x, float pos_y, int key);
 
 private:
 	static Engine* instance;

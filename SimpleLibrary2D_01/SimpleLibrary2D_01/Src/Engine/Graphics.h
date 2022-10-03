@@ -75,7 +75,7 @@ public:
 	* @param[in] pos_x 左下頂点x座標
 	* @param[in] pos_y 左上頂点y座標
 	*/
-	void DrawTexture(float pos_x, float pos_y, const char* file_path);
+	void DrawTexture(float pos_x, float pos_y, int key);
 
 	/**
 	* @brief GPU待ち関数

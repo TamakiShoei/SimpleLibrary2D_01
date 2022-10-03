@@ -1,18 +1,28 @@
 #include "BufferManager.h"
+#include <random>
 
-bool BufferManager::CreateCanvas(DirectX::TexMetadata metadata, const DirectX::Image* img, ID3D12Device* device)
+int BufferManager::CreateCanvas(DirectX::TexMetadata metadata, const DirectX::Image* img, ID3D12Device* device)
 {
+	srand((unsigned)time(NULL));
 	CanvasData data;
 
 	data.buffers.vertBuff = CreateVertexBuffer(device);
 	data.buffers.indexBuff = CreateIndexBuffer(device);
-	data.buffers.texBuff = CreateTexBuffer(device, metadata);
+	data.buffers.texBuff = CreateTexBuffer(device, metadata, img);
 	data.buffers.constBuff = CreateConstantBuffer(device);
 
-	int key = 123456;
+	data.texData.metadata = metadata;
+	data.texData.img = img;
+
+	do
+	{
+		key = rand() % 100000;
+
+	} while (canvasData.contains(key));
+
 	canvasData.insert(std::make_pair(key, data));
 
-	return true;
+	return key;
 }
 
 ID3D12Resource* BufferManager::CreateVertexBuffer(ID3D12Device* device)
@@ -83,7 +93,7 @@ ID3D12Resource* BufferManager::CreateIndexBuffer(ID3D12Device* device)
 	return tmpBuff;
 }
 
-ID3D12Resource* BufferManager::CreateTexBuffer(ID3D12Device* device, DirectX::TexMetadata metadata)
+ID3D12Resource* BufferManager::CreateTexBuffer(ID3D12Device* device, DirectX::TexMetadata metadata, const DirectX::Image* img)
 {
 	//WriteToSubresourceで転送するためのヒープ設定
 	D3D12_HEAP_PROPERTIES heapProp = {};
@@ -118,6 +128,14 @@ ID3D12Resource* BufferManager::CreateTexBuffer(ID3D12Device* device, DirectX::Te
 	{
 		return nullptr;
 	}
+
+	tmpBuff->WriteToSubresource(
+		0,
+		nullptr,
+		img->pixels,		//全データのアドレス
+		img->rowPitch,		//1ラインサイズ
+		img->slicePitch);	//一枚のサイズ
+
 	return tmpBuff;
 }
 
@@ -144,22 +162,52 @@ ID3D12Resource* BufferManager::CreateConstantBuffer(ID3D12Device* device)
 	return tmpBuff;
 }
 
-ID3D12Resource* BufferManager::GetVertexBuffer()
+ID3D12Resource* BufferManager::GetVertexBuffer(int key)
 {
-	return canvasData.at(123456).buffers.vertBuff;
+	if (B_FAILED(canvasData.contains(key)))
+	{
+		return nullptr;
+	}
+	return canvasData.at(key).buffers.vertBuff;
 }
 
-ID3D12Resource* BufferManager::GetIndexBuffer()
+ID3D12Resource* BufferManager::GetIndexBuffer(int key)
 {
-	return canvasData.at(123456).buffers.indexBuff;
+	if (B_FAILED(canvasData.contains(key)))
+	{
+		return nullptr;
+	}
+	return canvasData.at(key).buffers.indexBuff;
 }
 
-ID3D12Resource* BufferManager::GetTexBuffer()
+ID3D12Resource* BufferManager::GetTexBuffer(int key)
 {
-	return canvasData.at(123456).buffers.texBuff;
+	if (B_FAILED(canvasData.contains(key)))
+	{
+		return nullptr;
+	}
+	return canvasData.at(key).buffers.texBuff;
 }
 
-ID3D12Resource* BufferManager::GetConstantBuffer()
+ID3D12Resource* BufferManager::GetConstantBuffer(int key)
 {
-	return canvasData.at(123456).buffers.constBuff;
+	if (B_FAILED(canvasData.contains(key)))
+	{
+		return nullptr;
+	}
+	return canvasData.at(key).buffers.constBuff;
+}
+
+DirectX::TexMetadata BufferManager::GetMetadata(int key)
+{
+	return canvasData.at(key).texData.metadata;
+}
+
+const DirectX::Image* BufferManager::GetImageData(int key)
+{
+	if (B_FAILED(canvasData.contains(key)))
+	{
+		return nullptr;
+	}
+	return canvasData.at(key).texData.img;
 }

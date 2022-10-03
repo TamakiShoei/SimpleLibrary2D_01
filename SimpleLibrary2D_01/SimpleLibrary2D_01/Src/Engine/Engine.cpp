@@ -104,7 +104,7 @@ int Engine::LoadTexture(const char* file_path)
 	return instance->graphics.LoadTexture(file_path);
 }
 
-void Engine::DrawTexture(float pos_x, float pos_y, const char* file_path)
+void Engine::DrawTexture(float pos_x, float pos_y, int key)
 {
-	instance->graphics.DrawTexture(pos_x, pos_y, file_path);
+	instance->graphics.DrawTexture(pos_x, pos_y, key);
 }
