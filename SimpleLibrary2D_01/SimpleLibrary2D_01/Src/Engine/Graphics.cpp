@@ -710,17 +710,6 @@ void Graphics::DrawTexture(float pos_x, float pos_y, int key)
 
 	ID3D12Resource* constBuff = BufferManager::Instance()->GetConstantBuffer(key);
 	DirectX::XMMATRIX matrix = DirectX::XMMatrixIdentity();
-	const DirectX::Image* img = BufferManager::Instance()->GetImageData(key);
-	ID3D12Resource* texBuff = BufferManager::Instance()->GetTexBuffer(key);
-
-	BufferManager::Instance()->Updata(key);
-
-	//texBuff->WriteToSubresource(
-	//	0,
-	//	nullptr,
-	//	img->pixels,		//全データのアドレス
-	//	img->rowPitch,		//1ラインサイズ
-	//	img->slicePitch);	//一枚のサイズ
 
 	//座標返還
 	matrix.r[0].m128_f32[0] = 2.0f / viewport.Width;

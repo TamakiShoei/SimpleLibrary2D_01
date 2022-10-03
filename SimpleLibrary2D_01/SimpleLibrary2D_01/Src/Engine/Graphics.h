@@ -67,6 +67,12 @@ public:
 	*/
 	void DrawRect(VECTOR lower_left, VECTOR upper_left, VECTOR upper_right, VECTOR lower_right);
 
+	/**
+	* @brief 画像読み込み関数
+	* @details 引数で受け取ったファイルパスをもとに画像を描画する際に必要なキーを返す
+	* @param[in] file_path 読み込みたい画像のファイルパス
+	* @retval キー値
+	*/
 	int LoadTexture(const char* file_path);
 
 	/**
@@ -204,8 +210,6 @@ private:
 	bool CreatePipeline();
 
 private:	
-	//static std::map<int, WICTextureData*> WICData;
-	//ID3D12Resource* vertBuff = nullptr;
 	CD3DX12_CPU_DESCRIPTOR_HANDLE rtvHandle;
 	CD3DX12_RESOURCE_BARRIER barrier;
 	D3D12_COMMAND_QUEUE_DESC commandQueueDesc = {};

@@ -202,12 +202,3 @@ DirectX::TexMetadata BufferManager::GetMetadata(int key)
 {
 	return canvasData.at(key).texData.metadata;
 }
-
-const DirectX::Image* BufferManager::GetImageData(int key)
-{
-	if (B_FAILED(canvasData.contains(key)))
-	{
-		return nullptr;
-	}
-	return canvasData.at(key).texData.img;
-}
