@@ -2,6 +2,7 @@
 #define BUFFER_MANAGER_H
 
 #include <map>
+#include <vector>
 #include "../CommonDifinition.h"
 #include "VertexBuffer.h"
 #include "IndexBuffer.h"
@@ -46,7 +47,7 @@ public:
 	int CreateCanvas(DirectX::TexMetadata metadata, const DirectX::Image* img, ID3D12Device* device);
 
 	/**
-	* @brief 頂点バッファの取得関数
+	* @brief インデックスバッファの取得関数
 	* @param[in] key キー値
 	* @retval 頂点バッファデータ
 	*/
@@ -58,16 +59,16 @@ public:
 	* @retval インデックスバッファデータ
 	*/
 	ID3D12Resource* GetIndexBuffer(int key);
-
+	
 	/**
-	* @brief テクスチャーバッファの取得関数
+	* @brief インデックスバッファの取得関数
 	* @param[in] key キー値
-	* @retval テクスチャーバッファデータ
+	* @retval テクスチャバッファデータ
 	*/
 	ID3D12Resource* GetTexBuffer(int key);
 
 	/**
-	* @brief コンスタントバッファの取得関数
+	* @brief インデックスバッファの取得関数
 	* @param[in] key キー値
 	* @retval コンスタントバッファデータ
 	*/
@@ -81,36 +82,10 @@ public:
 	DirectX::TexMetadata GetMetadata(int key);
 
 private:
-
-	/**
-	* @brief 頂点バッファの作成
-	* @param[in] デバイス
-	* @retval 頂点バッファデータ
-	*/
-	ID3D12Resource* CreateVertexBuffer(ID3D12Device* device);
-
-	/**
-	* @brief インデックスバッファの作成
-	* @param[in] デバイス
-	* @retval インデックスバッファデータ
-	*/
-	ID3D12Resource* CreateIndexBuffer(ID3D12Device* device);
-
-	/**
-	* @brief テクスチャバッファの作成
-	* @param[in] デバイス
-	* @retval テクスチャバッファデータ
-	*/
-	ID3D12Resource* CreateTexBuffer(ID3D12Device* device, DirectX::TexMetadata metadata, const DirectX::Image* img);
-
-	/**
-	* @brief コンスタントバッファの作成
-	* @param[in] デバイス
-	* @retval コンスタントバッファデータ
-	*/
-	ID3D12Resource* CreateConstantBuffer(ID3D12Device* device);
-
-private:
+	VertexBuffer vertBuff;
+	IndexBuffer indexBuff;
+	TexBuffer texBuff;
+	ConstantBuffer constBuff;
 	int key;
 	static std::map<int, CanvasData> canvasData;
 

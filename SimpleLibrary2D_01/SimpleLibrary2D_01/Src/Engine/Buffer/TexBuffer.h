@@ -10,12 +10,24 @@ public:
 	TexBuffer();
 	~TexBuffer();
 
-	bool CreateBuffer(int key, ID3D12Device* device);
+	/**
+	* @brief テクスチャバッファの作成
+	* @param[in] device デバイス
+	* @param[in] metadata メタデータ
+	* @param[in] img 画像生データ
+	* @retval true 生成成功
+	* @retval false 生成失敗
+	*/
+	bool Create(ID3D12Device* device, DirectX::TexMetadata metadata, const DirectX::Image* img);
 
-	ID3D12Resource* GetBuffer(int key);
+	/**
+	* @brief テクスチャーバッファの取得関数
+	* @retval テクスチャーバッファデータ
+	*/
+	ID3D12Resource* Get();
 
 private:
-	static std::map<int, ID3D12Resource*> Buffers;
+	ID3D12Resource* buffer;
 };
 
 #endif

@@ -3,9 +3,6 @@
 #include <random>
 #include "Graphics.h"
 
-//std::map<int, WICTextureData*> Graphics::WICData;
-std::map<int, CanvasData> BufferManager::canvasData;
-
 bool Graphics::Initialize()
 {
 	srand((unsigned)time(NULL));
@@ -472,7 +469,6 @@ void Graphics::ClearScreen()
 	const FLOAT	clearColor[] = { 0.0f, 0.2f, 0.4f, 1.0f };		// 青っぽい色
 	commandList->ClearRenderTargetView(rtvHandle, clearColor, 0, nullptr);
 
-	//三角形ポリゴン表示の設定
 	if (pipelineState.Get() == nullptr)
 	{
 		return;
@@ -544,6 +540,7 @@ void Graphics::DrawTriangle(VECTOR lower_left, VECTOR upper_left, VECTOR lower_r
 	std::copy(std::begin(vertices), std::end(vertices), vertMap);
 	vertBuff->Unmap(0, nullptr);
 
+	D3D12_VERTEX_BUFFER_VIEW vbView;
 	vbView.BufferLocation = vertBuff->GetGPUVirtualAddress();
 	vbView.SizeInBytes = sizeof(vertices);
 	vbView.StrideInBytes = sizeof(vertices[0]);
@@ -564,6 +561,14 @@ void Graphics::DrawRect(VECTOR lower_left, VECTOR upper_left, VECTOR upper_right
 		{upper_right.x, upper_right.y, upper_right.z},	//右上
 	};
 
+	//Vertex vertices[4] =
+	//{
+	//	{{0.0f, 0.0f, 0.0f},{0.0f, 1.0f}},		//左下
+	//	{{0.0f, 0.0f, 0.0f},{0.0f, 0.0f}},		//左上
+	//	{{0.0f, 0.0f, 0.0f},{1.0f, 1.0f}},	//右下
+	//	{{0.0f, 0.0f, 0.0f},{1.0f, 0.0f}},	//右上
+	//};
+
 	D3D12_HEAP_PROPERTIES heapProp = {};
 	heapProp.Type = D3D12_HEAP_TYPE_UPLOAD;
 	heapProp.CPUPageProperty = D3D12_CPU_PAGE_PROPERTY_UNKNOWN;
@@ -571,7 +576,7 @@ void Graphics::DrawRect(VECTOR lower_left, VECTOR upper_left, VECTOR upper_right
 
 	D3D12_RESOURCE_DESC resDesc = {};
 	resDesc.Dimension = D3D12_RESOURCE_DIMENSION_BUFFER;
-	resDesc.Width = sizeof(vertices);
+	resDesc.Width = sizeof(Vertex) * 4;
 	resDesc.Height = 1;
 	resDesc.DepthOrArraySize = 1;
 	resDesc.MipLevels = 1;
@@ -597,6 +602,7 @@ void Graphics::DrawRect(VECTOR lower_left, VECTOR upper_left, VECTOR upper_right
 	std::copy(std::begin(vertices), std::end(vertices), vertMap);
 	vertBuff->Unmap(0, nullptr);
 
+	D3D12_VERTEX_BUFFER_VIEW vbView;
 	vbView.BufferLocation = vertBuff->GetGPUVirtualAddress();
 	vbView.SizeInBytes = sizeof(vertices);
 	vbView.StrideInBytes = sizeof(vertices[0]);
@@ -683,10 +689,11 @@ void Graphics::DrawTexture(float pos_x, float pos_y, int key)
 	std::copy(std::begin(vertices), std::end(vertices), vertMap);
 	vertBuff->Unmap(0, nullptr);
 
+	D3D12_VERTEX_BUFFER_VIEW vbView;
 	vbView.BufferLocation = vertBuff->GetGPUVirtualAddress();
 	vbView.SizeInBytes = sizeof(vertices);
 	vbView.StrideInBytes = sizeof(vertices[0]);
-	
+
 
 	unsigned short indices[] =
 	{
@@ -753,9 +760,9 @@ void Graphics::DrawTexture(float pos_x, float pos_y, int key)
 
 	auto basicHeapHandle = basicDescHeap->GetCPUDescriptorHandleForHeapStart();	//先頭アドレスを取得
 	basicHeapHandle.ptr += device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);	//シェーダーリソース分インクリメント
-	
+
 	//コンスタントバッファービュー設定
-	D3D12_CONSTANT_BUFFER_VIEW_DESC cbvDesc = {};	
+	D3D12_CONSTANT_BUFFER_VIEW_DESC cbvDesc = {};
 	cbvDesc.BufferLocation = constBuff->GetGPUVirtualAddress();
 	cbvDesc.SizeInBytes = constBuff->GetDesc().Width;
 	device->CreateConstantBufferView(&cbvDesc, basicHeapHandle);	//コンスタントバッファービューの作成

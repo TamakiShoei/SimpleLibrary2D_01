@@ -124,7 +124,6 @@ public:
 
 	D3D12_VIEWPORT viewport;
 	D3D12_RECT scissorRect;
-	D3D12_VERTEX_BUFFER_VIEW vbView = {};
 
 private:
 	/**

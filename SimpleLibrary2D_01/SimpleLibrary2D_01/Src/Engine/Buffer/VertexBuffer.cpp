@@ -1,18 +1,16 @@
 #include "VertexBuffer.h"
 
-std::map<int, ID3D12Resource*> VertexBuffer::Buffers;
-
 VertexBuffer::VertexBuffer()
 {
-	Buffers.clear();
+	buffer = nullptr;
 }
 
 VertexBuffer::~VertexBuffer()
 {
-	Buffers.clear();
+	
 }
 
-bool VertexBuffer::CreateBuffer(int key, ID3D12Device* device)
+bool VertexBuffer::Create(ID3D12Device* device)
 {
 	D3D12_HEAP_PROPERTIES heapProp = {};
 	heapProp.Type = D3D12_HEAP_TYPE_UPLOAD;
@@ -30,23 +28,21 @@ bool VertexBuffer::CreateBuffer(int key, ID3D12Device* device)
 	resDesc.Flags = D3D12_RESOURCE_FLAG_NONE;
 	resDesc.Layout = D3D12_TEXTURE_LAYOUT_ROW_MAJOR;
 
-	ID3D12Resource* tmp = nullptr;
 	if (FAILED(device->CreateCommittedResource(
 		&heapProp,
 		D3D12_HEAP_FLAG_NONE,
 		&resDesc,
 		D3D12_RESOURCE_STATE_GENERIC_READ,
 		nullptr,
-		IID_PPV_ARGS(&tmp))))
+		IID_PPV_ARGS(&buffer))))
 	{
 		return false;
 	}
 
-	Buffers.insert(std::make_pair(key, tmp));
 	return true;
 }
 
-ID3D12Resource* VertexBuffer::GetBuffer(int key)
+ID3D12Resource* VertexBuffer::Get()
 {
-		return Buffers.at(key);
+	return buffer;
 }

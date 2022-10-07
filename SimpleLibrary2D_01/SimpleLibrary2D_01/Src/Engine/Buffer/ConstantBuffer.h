@@ -10,12 +10,22 @@ public:
 	ConstantBuffer();
 	~ConstantBuffer();
 
-	bool CreateBuffer(int key, ID3D12Device* device);
+	/**
+	* @brief コンスタントバッファの作成
+	* @param[in] デバイス
+	* @retval true 生成成功
+	* @retval false 生成失敗
+	*/
+	bool Create(ID3D12Device* device);
 
-	ID3D12Resource* GetBuffer(int key);
+	/**
+	* @brief コンスタントバッファの取得関数
+	* @retval コンスタントバッファデータ
+	*/
+	ID3D12Resource* Get();
 
 private:
-	static std::map<int, ID3D12Resource*> Buffers;
+	ID3D12Resource* buffer;
 };
 
 #endif
