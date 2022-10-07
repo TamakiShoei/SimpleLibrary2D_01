@@ -18,8 +18,7 @@ int BufferManager::CreateCanvas(DirectX::TexMetadata metadata, const DirectX::Im
 	data.buffers.texBuff = texBuff.Get();
 	data.buffers.constBuff = constBuff.Get();
 
-	data.texData.metadata = metadata;
-	data.texData.img = img;
+	data.metadata = metadata;
 
 	do
 	{
@@ -70,5 +69,5 @@ ID3D12Resource* BufferManager::GetConstantBuffer(int key)
 
 DirectX::TexMetadata BufferManager::GetMetadata(int key)
 {
-	return canvasData.at(key).texData.metadata;
+	return canvasData.at(key).metadata;
 }

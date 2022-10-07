@@ -17,15 +17,9 @@ struct Buffers
 	ID3D12Resource*	vertBuff;
 };
 
-struct TextureData
-{
-	DirectX::TexMetadata metadata;
-	const DirectX::Image* img;
-};
-
 struct CanvasData
 {
-	TextureData texData;
+	DirectX::TexMetadata metadata;
 	Buffers buffers;
 };
 
