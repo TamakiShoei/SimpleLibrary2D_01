@@ -8,10 +8,22 @@ int BufferManager::CreateCanvas(DirectX::TexMetadata metadata, const DirectX::Im
 	srand((unsigned)time(NULL));
 	CanvasData data;
 
-	vertBuff.Create(device);
-	indexBuff.Create(device);
-	texBuff.Create(device, metadata, img);
-	constBuff.Create(device);
+	if (vertBuff.Create(device) == false)
+	{
+		return -1;
+	}
+	if (indexBuff.Create(device) == false)
+	{
+		return -1;
+	}
+	if (texBuff.Create(device, metadata, img) == false)
+	{
+		return -1;
+	}
+	if (constBuff.Create(device) == false)
+	{
+		return -1;
+	}
 	
 	data.buffers.vertBuff = vertBuff.Get();
 	data.buffers.indexBuff = indexBuff.Get();
