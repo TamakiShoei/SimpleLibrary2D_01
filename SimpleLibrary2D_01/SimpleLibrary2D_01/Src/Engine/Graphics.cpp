@@ -561,14 +561,6 @@ void Graphics::DrawRect(VECTOR lower_left, VECTOR upper_left, VECTOR upper_right
 		{upper_right.x, upper_right.y, upper_right.z},	//右上
 	};
 
-	//Vertex vertices[4] =
-	//{
-	//	{{0.0f, 0.0f, 0.0f},{0.0f, 1.0f}},		//左下
-	//	{{0.0f, 0.0f, 0.0f},{0.0f, 0.0f}},		//左上
-	//	{{0.0f, 0.0f, 0.0f},{1.0f, 1.0f}},	//右下
-	//	{{0.0f, 0.0f, 0.0f},{1.0f, 0.0f}},	//右上
-	//};
-
 	D3D12_HEAP_PROPERTIES heapProp = {};
 	heapProp.Type = D3D12_HEAP_TYPE_UPLOAD;
 	heapProp.CPUPageProperty = D3D12_CPU_PAGE_PROPERTY_UNKNOWN;
