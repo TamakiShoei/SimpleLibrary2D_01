@@ -301,7 +301,7 @@ bool Graphics::CreatePipeline()
 	ID3DBlob* errorBlob = nullptr;
 
 	if (FAILED(D3DCompileFromFile(
-		L"Res/Shader/VertexShader.hlsl",
+		L"Engine/Res/Shader/VertexShader.hlsl",
 		nullptr,
 		D3D_COMPILE_STANDARD_FILE_INCLUDE,
 		"VS", "vs_5_0",
@@ -313,7 +313,7 @@ bool Graphics::CreatePipeline()
 	}
 
 	if (FAILED(D3DCompileFromFile(
-		L"Res/Shader/PixelShader.hlsl",
+		L"Engine/Res/Shader/PixelShader.hlsl",
 		nullptr,
 		D3D_COMPILE_STANDARD_FILE_INCLUDE,
 		"PS", "ps_5_0",
