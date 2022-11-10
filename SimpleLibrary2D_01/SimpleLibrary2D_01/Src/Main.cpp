@@ -21,12 +21,16 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int)
 	{
 		Engine::Update();
 
-		Engine::ClearScreen();
+		if (Engine::IsPushedKey(DIK_W))
+		{
+			posx += 30;
+		}
 
-		posx += 1.0f;
+		Engine::ClearScreen();
 
 		Engine::DrawTexture(posx, 0.0f, handle);
 		Engine::DrawTexture(0.0f, 100.0f, handle2);
+		//Engine::DrawTexture(400.0f, 400.0f, handle);
 
 		Engine::ScreenFlip();
 	}

@@ -2,7 +2,12 @@
 #define INPUT_H
 
 #include <Windows.h>
+#include <dinput.h>
+#include "CommonDifinition.h"
 
+#pragma comment(lib, "dinput8.lib")
+
+#define DIRECTINPUT_VERSION 0x0800	//バージョン
 #define MAX_KEY 256
 
 struct KeyState
@@ -18,11 +23,15 @@ public:
 	Input();
 	~Input();
 
+	bool Initialize();
+
 	/**
 	* @brief Input関係の更新関数
 	* @details Input情報を毎フレーム受け取る
 	*/
 	void Update();
+
+	void Finalize();
 
 	/**
 	* @brief キーボード押下チェック関数
@@ -52,6 +61,8 @@ public:
 	bool IsReleased(int key);
 
 private:
+	LPDIRECTINPUT8 directInput = NULL;
+	LPDIRECTINPUTDEVICE8 keyboard;
 	KeyState keyStates[MAX_KEY];
 };
 

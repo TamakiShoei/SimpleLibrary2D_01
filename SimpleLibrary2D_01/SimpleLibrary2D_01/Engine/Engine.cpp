@@ -17,6 +17,10 @@ bool Engine::Initialize()
 	{
 		return false;
 	}
+	if (B_FAILED(instance->input.Initialize()))
+	{
+		return false;
+	}
 	return true;
 }
 

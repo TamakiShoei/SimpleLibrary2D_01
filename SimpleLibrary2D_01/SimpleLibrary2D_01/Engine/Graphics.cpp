@@ -536,7 +536,7 @@ void Graphics::DrawTriangle(VECTOR lower_left, VECTOR upper_left, VECTOR lower_r
 	}
 
 	DirectX::XMFLOAT3* vertMap = nullptr;
-	vertBuff->Map(0, nullptr, (void**)&vertMap);
+	//vertBuff->Map(0, nullptr, (void**)&vertMap);
 	std::copy(std::begin(vertices), std::end(vertices), vertMap);
 	vertBuff->Unmap(0, nullptr);
 
