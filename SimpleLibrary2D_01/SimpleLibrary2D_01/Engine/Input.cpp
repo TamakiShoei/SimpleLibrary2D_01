@@ -65,7 +65,7 @@ bool Input::Initialize()
 void Input::Update()
 {
 	HRESULT result;
-	BYTE buffer[256];
+	BYTE buffer[MAX_KEY];
 	ZeroMemory(buffer, sizeof(buffer));
 
 	if (keyboard == nullptr)
@@ -79,7 +79,7 @@ void Input::Update()
 		keyboard->GetDeviceState(sizeof(buffer), buffer);
 	}
 
-	for (int i = 0; i < 256; i++)
+	for (int i = 0; i < MAX_KEY; i++)
 	{
 		keyStates[i].IsPrevPushed = keyStates[i].IsCurrentPushed;
 		if ((BYTE)buffer[i] & 0x80)

@@ -23,6 +23,12 @@ public:
 	Input();
 	~Input();
 
+	/**
+	* @brief InputŠÖŒW‚Ì‰Šú‰»ŠÖ”
+	* @details DInputŠÖŒW‚Ì•Ï”‚ğ‰Šú‰»
+	* @retval true ‰Šú‰»¬Œ÷
+	* @retval false ‰Šú‰»¸”s
+	*/
 	bool Initialize();
 
 	/**
@@ -31,6 +37,10 @@ public:
 	*/
 	void Update();
 
+	/**
+	* @brief InputŠÖŒW‚Ì‰Šú‰»ŠÖ”
+	* @details DInputŠÖŒW‚Ì•Ï”‚ğ‰Šú‰»
+	*/
 	void Finalize();
 
 	/**
