@@ -10,7 +10,7 @@ ConstantBuffer::~ConstantBuffer()
 
 }
 
-bool ConstantBuffer::Create(ID3D12Device* device)
+ID3D12Resource* ConstantBuffer::Create(ID3D12Device* device)
 {
 	D3D12_HEAP_PROPERTIES heapProp = {};
 	heapProp = CD3DX12_HEAP_PROPERTIES(D3D12_HEAP_TYPE_UPLOAD);
@@ -26,9 +26,9 @@ bool ConstantBuffer::Create(ID3D12Device* device)
 		nullptr,
 		IID_PPV_ARGS(&buffer))))
 	{
-		return true;
+		return buffer;
 	}
-	return true;
+	return buffer;
 }
 
 ID3D12Resource* ConstantBuffer::Get()

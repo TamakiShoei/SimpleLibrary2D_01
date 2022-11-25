@@ -9,18 +9,13 @@
 #include "TexBuffer.h"
 #include "ConstantBuffer.h"
 
-struct Buffers
-{
-	ID3D12Resource*	indexBuff;
-	ID3D12Resource*	texBuff;
-	ID3D12Resource*	constBuff;
-	ID3D12Resource*	vertBuff;
-};
-
-struct CanvasData
+struct SpriteData
 {
 	DirectX::TexMetadata metadata;
-	Buffers buffers;
+	ID3D12Resource* vertBuff;
+	ID3D12Resource* indexBuff;
+	ID3D12Resource* texBuff;
+	ID3D12Resource* constBuff;
 };
 
 class BufferManager
@@ -41,11 +36,16 @@ public:
 	int CreateCanvas(DirectX::TexMetadata metadata, const DirectX::Image* img, ID3D12Device* device);
 
 	/**
-	* @brief インデックスバッファの取得関数
-	* @param[in] key キー値
-	* @retval 頂点バッファデータ
+	* @brief 各バッファの解放関数
 	*/
-	ID3D12Resource* GetVertexBuffer(int key);
+	void Finalize();
+
+	/**
+	* @brief 頂点バッファの取得関数
+	* @param[in] key キー値
+	* @param[in] device デバイス
+	*/
+	ID3D12Resource* GetVertexBuffer(int key, ID3D12Device* device);
 
 	/**
 	* @brief インデックスバッファの取得関数
@@ -53,7 +53,7 @@ public:
 	* @retval インデックスバッファデータ
 	*/
 	ID3D12Resource* GetIndexBuffer(int key);
-	
+
 	/**
 	* @brief インデックスバッファの取得関数
 	* @param[in] key キー値
@@ -75,13 +75,18 @@ public:
 	*/
 	DirectX::TexMetadata GetMetadata(int key);
 
+	/**
+	* @brief 頂点バッファクラスのUseCounterのリセット関数
+	*/
+	void ResetUseCounter();
+
 private:
 	VertexBuffer vertBuff;
 	IndexBuffer indexBuff;
 	TexBuffer texBuff;
 	ConstantBuffer constBuff;
 	int key;
-	static std::map<int, CanvasData> canvasData;
+	static std::map<int, SpriteData> canvasData;
 
 private:	//インスタンスの制限
 	BufferManager() = default;

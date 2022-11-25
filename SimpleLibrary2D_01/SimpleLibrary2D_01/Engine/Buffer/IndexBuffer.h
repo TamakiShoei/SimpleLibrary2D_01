@@ -16,7 +16,7 @@ public:
 	* @retval true 生成成功　
 	* @retval false 生成失敗
 	*/
-	bool Create(ID3D12Device* device);
+	ID3D12Resource* Create(ID3D12Device* device);
 
 	/**
 	* @brief インデックスバッファの取得関数
@@ -26,6 +26,7 @@ public:
 
 private:
 	ID3D12Resource* buffer;
+	bool isCreated;
 };
 
 #endif

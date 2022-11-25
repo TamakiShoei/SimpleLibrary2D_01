@@ -452,6 +452,8 @@ void Graphics::ClearScreen()
 	//シザーのセット
 	commandList->RSSetScissorRects(1, &scissorRect);
 
+	BufferManager::Instance()->ResetUseCounter();
+
 	// バックバッファのインデックスを格納
 	frameIndex = swapChain->GetCurrentBackBufferIndex();
 
@@ -674,7 +676,7 @@ void Graphics::DrawTexture(float pos_x, float pos_y, int key)
 	};
 
 	ID3D12Resource* vertBuff = nullptr;
-	vertBuff = BufferManager::Instance()->GetVertexBuffer(key);
+	vertBuff = BufferManager::Instance()->GetVertexBuffer(key, device.Get());
 
 	Vertex* vertMap = nullptr;
 	vertBuff->Map(0, nullptr, (void**)&vertMap);

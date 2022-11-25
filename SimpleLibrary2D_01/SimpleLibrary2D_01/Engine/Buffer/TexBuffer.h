@@ -18,7 +18,7 @@ public:
 	* @retval true 生成成功
 	* @retval false 生成失敗
 	*/
-	bool Create(ID3D12Device* device, DirectX::TexMetadata metadata, const DirectX::Image* img);
+	ID3D12Resource* Create(ID3D12Device* device, DirectX::TexMetadata metadata, const DirectX::Image* img);
 
 	/**
 	* @brief テクスチャーバッファの取得関数

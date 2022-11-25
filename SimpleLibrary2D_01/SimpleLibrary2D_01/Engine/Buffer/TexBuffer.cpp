@@ -10,7 +10,7 @@ TexBuffer::~TexBuffer()
 
 }
 
-bool TexBuffer::Create(ID3D12Device* device, DirectX::TexMetadata metadata, const DirectX::Image* img)
+ID3D12Resource* TexBuffer::Create(ID3D12Device* device, DirectX::TexMetadata metadata, const DirectX::Image* img)
 {
 	//WriteToSubresourceで転送するためのヒープ設定
 	D3D12_HEAP_PROPERTIES heapProp = {};
@@ -41,7 +41,7 @@ bool TexBuffer::Create(ID3D12Device* device, DirectX::TexMetadata metadata, cons
 		nullptr,
 		IID_PPV_ARGS(&buffer))))
 	{
-		return false;
+		return buffer;
 	}
 
 	buffer->WriteToSubresource(
@@ -51,8 +51,7 @@ bool TexBuffer::Create(ID3D12Device* device, DirectX::TexMetadata metadata, cons
 		img->rowPitch,		//1ラインサイズ
 		img->slicePitch);	//一枚のサイズ
 
-	return true;
-
+	return buffer;
 }
 
 ID3D12Resource* TexBuffer::Get()

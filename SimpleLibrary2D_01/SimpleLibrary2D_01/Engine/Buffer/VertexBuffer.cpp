@@ -2,16 +2,19 @@
 
 VertexBuffer::VertexBuffer()
 {
-	buffer = nullptr;
+	buffers.clear();
+	useCounter = 0;
 }
 
 VertexBuffer::~VertexBuffer()
 {
-	
+
 }
 
-bool VertexBuffer::Create(ID3D12Device* device)
+void VertexBuffer::Create(ID3D12Device* device)
 {
+	ID3D12Resource* tmp;
+
 	D3D12_HEAP_PROPERTIES heapProp = {};
 	heapProp.Type = D3D12_HEAP_TYPE_UPLOAD;
 	heapProp.CPUPageProperty = D3D12_CPU_PAGE_PROPERTY_UNKNOWN;
@@ -34,15 +37,37 @@ bool VertexBuffer::Create(ID3D12Device* device)
 		&resDesc,
 		D3D12_RESOURCE_STATE_GENERIC_READ,
 		nullptr,
-		IID_PPV_ARGS(&buffer))))
+		IID_PPV_ARGS(&tmp))))
 	{
-		return false;
+		return;
 	}
 
-	return true;
+	buffers.push_back(tmp);
+
+	return;
 }
 
-ID3D12Resource* VertexBuffer::Get()
+ID3D12Resource* VertexBuffer::Get(ID3D12Device* device)
 {
-	return buffer;
+	if (useCounter >= buffers.size())
+	{
+		Create(device);
+	}
+	ID3D12Resource* tmp = buffers.at(useCounter);
+	useCounter++;
+	return tmp;
+}
+
+void VertexBuffer::Finalize()
+{
+	for (auto& itr : buffers)
+	{
+		itr->Release();
+	}
+	buffers.clear();
+}
+
+void VertexBuffer::ResetUseCounter()
+{
+	useCounter = 0;
 }

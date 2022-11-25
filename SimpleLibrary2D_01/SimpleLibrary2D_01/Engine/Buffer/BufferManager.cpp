@@ -1,34 +1,19 @@
 #include "BufferManager.h"
 #include <random>
 
-std::map<int, CanvasData> BufferManager::canvasData;
+std::map<int, SpriteData> BufferManager::canvasData;
 
 int BufferManager::CreateCanvas(DirectX::TexMetadata metadata, const DirectX::Image* img, ID3D12Device* device)
 {
 	srand((unsigned)time(NULL));
-	CanvasData data;
+	SpriteData data;
 
-	if (vertBuff.Create(device) == false)
-	{
-		return -1;
-	}
-	if (indexBuff.Create(device) == false)
-	{
-		return -1;
-	}
-	if (texBuff.Create(device, metadata, img) == false)
-	{
-		return -1;
-	}
-	if (constBuff.Create(device) == false)
-	{
-		return -1;
-	}
-	
-	data.buffers.vertBuff = vertBuff.Get();
-	data.buffers.indexBuff = indexBuff.Get();
-	data.buffers.texBuff = texBuff.Get();
-	data.buffers.constBuff = constBuff.Get();
+	int handle = 5000;
+
+	vertBuff.Create(device);
+	data.indexBuff = indexBuff.Create(device);
+	data.texBuff = texBuff.Create(device, metadata, img);
+	data.constBuff = constBuff.Create(device);
 
 	data.metadata = metadata;
 
@@ -43,13 +28,18 @@ int BufferManager::CreateCanvas(DirectX::TexMetadata metadata, const DirectX::Im
 	return key;
 }
 
-ID3D12Resource* BufferManager::GetVertexBuffer(int key)
+void BufferManager::Finalize()
+{
+	vertBuff.Finalize();
+}
+
+ID3D12Resource* BufferManager::GetVertexBuffer(int key, ID3D12Device* device)
 {
 	if (B_FAILED(canvasData.contains(key)))
 	{
 		return nullptr;
 	}
-	return canvasData.at(key).buffers.vertBuff;
+	return vertBuff.Get(device);
 }
 
 ID3D12Resource* BufferManager::GetIndexBuffer(int key)
@@ -58,7 +48,7 @@ ID3D12Resource* BufferManager::GetIndexBuffer(int key)
 	{
 		return nullptr;
 	}
-	return canvasData.at(key).buffers.indexBuff;
+	return canvasData.at(key).indexBuff;
 }
 
 ID3D12Resource* BufferManager::GetTexBuffer(int key)
@@ -67,7 +57,7 @@ ID3D12Resource* BufferManager::GetTexBuffer(int key)
 	{
 		return nullptr;
 	}
-	return canvasData.at(key).buffers.texBuff;
+	return canvasData.at(key).texBuff;
 }
 
 ID3D12Resource* BufferManager::GetConstantBuffer(int key)
@@ -76,10 +66,15 @@ ID3D12Resource* BufferManager::GetConstantBuffer(int key)
 	{
 		return nullptr;
 	}
-	return canvasData.at(key).buffers.constBuff;
+	return canvasData.at(key).constBuff;
 }
 
 DirectX::TexMetadata BufferManager::GetMetadata(int key)
 {
 	return canvasData.at(key).metadata;
+}
+
+void BufferManager::ResetUseCounter()
+{
+	vertBuff.ResetUseCounter();
 }

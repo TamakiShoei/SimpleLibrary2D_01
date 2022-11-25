@@ -3,6 +3,7 @@
 IndexBuffer::IndexBuffer()
 {
 	buffer = nullptr;
+	isCreated = false;
 }
 
 IndexBuffer::~IndexBuffer()
@@ -10,7 +11,7 @@ IndexBuffer::~IndexBuffer()
 
 }
 
-bool IndexBuffer::Create(ID3D12Device* device)
+ID3D12Resource* IndexBuffer::Create(ID3D12Device* device)
 {
 	D3D12_HEAP_PROPERTIES heapProp = {};
 	heapProp.Type = D3D12_HEAP_TYPE_UPLOAD;
@@ -37,10 +38,9 @@ bool IndexBuffer::Create(ID3D12Device* device)
 		nullptr,
 		IID_PPV_ARGS(&buffer))))
 	{
-		return false;
+		return buffer;
 	}
-
-	return true;
+	return buffer;
 }
 
 ID3D12Resource* IndexBuffer::Get()
