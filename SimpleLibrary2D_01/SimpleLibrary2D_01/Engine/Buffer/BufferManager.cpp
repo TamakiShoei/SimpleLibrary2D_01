@@ -1,16 +1,12 @@
 #include "BufferManager.h"
 #include <random>
 
-std::map<int, SpriteData> BufferManager::canvasData;
-
-int BufferManager::CreateCanvas(DirectX::TexMetadata metadata, const DirectX::Image* img, ID3D12Device* device)
+int BufferManager::CreateSprite(DirectX::TexMetadata metadata, const DirectX::Image* img, ID3D12Device* device)
 {
 	srand((unsigned)time(NULL));
 	SpriteData data;
 
-	int handle = 5000;
-
-	vertBuff.Create(device);
+	data.vertBuff.push_back(vertBuff.Create(device));
 	data.indexBuff = indexBuff.Create(device);
 	data.texBuff = texBuff.Create(device, metadata, img);
 	data.constBuff = constBuff.Create(device);
@@ -21,60 +17,64 @@ int BufferManager::CreateCanvas(DirectX::TexMetadata metadata, const DirectX::Im
 	{
 		key = rand() % 100000;
 
-	} while (canvasData.contains(key));
+	} while (spriteData.contains(key));
 
-	canvasData.insert(std::make_pair(key, data));
+	spriteData.insert(std::make_pair(key, data));
+	useCounter.insert(std::make_pair(key, 0));
 
 	return key;
 }
 
-void BufferManager::Finalize()
-{
-	vertBuff.Finalize();
-}
-
 ID3D12Resource* BufferManager::GetVertexBuffer(int key, ID3D12Device* device)
 {
-	if (B_FAILED(canvasData.contains(key)))
+	if (B_FAILED(spriteData.contains(key)))
 	{
 		return nullptr;
 	}
-	return vertBuff.Get(device);
+	if (spriteData.at(key).vertBuff.size() <= useCounter.at(key))
+	{
+		spriteData.at(key).vertBuff.push_back(vertBuff.Create(device));
+	}
+	useCounter.at(key) += 1;
+	return spriteData.at(key).vertBuff.at(useCounter.at(key) - 1);
 }
 
 ID3D12Resource* BufferManager::GetIndexBuffer(int key)
 {
-	if (B_FAILED(canvasData.contains(key)))
+	if (B_FAILED(spriteData.contains(key)))
 	{
 		return nullptr;
 	}
-	return canvasData.at(key).indexBuff;
+	return spriteData.at(key).indexBuff;
 }
 
 ID3D12Resource* BufferManager::GetTexBuffer(int key)
 {
-	if (B_FAILED(canvasData.contains(key)))
+	if (B_FAILED(spriteData.contains(key)))
 	{
 		return nullptr;
 	}
-	return canvasData.at(key).texBuff;
+	return spriteData.at(key).texBuff;
 }
 
 ID3D12Resource* BufferManager::GetConstantBuffer(int key)
 {
-	if (B_FAILED(canvasData.contains(key)))
+	if (B_FAILED(spriteData.contains(key)))
 	{
 		return nullptr;
 	}
-	return canvasData.at(key).constBuff;
+	return spriteData.at(key).constBuff;
 }
 
 DirectX::TexMetadata BufferManager::GetMetadata(int key)
 {
-	return canvasData.at(key).metadata;
+	return spriteData.at(key).metadata;
 }
 
 void BufferManager::ResetUseCounter()
 {
-	vertBuff.ResetUseCounter();
+	for (auto& itr : useCounter)
+	{
+		itr.second = 0;
+	}
 }

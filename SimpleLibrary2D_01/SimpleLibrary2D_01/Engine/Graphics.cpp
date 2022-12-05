@@ -660,7 +660,7 @@ int Graphics::LoadTexture(const char* file_path)
 	//生データの抽出
 	auto img = scratchImg.GetImage(0, 0, 0);
 
-	return BufferManager::Instance()->CreateCanvas(metadata, img, device.Get());
+	return BufferManager::Instance()->CreateSprite(metadata, img, device.Get());
 }
 
 void Graphics::DrawTexture(float pos_x, float pos_y, int key)

@@ -12,7 +12,7 @@
 struct SpriteData
 {
 	DirectX::TexMetadata metadata;
-	ID3D12Resource* vertBuff;
+	std::vector<ID3D12Resource*> vertBuff;
 	ID3D12Resource* indexBuff;
 	ID3D12Resource* texBuff;
 	ID3D12Resource* constBuff;
@@ -33,12 +33,7 @@ public:
 	* @param[in] img 画像の生データ
 	* @param[in] device デバイス
 	*/
-	int CreateCanvas(DirectX::TexMetadata metadata, const DirectX::Image* img, ID3D12Device* device);
-
-	/**
-	* @brief 各バッファの解放関数
-	*/
-	void Finalize();
+	int CreateSprite(DirectX::TexMetadata metadata, const DirectX::Image* img, ID3D12Device* device);
 
 	/**
 	* @brief 頂点バッファの取得関数
@@ -86,7 +81,8 @@ private:
 	TexBuffer texBuff;
 	ConstantBuffer constBuff;
 	int key;
-	static std::map<int, SpriteData> canvasData;
+	std::map<int, SpriteData> spriteData;
+	std::map<int, int> useCounter;
 
 private:	//インスタンスの制限
 	BufferManager() = default;

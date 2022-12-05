@@ -11,7 +11,7 @@ VertexBuffer::~VertexBuffer()
 
 }
 
-void VertexBuffer::Create(ID3D12Device* device)
+ID3D12Resource* VertexBuffer::Create(ID3D12Device* device)
 {
 	ID3D12Resource* tmp;
 
@@ -39,35 +39,8 @@ void VertexBuffer::Create(ID3D12Device* device)
 		nullptr,
 		IID_PPV_ARGS(&tmp))))
 	{
-		return;
+		return nullptr;
 	}
 
-	buffers.push_back(tmp);
-
-	return;
-}
-
-ID3D12Resource* VertexBuffer::Get(ID3D12Device* device)
-{
-	if (useCounter >= buffers.size())
-	{
-		Create(device);
-	}
-	ID3D12Resource* tmp = buffers.at(useCounter);
-	useCounter++;
 	return tmp;
-}
-
-void VertexBuffer::Finalize()
-{
-	for (auto& itr : buffers)
-	{
-		itr->Release();
-	}
-	buffers.clear();
-}
-
-void VertexBuffer::ResetUseCounter()
-{
-	useCounter = 0;
 }
