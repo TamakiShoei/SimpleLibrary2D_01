@@ -19,15 +19,6 @@ public:
 	* @retval false 生成失敗
 	*/
 	ID3D12Resource* Create(ID3D12Device* device, DirectX::TexMetadata metadata, const DirectX::Image* img);
-
-	/**
-	* @brief テクスチャーバッファの取得関数
-	* @retval テクスチャーバッファデータ
-	*/
-	ID3D12Resource* Get();
-
-private:
-	ID3D12Resource* buffer;
 };
 
 #endif

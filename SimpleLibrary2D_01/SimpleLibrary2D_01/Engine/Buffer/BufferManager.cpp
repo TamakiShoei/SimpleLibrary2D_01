@@ -78,3 +78,22 @@ void BufferManager::ResetUseCounter()
 		itr.second = 0;
 	}
 }
+
+void BufferManager::Finalize()
+{
+	for (auto&& itr : spriteData)
+	{
+		for (auto&& vert : itr.second.vertBuff)
+		{
+			vert->Release();
+			vert = nullptr;
+		}
+		itr.second.vertBuff.clear();
+		itr.second.indexBuff->Release();
+		itr.second.indexBuff = nullptr;
+		itr.second.texBuff->Release();
+		itr.second.texBuff = nullptr;
+		itr.second.constBuff->Release();
+		itr.second.constBuff = nullptr;
+	}
+}

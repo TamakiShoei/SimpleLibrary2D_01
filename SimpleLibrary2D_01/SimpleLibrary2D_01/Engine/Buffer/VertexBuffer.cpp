@@ -2,8 +2,7 @@
 
 VertexBuffer::VertexBuffer()
 {
-	buffers.clear();
-	useCounter = 0;
+
 }
 
 VertexBuffer::~VertexBuffer()
@@ -13,8 +12,6 @@ VertexBuffer::~VertexBuffer()
 
 ID3D12Resource* VertexBuffer::Create(ID3D12Device* device)
 {
-	ID3D12Resource* tmp;
-
 	D3D12_HEAP_PROPERTIES heapProp = {};
 	heapProp.Type = D3D12_HEAP_TYPE_UPLOAD;
 	heapProp.CPUPageProperty = D3D12_CPU_PAGE_PROPERTY_UNKNOWN;
@@ -30,6 +27,8 @@ ID3D12Resource* VertexBuffer::Create(ID3D12Device* device)
 	resDesc.SampleDesc.Count = 1;
 	resDesc.Flags = D3D12_RESOURCE_FLAG_NONE;
 	resDesc.Layout = D3D12_TEXTURE_LAYOUT_ROW_MAJOR;
+
+	ID3D12Resource* tmp = nullptr;
 
 	if (FAILED(device->CreateCommittedResource(
 		&heapProp,

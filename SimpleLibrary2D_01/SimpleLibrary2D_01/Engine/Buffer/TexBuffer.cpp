@@ -2,7 +2,7 @@
 
 TexBuffer::TexBuffer()
 {
-	buffer = nullptr;
+
 }
 
 TexBuffer::~TexBuffer()
@@ -33,28 +33,25 @@ ID3D12Resource* TexBuffer::Create(ID3D12Device* device, DirectX::TexMetadata met
 	resDesc.Layout = D3D12_TEXTURE_LAYOUT_UNKNOWN;	//レイアウトは決定しない
 	resDesc.Flags = D3D12_RESOURCE_FLAG_NONE;
 
+	ID3D12Resource* tmp = nullptr;
+
 	if (FAILED(device->CreateCommittedResource(
 		&heapProp,
 		D3D12_HEAP_FLAG_NONE,
 		&resDesc,
 		D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE,
 		nullptr,
-		IID_PPV_ARGS(&buffer))))
+		IID_PPV_ARGS(&tmp))))
 	{
-		return buffer;
+		return tmp;
 	}
 
-	buffer->WriteToSubresource(
+	tmp->WriteToSubresource(
 		0,
 		nullptr,
 		img->pixels,		//全データのアドレス
 		img->rowPitch,		//1ラインサイズ
 		img->slicePitch);	//一枚のサイズ
 
-	return buffer;
-}
-
-ID3D12Resource* TexBuffer::Get()
-{
-	return buffer;
+	return tmp;
 }

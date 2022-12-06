@@ -17,15 +17,6 @@ public:
 	* @retval false 生成失敗
 	*/
 	ID3D12Resource* Create(ID3D12Device* device);
-
-	/**
-	* @brief コンスタントバッファの取得関数
-	* @retval コンスタントバッファデータ
-	*/
-	ID3D12Resource* Get();
-
-private:
-	ID3D12Resource* buffer;
 };
 
 #endif

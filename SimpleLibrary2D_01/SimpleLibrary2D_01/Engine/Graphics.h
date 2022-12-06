@@ -89,6 +89,11 @@ public:
 	*/
 	void WaitForPreviousFrame();
 
+	/**
+	* @brief リソース解放関数
+	*/
+	void Finalize();
+
 public:
 	//フレームカウントは最低2から(フロントバッファ・バックバッファ)
 	static const UINT frameCount = 2;

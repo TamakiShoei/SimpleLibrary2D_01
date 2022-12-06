@@ -2,8 +2,7 @@
 
 IndexBuffer::IndexBuffer()
 {
-	buffer = nullptr;
-	isCreated = false;
+
 }
 
 IndexBuffer::~IndexBuffer()
@@ -29,6 +28,8 @@ ID3D12Resource* IndexBuffer::Create(ID3D12Device* device)
 	resDesc.Flags = D3D12_RESOURCE_FLAG_NONE;
 	resDesc.Layout = D3D12_TEXTURE_LAYOUT_ROW_MAJOR;
 
+	ID3D12Resource* tmp = nullptr;
+
 	//インデックスバッファーの作成
 	if (FAILED(device->CreateCommittedResource(
 		&heapProp,
@@ -36,14 +37,9 @@ ID3D12Resource* IndexBuffer::Create(ID3D12Device* device)
 		&resDesc,
 		D3D12_RESOURCE_STATE_GENERIC_READ,
 		nullptr,
-		IID_PPV_ARGS(&buffer))))
+		IID_PPV_ARGS(&tmp))))
 	{
-		return buffer;
+		return tmp;
 	}
-	return buffer;
-}
-
-ID3D12Resource* IndexBuffer::Get()
-{
-	return buffer;
+	return tmp;
 }

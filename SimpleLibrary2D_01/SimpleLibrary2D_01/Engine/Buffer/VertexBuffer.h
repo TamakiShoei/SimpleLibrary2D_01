@@ -17,10 +17,6 @@ public:
 	* @retval false ê∂ê¨é∏îs
 	*/
 	ID3D12Resource* Create(ID3D12Device* device);
-
-private:
-	std::vector<ID3D12Resource*> buffers;
-	int useCounter;
 };
 
 #endif

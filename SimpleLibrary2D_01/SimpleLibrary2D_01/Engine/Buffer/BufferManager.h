@@ -75,6 +75,11 @@ public:
 	*/
 	void ResetUseCounter();
 
+	/**
+	* @brief ƒŠƒ\[ƒX‰ğ•úŠÖ”
+	*/
+	void Finalize();
+
 private:
 	VertexBuffer vertBuff;
 	IndexBuffer indexBuff;

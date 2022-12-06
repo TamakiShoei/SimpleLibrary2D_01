@@ -6,7 +6,6 @@ LRESULT CALLBACK Window::WindowProc(HWND hwnd, UINT msg, WPARAM w_param, LPARAM 
 	switch (msg)
 	{
 	case WM_DESTROY:	//終了時
-		Engine::Finalize();//解放
 		PostQuitMessage(0);
 		return 0;
 	}

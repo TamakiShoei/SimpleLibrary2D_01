@@ -11,7 +11,14 @@ Input::Input()
 
 Input::~Input()
 {
-	
+	if (keyboard != nullptr)
+	{
+		keyboard = nullptr;
+	}
+	if (keyboard != nullptr)
+	{
+		directInput = nullptr;
+	}
 }
 
 bool Input::Initialize()
