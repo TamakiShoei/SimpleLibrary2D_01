@@ -21,9 +21,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int)
 	{
 		Engine::Update();
 
-		if (Engine::IsPushedKey(DIK_W))
+		if (Engine::IsHeldKey(DIK_W))
 		{
-			posx += 30;
+			posx += 3;
 		}
 
 		Engine::ClearScreen();

@@ -35,7 +35,7 @@ bool Graphics::Initialize()
 	{
 		return false;
 	}
-	if (B_FAILED(InitializeSwapChain()))
+	if (B_FAILED(swapChain.Initialize(factory.Get(), commandQueue.Get())))
 	{
 		return false;
 	}
@@ -87,38 +87,38 @@ bool Graphics::Initialize()
 	return true;
 }
 
-bool Graphics::InitializeSwapChain()
-{
-	RECT rect;
-	GetClientRect(FindWindow(WINDOW_TITLE, nullptr), &rect);
-
-	//スワップチェインの作成
-	swapChainDesc.BufferCount = frameCount;
-	swapChainDesc.Width = rect.right;
-	swapChainDesc.Height = rect.bottom;
-	swapChainDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
-	swapChainDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
-	swapChainDesc.SwapEffect = DXGI_SWAP_EFFECT_FLIP_DISCARD;
-	swapChainDesc.SampleDesc.Count = 1;
-	//スワップチェインとは、レンダリング結果を出力するためのオブジェクト
-	//紐づいたビデオアダプタやウィンドウに対してレンダリング結果を出力する
-
-	//スワップチェインを作成
-	ComPtr<IDXGISwapChain1>	tmpSwapChain;
-	if (FAILED(factory.Get()->CreateSwapChainForHwnd(commandQueue.Get(), FindWindow(WINDOW_TITLE, nullptr), &swapChainDesc, nullptr, nullptr, tmpSwapChain.GetAddressOf())))
-	{
-		MessageBox(NULL, L"スワップチェインを作成できませんでした。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
-		return false;
-	}
-
-	//スワップチェインをキャスト
-	tmpSwapChain.As(&swapChain);
-
-	//バックバッファのインデックスを格納
-	frameIndex = swapChain->GetCurrentBackBufferIndex();
-
-	return true;
-}
+//bool Graphics::InitializeSwapChain()
+//{
+//	RECT rect;
+//	GetClientRect(FindWindow(WINDOW_TITLE, nullptr), &rect);
+//
+//	//スワップチェインの作成
+//	swapChainDesc.BufferCount = frameCount;
+//	swapChainDesc.Width = rect.right;
+//	swapChainDesc.Height = rect.bottom;
+//	swapChainDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+//	swapChainDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
+//	swapChainDesc.SwapEffect = DXGI_SWAP_EFFECT_FLIP_DISCARD;
+//	swapChainDesc.SampleDesc.Count = 1;
+//	//スワップチェインとは、レンダリング結果を出力するためのオブジェクト
+//	//紐づいたビデオアダプタやウィンドウに対してレンダリング結果を出力する
+//
+//	//スワップチェインを作成
+//	ComPtr<IDXGISwapChain1>	tmpSwapChain;
+//	if (FAILED(factory.Get()->CreateSwapChainForHwnd(commandQueue.Get(), FindWindow(WINDOW_TITLE, nullptr), &swapChainDesc, nullptr, nullptr, tmpSwapChain.GetAddressOf())))
+//	{
+//		MessageBox(NULL, L"スワップチェインを作成できませんでした。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
+//		return false;
+//	}
+//
+//	//スワップチェインをキャスト
+//	tmpSwapChain.As(&swapChain);
+//
+//	//バックバッファのインデックスを格納
+//	frameIndex = swapChain->GetCurrentBackBufferIndex();
+//
+//	return true;
+//}
 
 bool Graphics::InitializeFence()
 {
@@ -182,7 +182,7 @@ bool Graphics::CreateRenderTargetView()
 	for (UINT i = 0; i < frameCount; i++)
 	{
 		// RTVバッファを取得
-		if (FAILED(swapChain->GetBuffer(i, IID_PPV_ARGS(renderTargets[i].GetAddressOf()))))
+		if (FAILED(swapChain.Get()->GetBuffer(i, IID_PPV_ARGS(renderTargets[i].GetAddressOf()))))
 		{
 			MessageBox(NULL, L"RTVバッファを取得できませんでした。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
 			return false;
@@ -383,7 +383,7 @@ void Graphics::ClearScreen()
 	heap.ResetCounter();
 
 	// バックバッファのインデックスを格納
-	frameIndex = swapChain->GetCurrentBackBufferIndex();
+	frameIndex = swapChain.Get()->GetCurrentBackBufferIndex();
 
 	// バックバッファをレンダーターゲットとして使用
 	auto barrier = CD3DX12_RESOURCE_BARRIER::Transition(renderTargets[frameIndex].Get(), D3D12_RESOURCE_STATE_PRESENT, D3D12_RESOURCE_STATE_RENDER_TARGET);
@@ -422,7 +422,7 @@ void Graphics::ScreenFlip()
 	commandQueue.Get()->ExecuteCommandLists(_countof(commandLists), commandLists);
 
 	// フレームを最終出力
-	swapChain->Present(1, 0);
+	swapChain.Get()->Present(1, 0);
 
 	// フレーム後処理
 	WaitForPreviousFrame();
@@ -704,7 +704,7 @@ void Graphics::WaitForPreviousFrame()
 	}
 
 	// バックバッファのインデックスを格納
-	frameIndex = swapChain->GetCurrentBackBufferIndex();
+	frameIndex = swapChain.Get()->GetCurrentBackBufferIndex();
 }
 
 void Graphics::Finalize()
@@ -717,7 +717,7 @@ void Graphics::Finalize()
 	rtvHeap->Release();
 	rootSignature->Release();
 	pipelineState->Release();
-	swapChain->Release();
+	swapChain.Finalize();
 	commandQueue.Finalize();
 	factory.Finalize();
 	heap.Finalize();

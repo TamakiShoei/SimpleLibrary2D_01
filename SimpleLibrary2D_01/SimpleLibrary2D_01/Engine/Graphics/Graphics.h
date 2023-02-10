@@ -13,6 +13,7 @@
 #include "Factory/Factory.h"
 #include "Device/Device.h"
 #include "CommandQueue/CommandQueue.h"
+#include "SwapChain/SwapChain.h"
 #include "DescriptorHeap/DescriptorHeap.h"
 
 class Graphics : VertexBuffer
@@ -111,7 +112,7 @@ public:
 	Factory factory;
 	Device								device;
 	CommandQueue						commandQueue;
-	ComPtr<IDXGISwapChain4>				swapChain;
+	SwapChain							swapChain;
 	ComPtr<ID3D12Resource>				renderTargets[frameCount];
 	ComPtr<ID3D12CommandAllocator>		commandAllocator;
 	ComPtr<ID3D12DescriptorHeap>		rtvHeap;
@@ -134,22 +135,6 @@ public:
 	D3D12_RECT scissorRect;
 
 private:
-
-	/**
-	* @brief コマンドキューの初期化関数
-	* @details 描画を使用するための初期化を行う
-	* @retval true 初期化成功
-	* @retval false 初期化失敗
-	*/
-	//bool InitializeCommandQueue();
-
-	/**
-	* @brief スワップチェインの初期化関数
-	* @details 描画を使用するための初期化を行う
-	* @retval true 初期化成功
-	* @retval false 初期化失敗
-	*/
-	bool InitializeSwapChain();
 
 	/**
 	* @brief フェンスの初期化関数
