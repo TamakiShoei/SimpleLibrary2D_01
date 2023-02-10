@@ -7,7 +7,7 @@
 
 #include "CommonDifinition.h"
 #include "InputDataDefinition.h"
-#include "Graphics.h"
+#include "Graphics/Graphics.h"
 #include "Window.h"
 
 class Engine

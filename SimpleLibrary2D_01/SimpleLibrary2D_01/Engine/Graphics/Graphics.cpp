@@ -8,7 +8,6 @@ bool Graphics::Initialize()
 	srand((unsigned)time(NULL));
 
 	UINT dxgiFactoryFlags = 0;
-	InitializeFactory(dxgiFactoryFlags);
 
 #if defined(_DEBUG)
 	//DirectX12のデバッグレイヤーを有効
@@ -21,9 +20,13 @@ bool Graphics::Initialize()
 			//追加のデバッグレイヤーを有効
 			dxgiFactoryFlags |= DXGI_CREATE_FACTORY_DEBUG;
 		}
+		debugController->Release();
 	}
 #endif
-
+	if (B_FAILED(factory.Initialize(dxgiFactoryFlags)))
+	{
+		return false;
+	}
 	if (B_FAILED(InitializeAdapter()))
 	{
 		return false;
@@ -34,13 +37,6 @@ bool Graphics::Initialize()
 	}
 	if (B_FAILED(InitializeSwapChain()))
 	{
-		return false;
-	}
-
-	//Alt+Enterによる全画面遷移をできないようにする
-	if (FAILED(factory->MakeWindowAssociation(FindWindow(WINDOW_TITLE, nullptr), DXGI_MWA_NO_ALT_ENTER)))
-	{
-		MessageBox(NULL, L"画面の設定ができません。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
 		return false;
 	}
 
@@ -91,23 +87,11 @@ bool Graphics::Initialize()
 	return true;
 }
 
-bool Graphics::InitializeFactory(UINT& dxgi_factory_flags)
-{
-	//ファクトリを作成
-	if (FAILED(CreateDXGIFactory2(dxgi_factory_flags, IID_PPV_ARGS(factory.GetAddressOf()))))
-	{
-		MessageBox(NULL, L"ファクトリを作成できませんでした。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
-		return false;
-	}
-
-	return true;
-}
-
 bool Graphics::InitializeAdapter()
 {
 	//DirectX12がサポートする利用可能なハードウェアアダプタを検索し取得
 	HRESULT hr;
-	for (UINT adapterIndex = 0; DXGI_ERROR_NOT_FOUND != factory->EnumAdapters1(adapterIndex, adapter.GetAddressOf()); ++adapterIndex)
+	for (UINT adapterIndex = 0; DXGI_ERROR_NOT_FOUND != factory.Get()->EnumAdapters1(adapterIndex, adapter.GetAddressOf()); ++adapterIndex)
 	{
 		DXGI_ADAPTER_DESC1 adapterDesc;
 		adapter->GetDesc1(&adapterDesc);
@@ -136,7 +120,7 @@ bool Graphics::InitializeAdapter()
 	if (FAILED(hr))
 	{
 		ComPtr<IDXGIAdapter> warpAdapter;
-		factory->EnumWarpAdapter(IID_PPV_ARGS(warpAdapter.GetAddressOf()));
+		factory.Get()->EnumWarpAdapter(IID_PPV_ARGS(warpAdapter.GetAddressOf()));
 		if (FAILED(D3D12CreateDevice(warpAdapter.Get(), D3D_FEATURE_LEVEL_11_0, IID_PPV_ARGS(device.GetAddressOf()))))
 		{
 			MessageBox(NULL, L"選択したWARPデバイスまでもがDirectX12に対応していません。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
@@ -181,7 +165,7 @@ bool Graphics::InitializeSwapChain()
 
 	//スワップチェインを作成
 	ComPtr<IDXGISwapChain1>	tmpSwapChain;
-	if (FAILED(factory->CreateSwapChainForHwnd(commandQueue.Get(), FindWindow(WINDOW_TITLE, nullptr), &swapChainDesc, nullptr, nullptr, tmpSwapChain.GetAddressOf())))
+	if (FAILED(factory.Get()->CreateSwapChainForHwnd(commandQueue.Get(), FindWindow(WINDOW_TITLE, nullptr), &swapChainDesc, nullptr, nullptr, tmpSwapChain.GetAddressOf())))
 	{
 		MessageBox(NULL, L"スワップチェインを作成できませんでした。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
 		return false;
@@ -799,7 +783,7 @@ void Graphics::Finalize()
 	{
 		adapter->Release();
 	}
-	factory->Release();
+	factory.Finalize();
 	hardwareAdapter->Release();
 	heap.Finalize();
 

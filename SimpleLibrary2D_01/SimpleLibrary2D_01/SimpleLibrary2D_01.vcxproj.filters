@@ -17,15 +17,18 @@
     <Filter Include="Src">
       <UniqueIdentifier>{bdb1c733-ef59-4691-bab0-f052ccb6fdd0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\DescriptorHeap">
+    <Filter Include="Engine\Graphics">
+      <UniqueIdentifier>{0c74fe4f-fd1a-47ab-99a4-4f6b756e7a76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Graphics\DescriptorHeap">
       <UniqueIdentifier>{3ccf2285-3f8d-4cac-9d9f-baf8d1495890}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Graphics\Factory">
+      <UniqueIdentifier>{50357f79-fd3d-4546-a40f-112ee6c16335}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Engine.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Graphics.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Input.cpp">
@@ -52,8 +55,14 @@
     <ClCompile Include="Src\Main.cpp">
       <Filter>Src</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\DescriptorHeap\DescriptorHeap.cpp">
-      <Filter>Engine\DescriptorHeap</Filter>
+    <ClCompile Include="Engine\Graphics\DescriptorHeap\DescriptorHeap.cpp">
+      <Filter>Engine\Graphics\DescriptorHeap</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Graphics\Graphics.cpp">
+      <Filter>Engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Graphics\Factory\Factory.cpp">
+      <Filter>Engine\Graphics\Factory</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -61,9 +70,6 @@
       <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Engine.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Graphics.h">
       <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Input.h">
@@ -90,8 +96,14 @@
     <ClInclude Include="Engine\Buffer\VertexBuffer.h">
       <Filter>Engine\Buffer</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\DescriptorHeap\DescriptorHeap.h">
-      <Filter>Engine\DescriptorHeap</Filter>
+    <ClInclude Include="Engine\Graphics\DescriptorHeap\DescriptorHeap.h">
+      <Filter>Engine\Graphics\DescriptorHeap</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Graphics\Graphics.h">
+      <Filter>Engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Graphics\Factory\Factory.h">
+      <Filter>Engine\Graphics\Factory</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

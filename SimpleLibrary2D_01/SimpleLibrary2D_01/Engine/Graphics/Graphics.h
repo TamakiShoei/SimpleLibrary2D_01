@@ -8,8 +8,9 @@
 #define	GRAPHICS_H
 
 #include <map>
-#include "CommonDifinition.h"
-#include "Buffer/BufferManager.h"
+#include "../CommonDifinition.h"
+#include "../Buffer/BufferManager.h"
+#include "Factory/Factory.h"
 #include "DescriptorHeap/DescriptorHeap.h"
 
 class Graphics : VertexBuffer
@@ -125,7 +126,7 @@ public:
 	// ・深度ステンシルの設定
 	// このような描画の一連の流れを指定する。
 
-	ComPtr<IDXGIFactory4> factory;
+	Factory factory;
 	ComPtr<IDXGIAdapter1> hardwareAdapter = nullptr;
 	ComPtr<IDXGIAdapter1> adapter;
 
@@ -140,7 +141,7 @@ private:
 	* @retval true 初期化成功
 	* @retval false 初期化失敗
 	*/
-	bool InitializeFactory(UINT& dxgi_factory_flags);
+	//bool InitializeFactory(UINT& dxgi_factory_flags);
 
 	/**
 	* @brief アダプタの初期化関数
