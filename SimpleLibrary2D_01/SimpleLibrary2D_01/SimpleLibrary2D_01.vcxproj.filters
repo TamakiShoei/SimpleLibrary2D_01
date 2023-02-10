@@ -35,6 +35,12 @@
     <Filter Include="Engine\Graphics\SwapChain">
       <UniqueIdentifier>{41d8ad1e-71b2-4cbd-90f4-2c2699cf2e40}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Graphics\RootSignature">
+      <UniqueIdentifier>{873e140e-779d-4689-85ef-2cabc3a13cb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Graphics\Pipeline">
+      <UniqueIdentifier>{093a0ef1-48e8-404e-b71c-b7869fae7102}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Engine.cpp">
@@ -81,6 +87,12 @@
     </ClCompile>
     <ClCompile Include="Engine\Graphics\SwapChain\SwapChain.cpp">
       <Filter>Engine\Graphics\SwapChain</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Graphics\RootSignature\RootSignature.cpp">
+      <Filter>Engine\Graphics\RootSignature</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Graphics\Pipeline\Pipeline.cpp">
+      <Filter>Engine\Graphics\Pipeline</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -131,6 +143,12 @@
     </ClInclude>
     <ClInclude Include="Engine\Graphics\SwapChain\SwapChain.h">
       <Filter>Engine\Graphics\SwapChain</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Graphics\RootSignature\RootSignature.h">
+      <Filter>Engine\Graphics\RootSignature</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Graphics\Pipeline\Pipeline.h">
+      <Filter>Engine\Graphics\Pipeline</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

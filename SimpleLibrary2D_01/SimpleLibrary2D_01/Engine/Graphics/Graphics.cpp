@@ -39,12 +39,11 @@ bool Graphics::Initialize()
 	{
 		return false;
 	}
-
-	// ディスクリプタヒープというのは、GPU上に作られるデスクリプタを保存するための配列。
-	// GPUメモリ上に存在する、様々なデータやバッファの種類や位置、大きさを示す構造体のようなもの。
-	// 何らかのデータ配列として表されているということになる。
-	// このように明示的に区切ることによって、その中の構造体のような配列からデータを参照しやすくしている。
-	if (B_FAILED(CreatePipeline()))
+	if (B_FAILED(rootSignature.Initialize(device.Get())))
+	{
+		return false;
+	}
+	if (B_FAILED(pipeline.Initialize(device.Get(), rootSignature.Get())))
 	{
 		return false;
 	}
@@ -219,159 +218,13 @@ void Graphics::SetDrawArea()
 	scissorRect.bottom = scissorRect.top + rect.bottom;
 }
 
-bool Graphics::CreatePipeline()
-{
-	ID3DBlob* vsBlob = nullptr;
-	ID3DBlob* psBlob = nullptr;
-	ID3DBlob* rootSignatureBlob = nullptr;
-	ID3DBlob* errorBlob = nullptr;
-
-	if (FAILED(D3DCompileFromFile(
-		L"Engine/Res/Shader/VertexShader.hlsl",
-		nullptr,
-		D3D_COMPILE_STANDARD_FILE_INCLUDE,
-		"VS", "vs_5_0",
-		D3DCOMPILE_DEBUG | D3DCOMPILE_SKIP_OPTIMIZATION,
-		0,
-		&vsBlob, &errorBlob)))
-	{
-		return false;
-	}
-
-	if (FAILED(D3DCompileFromFile(
-		L"Engine/Res/Shader/PixelShader.hlsl",
-		nullptr,
-		D3D_COMPILE_STANDARD_FILE_INCLUDE,
-		"PS", "ps_5_0",
-		D3DCOMPILE_DEBUG | D3DCOMPILE_SKIP_OPTIMIZATION,
-		0,
-		&psBlob, &errorBlob)))
-	{
-		return false;
-	}
-
-	D3D12_INPUT_ELEMENT_DESC inputLayout[] =
-	{
-		{	//座標情報
-			"POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0,
-			D3D12_APPEND_ALIGNED_ELEMENT,
-			D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0
-		},
-
-		{	//uv情報
-			"TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0,
-			D3D12_APPEND_ALIGNED_ELEMENT,
-			D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0
-		},
-	};
-
-	//ディスクリプタレンジの作成
-	D3D12_DESCRIPTOR_RANGE descTblRange[2] = {};
-
-	//テクスチャー用レジスター0番
-	descTblRange[0].NumDescriptors = 1;	//テクスチャ1つ
-	descTblRange[0].RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_SRV;	//種別はテクスチャ
-	descTblRange[0].BaseShaderRegister = 0;	//0番スロットから
-	descTblRange[0].OffsetInDescriptorsFromTableStart = D3D12_DESCRIPTOR_RANGE_OFFSET_APPEND;
-
-	//定数用レジスター0番
-	descTblRange[1].NumDescriptors = 1;	//テクスチャ1つ
-	descTblRange[1].RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_CBV;	//種別は定数
-	descTblRange[1].BaseShaderRegister = 0;	//0番スロットから
-	descTblRange[1].OffsetInDescriptorsFromTableStart = D3D12_DESCRIPTOR_RANGE_OFFSET_APPEND;
-
-
-	//ルートパラメーターの設定
-	D3D12_ROOT_PARAMETER rootParam[2] = {};
-	rootParam[0].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;	//ピクセルシェーダーから見える
-	rootParam[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_DESCRIPTOR_TABLE;
-	rootParam[0].DescriptorTable.pDescriptorRanges = &descTblRange[0];
-	rootParam[0].DescriptorTable.NumDescriptorRanges = 1;	//レンジ数
-
-	rootParam[1].ShaderVisibility = D3D12_SHADER_VISIBILITY_VERTEX;
-	rootParam[1].ParameterType = D3D12_ROOT_PARAMETER_TYPE_DESCRIPTOR_TABLE;
-	rootParam[1].DescriptorTable.pDescriptorRanges = &descTblRange[1];
-	rootParam[1].DescriptorTable.NumDescriptorRanges = 1;	//レンジ数
-
-	//サンプラーの設定
-	D3D12_STATIC_SAMPLER_DESC samplerDesc = {};
-	samplerDesc.AddressU = D3D12_TEXTURE_ADDRESS_MODE_WRAP;	//アドレッシングモードは繰り返し
-	samplerDesc.AddressV = D3D12_TEXTURE_ADDRESS_MODE_WRAP;	//アドレッシングモードは繰り返し
-	samplerDesc.AddressW = D3D12_TEXTURE_ADDRESS_MODE_WRAP;	//アドレッシングモードは繰り返し
-	samplerDesc.BorderColor = D3D12_STATIC_BORDER_COLOR_TRANSPARENT_BLACK;
-	samplerDesc.Filter = D3D12_FILTER_MIN_MAG_MIP_LINEAR;	//線形保管
-	samplerDesc.MaxLOD = D3D12_FLOAT32_MAX;	//ミップマップ最大値
-	samplerDesc.MinLOD = 0.0f;
-	samplerDesc.ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
-	samplerDesc.ComparisonFunc = D3D12_COMPARISON_FUNC_NEVER;
-
-	D3D12_ROOT_SIGNATURE_DESC rootSignatureDesc = {};
-	rootSignatureDesc.Flags = D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT;
-	rootSignatureDesc.pParameters = rootParam;
-	rootSignatureDesc.NumParameters = 2;
-	rootSignatureDesc.pStaticSamplers = &samplerDesc;
-	rootSignatureDesc.NumStaticSamplers = 1;
-
-	if (FAILED(D3D12SerializeRootSignature(
-		&rootSignatureDesc,
-		D3D_ROOT_SIGNATURE_VERSION_1_0,
-		&rootSignatureBlob, &errorBlob)))
-	{
-		return false;
-	}
-
-	HRESULT result;
-
-	result = device.Get()->CreateRootSignature(
-		0,
-		rootSignatureBlob->GetBufferPointer(),
-		rootSignatureBlob->GetBufferSize(),
-		IID_PPV_ARGS(&rootSignature));
-
-	D3D12_RENDER_TARGET_BLEND_DESC renderTargetBlendDesc = {};
-	renderTargetBlendDesc.BlendEnable = false;
-	renderTargetBlendDesc.LogicOpEnable = false;
-	renderTargetBlendDesc.RenderTargetWriteMask = D3D12_COLOR_WRITE_ENABLE_ALL;
-
-	D3D12_GRAPHICS_PIPELINE_STATE_DESC graphicsPipeline = {};
-	graphicsPipeline.pRootSignature = rootSignature.Get();
-	graphicsPipeline.VS.pShaderBytecode = vsBlob->GetBufferPointer();
-	graphicsPipeline.VS.BytecodeLength = vsBlob->GetBufferSize();
-	graphicsPipeline.PS.pShaderBytecode = psBlob->GetBufferPointer();
-	graphicsPipeline.PS.BytecodeLength = psBlob->GetBufferSize();
-	graphicsPipeline.SampleMask = D3D12_DEFAULT_SAMPLE_MASK;
-	graphicsPipeline.BlendState.AlphaToCoverageEnable = false;
-	graphicsPipeline.BlendState.IndependentBlendEnable = false;
-	graphicsPipeline.BlendState.RenderTarget[0] = renderTargetBlendDesc;
-	graphicsPipeline.RasterizerState.MultisampleEnable = false;
-	graphicsPipeline.RasterizerState.CullMode = D3D12_CULL_MODE_NONE;
-	graphicsPipeline.RasterizerState.FillMode = D3D12_FILL_MODE_SOLID;
-	graphicsPipeline.RasterizerState.DepthClipEnable = true;
-	graphicsPipeline.DepthStencilState.StencilEnable = false;
-	graphicsPipeline.InputLayout.pInputElementDescs = inputLayout;
-	graphicsPipeline.InputLayout.NumElements = _countof(inputLayout);
-	graphicsPipeline.IBStripCutValue = D3D12_INDEX_BUFFER_STRIP_CUT_VALUE_DISABLED;
-	graphicsPipeline.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;
-	graphicsPipeline.NumRenderTargets = 1;
-	graphicsPipeline.RTVFormats[0] = DXGI_FORMAT_R8G8B8A8_UNORM_SRGB;
-	graphicsPipeline.SampleDesc.Count = 1;
-	graphicsPipeline.SampleDesc.Quality = 0;
-
-	if (FAILED(device.Get()->CreateGraphicsPipelineState(
-		&graphicsPipeline, IID_PPV_ARGS(pipelineState.GetAddressOf()))))
-	{
-		return false;
-	}
-	return true;
-}
-
 void Graphics::ClearScreen()
 {
 	// コマンドアロケータをリセット
 	commandAllocator->Reset();
 
 	// コマンドリストをリセット
-	commandList->Reset(commandAllocator.Get(), pipelineState.Get());
+	commandList->Reset(commandAllocator.Get(), pipeline.Get());
 
 	//ビューポートのセット
 	commandList->RSSetViewports(1, &viewport);
@@ -399,13 +252,13 @@ void Graphics::ClearScreen()
 	const FLOAT	clearColor[] = { 0.0f, 0.2f, 0.4f, 1.0f };		// 青っぽい色
 	commandList->ClearRenderTargetView(rtvHandle, clearColor, 0, nullptr);
 
-	if (pipelineState.Get() == nullptr)
+	if (pipeline.Get() == nullptr)
 	{
 		return;
 	}
 
 	commandList->SetGraphicsRootSignature(rootSignature.Get());
-	commandList->SetPipelineState(pipelineState.Get());
+	commandList->SetPipelineState(pipeline.Get());
 }
 
 void Graphics::ScreenFlip()
@@ -715,8 +568,8 @@ void Graphics::Finalize()
 	renderTargets[1].ReleaseAndGetAddressOf();
 	renderTargets[0].ReleaseAndGetAddressOf();
 	rtvHeap->Release();
-	rootSignature->Release();
-	pipelineState->Release();
+	rootSignature.Finalize();
+	pipeline.Finalize();
 	swapChain.Finalize();
 	commandQueue.Finalize();
 	factory.Finalize();

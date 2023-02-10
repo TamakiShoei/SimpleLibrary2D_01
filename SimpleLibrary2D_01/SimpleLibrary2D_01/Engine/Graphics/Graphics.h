@@ -14,6 +14,8 @@
 #include "Device/Device.h"
 #include "CommandQueue/CommandQueue.h"
 #include "SwapChain/SwapChain.h"
+#include "RootSignature/RootSignature.h"
+#include "Pipeline/Pipeline.h"
 #include "DescriptorHeap/DescriptorHeap.h"
 
 class Graphics : VertexBuffer
@@ -113,12 +115,12 @@ public:
 	Device								device;
 	CommandQueue						commandQueue;
 	SwapChain							swapChain;
+	RootSignature						rootSignature;
+	Pipeline							pipeline;
 	ComPtr<ID3D12Resource>				renderTargets[frameCount];
 	ComPtr<ID3D12CommandAllocator>		commandAllocator;
 	ComPtr<ID3D12DescriptorHeap>		rtvHeap;
 	BasicDescHeap						heap;
-	ComPtr<ID3D12RootSignature>			rootSignature;
-	ComPtr<ID3D12PipelineState>			pipelineState;
 	ComPtr<ID3D12GraphicsCommandList>	commandList;
 	UINT								rtvDescriptorSize = 0;
 	// パイプラインステートとは、描画パイプラインの流れを指定する機能。
@@ -165,14 +167,6 @@ private:
 	* @retval false 初期化失敗
 	*/
 	bool CreateRenderTargetView();
-
-	/**
-	* @brief グラフィックスパイプラインの生成関数
-	* @details 描画を使用するための初期化を行う
-	* @retval true 初期化成功
-	* @retval false 初期化失敗
-	*/
-	bool CreatePipeline();
 
 private:	
 	CD3DX12_CPU_DESCRIPTOR_HANDLE rtvHandle;

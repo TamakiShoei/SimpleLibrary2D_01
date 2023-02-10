@@ -30,6 +30,8 @@
     <ClCompile Include="Engine\Graphics\Device\Device.cpp" />
     <ClCompile Include="Engine\Graphics\Factory\Factory.cpp" />
     <ClCompile Include="Engine\Graphics\Graphics.cpp" />
+    <ClCompile Include="Engine\Graphics\Pipeline\Pipeline.cpp" />
+    <ClCompile Include="Engine\Graphics\RootSignature\RootSignature.cpp" />
     <ClCompile Include="Engine\Graphics\SwapChain\SwapChain.cpp" />
     <ClCompile Include="Engine\Input.cpp" />
     <ClCompile Include="Engine\Window.cpp" />
@@ -48,6 +50,8 @@
     <ClInclude Include="Engine\Graphics\Device\Device.h" />
     <ClInclude Include="Engine\Graphics\Factory\Factory.h" />
     <ClInclude Include="Engine\Graphics\Graphics.h" />
+    <ClInclude Include="Engine\Graphics\Pipeline\Pipeline.h" />
+    <ClInclude Include="Engine\Graphics\RootSignature\RootSignature.h" />
     <ClInclude Include="Engine\Graphics\SwapChain\SwapChain.h" />
     <ClInclude Include="Engine\Input.h" />
     <ClInclude Include="Engine\InputDataDefinition.h" />
