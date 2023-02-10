@@ -27,10 +27,14 @@ bool Graphics::Initialize()
 	{
 		return false;
 	}
-	if (B_FAILED(InitializeAdapter()))
+	if (B_FAILED(device.Initialize(factory.Get())))
 	{
 		return false;
 	}
+	//if (B_FAILED(InitializeAdapter()))
+	//{
+	//	return false;
+	//}
 	if (B_FAILED(InitializeCommandQueue()))
 	{
 		return false;
@@ -60,14 +64,14 @@ bool Graphics::Initialize()
 	heap.Initialize(device.Get());
 
 	// コマンドアロケーターを作成
-	if (FAILED(device->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT, IID_PPV_ARGS(commandAllocator.GetAddressOf()))))
+	if (FAILED(device.Get()->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT, IID_PPV_ARGS(commandAllocator.GetAddressOf()))))
 	{
 		MessageBox(NULL, L"コマンドアロケータを作成できませんでした。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
 		return false;
 	}
 
 	// コマンドリストを作成
-	if (FAILED(device->CreateCommandList(0, D3D12_COMMAND_LIST_TYPE_DIRECT, commandAllocator.Get(), nullptr, IID_PPV_ARGS(commandList.GetAddressOf()))))
+	if (FAILED(device.Get()->CreateCommandList(0, D3D12_COMMAND_LIST_TYPE_DIRECT, commandAllocator.Get(), nullptr, IID_PPV_ARGS(commandList.GetAddressOf()))))
 	{
 		MessageBox(NULL, L"コマンドリストを作成できませんでした。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
 		return false;
@@ -87,50 +91,6 @@ bool Graphics::Initialize()
 	return true;
 }
 
-bool Graphics::InitializeAdapter()
-{
-	//DirectX12がサポートする利用可能なハードウェアアダプタを検索し取得
-	HRESULT hr;
-	for (UINT adapterIndex = 0; DXGI_ERROR_NOT_FOUND != factory.Get()->EnumAdapters1(adapterIndex, adapter.GetAddressOf()); ++adapterIndex)
-	{
-		DXGI_ADAPTER_DESC1 adapterDesc;
-		adapter->GetDesc1(&adapterDesc);
-
-		//どちらかがFALSEならFALSEでスルー
-		if (adapterDesc.Flags & DXGI_ADAPTER_FLAG_SOFTWARE) continue;
-
-		//アダプタがDirectX12に対応しているか確認
-		hr = D3D12CreateDevice(adapter.Get(), D3D_FEATURE_LEVEL_11_0, __uuidof(ID3D12Device), nullptr);
-		if (SUCCEEDED(hr))
-		{
-			//デバイスを作成
-			if (FAILED(D3D12CreateDevice(hardwareAdapter.Get(), D3D_FEATURE_LEVEL_11_0, IID_PPV_ARGS(device.GetAddressOf()))))
-			{
-				MessageBox(NULL, L"選択したハードウェアデバイスがDIrectX12に対応していません。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
-				return false;
-			}
-			break;
-		}
-	}
-
-	//関連付け解除
-	hardwareAdapter = adapter.Detach();
-
-	//ハードウェアで対応できない場合はWARPデバイス(ソフトウェア)の方を用いる
-	if (FAILED(hr))
-	{
-		ComPtr<IDXGIAdapter> warpAdapter;
-		factory.Get()->EnumWarpAdapter(IID_PPV_ARGS(warpAdapter.GetAddressOf()));
-		if (FAILED(D3D12CreateDevice(warpAdapter.Get(), D3D_FEATURE_LEVEL_11_0, IID_PPV_ARGS(device.GetAddressOf()))))
-		{
-			MessageBox(NULL, L"選択したWARPデバイスまでもがDirectX12に対応していません。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
-			return false;
-		}
-	}
-
-	return true;
-}
-
 bool Graphics::InitializeCommandQueue()
 {
 	//コマンドキューの設定
@@ -138,7 +98,7 @@ bool Graphics::InitializeCommandQueue()
 	commandQueueDesc.Type = D3D12_COMMAND_LIST_TYPE_DIRECT;
 
 	//コマンドキューを作成
-	if (FAILED(device->CreateCommandQueue(&commandQueueDesc, IID_PPV_ARGS(commandQueue.GetAddressOf()))))
+	if (FAILED(device.Get()->CreateCommandQueue(&commandQueueDesc, IID_PPV_ARGS(commandQueue.GetAddressOf()))))
 	{
 		MessageBox(NULL, L"コマンドキューを作成できませんでした。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
 		return false;
@@ -183,7 +143,7 @@ bool Graphics::InitializeSwapChain()
 bool Graphics::InitializeFence()
 {
 	// フェンスを作成
-	if (FAILED(device->CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(fence.GetAddressOf()))))
+	if (FAILED(device.Get()->CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(fence.GetAddressOf()))))
 	{
 		MessageBox(NULL, L"フェンスを作成できませんでした。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
 		return false;
@@ -217,14 +177,14 @@ bool Graphics::CreateRtvDescHeap()
 	// DescriptorTable：GPU上で使用するDescriptorの数や配置を制御する。DescriptorTableはRootSignatureで設定する。
 
 	// ディスクリプタヒープを作成
-	if (FAILED(device->CreateDescriptorHeap(&rtvHeapDesc, IID_PPV_ARGS(rtvHeap.GetAddressOf()))))
+	if (FAILED(device.Get()->CreateDescriptorHeap(&rtvHeapDesc, IID_PPV_ARGS(rtvHeap.GetAddressOf()))))
 	{
 		MessageBox(NULL, L"ディスクリプタヒープを作成できませんでした。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
 		return false;
 	}
 
 	//ディスクリプタのサイズを取得
-	rtvDescriptorSize = device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_RTV);
+	rtvDescriptorSize = device.Get()->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_RTV);
 
 	return true;
 }
@@ -249,7 +209,7 @@ bool Graphics::CreateRenderTargetView()
 		}
 
 		// レンダーターゲットビューを作成
-		device->CreateRenderTargetView(renderTargets[i].Get(), &rtvDesc, rtvHandle);
+		device.Get()->CreateRenderTargetView(renderTargets[i].Get(), &rtvDesc, rtvHandle);
 
 		// ハンドルのオフセット
 		rtvHandle.Offset(1, rtvDescriptorSize);
@@ -382,7 +342,7 @@ bool Graphics::CreatePipeline()
 
 	HRESULT result;
 
-	result = device->CreateRootSignature(
+	result = device.Get()->CreateRootSignature(
 		0,
 		rootSignatureBlob->GetBufferPointer(),
 		rootSignatureBlob->GetBufferSize(),
@@ -417,7 +377,7 @@ bool Graphics::CreatePipeline()
 	graphicsPipeline.SampleDesc.Count = 1;
 	graphicsPipeline.SampleDesc.Quality = 0;
 
-	if (FAILED(device->CreateGraphicsPipelineState(
+	if (FAILED(device.Get()->CreateGraphicsPipelineState(
 		&graphicsPipeline, IID_PPV_ARGS(pipelineState.GetAddressOf()))))
 	{
 		return false;
@@ -514,7 +474,7 @@ void Graphics::DrawTriangle(VECTOR lower_left, VECTOR upper_left, VECTOR lower_r
 	resDesc.Layout = D3D12_TEXTURE_LAYOUT_ROW_MAJOR;
 
 	ID3D12Resource* vertBuff = nullptr;
-	if (FAILED(device->CreateCommittedResource(
+	if (FAILED(device.Get()->CreateCommittedResource(
 		&heapProp,
 		D3D12_HEAP_FLAG_NONE,
 		&resDesc,
@@ -568,7 +528,7 @@ void Graphics::DrawRect(VECTOR lower_left, VECTOR upper_left, VECTOR upper_right
 	resDesc.Layout = D3D12_TEXTURE_LAYOUT_ROW_MAJOR;
 
 	ID3D12Resource* vertBuff = nullptr;
-	if (FAILED(device->CreateCommittedResource(
+	if (FAILED(device.Get()->CreateCommittedResource(
 		&heapProp,
 		D3D12_HEAP_FLAG_NONE,
 		&resDesc,
@@ -600,7 +560,7 @@ void Graphics::DrawRect(VECTOR lower_left, VECTOR upper_left, VECTOR upper_right
 	ID3D12Resource* idxBuff = nullptr;
 
 	//インデックスバッファーの作成
-	device->CreateCommittedResource(
+	device.Get()->CreateCommittedResource(
 		&heapProp,
 		D3D12_HEAP_FLAG_NONE,
 		&resDesc,
@@ -779,15 +739,10 @@ void Graphics::Finalize()
 	pipelineState->Release();
 	swapChain->Release();
 	commandQueue->Release();
-	if (adapter != nullptr)
-	{
-		adapter->Release();
-	}
 	factory.Finalize();
-	hardwareAdapter->Release();
 	heap.Finalize();
 
-	device->Release();
+	device.Finalize();
 
 	////リークを確かめるためのデバッグ↓↓↓
 	//ComPtr<ID3D12DebugDevice> debugDevice;

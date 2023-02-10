@@ -11,6 +11,7 @@
 #include "../CommonDifinition.h"
 #include "../Buffer/BufferManager.h"
 #include "Factory/Factory.h"
+#include "Device/Device.h"
 #include "DescriptorHeap/DescriptorHeap.h"
 
 class Graphics : VertexBuffer
@@ -106,7 +107,7 @@ public:
 	ComPtr<ID3D12Fence>	fence;			//フェンス(GPUと同期して実行完了待ちを行う)
 
 	//パイプラインオブジェクト
-	ComPtr<ID3D12Device>				device;
+	Device								device;
 	ComPtr<IDXGISwapChain4>				swapChain;
 	ComPtr<ID3D12Resource>				renderTargets[frameCount];
 	ComPtr<ID3D12CommandAllocator>		commandAllocator;
@@ -127,8 +128,8 @@ public:
 	// このような描画の一連の流れを指定する。
 
 	Factory factory;
-	ComPtr<IDXGIAdapter1> hardwareAdapter = nullptr;
-	ComPtr<IDXGIAdapter1> adapter;
+	//ComPtr<IDXGIAdapter1> hardwareAdapter = nullptr;
+	//ComPtr<IDXGIAdapter1> adapter;
 
 	D3D12_VIEWPORT viewport;
 	D3D12_RECT scissorRect;

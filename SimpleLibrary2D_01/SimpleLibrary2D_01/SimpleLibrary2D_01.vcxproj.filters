@@ -26,6 +26,9 @@
     <Filter Include="Engine\Graphics\Factory">
       <UniqueIdentifier>{50357f79-fd3d-4546-a40f-112ee6c16335}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Graphics\Device">
+      <UniqueIdentifier>{e8a040bd-20d5-4a69-89ca-16761220324d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Engine.cpp">
@@ -63,6 +66,9 @@
     </ClCompile>
     <ClCompile Include="Engine\Graphics\Factory\Factory.cpp">
       <Filter>Engine\Graphics\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Graphics\Device\Device.cpp">
+      <Filter>Engine\Graphics\Device</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -104,6 +110,9 @@
     </ClInclude>
     <ClInclude Include="Engine\Graphics\Factory\Factory.h">
       <Filter>Engine\Graphics\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Graphics\Device\Device.h">
+      <Filter>Engine\Graphics\Device</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
