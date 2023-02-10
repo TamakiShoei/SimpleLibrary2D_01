@@ -16,6 +16,7 @@
 #include "SwapChain/SwapChain.h"
 #include "RootSignature/RootSignature.h"
 #include "Pipeline/Pipeline.h"
+#include "CommandAllocator/CommandAllocator.h"
 #include "DescriptorHeap/DescriptorHeap.h"
 
 class Graphics : VertexBuffer
@@ -117,8 +118,8 @@ public:
 	SwapChain							swapChain;
 	RootSignature						rootSignature;
 	Pipeline							pipeline;
+	CommandAllocator					commandAllocator;
 	ComPtr<ID3D12Resource>				renderTargets[frameCount];
-	ComPtr<ID3D12CommandAllocator>		commandAllocator;
 	ComPtr<ID3D12DescriptorHeap>		rtvHeap;
 	BasicDescHeap						heap;
 	ComPtr<ID3D12GraphicsCommandList>	commandList;

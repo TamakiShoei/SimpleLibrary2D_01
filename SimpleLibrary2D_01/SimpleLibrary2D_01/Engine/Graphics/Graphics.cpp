@@ -58,12 +58,17 @@ bool Graphics::Initialize()
 
 	heap.Initialize(device.Get());
 
-	// コマンドアロケーターを作成
-	if (FAILED(device.Get()->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT, IID_PPV_ARGS(commandAllocator.GetAddressOf()))))
+	if (B_FAILED(commandAllocator.Initialize(device.Get())))
 	{
-		MessageBox(NULL, L"コマンドアロケータを作成できませんでした。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
 		return false;
 	}
+
+	//// コマンドアロケーターを作成
+	//if (FAILED(device.Get()->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT, IID_PPV_ARGS(commandAllocator.GetAddressOf()))))
+	//{
+	//	MessageBox(NULL, L"コマンドアロケータを作成できませんでした。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
+	//	return false;
+	//}
 
 	// コマンドリストを作成
 	if (FAILED(device.Get()->CreateCommandList(0, D3D12_COMMAND_LIST_TYPE_DIRECT, commandAllocator.Get(), nullptr, IID_PPV_ARGS(commandList.GetAddressOf()))))
@@ -221,7 +226,7 @@ void Graphics::SetDrawArea()
 void Graphics::ClearScreen()
 {
 	// コマンドアロケータをリセット
-	commandAllocator->Reset();
+	commandAllocator.Get()->Reset();
 
 	// コマンドリストをリセット
 	commandList->Reset(commandAllocator.Get(), pipeline.Get());
@@ -564,7 +569,7 @@ void Graphics::Finalize()
 {
 	fence->Release();
 	commandList->Release();
-	commandAllocator->Release();
+	commandAllocator.Finalize();
 	renderTargets[1].ReleaseAndGetAddressOf();
 	renderTargets[0].ReleaseAndGetAddressOf();
 	rtvHeap->Release();
