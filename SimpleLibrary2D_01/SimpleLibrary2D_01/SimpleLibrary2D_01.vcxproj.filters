@@ -29,6 +29,9 @@
     <Filter Include="Engine\Graphics\Device">
       <UniqueIdentifier>{e8a040bd-20d5-4a69-89ca-16761220324d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Graphics\CommandQueue">
+      <UniqueIdentifier>{8a0d0bbf-da44-4c08-9b3a-dade6e9e4959}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Engine.cpp">
@@ -69,6 +72,9 @@
     </ClCompile>
     <ClCompile Include="Engine\Graphics\Device\Device.cpp">
       <Filter>Engine\Graphics\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Graphics\CommandQueue\CommandQueue.cpp">
+      <Filter>Engine\Graphics\CommandQueue</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -113,6 +119,9 @@
     </ClInclude>
     <ClInclude Include="Engine\Graphics\Device\Device.h">
       <Filter>Engine\Graphics\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Graphics\CommandQueue\CommandQueue.h">
+      <Filter>Engine\Graphics\CommandQueue</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

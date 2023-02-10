@@ -31,11 +31,7 @@ bool Graphics::Initialize()
 	{
 		return false;
 	}
-	//if (B_FAILED(InitializeAdapter()))
-	//{
-	//	return false;
-	//}
-	if (B_FAILED(InitializeCommandQueue()))
+	if (B_FAILED(commandQueue.Initialize(device.Get())))
 	{
 		return false;
 	}
@@ -85,22 +81,6 @@ bool Graphics::Initialize()
 
 	if (B_FAILED(InitializeFence()))
 	{
-		return false;
-	}
-
-	return true;
-}
-
-bool Graphics::InitializeCommandQueue()
-{
-	//コマンドキューの設定
-	commandQueueDesc.Flags = D3D12_COMMAND_QUEUE_FLAG_NONE;
-	commandQueueDesc.Type = D3D12_COMMAND_LIST_TYPE_DIRECT;
-
-	//コマンドキューを作成
-	if (FAILED(device.Get()->CreateCommandQueue(&commandQueueDesc, IID_PPV_ARGS(commandQueue.GetAddressOf()))))
-	{
-		MessageBox(NULL, L"コマンドキューを作成できませんでした。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
 		return false;
 	}
 
@@ -439,7 +419,7 @@ void Graphics::ScreenFlip()
 
 	// コマンドリストを実行
 	ID3D12CommandList* commandLists[] = { commandList.Get() };
-	commandQueue->ExecuteCommandLists(_countof(commandLists), commandLists);
+	commandQueue.Get()->ExecuteCommandLists(_countof(commandLists), commandLists);
 
 	// フレームを最終出力
 	swapChain->Present(1, 0);
@@ -714,7 +694,7 @@ void Graphics::DrawTexture(float pos_x, float pos_y, int key)
 void Graphics::WaitForPreviousFrame()
 {
 	const UINT64 tmpFence = fenceValue;
-	commandQueue->Signal(fence.Get(), tmpFence);
+	commandQueue.Get()->Signal(fence.Get(), tmpFence);
 	fenceValue++;
 
 	// 前のフレームが終了するまで待機
@@ -738,10 +718,9 @@ void Graphics::Finalize()
 	rootSignature->Release();
 	pipelineState->Release();
 	swapChain->Release();
-	commandQueue->Release();
+	commandQueue.Finalize();
 	factory.Finalize();
 	heap.Finalize();
-
 	device.Finalize();
 
 	////リークを確かめるためのデバッグ↓↓↓

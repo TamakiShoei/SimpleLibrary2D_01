@@ -12,6 +12,7 @@
 #include "../Buffer/BufferManager.h"
 #include "Factory/Factory.h"
 #include "Device/Device.h"
+#include "CommandQueue/CommandQueue.h"
 #include "DescriptorHeap/DescriptorHeap.h"
 
 class Graphics : VertexBuffer
@@ -107,11 +108,12 @@ public:
 	ComPtr<ID3D12Fence>	fence;			//フェンス(GPUと同期して実行完了待ちを行う)
 
 	//パイプラインオブジェクト
+	Factory factory;
 	Device								device;
+	CommandQueue						commandQueue;
 	ComPtr<IDXGISwapChain4>				swapChain;
 	ComPtr<ID3D12Resource>				renderTargets[frameCount];
 	ComPtr<ID3D12CommandAllocator>		commandAllocator;
-	ComPtr<ID3D12CommandQueue>			commandQueue;
 	ComPtr<ID3D12DescriptorHeap>		rtvHeap;
 	BasicDescHeap						heap;
 	ComPtr<ID3D12RootSignature>			rootSignature;
@@ -127,30 +129,11 @@ public:
 	// ・深度ステンシルの設定
 	// このような描画の一連の流れを指定する。
 
-	Factory factory;
-	//ComPtr<IDXGIAdapter1> hardwareAdapter = nullptr;
-	//ComPtr<IDXGIAdapter1> adapter;
 
 	D3D12_VIEWPORT viewport;
 	D3D12_RECT scissorRect;
 
 private:
-	/**
-	* @brief ファクトリーの初期化関数
-	* @details 描画を使用するための初期化を行う
-	* @param[in] dxgi_factory_flags デバッグモードの指定フラグ
-	* @retval true 初期化成功
-	* @retval false 初期化失敗
-	*/
-	//bool InitializeFactory(UINT& dxgi_factory_flags);
-
-	/**
-	* @brief アダプタの初期化関数
-	* @details 描画を使用するための初期化を行う
-	* @retval true 初期化成功
-	* @retval false 初期化失敗
-	*/
-	bool InitializeAdapter();
 
 	/**
 	* @brief コマンドキューの初期化関数
@@ -158,7 +141,7 @@ private:
 	* @retval true 初期化成功
 	* @retval false 初期化失敗
 	*/
-	bool InitializeCommandQueue();
+	//bool InitializeCommandQueue();
 
 	/**
 	* @brief スワップチェインの初期化関数
@@ -175,17 +158,6 @@ private:
 	* @retval false 初期化失敗
 	*/
 	bool InitializeFence();
-
-	/**
-	* @brief アライメントにそろえたサイズを返す
-	* @param size[in] 元のサイズ
-	* @param alignment[in] アライメントサイズ
-	* @retval アライメントをそろえたサイズ
-	*/
-	/*size_t AlignmentedSize(size_t size, size_t alignment)
-	{
-		return size + alignment - size % alignment;
-	}*/
 
 	/**
 	* @brief シザー矩形とビューポートの設定
