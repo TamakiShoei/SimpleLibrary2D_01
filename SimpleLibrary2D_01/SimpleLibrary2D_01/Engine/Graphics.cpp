@@ -61,6 +61,8 @@ bool Graphics::Initialize()
 		return false;
 	}
 
+	heap.Initialize(device.Get());
+
 	// コマンドアロケーターを作成
 	if (FAILED(device->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT, IID_PPV_ARGS(commandAllocator.GetAddressOf()))))
 	{
@@ -268,7 +270,7 @@ bool Graphics::CreateRenderTargetView()
 		// ハンドルのオフセット
 		rtvHandle.Offset(1, rtvDescriptorSize);
 	}
-	
+
 	return true;
 }
 
@@ -453,6 +455,8 @@ void Graphics::ClearScreen()
 	commandList->RSSetScissorRects(1, &scissorRect);
 
 	BufferManager::Instance()->ResetUseCounter();
+
+	heap.ResetCounter();
 
 	// バックバッファのインデックスを格納
 	frameIndex = swapChain->GetCurrentBackBufferIndex();
@@ -640,7 +644,7 @@ void Graphics::DrawRect(VECTOR lower_left, VECTOR upper_left, VECTOR upper_right
 
 int Graphics::LoadTexture(const char* file_path)
 {
-		//WICテクスチャのロード
+	//WICテクスチャのロード
 	DirectX::TexMetadata metadata = {};
 	DirectX::ScratchImage scratchImg = {};
 
@@ -660,7 +664,37 @@ int Graphics::LoadTexture(const char* file_path)
 	//生データの抽出
 	auto img = scratchImg.GetImage(0, 0, 0);
 
-	return BufferManager::Instance()->CreateSprite(metadata, img, device.Get());
+	int key = BufferManager::Instance()->CreateSprite(metadata, img, device.Get());
+
+	D3D12_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
+	srvDesc.Format = metadata.format;
+	srvDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
+	srvDesc.ViewDimension = D3D12_SRV_DIMENSION_TEXTURE2D;
+	srvDesc.Texture2D.MipLevels = 1;
+	heap.RegisterSRV(BufferManager::Instance()->GetTexBuffer(key), srvDesc, key, device.Get());
+
+	///////////////
+
+	ID3D12Resource* constBuff = BufferManager::Instance()->GetConstantBuffer(key);
+	DirectX::XMMATRIX matrix = DirectX::XMMatrixIdentity();
+
+	//座標返還
+	matrix.r[0].m128_f32[0] = 2.0f / viewport.Width;
+	matrix.r[1].m128_f32[1] = -2.0f / viewport.Height;
+
+	matrix.r[3].m128_f32[0] = -1.0f;
+	matrix.r[3].m128_f32[1] = 1.0f;
+
+	DirectX::XMMATRIX* mapMatrix;	//マップ先を示すポインタ
+	constBuff->Map(0, nullptr, (void**)&mapMatrix);	//マップ
+	*mapMatrix = matrix;
+	//コンスタントバッファービュー設定
+	D3D12_CONSTANT_BUFFER_VIEW_DESC cbvDesc = {};
+	cbvDesc.BufferLocation = constBuff->GetGPUVirtualAddress();
+	cbvDesc.SizeInBytes = constBuff->GetDesc().Width;
+	heap.RegisterCBV(cbvDesc, key, device.Get());
+
+	return key;
 }
 
 void Graphics::DrawTexture(float pos_x, float pos_y, int key)
@@ -688,7 +722,6 @@ void Graphics::DrawTexture(float pos_x, float pos_y, int key)
 	vbView.SizeInBytes = sizeof(vertices);
 	vbView.StrideInBytes = sizeof(vertices[0]);
 
-
 	unsigned short indices[] =
 	{
 		0, 1, 2,
@@ -709,70 +742,28 @@ void Graphics::DrawTexture(float pos_x, float pos_y, int key)
 	ibView.Format = DXGI_FORMAT_R16_UINT;
 	ibView.SizeInBytes = sizeof(indices);
 
-	ID3D12Resource* constBuff = BufferManager::Instance()->GetConstantBuffer(key);
-	DirectX::XMMATRIX matrix = DirectX::XMMatrixIdentity();
-
-	//座標返還
-	matrix.r[0].m128_f32[0] = 2.0f / viewport.Width;
-	matrix.r[1].m128_f32[1] = -2.0f / viewport.Height;
-
-	matrix.r[3].m128_f32[0] = -1.0f;
-	matrix.r[3].m128_f32[1] = 1.0f;
-
-	DirectX::XMMATRIX* mapMatrix;	//マップ先を示すポインタ
-	constBuff->Map(0, nullptr, (void**)&mapMatrix);	//マップ
-	*mapMatrix = matrix;
-
+	//DescriptorHrap作成
 	D3D12_DESCRIPTOR_HEAP_DESC descHeapDesc = {};
 	descHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;		//シェーダーから見えるように
 	descHeapDesc.NodeMask = 0;
 	descHeapDesc.NumDescriptors = 2;	//SRVとCBV
 	descHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;
 
-	//データ受け渡し用のディスクリプタヒープの作成
-	ID3D12DescriptorHeap* basicDescHeap = nullptr;
-	device->CreateDescriptorHeap(&descHeapDesc, IID_PPV_ARGS(&basicDescHeap));
-
-	//中間バッファとしてのアップロードヒープ設定
-	D3D12_HEAP_PROPERTIES uploadHeapProp = {};
-	uploadHeapProp.Type = D3D12_HEAP_TYPE_UPLOAD;		//マップ可能にするため、UPLOAD
-	uploadHeapProp.CPUPageProperty = D3D12_CPU_PAGE_PROPERTY_UNKNOWN;		//アップロード用に使用される前提なのでUNKNOWN
-	uploadHeapProp.MemoryPoolPreference = D3D12_MEMORY_POOL_UNKNOWN;		//アップロード用に使用される前提なのでUNKNOWN
-	uploadHeapProp.CreationNodeMask = 0;	//単一アダプターのため0
-	uploadHeapProp.VisibleNodeMask = 0;		//単一アダプターのため0
-
-	D3D12_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
-	srvDesc.Format = metadata.format;
-	srvDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
-	srvDesc.ViewDimension = D3D12_SRV_DIMENSION_TEXTURE2D;
-	srvDesc.Texture2D.MipLevels = 1;
-
-	device->CreateShaderResourceView(
-		BufferManager::Instance()->GetTexBuffer(key),
-		&srvDesc,
-		basicDescHeap->GetCPUDescriptorHandleForHeapStart());
-
-	auto basicHeapHandle = basicDescHeap->GetCPUDescriptorHandleForHeapStart();	//先頭アドレスを取得
-	basicHeapHandle.ptr += device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);	//シェーダーリソース分インクリメント
-
-	//コンスタントバッファービュー設定
-	D3D12_CONSTANT_BUFFER_VIEW_DESC cbvDesc = {};
-	cbvDesc.BufferLocation = constBuff->GetGPUVirtualAddress();
-	cbvDesc.SizeInBytes = constBuff->GetDesc().Width;
-	device->CreateConstantBufferView(&cbvDesc, basicHeapHandle);	//コンスタントバッファービューの作成
-
 	commandList->SetGraphicsRootSignature(rootSignature.Get());
-	commandList->SetDescriptorHeaps(1, &basicDescHeap);
+
+	auto tmpHeap = heap.Get();
+	commandList->SetDescriptorHeaps(1, &tmpHeap);
 
 	//ルートパラメーターとディスクリプタヒープのバインド
-	commandList->SetGraphicsRootDescriptorTable(0, basicDescHeap->GetGPUDescriptorHandleForHeapStart());
-	auto heapHandle = basicDescHeap->GetGPUDescriptorHandleForHeapStart();
-	heapHandle.ptr += device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
-	commandList->SetGraphicsRootDescriptorTable(1, heapHandle);
 
-	commandList->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	commandList->SetGraphicsRootDescriptorTable(0, heap.GetSRVHandle(key, device.Get()));
+	//auto heapHandle = basicDescHeap->GetGPUDescriptorHandleForHeapStart();
+	//heapHandle.ptr += device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
+	commandList->SetGraphicsRootDescriptorTable(1, heap.GetCBVHandle(key, device.Get()));
+
 	commandList->IASetVertexBuffers(0, 1, &vbView);
 	commandList->IASetIndexBuffer(&ibView);
+	commandList->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	commandList->DrawIndexedInstanced(6, 1, 0, 0, 0);
 }
 
@@ -795,22 +786,37 @@ void Graphics::WaitForPreviousFrame()
 void Graphics::Finalize()
 {
 	fence->Release();
-	device->Release();
-	swapChain->Release();
-	renderTargets[0].ReleaseAndGetAddressOf();
-	renderTargets[1].ReleaseAndGetAddressOf();
+	commandList->Release();
 	commandAllocator->Release();
-	commandQueue->Release();
+	renderTargets[1].ReleaseAndGetAddressOf();
+	renderTargets[0].ReleaseAndGetAddressOf();
 	rtvHeap->Release();
 	rootSignature->Release();
 	pipelineState->Release();
-	commandList->Release();
-	factory->Release();
-	hardwareAdapter->Release();
+	swapChain->Release();
+	commandQueue->Release();
 	if (adapter != nullptr)
 	{
 		adapter->Release();
 	}
+	factory->Release();
+	hardwareAdapter->Release();
+	heap.Finalize();
+
+	device->Release();
+
+	////リークを確かめるためのデバッグ↓↓↓
+	//ComPtr<ID3D12DebugDevice> debugDevice;
+	//// 作成
+	//HRESULT result = device->QueryInterface(debugDevice.GetAddressOf());
+	//if (FAILED(result))
+	//{
+	//	return;
+	//}
+
+	//// 詳細表示
+	//result = debugDevice->ReportLiveDeviceObjects(D3D12_RLDO_DETAIL);
+	//debugDevice->Release();
 }
 
 

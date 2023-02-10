@@ -24,6 +24,7 @@
     <ClCompile Include="Engine\Buffer\IndexBuffer.cpp" />
     <ClCompile Include="Engine\Buffer\TexBuffer.cpp" />
     <ClCompile Include="Engine\Buffer\VertexBuffer.cpp" />
+    <ClCompile Include="Engine\DescriptorHeap\DescriptorHeap.cpp" />
     <ClCompile Include="Engine\Engine.cpp" />
     <ClCompile Include="Engine\Graphics.cpp" />
     <ClCompile Include="Engine\Input.cpp" />
@@ -37,6 +38,7 @@
     <ClInclude Include="Engine\Buffer\TexBuffer.h" />
     <ClInclude Include="Engine\Buffer\VertexBuffer.h" />
     <ClInclude Include="Engine\CommonDifinition.h" />
+    <ClInclude Include="Engine\DescriptorHeap\DescriptorHeap.h" />
     <ClInclude Include="Engine\Engine.h" />
     <ClInclude Include="Engine\Graphics.h" />
     <ClInclude Include="Engine\Input.h" />

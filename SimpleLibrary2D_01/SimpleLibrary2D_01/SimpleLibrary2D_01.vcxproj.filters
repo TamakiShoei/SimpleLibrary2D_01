@@ -17,6 +17,9 @@
     <Filter Include="Src">
       <UniqueIdentifier>{bdb1c733-ef59-4691-bab0-f052ccb6fdd0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\DescriptorHeap">
+      <UniqueIdentifier>{3ccf2285-3f8d-4cac-9d9f-baf8d1495890}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Engine.cpp">
@@ -48,6 +51,9 @@
     </ClCompile>
     <ClCompile Include="Src\Main.cpp">
       <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DescriptorHeap\DescriptorHeap.cpp">
+      <Filter>Engine\DescriptorHeap</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -83,6 +89,9 @@
     </ClInclude>
     <ClInclude Include="Engine\Buffer\VertexBuffer.h">
       <Filter>Engine\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DescriptorHeap\DescriptorHeap.h">
+      <Filter>Engine\DescriptorHeap</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

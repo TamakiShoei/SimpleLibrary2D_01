@@ -81,9 +81,9 @@ void BufferManager::ResetUseCounter()
 
 void BufferManager::Finalize()
 {
-	for (auto&& itr : spriteData)
+	for (auto& itr : spriteData)
 	{
-		for (auto&& vert : itr.second.vertBuff)
+		for (auto& vert : itr.second.vertBuff)
 		{
 			vert->Release();
 			vert = nullptr;

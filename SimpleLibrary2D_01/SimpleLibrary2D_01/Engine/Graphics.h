@@ -10,6 +10,7 @@
 #include <map>
 #include "CommonDifinition.h"
 #include "Buffer/BufferManager.h"
+#include "DescriptorHeap/DescriptorHeap.h"
 
 class Graphics : VertexBuffer
 {
@@ -110,6 +111,7 @@ public:
 	ComPtr<ID3D12CommandAllocator>		commandAllocator;
 	ComPtr<ID3D12CommandQueue>			commandQueue;
 	ComPtr<ID3D12DescriptorHeap>		rtvHeap;
+	BasicDescHeap						heap;
 	ComPtr<ID3D12RootSignature>			rootSignature;
 	ComPtr<ID3D12PipelineState>			pipelineState;
 	ComPtr<ID3D12GraphicsCommandList>	commandList;
@@ -178,10 +180,10 @@ private:
 	* @param alignment[in] アライメントサイズ
 	* @retval アライメントをそろえたサイズ
 	*/
-	size_t AlignmentedSize(size_t size, size_t alignment)
+	/*size_t AlignmentedSize(size_t size, size_t alignment)
 	{
 		return size + alignment - size % alignment;
-	}
+	}*/
 
 	/**
 	* @brief シザー矩形とビューポートの設定

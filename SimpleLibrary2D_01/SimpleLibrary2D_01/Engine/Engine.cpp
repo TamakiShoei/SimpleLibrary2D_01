@@ -35,8 +35,8 @@ void Engine::Finalize()
 	UnregisterClass(WINDOW_CLASS_NAME, GetModuleHandle(nullptr));
 	instance->graphics.WaitForPreviousFrame();
 	instance->input.Finalize();
-	instance->graphics.Finalize();
 	BufferManager::Instance()->Finalize();
+	instance->graphics.Finalize();
 }
 
 //Windowクラス関係の関数
