@@ -17,6 +17,7 @@
 #include "RootSignature/RootSignature.h"
 #include "Pipeline/Pipeline.h"
 #include "CommandAllocator/CommandAllocator.h"
+#include "CommandList/CommandList.h"
 #include "DescriptorHeap/DescriptorHeap.h"
 
 class Graphics : VertexBuffer
@@ -119,10 +120,10 @@ public:
 	RootSignature						rootSignature;
 	Pipeline							pipeline;
 	CommandAllocator					commandAllocator;
+	CommandList							commandList;
 	ComPtr<ID3D12Resource>				renderTargets[frameCount];
 	ComPtr<ID3D12DescriptorHeap>		rtvHeap;
 	BasicDescHeap						heap;
-	ComPtr<ID3D12GraphicsCommandList>	commandList;
 	UINT								rtvDescriptorSize = 0;
 	// パイプラインステートとは、描画パイプラインの流れを指定する機能。
 	// ・描画に使用する各種シェーダコードの設定

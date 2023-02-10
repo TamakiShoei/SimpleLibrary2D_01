@@ -62,25 +62,15 @@ bool Graphics::Initialize()
 	{
 		return false;
 	}
-
-	//// コマンドアロケーターを作成
-	//if (FAILED(device.Get()->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT, IID_PPV_ARGS(commandAllocator.GetAddressOf()))))
-	//{
-	//	MessageBox(NULL, L"コマンドアロケータを作成できませんでした。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
-	//	return false;
-	//}
-
-	// コマンドリストを作成
-	if (FAILED(device.Get()->CreateCommandList(0, D3D12_COMMAND_LIST_TYPE_DIRECT, commandAllocator.Get(), nullptr, IID_PPV_ARGS(commandList.GetAddressOf()))))
+	if (B_FAILED(commandList.Initialize(device.Get(), commandAllocator.Get())))
 	{
-		MessageBox(NULL, L"コマンドリストを作成できませんでした。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
 		return false;
 	}
 
 	//ビューポートとシザーの設定
 	SetDrawArea();
 
-	commandList->Close();
+	commandList.Get()->Close();
 	// コマンドリストは記録状態で作成されるが、今回は初期化内でそこに何も入れないのですぐに閉じる。
 
 	if (B_FAILED(InitializeFence()))
@@ -90,39 +80,6 @@ bool Graphics::Initialize()
 
 	return true;
 }
-
-//bool Graphics::InitializeSwapChain()
-//{
-//	RECT rect;
-//	GetClientRect(FindWindow(WINDOW_TITLE, nullptr), &rect);
-//
-//	//スワップチェインの作成
-//	swapChainDesc.BufferCount = frameCount;
-//	swapChainDesc.Width = rect.right;
-//	swapChainDesc.Height = rect.bottom;
-//	swapChainDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
-//	swapChainDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
-//	swapChainDesc.SwapEffect = DXGI_SWAP_EFFECT_FLIP_DISCARD;
-//	swapChainDesc.SampleDesc.Count = 1;
-//	//スワップチェインとは、レンダリング結果を出力するためのオブジェクト
-//	//紐づいたビデオアダプタやウィンドウに対してレンダリング結果を出力する
-//
-//	//スワップチェインを作成
-//	ComPtr<IDXGISwapChain1>	tmpSwapChain;
-//	if (FAILED(factory.Get()->CreateSwapChainForHwnd(commandQueue.Get(), FindWindow(WINDOW_TITLE, nullptr), &swapChainDesc, nullptr, nullptr, tmpSwapChain.GetAddressOf())))
-//	{
-//		MessageBox(NULL, L"スワップチェインを作成できませんでした。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
-//		return false;
-//	}
-//
-//	//スワップチェインをキャスト
-//	tmpSwapChain.As(&swapChain);
-//
-//	//バックバッファのインデックスを格納
-//	frameIndex = swapChain->GetCurrentBackBufferIndex();
-//
-//	return true;
-//}
 
 bool Graphics::InitializeFence()
 {
@@ -229,12 +186,12 @@ void Graphics::ClearScreen()
 	commandAllocator.Get()->Reset();
 
 	// コマンドリストをリセット
-	commandList->Reset(commandAllocator.Get(), pipeline.Get());
+	commandList.Get()->Reset(commandAllocator.Get(), pipeline.Get());
 
 	//ビューポートのセット
-	commandList->RSSetViewports(1, &viewport);
+	commandList.Get()->RSSetViewports(1, &viewport);
 	//シザーのセット
-	commandList->RSSetScissorRects(1, &scissorRect);
+	commandList.Get()->RSSetScissorRects(1, &scissorRect);
 
 	BufferManager::Instance()->ResetUseCounter();
 
@@ -245,35 +202,35 @@ void Graphics::ClearScreen()
 
 	// バックバッファをレンダーターゲットとして使用
 	auto barrier = CD3DX12_RESOURCE_BARRIER::Transition(renderTargets[frameIndex].Get(), D3D12_RESOURCE_STATE_PRESENT, D3D12_RESOURCE_STATE_RENDER_TARGET);
-	commandList->ResourceBarrier(1, &barrier);
+	commandList.Get()->ResourceBarrier(1, &barrier);
 	// リソースバリアとは、GPU側で扱うリソースの状況を同期させる機能。
 	// マルチスレッドを前提とした動きなので、GPU側の動作も複数のアクセスが同時に行われることを想定した機能だということ。
 
 	// レンダーターゲットビューのハンドルを作成
 	CD3DX12_CPU_DESCRIPTOR_HANDLE rtvHandle(rtvHeap->GetCPUDescriptorHandleForHeapStart(), frameIndex, rtvDescriptorSize);
-	commandList->OMSetRenderTargets(1, &rtvHandle, false, nullptr);
+	commandList.Get()->OMSetRenderTargets(1, &rtvHandle, false, nullptr);
 
 	//バックバッファに描画(コマンドを記録)
 	const FLOAT	clearColor[] = { 0.0f, 0.2f, 0.4f, 1.0f };		// 青っぽい色
-	commandList->ClearRenderTargetView(rtvHandle, clearColor, 0, nullptr);
+	commandList.Get()->ClearRenderTargetView(rtvHandle, clearColor, 0, nullptr);
 
 	if (pipeline.Get() == nullptr)
 	{
 		return;
 	}
 
-	commandList->SetGraphicsRootSignature(rootSignature.Get());
-	commandList->SetPipelineState(pipeline.Get());
+	commandList.Get()->SetGraphicsRootSignature(rootSignature.Get());
+	commandList.Get()->SetPipelineState(pipeline.Get());
 }
 
 void Graphics::ScreenFlip()
 {
 	// バックバッファを表示
 	auto barrier = CD3DX12_RESOURCE_BARRIER::Transition(renderTargets[frameIndex].Get(), D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PRESENT);
-	commandList->ResourceBarrier(1, &barrier);
+	commandList.Get()->ResourceBarrier(1, &barrier);
 
 	// コマンドリストをクローズ
-	commandList->Close();
+	commandList.Get()->Close();
 
 	// コマンドリストを実行
 	ID3D12CommandList* commandLists[] = { commandList.Get() };
@@ -333,10 +290,10 @@ void Graphics::DrawTriangle(VECTOR lower_left, VECTOR upper_left, VECTOR lower_r
 	vbView.SizeInBytes = sizeof(vertices);
 	vbView.StrideInBytes = sizeof(vertices[0]);
 
-	commandList->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-	commandList->IASetVertexBuffers(0, 1, &vbView);
+	commandList.Get()->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	commandList.Get()->IASetVertexBuffers(0, 1, &vbView);
 
-	commandList->DrawInstanced(3, 1, 0, 0);
+	commandList.Get()->DrawInstanced(3, 1, 0, 0);
 }
 
 void Graphics::DrawRect(VECTOR lower_left, VECTOR upper_left, VECTOR upper_right, VECTOR lower_right)
@@ -418,10 +375,10 @@ void Graphics::DrawRect(VECTOR lower_left, VECTOR upper_left, VECTOR upper_right
 	ibView.Format = DXGI_FORMAT_R16_UINT;
 	ibView.SizeInBytes = sizeof(indices);
 
-	commandList->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-	commandList->IASetVertexBuffers(0, 1, &vbView);
-	commandList->IASetIndexBuffer(&ibView);
-	commandList->DrawIndexedInstanced(6, 1, 0, 0, 0);
+	commandList.Get()->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	commandList.Get()->IASetVertexBuffers(0, 1, &vbView);
+	commandList.Get()->IASetIndexBuffer(&ibView);
+	commandList.Get()->DrawIndexedInstanced(6, 1, 0, 0, 0);
 }
 
 int Graphics::LoadTexture(const char* file_path)
@@ -531,22 +488,22 @@ void Graphics::DrawTexture(float pos_x, float pos_y, int key)
 	descHeapDesc.NumDescriptors = 2;	//SRVとCBV
 	descHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;
 
-	commandList->SetGraphicsRootSignature(rootSignature.Get());
+	commandList.Get()->SetGraphicsRootSignature(rootSignature.Get());
 
 	auto tmpHeap = heap.Get();
-	commandList->SetDescriptorHeaps(1, &tmpHeap);
+	commandList.Get()->SetDescriptorHeaps(1, &tmpHeap);
 
 	//ルートパラメーターとディスクリプタヒープのバインド
 
-	commandList->SetGraphicsRootDescriptorTable(0, heap.GetSRVHandle(key, device.Get()));
+	commandList.Get()->SetGraphicsRootDescriptorTable(0, heap.GetSRVHandle(key, device.Get()));
 	//auto heapHandle = basicDescHeap->GetGPUDescriptorHandleForHeapStart();
 	//heapHandle.ptr += device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
-	commandList->SetGraphicsRootDescriptorTable(1, heap.GetCBVHandle(key, device.Get()));
+	commandList.Get()->SetGraphicsRootDescriptorTable(1, heap.GetCBVHandle(key, device.Get()));
 
-	commandList->IASetVertexBuffers(0, 1, &vbView);
-	commandList->IASetIndexBuffer(&ibView);
-	commandList->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-	commandList->DrawIndexedInstanced(6, 1, 0, 0, 0);
+	commandList.Get()->IASetVertexBuffers(0, 1, &vbView);
+	commandList.Get()->IASetIndexBuffer(&ibView);
+	commandList.Get()->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	commandList.Get()->DrawIndexedInstanced(6, 1, 0, 0, 0);
 }
 
 void Graphics::WaitForPreviousFrame()
@@ -568,7 +525,7 @@ void Graphics::WaitForPreviousFrame()
 void Graphics::Finalize()
 {
 	fence->Release();
-	commandList->Release();
+	commandList.Finalize();
 	commandAllocator.Finalize();
 	renderTargets[1].ReleaseAndGetAddressOf();
 	renderTargets[0].ReleaseAndGetAddressOf();

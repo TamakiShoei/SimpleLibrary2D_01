@@ -26,6 +26,7 @@
     <ClCompile Include="Engine\Buffer\VertexBuffer.cpp" />
     <ClCompile Include="Engine\Engine.cpp" />
     <ClCompile Include="Engine\Graphics\CommandAllocator\CommandAllocator.cpp" />
+    <ClCompile Include="Engine\Graphics\CommandList\CommandList.cpp" />
     <ClCompile Include="Engine\Graphics\CommandQueue\CommandQueue.cpp" />
     <ClCompile Include="Engine\Graphics\DescriptorHeap\DescriptorHeap.cpp" />
     <ClCompile Include="Engine\Graphics\Device\Device.cpp" />
@@ -47,6 +48,7 @@
     <ClInclude Include="Engine\CommonDifinition.h" />
     <ClInclude Include="Engine\Engine.h" />
     <ClInclude Include="Engine\Graphics\CommandAllocator\CommandAllocator.h" />
+    <ClInclude Include="Engine\Graphics\CommandList\CommandList.h" />
     <ClInclude Include="Engine\Graphics\CommandQueue\CommandQueue.h" />
     <ClInclude Include="Engine\Graphics\DescriptorHeap\DescriptorHeap.h" />
     <ClInclude Include="Engine\Graphics\Device\Device.h" />

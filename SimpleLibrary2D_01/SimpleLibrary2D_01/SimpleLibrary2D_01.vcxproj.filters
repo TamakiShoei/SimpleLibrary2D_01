@@ -41,8 +41,11 @@
     <Filter Include="Engine\Graphics\Pipeline">
       <UniqueIdentifier>{093a0ef1-48e8-404e-b71c-b7869fae7102}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\CommandAllocator">
+    <Filter Include="Engine\Graphics\CommandAllocator">
       <UniqueIdentifier>{496ad408-017c-41a0-a28a-0cd6dde6dd53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Graphics\CommandList">
+      <UniqueIdentifier>{62794fa5-8b5a-4934-af24-9b8e33d45bc4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -98,7 +101,10 @@
       <Filter>Engine\Graphics\Pipeline</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Graphics\CommandAllocator\CommandAllocator.cpp">
-      <Filter>Engine\CommandAllocator</Filter>
+      <Filter>Engine\Graphics\CommandAllocator</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Graphics\CommandList\CommandList.cpp">
+      <Filter>Engine\Graphics\CommandList</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -157,7 +163,10 @@
       <Filter>Engine\Graphics\Pipeline</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Graphics\CommandAllocator\CommandAllocator.h">
-      <Filter>Engine\CommandAllocator</Filter>
+      <Filter>Engine\Graphics\CommandAllocator</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Graphics\CommandList\CommandList.h">
+      <Filter>Engine\Graphics\CommandList</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
