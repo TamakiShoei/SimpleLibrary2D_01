@@ -66,6 +66,10 @@ bool Graphics::Initialize()
 	{
 		return false;
 	}
+	if (B_FAILED(fence.Initialize(device.Get())))
+	{
+		return false;
+	}
 
 	//ビューポートとシザーの設定
 	SetDrawArea();
@@ -73,34 +77,6 @@ bool Graphics::Initialize()
 	commandList.Get()->Close();
 	// コマンドリストは記録状態で作成されるが、今回は初期化内でそこに何も入れないのですぐに閉じる。
 
-	if (B_FAILED(InitializeFence()))
-	{
-		return false;
-	}
-
-	return true;
-}
-
-bool Graphics::InitializeFence()
-{
-	// フェンスを作成
-	if (FAILED(device.Get()->CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(fence.GetAddressOf()))))
-	{
-		MessageBox(NULL, L"フェンスを作成できませんでした。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
-		return false;
-	}
-	// フェンスとは、同期オブジェクトとしてリソースがGPUにアップロードされるまで待機するもの。
-
-	// フェンス値を1に設定
-	fenceValue = 1;
-
-	// フレーム同期に使用するイベントハンドラを作成
-	fenceEvent = CreateEvent(nullptr, FALSE, FALSE, nullptr);
-	if (fenceEvent == nullptr)
-	{
-		MessageBox(NULL, L"フェンスイベントハンドラを作成できませんでした。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
-		return false;
-	}
 	return true;
 }
 
@@ -513,8 +489,8 @@ void Graphics::WaitForPreviousFrame()
 	fenceValue++;
 
 	// 前のフレームが終了するまで待機
-	if (fence->GetCompletedValue() < tmpFence) {
-		fence->SetEventOnCompletion(tmpFence, fenceEvent);
+	if (fence.Get()->GetCompletedValue() < tmpFence) {
+		fence.Get()->SetEventOnCompletion(tmpFence, fenceEvent);
 		WaitForSingleObject(fenceEvent, INFINITE);
 	}
 
@@ -524,7 +500,7 @@ void Graphics::WaitForPreviousFrame()
 
 void Graphics::Finalize()
 {
-	fence->Release();
+	fence.Finalize();
 	commandList.Finalize();
 	commandAllocator.Finalize();
 	renderTargets[1].ReleaseAndGetAddressOf();

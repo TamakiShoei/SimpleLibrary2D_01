@@ -18,6 +18,7 @@
 #include "Pipeline/Pipeline.h"
 #include "CommandAllocator/CommandAllocator.h"
 #include "CommandList/CommandList.h"
+#include "Fence/Fence.h"
 #include "DescriptorHeap/DescriptorHeap.h"
 
 class Graphics : VertexBuffer
@@ -110,7 +111,7 @@ public:
 	//GPU同期オブジェクト
 	UINT				frameIndex = 0;	//フレームインデックス
 	HANDLE				fenceEvent;		//フェンスハンドル
-	ComPtr<ID3D12Fence>	fence;			//フェンス(GPUと同期して実行完了待ちを行う)
+	//ComPtr<ID3D12Fence>	fence;			//フェンス(GPUと同期して実行完了待ちを行う)
 
 	//パイプラインオブジェクト
 	Factory factory;
@@ -121,6 +122,7 @@ public:
 	Pipeline							pipeline;
 	CommandAllocator					commandAllocator;
 	CommandList							commandList;
+	Fence								fence;
 	ComPtr<ID3D12Resource>				renderTargets[frameCount];
 	ComPtr<ID3D12DescriptorHeap>		rtvHeap;
 	BasicDescHeap						heap;
@@ -139,14 +141,6 @@ public:
 	D3D12_RECT scissorRect;
 
 private:
-
-	/**
-	* @brief フェンスの初期化関数
-	* @details 描画を使用するための初期化を行う
-	* @retval true 初期化成功
-	* @retval false 初期化失敗
-	*/
-	bool InitializeFence();
 
 	/**
 	* @brief シザー矩形とビューポートの設定
