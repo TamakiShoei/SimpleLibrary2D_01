@@ -1,4 +1,4 @@
-#include "DescriptorHeap.h"
+#include "BasicDescHeap.h"
 
 BasicDescHeap::BasicDescHeap() : registerCounter(1)
 {
@@ -16,7 +16,7 @@ void BasicDescHeap::Initialize(ID3D12Device* device)
 	D3D12_DESCRIPTOR_HEAP_DESC descHeapDesc = {};
 	descHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;		//シェーダーから見えるように
 	descHeapDesc.NodeMask = 0;
-	descHeapDesc.NumDescriptors = 1024;	//SRVとCBV
+	descHeapDesc.NumDescriptors = 1024;
 	descHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;
 
 	device->CreateDescriptorHeap(&descHeapDesc, IID_PPV_ARGS(&heap));
@@ -26,27 +26,39 @@ void BasicDescHeap::Initialize(ID3D12Device* device)
 
 void BasicDescHeap::RegisterCBV(D3D12_CONSTANT_BUFFER_VIEW_DESC cbv_desc, int key, ID3D12Device* device)
 {
+	//DescriptorHeapの先頭アドレスを取得
 	D3D12_CPU_DESCRIPTOR_HANDLE handle = heap->GetCPUDescriptorHandleForHeapStart();
 
-	handle.ptr += device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV) * registerCounter;
+	//先頭からインクリメントサイズ * カウンター分動かした位置のアドレスを取得
+	handle.ptr += 
+		device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV) * registerCounter;
 
+	//上で取得したアドレス位置に定数バッファを作成して登録
 	device->CreateConstantBufferView(&cbv_desc, handle);
 
+	//Dictionalyに画像ハンドルとカウンター番号がペアになったデータを挿入
 	cbvDictionaly.insert(std::make_pair(key, registerCounter));
 
+	//カウンターをインクリメント
 	registerCounter++;
 }
 
 void BasicDescHeap::RegisterSRV(ID3D12Resource* buff, D3D12_SHADER_RESOURCE_VIEW_DESC srv_desc, int key, ID3D12Device* device)
 {
+	//DescriptorHeapの先頭アドレスを取得
 	D3D12_CPU_DESCRIPTOR_HANDLE handle = heap->GetCPUDescriptorHandleForHeapStart();
 
-	handle.ptr += device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV) * registerCounter;
+	//先頭からインクリメントサイズ * カウンター分動かした位置のアドレスを取得
+	handle.ptr += 
+		device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV) * registerCounter;
 
+	//上で取得したアドレス位置に定数バッファを作成して登録
 	device->CreateShaderResourceView(buff, &srv_desc, handle);
 
+	//Dictionalyに画像ハンドルとカウンター番号がペアになったデータを挿入
 	srvDictionaly.insert(std::make_pair(key, registerCounter));
-
+	
+	//カウンターをインクリメント
 	registerCounter++;
 }
 

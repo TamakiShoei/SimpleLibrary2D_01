@@ -19,7 +19,7 @@
 #include "CommandAllocator/CommandAllocator.h"
 #include "CommandList/CommandList.h"
 #include "Fence/Fence.h"
-#include "DescriptorHeap/DescriptorHeap.h"
+#include "DescriptorHeap/BasicDescHeap.h"
 
 class Graphics : VertexBuffer
 {
@@ -104,42 +104,6 @@ public:
 	*/
 	void Finalize();
 
-public:
-	//フレームカウントは最低2から(フロントバッファ・バックバッファ)
-	static const UINT frameCount = 2;
-
-	//GPU同期オブジェクト
-	UINT				frameIndex = 0;	//フレームインデックス
-	HANDLE				fenceEvent;		//フェンスハンドル
-	//ComPtr<ID3D12Fence>	fence;			//フェンス(GPUと同期して実行完了待ちを行う)
-
-	//パイプラインオブジェクト
-	Factory factory;
-	Device								device;
-	CommandQueue						commandQueue;
-	SwapChain							swapChain;
-	RootSignature						rootSignature;
-	Pipeline							pipeline;
-	CommandAllocator					commandAllocator;
-	CommandList							commandList;
-	Fence								fence;
-	ComPtr<ID3D12Resource>				renderTargets[frameCount];
-	ComPtr<ID3D12DescriptorHeap>		rtvHeap;
-	BasicDescHeap						heap;
-	UINT								rtvDescriptorSize = 0;
-	// パイプラインステートとは、描画パイプラインの流れを指定する機能。
-	// ・描画に使用する各種シェーダコードの設定
-	// ・ラスタライズの設定
-	// ・ブレンド方法の設定
-	// ・頂点レイアウトの設定
-	// ・使用するRootSignatureの設定
-	// ・深度ステンシルの設定
-	// このような描画の一連の流れを指定する。
-
-
-	D3D12_VIEWPORT viewport;
-	D3D12_RECT scissorRect;
-
 private:
 
 	/**
@@ -171,6 +135,32 @@ private:
 	D3D12_DESCRIPTOR_HEAP_DESC rtvHeapDesc = {};
 	DXGI_SWAP_CHAIN_DESC1 swapChainDesc = {};
 	UINT64	fenceValue;		//フェンス値
+
+	//フレームカウントは最低2から(フロントバッファ・バックバッファ)
+	static const UINT frameCount = 2;
+
+	//GPU同期オブジェクト
+	UINT				frameIndex = 0;	//フレームインデックス
+	HANDLE				fenceEvent;		//フェンスハンドル
+	//ComPtr<ID3D12Fence>	fence;			//フェンス(GPUと同期して実行完了待ちを行う)
+
+	//パイプラインオブジェクト
+	Factory factory;
+	Device								device;
+	CommandQueue						commandQueue;
+	SwapChain							swapChain;
+	RootSignature						rootSignature;
+	Pipeline							pipeline;
+	CommandAllocator					commandAllocator;
+	CommandList							commandList;
+	Fence								fence;
+	ComPtr<ID3D12Resource>				renderTargets[frameCount];
+	ComPtr<ID3D12DescriptorHeap>		rtvHeap;
+	BasicDescHeap						heap;
+	UINT								rtvDescriptorSize = 0;
+
+	D3D12_VIEWPORT viewport;
+	D3D12_RECT scissorRect;
 };
 
 

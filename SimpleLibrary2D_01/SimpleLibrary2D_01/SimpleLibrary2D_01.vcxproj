@@ -28,7 +28,7 @@
     <ClCompile Include="Engine\Graphics\CommandAllocator\CommandAllocator.cpp" />
     <ClCompile Include="Engine\Graphics\CommandList\CommandList.cpp" />
     <ClCompile Include="Engine\Graphics\CommandQueue\CommandQueue.cpp" />
-    <ClCompile Include="Engine\Graphics\DescriptorHeap\DescriptorHeap.cpp" />
+    <ClCompile Include="Engine\Graphics\DescriptorHeap\BasicDescHeap.cpp" />
     <ClCompile Include="Engine\Graphics\Device\Device.cpp" />
     <ClCompile Include="Engine\Graphics\Factory\Factory.cpp" />
     <ClCompile Include="Engine\Graphics\Fence\Fence.cpp" />
@@ -51,7 +51,7 @@
     <ClInclude Include="Engine\Graphics\CommandAllocator\CommandAllocator.h" />
     <ClInclude Include="Engine\Graphics\CommandList\CommandList.h" />
     <ClInclude Include="Engine\Graphics\CommandQueue\CommandQueue.h" />
-    <ClInclude Include="Engine\Graphics\DescriptorHeap\DescriptorHeap.h" />
+    <ClInclude Include="Engine\Graphics\DescriptorHeap\BasicDescHeap.h" />
     <ClInclude Include="Engine\Graphics\Device\Device.h" />
     <ClInclude Include="Engine\Graphics\Factory\Factory.h" />
     <ClInclude Include="Engine\Graphics\Fence\Fence.h" />

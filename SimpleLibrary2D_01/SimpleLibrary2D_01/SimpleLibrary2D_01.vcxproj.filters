@@ -79,7 +79,7 @@
     <ClCompile Include="Src\Main.cpp">
       <Filter>Src</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Graphics\DescriptorHeap\DescriptorHeap.cpp">
+    <ClCompile Include="Engine\Graphics\DescriptorHeap\BasicDescHeap.cpp">
       <Filter>Engine\Graphics\DescriptorHeap</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Graphics\Graphics.cpp">
@@ -144,7 +144,7 @@
     <ClInclude Include="Engine\Buffer\VertexBuffer.h">
       <Filter>Engine\Buffer</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Graphics\DescriptorHeap\DescriptorHeap.h">
+    <ClInclude Include="Engine\Graphics\DescriptorHeap\BasicDescHeap.h">
       <Filter>Engine\Graphics\DescriptorHeap</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Graphics\Graphics.h">
