@@ -31,6 +31,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int)
 		Engine::DrawTexture(posx, 0.0f, handle);
 		Engine::DrawTexture(0.0f, 100.0f, handle2);
 		Engine::DrawTexture(400.0f, 400.0f, handle);
+
+		Engine::ScreenFlip();
 	}
 
 	Engine::Finalize();
