@@ -156,7 +156,7 @@ private:
 	Fence								fence;
 	ComPtr<ID3D12Resource>				renderTargets[frameCount];
 	ComPtr<ID3D12DescriptorHeap>		rtvHeap;
-	BasicDescHeap						heap;
+	BasicDescHeap						basicHeap;
 	UINT								rtvDescriptorSize = 0;
 
 	D3D12_VIEWPORT viewport;

@@ -56,7 +56,7 @@ bool Graphics::Initialize()
 		return false;
 	}
 
-	heap.Initialize(device.Get());
+	basicHeap.Initialize(device.Get());
 
 	if (B_FAILED(commandAllocator.Initialize(device.Get())))
 	{
@@ -171,7 +171,7 @@ void Graphics::ClearScreen()
 
 	BufferManager::Instance()->ResetUseCounter();
 
-	heap.ResetCounter();
+	basicHeap.ResetCounter();
 
 	// バックバッファのインデックスを格納
 	frameIndex = swapChain.Get()->GetCurrentBackBufferIndex();
@@ -386,7 +386,7 @@ int Graphics::LoadTexture(const char* file_path)
 	srvDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
 	srvDesc.ViewDimension = D3D12_SRV_DIMENSION_TEXTURE2D;
 	srvDesc.Texture2D.MipLevels = 1;
-	heap.RegisterSRV(BufferManager::Instance()->GetTexBuffer(key), srvDesc, key, device.Get());
+	basicHeap.RegisterSRV(BufferManager::Instance()->GetTexBuffer(key), srvDesc, key, device.Get());
 
 	///////////////
 
@@ -407,7 +407,7 @@ int Graphics::LoadTexture(const char* file_path)
 	D3D12_CONSTANT_BUFFER_VIEW_DESC cbvDesc = {};
 	cbvDesc.BufferLocation = constBuff->GetGPUVirtualAddress();
 	cbvDesc.SizeInBytes = constBuff->GetDesc().Width;
-	heap.RegisterCBV(cbvDesc, key, device.Get());
+	basicHeap.RegisterCBV(cbvDesc, key, device.Get());
 
 	return key;
 }
@@ -466,15 +466,13 @@ void Graphics::DrawTexture(float pos_x, float pos_y, int key)
 
 	commandList.Get()->SetGraphicsRootSignature(rootSignature.Get());
 
-	auto tmpHeap = heap.Get();
+	auto tmpHeap = basicHeap.Get();
 	commandList.Get()->SetDescriptorHeaps(1, &tmpHeap);
 
 	//ルートパラメーターとディスクリプタヒープのバインド
 
-	commandList.Get()->SetGraphicsRootDescriptorTable(0, heap.GetSRVHandle(key, device.Get()));
-	//auto heapHandle = basicDescHeap->GetGPUDescriptorHandleForHeapStart();
-	//heapHandle.ptr += device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
-	commandList.Get()->SetGraphicsRootDescriptorTable(1, heap.GetCBVHandle(key, device.Get()));
+	commandList.Get()->SetGraphicsRootDescriptorTable(0, basicHeap.GetSRVHandle(key, device.Get()));
+	commandList.Get()->SetGraphicsRootDescriptorTable(1, basicHeap.GetCBVHandle(key, device.Get()));
 
 	commandList.Get()->IASetVertexBuffers(0, 1, &vbView);
 	commandList.Get()->IASetIndexBuffer(&ibView);
@@ -511,7 +509,7 @@ void Graphics::Finalize()
 	swapChain.Finalize();
 	commandQueue.Finalize();
 	factory.Finalize();
-	heap.Finalize();
+	basicHeap.Finalize();
 	device.Finalize();
 
 	////リークを確かめるためのデバッグ↓↓↓
