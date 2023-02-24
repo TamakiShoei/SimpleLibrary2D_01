@@ -10,7 +10,7 @@ BasicDescHeap::~BasicDescHeap()
 
 }
 
-void BasicDescHeap::Initialize(ID3D12Device* device)
+bool BasicDescHeap::Initialize(ID3D12Device* device)
 {
 	//BasicDescriptorHrapì¬
 	D3D12_DESCRIPTOR_HEAP_DESC descHeapDesc = {};
@@ -19,9 +19,14 @@ void BasicDescHeap::Initialize(ID3D12Device* device)
 	descHeapDesc.NumDescriptors = 1024;
 	descHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;
 
-	device->CreateDescriptorHeap(&descHeapDesc, IID_PPV_ARGS(&heap));
+	if (FAILED(device->CreateDescriptorHeap(&descHeapDesc, IID_PPV_ARGS(&heap))))
+	{
+		return false;
+	}
 
 	D3D12_CPU_DESCRIPTOR_HANDLE handle = heap->GetCPUDescriptorHandleForHeapStart();
+
+	return true;
 }
 
 void BasicDescHeap::RegisterCBV(D3D12_CONSTANT_BUFFER_VIEW_DESC cbv_desc, int key, ID3D12Device* device)

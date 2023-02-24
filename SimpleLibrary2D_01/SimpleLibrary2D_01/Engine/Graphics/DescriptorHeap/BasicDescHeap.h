@@ -10,7 +10,7 @@ public:
 	BasicDescHeap();
 	~BasicDescHeap();
 
-	void Initialize(ID3D12Device* device);
+	bool Initialize(ID3D12Device* device);
 	void RegisterCBV(D3D12_CONSTANT_BUFFER_VIEW_DESC cbvDesc, int key, ID3D12Device* device);
 	void RegisterSRV(ID3D12Resource* buff, D3D12_SHADER_RESOURCE_VIEW_DESC srvDesc, int key, ID3D12Device* device);
 	D3D12_GPU_DESCRIPTOR_HANDLE GetCBVHandle(int key, ID3D12Device* device);
