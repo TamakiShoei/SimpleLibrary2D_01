@@ -14,11 +14,11 @@ public:
 
 	inline ID3D12Device* Get()
 	{
-		return this->device.Get();
+		return this->instance.Get();
 	}
 
 private:
-	ComPtr<ID3D12Device> device;
+	ComPtr<ID3D12Device> instance;
 	std::vector<D3D_FEATURE_LEVEL> levels;
 };
 

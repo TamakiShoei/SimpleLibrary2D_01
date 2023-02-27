@@ -20,7 +20,7 @@ public:
 	void Finalize();
 
 private:
-	ComPtr<ID3D12DescriptorHeap> heap;
+	ComPtr<ID3D12DescriptorHeap> instance;
 	D3D12_CPU_DESCRIPTOR_HANDLE handle;
 	std::map<int, int> cbvDictionaly;
 	std::map<int, int> srvDictionaly;

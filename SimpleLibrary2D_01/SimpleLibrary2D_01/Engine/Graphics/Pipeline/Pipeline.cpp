@@ -1,15 +1,15 @@
 #include "Pipeline.h"
 
-Pipeline::Pipeline() : pipeline(nullptr)
+Pipeline::Pipeline() : instance(nullptr)
 {
 
 }
 
 Pipeline::~Pipeline()
 {
-	if (pipeline != nullptr)
+	if (instance != nullptr)
 	{
-		pipeline->Release();
+		instance->Release();
 	}
 }
 
@@ -89,7 +89,7 @@ bool Pipeline::Initialize(ComPtr<ID3D12Device> device, ComPtr<ID3D12RootSignatur
 	graphicsPipeline.SampleDesc.Quality = 0;
 
 	if (FAILED(device->CreateGraphicsPipelineState(
-		&graphicsPipeline, IID_PPV_ARGS(pipeline.GetAddressOf()))))
+		&graphicsPipeline, IID_PPV_ARGS(instance.GetAddressOf()))))
 	{
 		return false;
 	}
@@ -99,5 +99,5 @@ bool Pipeline::Initialize(ComPtr<ID3D12Device> device, ComPtr<ID3D12RootSignatur
 
 void Pipeline::Finalize()
 {
-	pipeline->Release();
+	instance->Release();
 }

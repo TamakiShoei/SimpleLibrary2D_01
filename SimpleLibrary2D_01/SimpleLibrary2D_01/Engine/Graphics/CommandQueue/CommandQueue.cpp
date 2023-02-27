@@ -1,15 +1,15 @@
 #include "CommandQueue.h"
 
-CommandQueue::CommandQueue() : commandQueue(nullptr)
+CommandQueue::CommandQueue() : instance(nullptr)
 {
 
 }
 
 CommandQueue::~CommandQueue()
 {
-	if (commandQueue != nullptr)
+	if (instance != nullptr)
 	{
-		commandQueue->Release();
+		instance->Release();
 	}
 }
 
@@ -21,7 +21,7 @@ bool CommandQueue::Initialize(ComPtr<ID3D12Device> device)
 	commandQueueDesc.Type = D3D12_COMMAND_LIST_TYPE_DIRECT;
 
 	//コマンドキューを作成
-	if (FAILED(device->CreateCommandQueue(&commandQueueDesc, IID_PPV_ARGS(commandQueue.GetAddressOf()))))
+	if (FAILED(device->CreateCommandQueue(&commandQueueDesc, IID_PPV_ARGS(instance.GetAddressOf()))))
 	{
 		MessageBox(NULL, L"コマンドキューを作成できませんでした。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
 		return false;
@@ -32,5 +32,5 @@ bool CommandQueue::Initialize(ComPtr<ID3D12Device> device)
 
 void CommandQueue::Finalize()
 {
-	commandQueue->Release();
+	instance->Release();
 }

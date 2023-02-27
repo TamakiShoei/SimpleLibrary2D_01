@@ -1,15 +1,15 @@
 #include "RootSignature.h"
 
-RootSignature::RootSignature() : rootSignature(nullptr)
+RootSignature::RootSignature() : instance(nullptr)
 {
 
 }
 
 RootSignature::~RootSignature()
 {
-	if (rootSignature != nullptr)
+	if (instance != nullptr)
 	{
-		rootSignature->Release();
+		instance->Release();
 	}
 }
 
@@ -77,7 +77,7 @@ bool RootSignature::Initialize(ComPtr<ID3D12Device> device)
 		0,
 		blob->GetBufferPointer(),
 		blob->GetBufferSize(),
-		IID_PPV_ARGS(&rootSignature))))
+		IID_PPV_ARGS(&instance))))
 	{
 		return false;
 	}
@@ -87,5 +87,5 @@ bool RootSignature::Initialize(ComPtr<ID3D12Device> device)
 
 void RootSignature::Finalize()
 {
-	rootSignature->Release();
+	instance->Release();
 }

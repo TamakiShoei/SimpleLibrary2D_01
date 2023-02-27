@@ -1,6 +1,6 @@
 #include "Device.h"
 
-Device::Device() : device(nullptr)
+Device::Device() : instance(nullptr)
 {
 	levels.push_back(D3D_FEATURE_LEVEL_12_1);
 	levels.push_back(D3D_FEATURE_LEVEL_12_0);
@@ -10,9 +10,9 @@ Device::Device() : device(nullptr)
 
 Device::~Device()
 {
-	if (device != nullptr)
+	if (instance != nullptr)
 	{
-		device.ReleaseAndGetAddressOf();
+		instance.ReleaseAndGetAddressOf();
 	}
 }
 
@@ -41,7 +41,7 @@ bool Device::Initialize(ComPtr<IDXGIFactory4> factory)
 	UINT failedCounter = 0;
 	for (auto l : levels)
 	{
-		if (D3D12CreateDevice(tmpAdapter, l, IID_PPV_ARGS(&device)) == S_OK)
+		if (D3D12CreateDevice(tmpAdapter, l, IID_PPV_ARGS(&instance)) == S_OK)
 		{
 			break;
 		}
@@ -60,5 +60,5 @@ bool Device::Initialize(ComPtr<IDXGIFactory4> factory)
 
 void Device::Finalize()
 {
-	device.ReleaseAndGetAddressOf();
+	instance.ReleaseAndGetAddressOf();
 }

@@ -1,22 +1,22 @@
 #include "Fence.h"
 
-Fence::Fence() : fence(nullptr), fenceEvent(nullptr), fenceValue(0)
+Fence::Fence() : instance(nullptr), fenceEvent(nullptr), fenceValue(0)
 {
 
 }
 
 Fence::~Fence()
 {
-	if (fence != nullptr)
+	if (instance != nullptr)
 	{
-		fence->Release();
+		instance->Release();
 	}
 }
 
 bool Fence::Initialize(ComPtr<ID3D12Device> device)
 {
 	// フェンスを作成
-	if (FAILED(device.Get()->CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(fence.GetAddressOf()))))
+	if (FAILED(device.Get()->CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(instance.GetAddressOf()))))
 	{
 		MessageBox(NULL, L"フェンスを作成できませんでした。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
 		return false;
@@ -39,12 +39,12 @@ bool Fence::Initialize(ComPtr<ID3D12Device> device)
 void Fence::WaitForPreviousFrame(ComPtr<ID3D12CommandQueue> commandQueue)
 {
 	const UINT64 tmpFence = fenceValue;
-	commandQueue.Get()->Signal(fence.Get(), tmpFence);
+	commandQueue.Get()->Signal(instance.Get(), tmpFence);
 	fenceValue++;
 
 	// 前のフレームが終了するまで待機
-	if (fence->GetCompletedValue() < tmpFence) {
-		fence->SetEventOnCompletion(tmpFence, fenceEvent);
+	if (instance->GetCompletedValue() < tmpFence) {
+		instance->SetEventOnCompletion(tmpFence, fenceEvent);
 		WaitForSingleObject(fenceEvent, INFINITE);
 	}
 
@@ -52,5 +52,5 @@ void Fence::WaitForPreviousFrame(ComPtr<ID3D12CommandQueue> commandQueue)
 
 void Fence::Finalize()
 {
-	fence->Release();
+	instance->Release();
 }

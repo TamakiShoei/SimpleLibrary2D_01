@@ -1,21 +1,21 @@
 #include "CommandAllocator.h"
 
-CommandAllocator::CommandAllocator() : commandAllocator(nullptr)
+CommandAllocator::CommandAllocator() : instance(nullptr)
 {
 
 }
 
 CommandAllocator::~CommandAllocator()
 {
-	if (commandAllocator != nullptr)
+	if (instance != nullptr)
 	{
-		commandAllocator->Release();
+		instance->Release();
 	}
 }
 
 bool CommandAllocator::Initialize(ComPtr<ID3D12Device> device)
 {
-	if (FAILED(device.Get()->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT, IID_PPV_ARGS(commandAllocator.GetAddressOf()))))
+	if (FAILED(device.Get()->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT, IID_PPV_ARGS(instance.GetAddressOf()))))
 	{
 		MessageBox(NULL, L"コマンドアロケータを作成できませんでした。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
 		return false;
@@ -25,5 +25,5 @@ bool CommandAllocator::Initialize(ComPtr<ID3D12Device> device)
 
 void CommandAllocator::Finalize()
 {
-	commandAllocator->Release();
+	instance->Release();
 }

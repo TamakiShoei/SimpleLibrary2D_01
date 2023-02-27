@@ -19,12 +19,12 @@ bool BasicDescHeap::Initialize(ID3D12Device* device)
 	descHeapDesc.NumDescriptors = 1024;
 	descHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;
 
-	if (FAILED(device->CreateDescriptorHeap(&descHeapDesc, IID_PPV_ARGS(&heap))))
+	if (FAILED(device->CreateDescriptorHeap(&descHeapDesc, IID_PPV_ARGS(&instance))))
 	{
 		return false;
 	}
 
-	D3D12_CPU_DESCRIPTOR_HANDLE handle = heap->GetCPUDescriptorHandleForHeapStart();
+	D3D12_CPU_DESCRIPTOR_HANDLE handle = instance->GetCPUDescriptorHandleForHeapStart();
 
 	return true;
 }
@@ -32,7 +32,7 @@ bool BasicDescHeap::Initialize(ID3D12Device* device)
 void BasicDescHeap::RegisterCBV(D3D12_CONSTANT_BUFFER_VIEW_DESC cbv_desc, int key, ID3D12Device* device)
 {
 	//DescriptorHeapの先頭アドレスを取得
-	D3D12_CPU_DESCRIPTOR_HANDLE handle = heap->GetCPUDescriptorHandleForHeapStart();
+	D3D12_CPU_DESCRIPTOR_HANDLE handle = instance->GetCPUDescriptorHandleForHeapStart();
 
 	//先頭からインクリメントサイズ * カウンター分動かした位置のアドレスを取得
 	handle.ptr += 
@@ -51,7 +51,7 @@ void BasicDescHeap::RegisterCBV(D3D12_CONSTANT_BUFFER_VIEW_DESC cbv_desc, int ke
 void BasicDescHeap::RegisterSRV(ID3D12Resource* buff, D3D12_SHADER_RESOURCE_VIEW_DESC srv_desc, int key, ID3D12Device* device)
 {
 	//DescriptorHeapの先頭アドレスを取得
-	D3D12_CPU_DESCRIPTOR_HANDLE handle = heap->GetCPUDescriptorHandleForHeapStart();
+	D3D12_CPU_DESCRIPTOR_HANDLE handle = instance->GetCPUDescriptorHandleForHeapStart();
 
 	//先頭からインクリメントサイズ * カウンター分動かした位置のアドレスを取得
 	handle.ptr += 
@@ -69,7 +69,7 @@ void BasicDescHeap::RegisterSRV(ID3D12Resource* buff, D3D12_SHADER_RESOURCE_VIEW
 
 D3D12_GPU_DESCRIPTOR_HANDLE BasicDescHeap::GetSRVHandle(int key, ID3D12Device* device)
 {
-	D3D12_GPU_DESCRIPTOR_HANDLE handle = heap->GetGPUDescriptorHandleForHeapStart();
+	D3D12_GPU_DESCRIPTOR_HANDLE handle = instance->GetGPUDescriptorHandleForHeapStart();
 	handle.ptr += device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV) * srvDictionaly.at(key);
 
 	return handle;
@@ -77,7 +77,7 @@ D3D12_GPU_DESCRIPTOR_HANDLE BasicDescHeap::GetSRVHandle(int key, ID3D12Device* d
 
 D3D12_GPU_DESCRIPTOR_HANDLE BasicDescHeap::GetCBVHandle(int key, ID3D12Device* device)
 {
-	D3D12_GPU_DESCRIPTOR_HANDLE handle = heap->GetGPUDescriptorHandleForHeapStart();
+	D3D12_GPU_DESCRIPTOR_HANDLE handle = instance->GetGPUDescriptorHandleForHeapStart();
 	handle.ptr += device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV) * cbvDictionaly.at(key);
 
 	return handle;
@@ -85,7 +85,7 @@ D3D12_GPU_DESCRIPTOR_HANDLE BasicDescHeap::GetCBVHandle(int key, ID3D12Device* d
 
 ID3D12DescriptorHeap* BasicDescHeap::Get()
 {
-	return heap.Get();
+	return instance.Get();
 }
 
 void BasicDescHeap::ResetCounter()
@@ -98,5 +98,5 @@ void BasicDescHeap::Finalize()
 	srvDictionaly.clear();
 	cbvDictionaly.clear();
 
-	heap.ReleaseAndGetAddressOf();
+	instance.ReleaseAndGetAddressOf();
 }

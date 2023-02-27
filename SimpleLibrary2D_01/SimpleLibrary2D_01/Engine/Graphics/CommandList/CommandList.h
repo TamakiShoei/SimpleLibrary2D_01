@@ -14,11 +14,11 @@ public:
 
 	inline ID3D12GraphicsCommandList* Get()
 	{
-		return this->commandList.Get();
+		return this->instance.Get();
 	}
 
 private:
-	ComPtr<ID3D12GraphicsCommandList> commandList;
+	ComPtr<ID3D12GraphicsCommandList> instance;
 };
 
 #endif

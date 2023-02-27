@@ -14,11 +14,11 @@ public:
 
 	inline ComPtr<IDXGIFactory4> Get()
 	{
-		return this->factory;
+		return this->instance;
 	}
 
 private:
-	ComPtr<IDXGIFactory4> factory;
+	ComPtr<IDXGIFactory4> instance;
 };
 
 #endif

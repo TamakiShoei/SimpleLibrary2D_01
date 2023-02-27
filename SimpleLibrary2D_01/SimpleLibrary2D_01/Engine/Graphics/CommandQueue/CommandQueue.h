@@ -20,11 +20,11 @@ public:
 
 	inline ID3D12CommandQueue* Get()
 	{
-		return this->commandQueue.Get();
+		return this->instance.Get();
 	}
 
 private:
-	ComPtr<ID3D12CommandQueue> commandQueue;
+	ComPtr<ID3D12CommandQueue> instance;
 };
 
 #endif

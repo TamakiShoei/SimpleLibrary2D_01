@@ -15,11 +15,11 @@ public:
 
 	inline ID3D12Fence* Get()
 	{
-		return this->fence.Get();
+		return this->instance.Get();
 	}
 
 private:
-	ComPtr<ID3D12Fence> fence;
+	ComPtr<ID3D12Fence> instance;
 	UINT fenceValue;
 	HANDLE fenceEvent;		//フェンスハンドル
 };

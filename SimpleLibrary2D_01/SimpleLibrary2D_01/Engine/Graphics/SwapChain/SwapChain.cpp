@@ -1,15 +1,15 @@
 #include "SwapChain.h"
 
-SwapChain::SwapChain() : swapChain(nullptr), frameIndex(0)
+SwapChain::SwapChain() : instance(nullptr), frameIndex(0)
 {
 
 }
 
 SwapChain::~SwapChain()
 {
-	if (swapChain != nullptr)
+	if (instance != nullptr)
 	{
-		swapChain->Release();
+		instance->Release();
 	}
 }
 
@@ -42,20 +42,20 @@ bool SwapChain::Initialize(ComPtr<IDXGIFactory4> factory, ComPtr<ID3D12CommandQu
 	}
 
 	//スワップチェインをキャスト
-	tmpSwapChain.As(&swapChain);
+	tmpSwapChain.As(&instance);
 
 	//バックバッファのインデックスを格納
-	frameIndex = swapChain->GetCurrentBackBufferIndex();
+	frameIndex = instance->GetCurrentBackBufferIndex();
 
 	return true;
 }
 
 void SwapChain::UpdateFrameIndex()
 {
-	frameIndex = swapChain->GetCurrentBackBufferIndex();
+	frameIndex = instance->GetCurrentBackBufferIndex();
 }
 
 void SwapChain::Finalize()
 {
-	swapChain->Release();
+	instance->Release();
 }

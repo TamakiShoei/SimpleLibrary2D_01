@@ -14,11 +14,11 @@ public:
 
 	ID3D12RootSignature* Get()
 	{
-		return this->rootSignature.Get();
+		return this->instance.Get();
 	}
 
 private:
-	ComPtr<ID3D12RootSignature> rootSignature;
+	ComPtr<ID3D12RootSignature> instance;
 };
 
 #endif

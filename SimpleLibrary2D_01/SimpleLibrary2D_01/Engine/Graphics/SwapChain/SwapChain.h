@@ -15,7 +15,7 @@ public:
 
 	inline IDXGISwapChain4* Get()
 	{
-		return this->swapChain.Get();
+		return this->instance.Get();
 	}
 
 	inline UINT GetFrameIndex()
@@ -24,7 +24,7 @@ public:
 	}
 
 private:
-	ComPtr<IDXGISwapChain4> swapChain;
+	ComPtr<IDXGISwapChain4> instance;
 	UINT frameIndex;
 };
 

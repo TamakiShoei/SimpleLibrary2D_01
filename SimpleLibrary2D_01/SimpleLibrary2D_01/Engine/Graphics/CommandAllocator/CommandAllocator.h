@@ -14,11 +14,11 @@ public:
 
 	inline ID3D12CommandAllocator* Get()
 	{
-		return this->commandAllocator.Get();
+		return this->instance.Get();
 	}
 
 private:
-	ComPtr<ID3D12CommandAllocator> commandAllocator;
+	ComPtr<ID3D12CommandAllocator> instance;
 };
 
 #endif

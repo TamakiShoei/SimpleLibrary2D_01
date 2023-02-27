@@ -14,11 +14,11 @@ public:
 
 	ID3D12PipelineState* Get()
 	{
-		return this->pipeline.Get();
+		return this->instance.Get();
 	}
 
 private:
-	ComPtr<ID3D12PipelineState> pipeline;
+	ComPtr<ID3D12PipelineState> instance;
 };
 
 #endif

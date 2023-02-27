@@ -1,28 +1,28 @@
 #include "Factory.h"
 
-Factory::Factory() : factory(nullptr)
+Factory::Factory() : instance(nullptr)
 {
 
 }
 
 Factory::~Factory()
 {
-	if (factory != nullptr)
+	if (instance != nullptr)
 	{
-		factory->Release();
+		instance->Release();
 	}
 }
 
 bool Factory::Initialize(UINT factory_flags)
 {
 	//ファクトリを作成
-	if (FAILED(CreateDXGIFactory2(factory_flags, IID_PPV_ARGS(factory.GetAddressOf()))))
+	if (FAILED(CreateDXGIFactory2(factory_flags, IID_PPV_ARGS(instance.GetAddressOf()))))
 	{
 		MessageBox(NULL, L"ファクトリを作成できませんでした。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
 		return false;
 	}
 	//Alt+Enterによる全画面遷移をできないようにする
-	if (FAILED(factory->MakeWindowAssociation(FindWindow(WINDOW_TITLE, nullptr), DXGI_MWA_NO_ALT_ENTER)))
+	if (FAILED(instance->MakeWindowAssociation(FindWindow(WINDOW_TITLE, nullptr), DXGI_MWA_NO_ALT_ENTER)))
 	{
 		MessageBox(NULL, L"画面の設定ができません。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
 		return false;
@@ -35,5 +35,5 @@ bool Factory::Initialize(UINT factory_flags)
 
 void Factory::Finalize()
 {
-	factory->Release();
+	instance->Release();
 }
