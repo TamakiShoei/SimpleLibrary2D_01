@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SimpleLibrary: SimpleLibrary2D_01/SimpleLibrary2D_01/Engine/Graphics/CommandAllocator/CommandAllocator.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">SimpleLibrary
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_01d751825de9ac13df742f0f31d92797.html">SimpleLibrary2D_01</a></li><li class="navelem"><a class="el" href="dir_e1b4e63c7ef0203534ba209247423504.html">SimpleLibrary2D_01</a></li><li class="navelem"><a class="el" href="dir_4e3f83a7c46a25bafdcb76e649fd34bc.html">Engine</a></li><li class="navelem"><a class="el" href="dir_2a6705160618eb870f5a7c144ad6dcba.html">Graphics</a></li><li class="navelem"><a class="el" href="dir_975b0c0aa56a9785564a1cc1add3c60a.html">CommandAllocator</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">CommandAllocator.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_command_allocator_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef COMMAND_ALLOCATOR_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define COMMAND_ALLOCATOR_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;../../CommonDifinition.h&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="class_command_allocator.html">    6</a></span><span class="keyword">class </span><a class="code hl_class" href="class_command_allocator.html">CommandAllocator</a></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>{</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <a class="code hl_function" href="class_command_allocator.html#ab735c280f655c7bb6887600ad6789820">CommandAllocator</a>();</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <a class="code hl_function" href="class_command_allocator.html#a2c03013b9d9a5147b6d505803252ea7a">~CommandAllocator</a>();</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_command_allocator.html#ab1f87f40896a07b437440171d4afae43">Initialize</a>(ComPtr&lt;ID3D12Device&gt; device);</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_command_allocator.html#aa833818e5db967e4718c9eb8dfb6d33e">Finalize</a>();</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="class_command_allocator.html#a0c1313f5d7d157c457b186e586c557d5">   15</a></span>    <span class="keyword">inline</span> ID3D12CommandAllocator* <a class="code hl_function" href="class_command_allocator.html#a0c1313f5d7d157c457b186e586c557d5">Get</a>()</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    {</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="keywordflow">return</span> this-&gt;instance.Get();</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    }</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    ComPtr&lt;ID3D12CommandAllocator&gt; instance;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>};</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclass_command_allocator_html"><div class="ttname"><a href="class_command_allocator.html">CommandAllocator</a></div><div class="ttdef"><b>Definition:</b> CommandAllocator.h:7</div></div>
+<div class="ttc" id="aclass_command_allocator_html_a0c1313f5d7d157c457b186e586c557d5"><div class="ttname"><a href="class_command_allocator.html#a0c1313f5d7d157c457b186e586c557d5">CommandAllocator::Get</a></div><div class="ttdeci">ID3D12CommandAllocator * Get()</div><div class="ttdef"><b>Definition:</b> CommandAllocator.h:15</div></div>
+<div class="ttc" id="aclass_command_allocator_html_a2c03013b9d9a5147b6d505803252ea7a"><div class="ttname"><a href="class_command_allocator.html#a2c03013b9d9a5147b6d505803252ea7a">CommandAllocator::~CommandAllocator</a></div><div class="ttdeci">~CommandAllocator()</div><div class="ttdef"><b>Definition:</b> CommandAllocator.cpp:8</div></div>
+<div class="ttc" id="aclass_command_allocator_html_aa833818e5db967e4718c9eb8dfb6d33e"><div class="ttname"><a href="class_command_allocator.html#aa833818e5db967e4718c9eb8dfb6d33e">CommandAllocator::Finalize</a></div><div class="ttdeci">void Finalize()</div><div class="ttdef"><b>Definition:</b> CommandAllocator.cpp:26</div></div>
+<div class="ttc" id="aclass_command_allocator_html_ab1f87f40896a07b437440171d4afae43"><div class="ttname"><a href="class_command_allocator.html#ab1f87f40896a07b437440171d4afae43">CommandAllocator::Initialize</a></div><div class="ttdeci">bool Initialize(ComPtr&lt; ID3D12Device &gt; device)</div><div class="ttdef"><b>Definition:</b> CommandAllocator.cpp:16</div></div>
+<div class="ttc" id="aclass_command_allocator_html_ab735c280f655c7bb6887600ad6789820"><div class="ttname"><a href="class_command_allocator.html#ab735c280f655c7bb6887600ad6789820">CommandAllocator::CommandAllocator</a></div><div class="ttdeci">CommandAllocator()</div><div class="ttdef"><b>Definition:</b> CommandAllocator.cpp:3</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
+</small></address>
+</body>
+</html>

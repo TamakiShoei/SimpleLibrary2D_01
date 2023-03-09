@@ -1,0 +1,206 @@
+\hypertarget{class_graphics}{}\doxysection{Graphics クラス}
+\label{class_graphics}\index{Graphics@{Graphics}}
+
+
+{\ttfamily \#include $<$Graphics.\+h$>$}
+
+Graphics の継承関係図\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_graphics}
+\end{center}
+\end{figure}
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_graphics_af2e8fe67fd31ec263c843a6e28b29d3c}{Graphics}} ()
+\item 
+\mbox{\hyperlink{class_graphics_a7841c9a961ac9bca33bd30ddf8066cdb}{$\sim$\+Graphics}} ()
+\item 
+bool \mbox{\hyperlink{class_graphics_a4fe5fdb8aa64479fb68f6c7a1ea4d5fb}{Initialize}} ()
+\begin{DoxyCompactList}\small\item\em Graphicsクラスの初期化関数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graphics_ac8545dc7e80c28157dde0d0cb7a6d326}{Clear\+Screen}} ()
+\begin{DoxyCompactList}\small\item\em 描画開始関数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graphics_a3bef45c4daec0ba45716bb41f2d87a6c}{Screen\+Flip}} ()
+\begin{DoxyCompactList}\small\item\em 描画終了関数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graphics_a787dab34b4820f794d1dd1480c17ff0c}{Draw\+Triangle}} (\mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} lower\+\_\+left, \mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} upper\+\_\+left, \mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} lower\+\_\+right)
+\begin{DoxyCompactList}\small\item\em 三角形描画関数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graphics_a6c981307a85117a1cae57b4fcf11e277}{Draw\+Rect}} (\mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} lower\+\_\+left, \mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} upper\+\_\+left, \mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} upper\+\_\+right, \mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} lower\+\_\+right)
+\begin{DoxyCompactList}\small\item\em 矩形描画関数 \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_graphics_aeb7026b4d19c506cf902d10c02b7878c}{Load\+Texture}} (const char $\ast$file\+\_\+path)
+\begin{DoxyCompactList}\small\item\em 画像読み込み関数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graphics_aaba07cd1ce2c67fed84e4bf7594b38c1}{Draw\+Texture}} (float pos\+\_\+x, float pos\+\_\+y, int key)
+\begin{DoxyCompactList}\small\item\em テクスチャ描画関数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graphics_a403aee6ef2996a9872c3c1706c75afee}{Wait\+For\+Previous\+Frame}} ()
+\begin{DoxyCompactList}\small\item\em GPU待ち関数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graphics_a2ba30c7b27677668b5f343ab6b6be82e}{Finalize}} ()
+\begin{DoxyCompactList}\small\item\em リソース解放関数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{class_graphics_af2e8fe67fd31ec263c843a6e28b29d3c}\label{class_graphics_af2e8fe67fd31ec263c843a6e28b29d3c}} 
+\index{Graphics@{Graphics}!Graphics@{Graphics}}
+\index{Graphics@{Graphics}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{Graphics()}{Graphics()}}
+{\footnotesize\ttfamily Graphics\+::\+Graphics (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_graphics_a7841c9a961ac9bca33bd30ddf8066cdb}\label{class_graphics_a7841c9a961ac9bca33bd30ddf8066cdb}} 
+\index{Graphics@{Graphics}!````~Graphics@{$\sim$Graphics}}
+\index{````~Graphics@{$\sim$Graphics}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{$\sim$Graphics()}{~Graphics()}}
+{\footnotesize\ttfamily Graphics\+::$\sim$\+Graphics (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{class_graphics_ac8545dc7e80c28157dde0d0cb7a6d326}\label{class_graphics_ac8545dc7e80c28157dde0d0cb7a6d326}} 
+\index{Graphics@{Graphics}!ClearScreen@{ClearScreen}}
+\index{ClearScreen@{ClearScreen}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{ClearScreen()}{ClearScreen()}}
+{\footnotesize\ttfamily void Graphics\+::\+Clear\+Screen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+描画開始関数 
+
+
+\begin{DoxyPre}
+バックバッファのクリアを行う
+この関数は必ず描画処理前に実行する必要がある
+また、実行後にClearScreen関数を実行する必要がある
+\end{DoxyPre}
+ \mbox{\Hypertarget{class_graphics_a6c981307a85117a1cae57b4fcf11e277}\label{class_graphics_a6c981307a85117a1cae57b4fcf11e277}} 
+\index{Graphics@{Graphics}!DrawRect@{DrawRect}}
+\index{DrawRect@{DrawRect}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{DrawRect()}{DrawRect()}}
+{\footnotesize\ttfamily void Graphics\+::\+Draw\+Rect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}}}]{lower\+\_\+left,  }\item[{\mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}}}]{upper\+\_\+left,  }\item[{\mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}}}]{upper\+\_\+right,  }\item[{\mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}}}]{lower\+\_\+right }\end{DoxyParamCaption})}
+
+
+
+矩形描画関数 
+
+引数で受け取った頂点をもとに三角形を描画する 
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em lower\+\_\+left} & 左下頂点座標 \\
+\hline
+\mbox{\texttt{ in}}  & {\em upper\+\_\+left} & 左上頂点座標 \\
+\hline
+\mbox{\texttt{ in}}  & {\em upper\+\_\+right} & 右上頂点座標 \\
+\hline
+\mbox{\texttt{ in}}  & {\em lower\+\_\+right} & 右下頂点座標 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graphics_aaba07cd1ce2c67fed84e4bf7594b38c1}\label{class_graphics_aaba07cd1ce2c67fed84e4bf7594b38c1}} 
+\index{Graphics@{Graphics}!DrawTexture@{DrawTexture}}
+\index{DrawTexture@{DrawTexture}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{DrawTexture()}{DrawTexture()}}
+{\footnotesize\ttfamily void Graphics\+::\+Draw\+Texture (\begin{DoxyParamCaption}\item[{float}]{pos\+\_\+x,  }\item[{float}]{pos\+\_\+y,  }\item[{int}]{key }\end{DoxyParamCaption})}
+
+
+
+テクスチャ描画関数 
+
+引数で受け取った頂点をもとにテクスチャを描画する 
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em pos\+\_\+x} & 左下頂点x座標 \\
+\hline
+\mbox{\texttt{ in}}  & {\em pos\+\_\+y} & 左上頂点y座標 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graphics_a787dab34b4820f794d1dd1480c17ff0c}\label{class_graphics_a787dab34b4820f794d1dd1480c17ff0c}} 
+\index{Graphics@{Graphics}!DrawTriangle@{DrawTriangle}}
+\index{DrawTriangle@{DrawTriangle}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{DrawTriangle()}{DrawTriangle()}}
+{\footnotesize\ttfamily void Graphics\+::\+Draw\+Triangle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}}}]{lower\+\_\+left,  }\item[{\mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}}}]{upper\+\_\+left,  }\item[{\mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}}}]{lower\+\_\+right }\end{DoxyParamCaption})}
+
+
+
+三角形描画関数 
+
+引数で受け取った頂点をもとに三角形を描画する 
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em lower\+\_\+left} & 左下頂点座標 \\
+\hline
+\mbox{\texttt{ in}}  & {\em upper\+\_\+left} & 左上頂点座標 \\
+\hline
+\mbox{\texttt{ in}}  & {\em lower\+\_\+right} & 右下頂点座標 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_graphics_a2ba30c7b27677668b5f343ab6b6be82e}\label{class_graphics_a2ba30c7b27677668b5f343ab6b6be82e}} 
+\index{Graphics@{Graphics}!Finalize@{Finalize}}
+\index{Finalize@{Finalize}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{Finalize()}{Finalize()}}
+{\footnotesize\ttfamily void Graphics\+::\+Finalize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+リソース解放関数 
+
+\mbox{\Hypertarget{class_graphics_a4fe5fdb8aa64479fb68f6c7a1ea4d5fb}\label{class_graphics_a4fe5fdb8aa64479fb68f6c7a1ea4d5fb}} 
+\index{Graphics@{Graphics}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool Graphics\+::\+Initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Graphicsクラスの初期化関数 
+
+描画を使用するための初期化を行う 
+\begin{DoxyRetVals}{戻り値}
+{\em true} & 初期化成功 \\
+\hline
+{\em false} & 初期化失敗 \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{class_graphics_aeb7026b4d19c506cf902d10c02b7878c}\label{class_graphics_aeb7026b4d19c506cf902d10c02b7878c}} 
+\index{Graphics@{Graphics}!LoadTexture@{LoadTexture}}
+\index{LoadTexture@{LoadTexture}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{LoadTexture()}{LoadTexture()}}
+{\footnotesize\ttfamily int Graphics\+::\+Load\+Texture (\begin{DoxyParamCaption}\item[{const char $\ast$}]{file\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+画像読み込み関数 
+
+引数で受け取ったファイルパスをもとに画像を描画する際に必要なキーを返す 
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em file\+\_\+path} & 読み込みたい画像のファイルパス \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{戻り値}
+{\em キー値} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{class_graphics_a3bef45c4daec0ba45716bb41f2d87a6c}\label{class_graphics_a3bef45c4daec0ba45716bb41f2d87a6c}} 
+\index{Graphics@{Graphics}!ScreenFlip@{ScreenFlip}}
+\index{ScreenFlip@{ScreenFlip}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{ScreenFlip()}{ScreenFlip()}}
+{\footnotesize\ttfamily void Graphics\+::\+Screen\+Flip (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+描画終了関数 
+
+
+\begin{DoxyPre}
+バックバッファとフロントバッファを入れ替える
+この関数は必ずClearScreenの後に実行する必要がある
+\end{DoxyPre}
+ \mbox{\Hypertarget{class_graphics_a403aee6ef2996a9872c3c1706c75afee}\label{class_graphics_a403aee6ef2996a9872c3c1706c75afee}} 
+\index{Graphics@{Graphics}!WaitForPreviousFrame@{WaitForPreviousFrame}}
+\index{WaitForPreviousFrame@{WaitForPreviousFrame}!Graphics@{Graphics}}
+\doxysubsubsection{\texorpdfstring{WaitForPreviousFrame()}{WaitForPreviousFrame()}}
+{\footnotesize\ttfamily void Graphics\+::\+Wait\+For\+Previous\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+GPU待ち関数 
+
+Command\+Listの完了を検知する 
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Engine/\+Graphics/\mbox{\hyperlink{_graphics_8h}{Graphics.\+h}}\item 
+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Engine/\+Graphics/\mbox{\hyperlink{_graphics_8cpp}{Graphics.\+cpp}}\end{DoxyCompactItemize}

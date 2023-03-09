@@ -1,0 +1,181 @@
+\hypertarget{class_buffer_manager}{}\doxysection{Buffer\+Manager ã‚¯ãƒ©ã‚¹}
+\label{class_buffer_manager}\index{BufferManager@{BufferManager}}
+
+
+{\ttfamily \#include $<$Buffer\+Manager.\+h$>$}
+
+\doxysubsection*{å…¬é–‹ãƒ¡ãƒ³ãƒé–¢æ•°}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_buffer_manager_a81b53436fd8a2c4a2ddf9f3e3bb046fc}{Create\+Sprite}} (Direct\+X\+::\+Tex\+Metadata metadata, const Direct\+X\+::\+Image $\ast$img, ID3\+D12\+Device $\ast$device)
+\begin{DoxyCompactList}\small\item\em ƒ\+Lƒƒƒ“ƒoƒ\+X‚Ìì¬ŠÖ” \end{DoxyCompactList}\item 
+ID3\+D12\+Resource $\ast$ \mbox{\hyperlink{class_buffer_manager_a6bf4a0c12d96e8afd728ed8f232a13e3}{Get\+Vertex\+Buffer}} (int key, ID3\+D12\+Device $\ast$device)
+\begin{DoxyCompactList}\small\item\em ’¸“\+\_\+ƒoƒbƒtƒ@‚Ìæ“¾ŠÖ” \end{DoxyCompactList}\item 
+ID3\+D12\+Resource $\ast$ \mbox{\hyperlink{class_buffer_manager_ad5edd44577869c3ac711a3c3a17cf721}{Get\+Index\+Buffer}} (int key)
+\begin{DoxyCompactList}\small\item\em ƒ\+Cƒ“ƒfƒbƒ\+Nƒ\+Xƒoƒbƒtƒ@‚Ìæ“¾ŠÖ” \end{DoxyCompactList}\item 
+ID3\+D12\+Resource $\ast$ \mbox{\hyperlink{class_buffer_manager_abdf8b3b1206a592ab2ffd4c7c3f37458}{Get\+Tex\+Buffer}} (int key)
+\begin{DoxyCompactList}\small\item\em ƒ\+Cƒ“ƒfƒbƒ\+Nƒ\+Xƒoƒbƒtƒ@‚Ìæ“¾ŠÖ” \end{DoxyCompactList}\item 
+ID3\+D12\+Resource $\ast$ \mbox{\hyperlink{class_buffer_manager_a96d27cf7f0a1886a8ace078ef06382b6}{Get\+Constant\+Buffer}} (int key)
+\begin{DoxyCompactList}\small\item\em ƒ\+Cƒ“ƒfƒbƒ\+Nƒ\+Xƒoƒbƒtƒ@‚Ìæ“¾ŠÖ” \end{DoxyCompactList}\item 
+Direct\+X\+::\+Tex\+Metadata \mbox{\hyperlink{class_buffer_manager_a86560cd4665bae81f9e2c61226a2d0e2}{Get\+Metadata}} (int key)
+\begin{DoxyCompactList}\small\item\em ƒƒ$^\wedge$ƒf\mbox{[}ƒ$^\wedge$‚Ìæ“¾ŠÖ” \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_buffer_manager_a595c6c4f9c99745a4ed5e4008c094785}{Reset\+Use\+Counter}} ()
+\begin{DoxyCompactList}\small\item\em ’¸“\+\_\+ƒoƒbƒtƒ@ƒ\+Nƒ‰ƒ\+X‚Ì\+Use\+Counter‚ÌƒŠƒ\+ZƒbƒgŠÖ” \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_buffer_manager_a00c0ed1a88ac5c86755ef115ab80cf17}{Finalize}} ()
+\begin{DoxyCompactList}\small\item\em ƒŠƒ\textbackslash{}\mbox{[}ƒ\+X‰ğ•úŠÖ” \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{é™çš„å…¬é–‹ãƒ¡ãƒ³ãƒé–¢æ•°}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_buffer_manager}{Buffer\+Manager}} $\ast$ \mbox{\hyperlink{class_buffer_manager_ae88562553e9939fd8d06657f687a0ea1}{Instance}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{é–¢æ•°è©³è§£}
+\mbox{\Hypertarget{class_buffer_manager_a81b53436fd8a2c4a2ddf9f3e3bb046fc}\label{class_buffer_manager_a81b53436fd8a2c4a2ddf9f3e3bb046fc}} 
+\index{BufferManager@{BufferManager}!CreateSprite@{CreateSprite}}
+\index{CreateSprite@{CreateSprite}!BufferManager@{BufferManager}}
+\doxysubsubsection{\texorpdfstring{CreateSprite()}{CreateSprite()}}
+{\footnotesize\ttfamily int Buffer\+Manager\+::\+Create\+Sprite (\begin{DoxyParamCaption}\item[{Direct\+X\+::\+Tex\+Metadata}]{metadata,  }\item[{const Direct\+X\+::\+Image $\ast$}]{img,  }\item[{ID3\+D12\+Device $\ast$}]{device }\end{DoxyParamCaption})}
+
+
+
+ƒ\+Lƒƒƒ“ƒoƒ\+X‚Ìì¬ŠÖ” 
+
+
+\begin{DoxyParams}[1]{å¼•æ•°}
+\mbox{\texttt{ in}}  & {\em metadata} & ‰æ‘œ‚Ìƒƒ$^\wedge$ƒf\mbox{[}ƒ$^\wedge$ \\
+\hline
+\mbox{\texttt{ in}}  & {\em img} & ‰æ‘œ‚Ì¶ƒf\mbox{[}ƒ$^\wedge$ \\
+\hline
+\mbox{\texttt{ in}}  & {\em device} & ƒfƒoƒ\+CƒX \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_buffer_manager_a00c0ed1a88ac5c86755ef115ab80cf17}\label{class_buffer_manager_a00c0ed1a88ac5c86755ef115ab80cf17}} 
+\index{BufferManager@{BufferManager}!Finalize@{Finalize}}
+\index{Finalize@{Finalize}!BufferManager@{BufferManager}}
+\doxysubsubsection{\texorpdfstring{Finalize()}{Finalize()}}
+{\footnotesize\ttfamily void Buffer\+Manager\+::\+Finalize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+ƒŠƒ\textbackslash{}\mbox{[}ƒ\+X‰ğ•úŠÖ” 
+
+\mbox{\Hypertarget{class_buffer_manager_a96d27cf7f0a1886a8ace078ef06382b6}\label{class_buffer_manager_a96d27cf7f0a1886a8ace078ef06382b6}} 
+\index{BufferManager@{BufferManager}!GetConstantBuffer@{GetConstantBuffer}}
+\index{GetConstantBuffer@{GetConstantBuffer}!BufferManager@{BufferManager}}
+\doxysubsubsection{\texorpdfstring{GetConstantBuffer()}{GetConstantBuffer()}}
+{\footnotesize\ttfamily ID3\+D12\+Resource $\ast$ Buffer\+Manager\+::\+Get\+Constant\+Buffer (\begin{DoxyParamCaption}\item[{int}]{key }\end{DoxyParamCaption})}
+
+
+
+ƒ\+Cƒ“ƒfƒbƒ\+Nƒ\+Xƒoƒbƒtƒ@‚Ìæ“¾ŠÖ” 
+
+
+\begin{DoxyParams}[1]{å¼•æ•°}
+\mbox{\texttt{ in}}  & {\em key} & ƒ\+L\mbox{[}’l \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{æˆ»ã‚Šå€¤}
+{\em ƒ\+Rƒ“ƒ\+Xƒ$^\wedge$ƒ“ƒgƒoƒbƒtƒ} & \\
+\hline
+\end{DoxyRetVals}
+ƒf\mbox{[}ƒ$^\wedge$ \mbox{\Hypertarget{class_buffer_manager_ad5edd44577869c3ac711a3c3a17cf721}\label{class_buffer_manager_ad5edd44577869c3ac711a3c3a17cf721}} 
+\index{BufferManager@{BufferManager}!GetIndexBuffer@{GetIndexBuffer}}
+\index{GetIndexBuffer@{GetIndexBuffer}!BufferManager@{BufferManager}}
+\doxysubsubsection{\texorpdfstring{GetIndexBuffer()}{GetIndexBuffer()}}
+{\footnotesize\ttfamily ID3\+D12\+Resource $\ast$ Buffer\+Manager\+::\+Get\+Index\+Buffer (\begin{DoxyParamCaption}\item[{int}]{key }\end{DoxyParamCaption})}
+
+
+
+ƒ\+Cƒ“ƒfƒbƒ\+Nƒ\+Xƒoƒbƒtƒ@‚Ìæ“¾ŠÖ” 
+
+
+\begin{DoxyParams}[1]{å¼•æ•°}
+\mbox{\texttt{ in}}  & {\em key} & ƒ\+L\mbox{[}’l \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{æˆ»ã‚Šå€¤}
+{\em ƒ\+Cƒ“ƒfƒbƒ\+Nƒ\+Xƒoƒbƒtƒ} & \\
+\hline
+\end{DoxyRetVals}
+ƒf\mbox{[}ƒ$^\wedge$ \mbox{\Hypertarget{class_buffer_manager_a86560cd4665bae81f9e2c61226a2d0e2}\label{class_buffer_manager_a86560cd4665bae81f9e2c61226a2d0e2}} 
+\index{BufferManager@{BufferManager}!GetMetadata@{GetMetadata}}
+\index{GetMetadata@{GetMetadata}!BufferManager@{BufferManager}}
+\doxysubsubsection{\texorpdfstring{GetMetadata()}{GetMetadata()}}
+{\footnotesize\ttfamily Direct\+X\+::\+Tex\+Metadata Buffer\+Manager\+::\+Get\+Metadata (\begin{DoxyParamCaption}\item[{int}]{key }\end{DoxyParamCaption})}
+
+
+
+ƒƒ$^\wedge$ƒf\mbox{[}ƒ$^\wedge$‚Ìæ“¾ŠÖ” 
+
+
+\begin{DoxyParams}[1]{å¼•æ•°}
+\mbox{\texttt{ in}}  & {\em key} & ƒ\+L\mbox{[}’l \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{æˆ»ã‚Šå€¤}
+{\em ƒƒ$^\wedge$ƒf\mbox{[}ƒ$^\wedge$} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{class_buffer_manager_abdf8b3b1206a592ab2ffd4c7c3f37458}\label{class_buffer_manager_abdf8b3b1206a592ab2ffd4c7c3f37458}} 
+\index{BufferManager@{BufferManager}!GetTexBuffer@{GetTexBuffer}}
+\index{GetTexBuffer@{GetTexBuffer}!BufferManager@{BufferManager}}
+\doxysubsubsection{\texorpdfstring{GetTexBuffer()}{GetTexBuffer()}}
+{\footnotesize\ttfamily ID3\+D12\+Resource $\ast$ Buffer\+Manager\+::\+Get\+Tex\+Buffer (\begin{DoxyParamCaption}\item[{int}]{key }\end{DoxyParamCaption})}
+
+
+
+ƒ\+Cƒ“ƒfƒbƒ\+Nƒ\+Xƒoƒbƒtƒ@‚Ìæ“¾ŠÖ” 
+
+
+\begin{DoxyParams}[1]{å¼•æ•°}
+\mbox{\texttt{ in}}  & {\em key} & ƒ\+L\mbox{[}’l \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{æˆ»ã‚Šå€¤}
+{\em ƒeƒ\+Nƒ\+Xƒ\`{}ƒƒƒoƒbƒtƒ} & \\
+\hline
+\end{DoxyRetVals}
+ƒf\mbox{[}ƒ$^\wedge$ \mbox{\Hypertarget{class_buffer_manager_a6bf4a0c12d96e8afd728ed8f232a13e3}\label{class_buffer_manager_a6bf4a0c12d96e8afd728ed8f232a13e3}} 
+\index{BufferManager@{BufferManager}!GetVertexBuffer@{GetVertexBuffer}}
+\index{GetVertexBuffer@{GetVertexBuffer}!BufferManager@{BufferManager}}
+\doxysubsubsection{\texorpdfstring{GetVertexBuffer()}{GetVertexBuffer()}}
+{\footnotesize\ttfamily ID3\+D12\+Resource $\ast$ Buffer\+Manager\+::\+Get\+Vertex\+Buffer (\begin{DoxyParamCaption}\item[{int}]{key,  }\item[{ID3\+D12\+Device $\ast$}]{device }\end{DoxyParamCaption})}
+
+
+
+’¸“\+\_\+ƒoƒbƒtƒ@‚Ìæ“¾ŠÖ” 
+
+
+\begin{DoxyParams}[1]{å¼•æ•°}
+\mbox{\texttt{ in}}  & {\em key} & ƒ\+L\mbox{[}’l \\
+\hline
+\mbox{\texttt{ in}}  & {\em device} & ƒfƒoƒ\+CƒX \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_buffer_manager_ae88562553e9939fd8d06657f687a0ea1}\label{class_buffer_manager_ae88562553e9939fd8d06657f687a0ea1}} 
+\index{BufferManager@{BufferManager}!Instance@{Instance}}
+\index{Instance@{Instance}!BufferManager@{BufferManager}}
+\doxysubsubsection{\texorpdfstring{Instance()}{Instance()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_buffer_manager}{Buffer\+Manager}} $\ast$ Buffer\+Manager\+::\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_buffer_manager_a595c6c4f9c99745a4ed5e4008c094785}\label{class_buffer_manager_a595c6c4f9c99745a4ed5e4008c094785}} 
+\index{BufferManager@{BufferManager}!ResetUseCounter@{ResetUseCounter}}
+\index{ResetUseCounter@{ResetUseCounter}!BufferManager@{BufferManager}}
+\doxysubsubsection{\texorpdfstring{ResetUseCounter()}{ResetUseCounter()}}
+{\footnotesize\ttfamily void Buffer\+Manager\+::\+Reset\+Use\+Counter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+’¸“\+\_\+ƒoƒbƒtƒ@ƒ\+Nƒ‰ƒ\+X‚Ì\+Use\+Counter‚ÌƒŠƒ\+ZƒbƒgŠÖ” 
+
+
+
+ã“ã®ã‚¯ãƒ©ã‚¹è©³è§£ã¯æ¬¡ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰æŠ½å‡ºã•ã‚Œã¾ã—ãŸ\+:\begin{DoxyCompactItemize}
+\item 
+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Engine/\+Buffer/\mbox{\hyperlink{_buffer_manager_8h}{Buffer\+Manager.\+h}}\item 
+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Engine/\+Buffer/\mbox{\hyperlink{_buffer_manager_8cpp}{Buffer\+Manager.\+cpp}}\end{DoxyCompactItemize}

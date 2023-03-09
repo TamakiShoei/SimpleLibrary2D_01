@@ -1,0 +1,36 @@
+\hypertarget{_basic_desc_heap_8h_source}{}\doxysection{Basic\+Desc\+Heap.\+h}
+\label{_basic_desc_heap_8h_source}\index{SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Graphics/DescriptorHeap/BasicDescHeap.h@{SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Graphics/DescriptorHeap/BasicDescHeap.h}}
+\mbox{\hyperlink{_basic_desc_heap_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef DESCRIPTOR\_HEAP\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define DESCRIPTOR\_HEAP\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}../../CommonDifinition.h"{}}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{class }\mbox{\hyperlink{class_basic_desc_heap}{BasicDescHeap}}}
+\DoxyCodeLine{8 \{}
+\DoxyCodeLine{9 \textcolor{keyword}{public}:}
+\DoxyCodeLine{10     \mbox{\hyperlink{class_basic_desc_heap_a5fa2896c56ab39f83360b86c747b8b57}{BasicDescHeap}}();}
+\DoxyCodeLine{11     \mbox{\hyperlink{class_basic_desc_heap_a0be86b1f36b5c4f8e8224578a58e411e}{\string~BasicDescHeap}}();}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_basic_desc_heap_ac5e4a9706f96266e199733e923dca7db}{Initialize}}(ID3D12Device* device);}
+\DoxyCodeLine{14     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_basic_desc_heap_a74d5b0b01d2f707898c3c35b31569b31}{RegisterCBV}}(D3D12\_CONSTANT\_BUFFER\_VIEW\_DESC cbvDesc, \textcolor{keywordtype}{int} key, ID3D12Device* device);}
+\DoxyCodeLine{15     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_basic_desc_heap_a6cbcacc6bb5002c66d8f9f8d0649354b}{RegisterSRV}}(ID3D12Resource* buff, D3D12\_SHADER\_RESOURCE\_VIEW\_DESC srvDesc, \textcolor{keywordtype}{int} key, ID3D12Device* device);}
+\DoxyCodeLine{16     D3D12\_GPU\_DESCRIPTOR\_HANDLE \mbox{\hyperlink{class_basic_desc_heap_a96f52562c2570d25387290a7eda67a82}{GetCBVHandle}}(\textcolor{keywordtype}{int} key, ID3D12Device* device);}
+\DoxyCodeLine{17     D3D12\_GPU\_DESCRIPTOR\_HANDLE \mbox{\hyperlink{class_basic_desc_heap_ad2155d765cf80e6f36dc9706f0c316e4}{GetSRVHandle}}(\textcolor{keywordtype}{int} key, ID3D12Device* device);}
+\DoxyCodeLine{18     ID3D12DescriptorHeap* \mbox{\hyperlink{class_basic_desc_heap_a43456b47ff67e09a0ab5d6ebfdc567a5}{Get}}();}
+\DoxyCodeLine{19     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_basic_desc_heap_a09523bba25d8f4c4de796f1fb4f24832}{ResetCounter}}();}
+\DoxyCodeLine{20     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_basic_desc_heap_a2afb72665daf6dd9ab15d4e3e1faff01}{Finalize}}();}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{keyword}{private}:}
+\DoxyCodeLine{23     ComPtr<ID3D12DescriptorHeap> instance;}
+\DoxyCodeLine{24     D3D12\_CPU\_DESCRIPTOR\_HANDLE handle;}
+\DoxyCodeLine{25     std::map<int, int> cbvDictionaly;}
+\DoxyCodeLine{26     std::map<int, int> srvDictionaly;}
+\DoxyCodeLine{27     \textcolor{keywordtype}{int} registerCounter;}
+\DoxyCodeLine{28 \};}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

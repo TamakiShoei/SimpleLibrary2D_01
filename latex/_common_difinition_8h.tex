@@ -1,0 +1,63 @@
+\hypertarget{_common_difinition_8h}{}\doxysection{Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Engine/\+Common\+Difinition.h ファイル}
+\label{_common_difinition_8h}\index{SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/CommonDifinition.h@{SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/CommonDifinition.h}}
+{\ttfamily \#include $<$windows.\+h$>$}\newline
+{\ttfamily \#include $<$wrl.\+h$>$}\newline
+{\ttfamily \#include $<$d3d12.\+h$>$}\newline
+{\ttfamily \#include $<$dxgi1\+\_\+6.\+h$>$}\newline
+{\ttfamily \#include $<$d3dcompiler.\+h$>$}\newline
+{\ttfamily \#include $<$Direct\+XTex.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}d3dx12.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Direct\+XMath.\+h\char`\"{}}\newline
+\doxysubsection*{クラス}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}}
+\item 
+struct \mbox{\hyperlink{struct_vertex}{Vertex}}
+\end{DoxyCompactItemize}
+\doxysubsection*{マクロ定義}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_common_difinition_8h_a2dd729037e2530769b13e1260da41cd7}{B\+\_\+\+SUCCEEDED}}(val)~(((bool)(val)) $>$= 0)
+\item 
+\#define \mbox{\hyperlink{_common_difinition_8h_a782fab65591e3bce2e23af7ec58fef26}{B\+\_\+\+FAILED}}(val)~(((bool)(val)) $<$ 0)
+\item 
+\#define \mbox{\hyperlink{_common_difinition_8h_a69a7b43710a71690389a91cb5c5add1f}{WINDOW\+\_\+\+CLASS}}~L\char`\"{}Direct\+X12 自作ライブラリ\char`\"{}
+\item 
+\#define \mbox{\hyperlink{_common_difinition_8h_a3adf7b7b13572f2baf3379a8f2f4220a}{WINDOW\+\_\+\+TITLE}}~\mbox{\hyperlink{_common_difinition_8h_a69a7b43710a71690389a91cb5c5add1f}{WINDOW\+\_\+\+CLASS}}
+\item 
+\#define \mbox{\hyperlink{_common_difinition_8h_a50267f06977d60b462f43ad330ffcf33}{WINDOW\+\_\+\+CLASS\+\_\+\+NAME}}~\mbox{\hyperlink{_common_difinition_8h_a69a7b43710a71690389a91cb5c5add1f}{WINDOW\+\_\+\+CLASS}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{マクロ定義詳解}
+\mbox{\Hypertarget{_common_difinition_8h_a782fab65591e3bce2e23af7ec58fef26}\label{_common_difinition_8h_a782fab65591e3bce2e23af7ec58fef26}} 
+\index{CommonDifinition.h@{CommonDifinition.h}!B\_FAILED@{B\_FAILED}}
+\index{B\_FAILED@{B\_FAILED}!CommonDifinition.h@{CommonDifinition.h}}
+\doxysubsubsection{\texorpdfstring{B\_FAILED}{B\_FAILED}}
+{\footnotesize\ttfamily \#define B\+\_\+\+FAILED(\begin{DoxyParamCaption}\item[{}]{val }\end{DoxyParamCaption})~(((bool)(val)) $<$ 0)}
+
+\mbox{\Hypertarget{_common_difinition_8h_a2dd729037e2530769b13e1260da41cd7}\label{_common_difinition_8h_a2dd729037e2530769b13e1260da41cd7}} 
+\index{CommonDifinition.h@{CommonDifinition.h}!B\_SUCCEEDED@{B\_SUCCEEDED}}
+\index{B\_SUCCEEDED@{B\_SUCCEEDED}!CommonDifinition.h@{CommonDifinition.h}}
+\doxysubsubsection{\texorpdfstring{B\_SUCCEEDED}{B\_SUCCEEDED}}
+{\footnotesize\ttfamily \#define B\+\_\+\+SUCCEEDED(\begin{DoxyParamCaption}\item[{}]{val }\end{DoxyParamCaption})~(((bool)(val)) $>$= 0)}
+
+\mbox{\Hypertarget{_common_difinition_8h_a69a7b43710a71690389a91cb5c5add1f}\label{_common_difinition_8h_a69a7b43710a71690389a91cb5c5add1f}} 
+\index{CommonDifinition.h@{CommonDifinition.h}!WINDOW\_CLASS@{WINDOW\_CLASS}}
+\index{WINDOW\_CLASS@{WINDOW\_CLASS}!CommonDifinition.h@{CommonDifinition.h}}
+\doxysubsubsection{\texorpdfstring{WINDOW\_CLASS}{WINDOW\_CLASS}}
+{\footnotesize\ttfamily \#define WINDOW\+\_\+\+CLASS~L\char`\"{}Direct\+X12 自作ライブラリ\char`\"{}}
+
+\mbox{\Hypertarget{_common_difinition_8h_a50267f06977d60b462f43ad330ffcf33}\label{_common_difinition_8h_a50267f06977d60b462f43ad330ffcf33}} 
+\index{CommonDifinition.h@{CommonDifinition.h}!WINDOW\_CLASS\_NAME@{WINDOW\_CLASS\_NAME}}
+\index{WINDOW\_CLASS\_NAME@{WINDOW\_CLASS\_NAME}!CommonDifinition.h@{CommonDifinition.h}}
+\doxysubsubsection{\texorpdfstring{WINDOW\_CLASS\_NAME}{WINDOW\_CLASS\_NAME}}
+{\footnotesize\ttfamily \#define WINDOW\+\_\+\+CLASS\+\_\+\+NAME~\mbox{\hyperlink{_common_difinition_8h_a69a7b43710a71690389a91cb5c5add1f}{WINDOW\+\_\+\+CLASS}}}
+
+\mbox{\Hypertarget{_common_difinition_8h_a3adf7b7b13572f2baf3379a8f2f4220a}\label{_common_difinition_8h_a3adf7b7b13572f2baf3379a8f2f4220a}} 
+\index{CommonDifinition.h@{CommonDifinition.h}!WINDOW\_TITLE@{WINDOW\_TITLE}}
+\index{WINDOW\_TITLE@{WINDOW\_TITLE}!CommonDifinition.h@{CommonDifinition.h}}
+\doxysubsubsection{\texorpdfstring{WINDOW\_TITLE}{WINDOW\_TITLE}}
+{\footnotesize\ttfamily \#define WINDOW\+\_\+\+TITLE~\mbox{\hyperlink{_common_difinition_8h_a69a7b43710a71690389a91cb5c5add1f}{WINDOW\+\_\+\+CLASS}}}
+

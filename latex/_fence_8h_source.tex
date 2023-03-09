@@ -1,0 +1,33 @@
+\hypertarget{_fence_8h_source}{}\doxysection{Fence.\+h}
+\label{_fence_8h_source}\index{SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Graphics/Fence/Fence.h@{SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Graphics/Fence/Fence.h}}
+\mbox{\hyperlink{_fence_8h}{\mbox{[}隧ｳ隗｣\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef FENCE\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define FENCE\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}../../CommonDifinition.h"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{class }\mbox{\hyperlink{class_fence}{Fence}}}
+\DoxyCodeLine{7 \{}
+\DoxyCodeLine{8 \textcolor{keyword}{public}:}
+\DoxyCodeLine{9     \mbox{\hyperlink{class_fence_a34919d705a73b4fe84462953ee8b115f}{Fence}}();}
+\DoxyCodeLine{10     \mbox{\hyperlink{class_fence_a542d1f0e5b80afc0b19865071cd6c616}{\string~Fence}}();}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_fence_ae0eeac08d268da11047b9665482020de}{Initialize}}(ComPtr<ID3D12Device> device);}
+\DoxyCodeLine{13     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_fence_ad5b4b55146b4362285a98ed2594febc5}{WaitForPreviousFrame}}(ComPtr<ID3D12CommandQueue> commandQueue);}
+\DoxyCodeLine{14     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_fence_a820afe4dc303cf15b6cc0278e7b8685b}{Finalize}}();}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16     \textcolor{keyword}{inline} ID3D12Fence* \mbox{\hyperlink{class_fence_a596fa872a2f921626b231480c90608c0}{Get}}()}
+\DoxyCodeLine{17     \{}
+\DoxyCodeLine{18         \textcolor{keywordflow}{return} this-\/>instance.Get();}
+\DoxyCodeLine{19     \}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{keyword}{private}:}
+\DoxyCodeLine{22     ComPtr<ID3D12Fence> instance;}
+\DoxyCodeLine{23     UINT fenceValue;}
+\DoxyCodeLine{24     HANDLE fenceEvent;      \textcolor{comment}{//フェンスハンドル}}
+\DoxyCodeLine{25 \};}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

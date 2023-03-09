@@ -1,0 +1,30 @@
+\hypertarget{_command_list_8h_source}{}\doxysection{Command\+List.\+h}
+\label{_command_list_8h_source}\index{SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Graphics/CommandList/CommandList.h@{SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Graphics/CommandList/CommandList.h}}
+\mbox{\hyperlink{_command_list_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef COMMAND\_LIST\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define COMMAND\_LIST\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}../../CommonDifinition.h"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{class }\mbox{\hyperlink{class_command_list}{CommandList}}}
+\DoxyCodeLine{7 \{}
+\DoxyCodeLine{8 \textcolor{keyword}{public}:}
+\DoxyCodeLine{9     \mbox{\hyperlink{class_command_list_aa5cc72c5c68da1d3e18f808da93025c6}{CommandList}}();}
+\DoxyCodeLine{10     \mbox{\hyperlink{class_command_list_aada18ff9b6162b3ca25b9e4c28a05031}{\string~CommandList}}();}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_command_list_adc5bc742572312a805c00f5bcd5202bc}{Initialize}}(ComPtr<ID3D12Device> device, ComPtr<ID3D12CommandAllocator> commandAllocator);}
+\DoxyCodeLine{13     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_command_list_adaca2bd4c4e77cfc8aaa3bb3f0ddfc9a}{Finalize}}();}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15     \textcolor{keyword}{inline} ID3D12GraphicsCommandList* \mbox{\hyperlink{class_command_list_a297db4c19f784be2668f1b182b249625}{Get}}()}
+\DoxyCodeLine{16     \{}
+\DoxyCodeLine{17         \textcolor{keywordflow}{return} this-\/>instance.Get();}
+\DoxyCodeLine{18     \}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{keyword}{private}:}
+\DoxyCodeLine{21     ComPtr<ID3D12GraphicsCommandList> instance;}
+\DoxyCodeLine{22 \};}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

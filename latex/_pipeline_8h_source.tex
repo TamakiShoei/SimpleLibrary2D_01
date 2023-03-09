@@ -1,0 +1,30 @@
+\hypertarget{_pipeline_8h_source}{}\doxysection{Pipeline.\+h}
+\label{_pipeline_8h_source}\index{SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Graphics/Pipeline/Pipeline.h@{SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Graphics/Pipeline/Pipeline.h}}
+\mbox{\hyperlink{_pipeline_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef PIPELINE\_SIGNATURE\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define PIPELINE\_SIGNATURE\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}../../CommonDifinition.h"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{class }\mbox{\hyperlink{class_pipeline}{Pipeline}}}
+\DoxyCodeLine{7 \{}
+\DoxyCodeLine{8 \textcolor{keyword}{public}:}
+\DoxyCodeLine{9     \mbox{\hyperlink{class_pipeline_a79e49366358f823b8812658f8bf3a9e8}{Pipeline}}();}
+\DoxyCodeLine{10     \mbox{\hyperlink{class_pipeline_a527044d53a20f851d0579fbf313a2dec}{\string~Pipeline}}();}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_pipeline_a2355d02d6b3443d9590c4e87ef0d1e73}{Initialize}}(ComPtr<ID3D12Device> device, ComPtr<ID3D12RootSignature> rootSignature);}
+\DoxyCodeLine{13     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_pipeline_af9b713c06e5781f18a5db114b58419b4}{Finalize}}();}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15     ID3D12PipelineState* \mbox{\hyperlink{class_pipeline_a03fbb0dc848eee8b39a998e44c0be287}{Get}}()}
+\DoxyCodeLine{16     \{}
+\DoxyCodeLine{17         \textcolor{keywordflow}{return} this-\/>instance.Get();}
+\DoxyCodeLine{18     \}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{keyword}{private}:}
+\DoxyCodeLine{21     ComPtr<ID3D12PipelineState> instance;}
+\DoxyCodeLine{22 \};}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

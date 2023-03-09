@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SimpleLibrary: SimpleLibrary2D_01/SimpleLibrary2D_01/Engine/Input.h ã‚½ãƒ¼ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">SimpleLibrary
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- æ§‹ç¯‰: Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'æ¤œç´¢','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','æ¤œç´¢');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_01d751825de9ac13df742f0f31d92797.html">SimpleLibrary2D_01</a></li><li class="navelem"><a class="el" href="dir_e1b4e63c7ef0203534ba209247423504.html">SimpleLibrary2D_01</a></li><li class="navelem"><a class="el" href="dir_4e3f83a7c46a25bafdcb76e649fd34bc.html">Engine</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">Input.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_input_8h.html">[è©³è§£]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef INPUT_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define INPUT_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;Windows.h&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;dinput.h&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="_common_difinition_8h.html">CommonDifinition.h</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma comment(lib, &quot;dinput8.lib&quot;</span>)</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="_input_8h.html#a1d7ab29fdefabdb4e7e7cd27ac4c9934">   10</a></span><span class="preprocessor">#define DIRECTINPUT_VERSION 0x0800  </span><span class="comment">//ƒo[ƒWƒ‡ƒ“</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="_input_8h.html#a3cb816ed7690a32c5d6f67d7cb615ca4">   11</a></span><span class="preprocessor">#define MAX_KEY 256</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="struct_key_state.html">   13</a></span><span class="keyword">struct </span><a class="code hl_struct" href="struct_key_state.html">KeyState</a></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="comment">// ƒL[î•ñ =&gt; ‰Ÿ‚³‚ê‚½ or ‰Ÿ‚³‚ê‚Ä‚¢‚È‚¢</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="struct_key_state.html#ac9980126d3b141d524271afae983f884">   16</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="struct_key_state.html#ac9980126d3b141d524271afae983f884">IsPrevPushed</a>;      <span class="comment">// 1ƒtƒŒ[ƒ€‘O‚ÌƒL[î•ñ</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="struct_key_state.html#a0c240fe59bd962e1c8a8867a10683fc2">   17</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="struct_key_state.html#a0c240fe59bd962e1c8a8867a10683fc2">IsCurrentPushed</a>;   <span class="comment">// ¡‚ÌƒtƒŒ[ƒ€‚ÌƒL[î•ñ</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>};</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="class_input.html">   20</a></span><span class="keyword">class </span><a class="code hl_class" href="class_input.html">Input</a></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>{</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <a class="code hl_function" href="class_input.html#abae3f379d3f157cf42dc857309832dba">Input</a>();</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <a class="code hl_function" href="class_input.html#af2db35ba67c8a8ccd23bef6a482fc291">~Input</a>();</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_input.html#af199ca433ec1f709fc9e0791fb5b5311">Initialize</a>();</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_input.html#af80dcfde6dbfe39bf3bc0345c75595ce">Update</a>();</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_input.html#ac6f5ce9a2bde76bad12b7c78d1c5e972">Finalize</a>();</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_input.html#a5f44e8a3613dd865cd7e64b77f1a902a">IsPushed</a>(<span class="keywordtype">int</span> key);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_input.html#a7de1ee2d0b9c2e33d65b5df271695b30">IsHeld</a>(<span class="keywordtype">int</span> key);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_input.html#ae5fa8b108484ebea826bd350f6fa5f1d">IsReleased</a>(<span class="keywordtype">int</span> key);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    LPDIRECTINPUT8 directInput = NULL;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    LPDIRECTINPUTDEVICE8 keyboard;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <a class="code hl_struct" href="struct_key_state.html">KeyState</a> keyStates[<a class="code hl_define" href="_input_8h.html#a3cb816ed7690a32c5d6f67d7cb615ca4">MAX_KEY</a>];</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>};</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="a_common_difinition_8h_html"><div class="ttname"><a href="_common_difinition_8h.html">CommonDifinition.h</a></div></div>
+<div class="ttc" id="a_input_8h_html_a3cb816ed7690a32c5d6f67d7cb615ca4"><div class="ttname"><a href="_input_8h.html#a3cb816ed7690a32c5d6f67d7cb615ca4">MAX_KEY</a></div><div class="ttdeci">#define MAX_KEY</div><div class="ttdef"><b>Definition:</b> Input.h:11</div></div>
+<div class="ttc" id="aclass_input_html"><div class="ttname"><a href="class_input.html">Input</a></div><div class="ttdef"><b>Definition:</b> Input.h:21</div></div>
+<div class="ttc" id="aclass_input_html_a5f44e8a3613dd865cd7e64b77f1a902a"><div class="ttname"><a href="class_input.html#a5f44e8a3613dd865cd7e64b77f1a902a">Input::IsPushed</a></div><div class="ttdeci">bool IsPushed(int key)</div><div class="ttdoc">ƒL[ƒ{[ƒh‰Ÿ‰ºƒ`ƒFƒbƒNŠÖ”</div><div class="ttdef"><b>Definition:</b> Input.cpp:109</div></div>
+<div class="ttc" id="aclass_input_html_a7de1ee2d0b9c2e33d65b5df271695b30"><div class="ttname"><a href="class_input.html#a7de1ee2d0b9c2e33d65b5df271695b30">Input::IsHeld</a></div><div class="ttdeci">bool IsHeld(int key)</div><div class="ttdoc">ƒL[ƒ{[‰Ÿ‰ºƒ`ƒFƒbƒNŠÖ”</div><div class="ttdef"><b>Definition:</b> Input.cpp:124</div></div>
+<div class="ttc" id="aclass_input_html_abae3f379d3f157cf42dc857309832dba"><div class="ttname"><a href="class_input.html#abae3f379d3f157cf42dc857309832dba">Input::Input</a></div><div class="ttdeci">Input()</div><div class="ttdef"><b>Definition:</b> Input.cpp:3</div></div>
+<div class="ttc" id="aclass_input_html_ac6f5ce9a2bde76bad12b7c78d1c5e972"><div class="ttname"><a href="class_input.html#ac6f5ce9a2bde76bad12b7c78d1c5e972">Input::Finalize</a></div><div class="ttdeci">void Finalize()</div><div class="ttdoc">InputŠÖŒW‚Ì‰Šú‰»ŠÖ”</div><div class="ttdef"><b>Definition:</b> Input.cpp:103</div></div>
+<div class="ttc" id="aclass_input_html_ae5fa8b108484ebea826bd350f6fa5f1d"><div class="ttname"><a href="class_input.html#ae5fa8b108484ebea826bd350f6fa5f1d">Input::IsReleased</a></div><div class="ttdeci">bool IsReleased(int key)</div><div class="ttdoc">ƒL[ƒ{[‰Ÿ‰ºƒ`ƒFƒbƒNŠÖ”</div><div class="ttdef"><b>Definition:</b> Input.cpp:139</div></div>
+<div class="ttc" id="aclass_input_html_af199ca433ec1f709fc9e0791fb5b5311"><div class="ttname"><a href="class_input.html#af199ca433ec1f709fc9e0791fb5b5311">Input::Initialize</a></div><div class="ttdeci">bool Initialize()</div><div class="ttdoc">InputŠÖŒW‚Ì‰Šú‰»ŠÖ”</div><div class="ttdef"><b>Definition:</b> Input.cpp:24</div></div>
+<div class="ttc" id="aclass_input_html_af2db35ba67c8a8ccd23bef6a482fc291"><div class="ttname"><a href="class_input.html#af2db35ba67c8a8ccd23bef6a482fc291">Input::~Input</a></div><div class="ttdeci">~Input()</div><div class="ttdef"><b>Definition:</b> Input.cpp:12</div></div>
+<div class="ttc" id="aclass_input_html_af80dcfde6dbfe39bf3bc0345c75595ce"><div class="ttname"><a href="class_input.html#af80dcfde6dbfe39bf3bc0345c75595ce">Input::Update</a></div><div class="ttdeci">void Update()</div><div class="ttdoc">InputŠÖŒW‚ÌXVŠÖ”</div><div class="ttdef"><b>Definition:</b> Input.cpp:72</div></div>
+<div class="ttc" id="astruct_key_state_html"><div class="ttname"><a href="struct_key_state.html">KeyState</a></div><div class="ttdef"><b>Definition:</b> Input.h:14</div></div>
+<div class="ttc" id="astruct_key_state_html_a0c240fe59bd962e1c8a8867a10683fc2"><div class="ttname"><a href="struct_key_state.html#a0c240fe59bd962e1c8a8867a10683fc2">KeyState::IsCurrentPushed</a></div><div class="ttdeci">bool IsCurrentPushed</div><div class="ttdef"><b>Definition:</b> Input.h:17</div></div>
+<div class="ttc" id="astruct_key_state_html_ac9980126d3b141d524271afae983f884"><div class="ttname"><a href="struct_key_state.html#ac9980126d3b141d524271afae983f884">KeyState::IsPrevPushed</a></div><div class="ttdeci">bool IsPrevPushed</div><div class="ttdef"><b>Definition:</b> Input.h:16</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+æ§‹ç¯‰:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
+</small></address>
+</body>
+</html>

@@ -55,9 +55,10 @@ bool Graphics::Initialize()
 	{
 		return false;
 	}
-
-	basicHeap.Initialize(device.Get());
-
+	if (B_FAILED(basicHeap.Initialize(device.Get())))
+	{
+		return false;
+	}
 	if (B_FAILED(commandAllocator.Initialize(device.Get())))
 	{
 		return false;
@@ -86,12 +87,6 @@ bool Graphics::CreateRtvDescHeap()
 	rtvHeapDesc.NumDescriptors = frameCount;
 	rtvHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_RTV;
 	rtvHeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;
-	// ディスクリプタとは、GPUとリソースの橋渡しを行う役割のもの。
-	// DX11までは隠蔽されていた。
-	// ディスクリプタには3つの概念が存在する。
-	// Descriptor：テクスチャなどのリソースをGPUと紐づける。
-	// DescriptorHeap：DescriptorHeapからDescriptorを作成する。管理できるDescriptorの種類や数は事前に指定。
-	// DescriptorTable：GPU上で使用するDescriptorの数や配置を制御する。DescriptorTableはRootSignatureで設定する。
 
 	// ディスクリプタヒープを作成
 	if (FAILED(device.Get()->CreateDescriptorHeap(&rtvHeapDesc, IID_PPV_ARGS(rtvHeap.GetAddressOf()))))
@@ -282,6 +277,8 @@ void Graphics::DrawRect(VECTOR lower_left, VECTOR upper_left, VECTOR upper_right
 		{upper_right.x, upper_right.y, upper_right.z},	//右上
 	};
 
+	ID3D12Resource* vertBuff;
+
 	D3D12_HEAP_PROPERTIES heapProp = {};
 	heapProp.Type = D3D12_HEAP_TYPE_UPLOAD;
 	heapProp.CPUPageProperty = D3D12_CPU_PAGE_PROPERTY_UNKNOWN;
@@ -298,7 +295,6 @@ void Graphics::DrawRect(VECTOR lower_left, VECTOR upper_left, VECTOR upper_right
 	resDesc.Flags = D3D12_RESOURCE_FLAG_NONE;
 	resDesc.Layout = D3D12_TEXTURE_LAYOUT_ROW_MAJOR;
 
-	ID3D12Resource* vertBuff = nullptr;
 	if (FAILED(device.Get()->CreateCommittedResource(
 		&heapProp,
 		D3D12_HEAP_FLAG_NONE,
