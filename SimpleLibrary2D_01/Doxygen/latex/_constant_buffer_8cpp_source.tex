@@ -1,0 +1,40 @@
+\hypertarget{_constant_buffer_8cpp_source}{}\doxysection{Constant\+Buffer.\+cpp}
+\label{_constant_buffer_8cpp_source}\index{C:/Project/GitRepos/DirectX/SimpleLibrary2D\_01/SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Buffer/ConstantBuffer.cpp@{C:/Project/GitRepos/DirectX/SimpleLibrary2D\_01/SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Buffer/ConstantBuffer.cpp}}
+\mbox{\hyperlink{_constant_buffer_8cpp}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_constant_buffer_8h}{ConstantBuffer.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00003}\mbox{\hyperlink{class_constant_buffer_a6343810db63d7c108324ee4ae9ef6af7}{00003}} \mbox{\hyperlink{class_constant_buffer_a6343810db63d7c108324ee4ae9ef6af7}{ConstantBuffer::ConstantBuffer}}()}
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00004}00004 \{}
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00006}00006 \}}
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00008}\mbox{\hyperlink{class_constant_buffer_aef84d67313575f7aa41745e2fe198067}{00008}} \mbox{\hyperlink{class_constant_buffer_aef84d67313575f7aa41745e2fe198067}{ConstantBuffer::\string~ConstantBuffer}}()}
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00009}00009 \{}
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00011}00011 \}}
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00013}\mbox{\hyperlink{class_constant_buffer_a759a1a7480b71ca3a7ea5f3d6dc93f8b}{00013}} ID3D12Resource* \mbox{\hyperlink{class_constant_buffer_a759a1a7480b71ca3a7ea5f3d6dc93f8b}{ConstantBuffer::Create}}(ID3D12Device* device)}
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00014}00014 \{}
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00015}00015     D3D12\_HEAP\_PROPERTIES heapProp = \{\};}
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00016}00016     heapProp = CD3DX12\_HEAP\_PROPERTIES(D3D12\_HEAP\_TYPE\_UPLOAD);}
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00018}00018     D3D12\_RESOURCE\_DESC resDesc = \{\};}
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00019}00019     resDesc = CD3DX12\_RESOURCE\_DESC::Buffer((\textcolor{keyword}{sizeof}(DirectX::XMMATRIX) + 0xff) \& \string~0xff);}
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00021}00021     ID3D12Resource* tmp = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00023}00023     \textcolor{keywordflow}{if} (FAILED(device-\/>CreateCommittedResource(}
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00024}00024         \&heapProp,}
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00025}00025         D3D12\_HEAP\_FLAG\_NONE,}
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00026}00026         \&resDesc,}
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00027}00027         D3D12\_RESOURCE\_STATE\_GENERIC\_READ,}
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00028}00028         \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00029}00029         IID\_PPV\_ARGS(\&tmp))))}
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00030}00030     \{}
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00031}00031         \textcolor{keywordflow}{return} tmp;}
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00032}00032     \}}
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00033}00033     \textcolor{keywordflow}{return} tmp;}
+\DoxyCodeLine{\Hypertarget{_constant_buffer_8cpp_source_l00034}00034 \}}
+
+\end{DoxyCode}

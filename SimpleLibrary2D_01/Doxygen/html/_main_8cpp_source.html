@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SimpleLibrary2D: C:/Project/GitRepos/DirectX/SimpleLibrary2D_01/SimpleLibrary2D_01/SimpleLibrary2D_01/Src/Main.cpp ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">SimpleLibrary2D
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_01d751825de9ac13df742f0f31d92797.html">SimpleLibrary2D_01</a></li><li class="navelem"><a class="el" href="dir_b922dfd985b83af2806705a2b38bd7ee.html">Src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">Main.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_main_8cpp.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;../Engine/Engine.h&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno"><a class="line" href="_main_8cpp.html#ad03773048a53823ad40f581d998dc34b">    3</a></span><span class="keywordtype">float</span> <a class="code hl_variable" href="_main_8cpp.html#ad03773048a53823ad40f581d998dc34b">posx</a>;</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">//メイン関数</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="_main_8cpp.html#a083780efe846055f3414d20286aa0f2d">    6</a></span><span class="keywordtype">int</span> WINAPI <a class="code hl_function" href="_main_8cpp.html#a083780efe846055f3414d20286aa0f2d">WinMain</a>(HINSTANCE hInstance, HINSTANCE, LPSTR, <span class="keywordtype">int</span>)</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>{</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    <a class="code hl_function" href="class_engine.html#a70836837356d5bb5ffcabc01624aeda8">Engine::SetWindowSize</a>(800, 600);</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="class_engine.html#a11baa1640d1f89e3cf8d1887a9621032">Engine::Initialize</a>() == <span class="keyword">false</span>)  <span class="comment">//DirectXの初期化</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    {</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <a class="code hl_function" href="class_engine.html#ab578ae77a94a428357be0477a3051783">Engine::Finalize</a>();</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    }</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordtype">int</span> handle = <a class="code hl_function" href="class_engine.html#abff67f29fc8cb13ba9591eb6a3cf5983">Engine::LoadTexture</a>(<span class="stringliteral">&quot;Res/Texture/Test4.jpg&quot;</span>);</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keywordtype">int</span> handle2 = <a class="code hl_function" href="class_engine.html#abff67f29fc8cb13ba9591eb6a3cf5983">Engine::LoadTexture</a>(<span class="stringliteral">&quot;Res/Texture/Test2.png&quot;</span>);</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keywordtype">int</span> handle3 = <a class="code hl_function" href="class_engine.html#abff67f29fc8cb13ba9591eb6a3cf5983">Engine::LoadTexture</a>(<span class="stringliteral">&quot;Res/Texture/Test.png&quot;</span>);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keywordflow">while</span> (<a class="code hl_function" href="class_engine.html#ac3588e84ef99b6ceb91563d8cbbbe8fc">Engine::IsClosedWindow</a>() == <span class="keyword">false</span>)</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    {</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <a class="code hl_function" href="class_engine.html#ac84eefe06226f430a2448306e6fd2579">Engine::Update</a>();</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="class_engine.html#a4c826750649da0235b53aeaadf34f1d7">Engine::IsHeldKey</a>(DIK_W))</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            <a class="code hl_variable" href="_main_8cpp.html#ad03773048a53823ad40f581d998dc34b">posx</a> += 3;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        }</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <a class="code hl_function" href="class_engine.html#ab55f613dbdc08c39d5d43fb206472713">Engine::ClearScreen</a>();</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <a class="code hl_function" href="class_engine.html#aa09aa98aecd91a3ea8315fd5d705444a">Engine::DrawTexture</a>(<a class="code hl_variable" href="_main_8cpp.html#ad03773048a53823ad40f581d998dc34b">posx</a>, 0.0f, handle);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <a class="code hl_function" href="class_engine.html#aa09aa98aecd91a3ea8315fd5d705444a">Engine::DrawTexture</a>(0.0f, 100.0f, handle2);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <a class="code hl_function" href="class_engine.html#aa09aa98aecd91a3ea8315fd5d705444a">Engine::DrawTexture</a>(400.0f, 400.0f, handle);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <a class="code hl_function" href="class_engine.html#a562d4c1a3ad0632681edbdcd512b03d0">Engine::ScreenFlip</a>();</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    }</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <a class="code hl_function" href="class_engine.html#ab578ae77a94a428357be0477a3051783">Engine::Finalize</a>();</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>}</div>
+<div class="ttc" id="a_main_8cpp_html_a083780efe846055f3414d20286aa0f2d"><div class="ttname"><a href="_main_8cpp.html#a083780efe846055f3414d20286aa0f2d">WinMain</a></div><div class="ttdeci">int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int)</div><div class="ttdef"><b>Definition:</b> <a href="_main_8cpp_source.html#l00006">Main.cpp:6</a></div></div>
+<div class="ttc" id="a_main_8cpp_html_ad03773048a53823ad40f581d998dc34b"><div class="ttname"><a href="_main_8cpp.html#ad03773048a53823ad40f581d998dc34b">posx</a></div><div class="ttdeci">float posx</div><div class="ttdef"><b>Definition:</b> <a href="_main_8cpp_source.html#l00003">Main.cpp:3</a></div></div>
+<div class="ttc" id="aclass_engine_html_a11baa1640d1f89e3cf8d1887a9621032"><div class="ttname"><a href="class_engine.html#a11baa1640d1f89e3cf8d1887a9621032">Engine::Initialize</a></div><div class="ttdeci">static bool Initialize()</div><div class="ttdoc">初期化関数</div><div class="ttdef"><b>Definition:</b> <a href="_engine_8cpp_source.html#l00005">Engine.cpp:5</a></div></div>
+<div class="ttc" id="aclass_engine_html_a4c826750649da0235b53aeaadf34f1d7"><div class="ttname"><a href="class_engine.html#a4c826750649da0235b53aeaadf34f1d7">Engine::IsHeldKey</a></div><div class="ttdeci">static bool IsHeldKey(int key)</div><div class="ttdoc">キーボー押下チェック関数</div><div class="ttdef"><b>Definition:</b> <a href="_engine_8cpp_source.html#l00068">Engine.cpp:68</a></div></div>
+<div class="ttc" id="aclass_engine_html_a562d4c1a3ad0632681edbdcd512b03d0"><div class="ttname"><a href="class_engine.html#a562d4c1a3ad0632681edbdcd512b03d0">Engine::ScreenFlip</a></div><div class="ttdeci">static void ScreenFlip()</div><div class="ttdoc">描画終了関数</div><div class="ttdef"><b>Definition:</b> <a href="_engine_8cpp_source.html#l00094">Engine.cpp:94</a></div></div>
+<div class="ttc" id="aclass_engine_html_a70836837356d5bb5ffcabc01624aeda8"><div class="ttname"><a href="class_engine.html#a70836837356d5bb5ffcabc01624aeda8">Engine::SetWindowSize</a></div><div class="ttdeci">static void SetWindowSize(int width_size, int height_size)</div><div class="ttdoc">ウィンドウサイズ設定関数 @引数をもとにウィンドウのサイズを設定する</div><div class="ttdef"><b>Definition:</b> <a href="_engine_8cpp_source.html#l00048">Engine.cpp:48</a></div></div>
+<div class="ttc" id="aclass_engine_html_aa09aa98aecd91a3ea8315fd5d705444a"><div class="ttname"><a href="class_engine.html#aa09aa98aecd91a3ea8315fd5d705444a">Engine::DrawTexture</a></div><div class="ttdeci">static void DrawTexture(float pos_x, float pos_y, int key)</div><div class="ttdoc">テクスチャ描画関数</div><div class="ttdef"><b>Definition:</b> <a href="_engine_8cpp_source.html#l00114">Engine.cpp:114</a></div></div>
+<div class="ttc" id="aclass_engine_html_ab55f613dbdc08c39d5d43fb206472713"><div class="ttname"><a href="class_engine.html#ab55f613dbdc08c39d5d43fb206472713">Engine::ClearScreen</a></div><div class="ttdeci">static void ClearScreen()</div><div class="ttdoc">描画開始関数</div><div class="ttdef"><b>Definition:</b> <a href="_engine_8cpp_source.html#l00089">Engine.cpp:89</a></div></div>
+<div class="ttc" id="aclass_engine_html_ab578ae77a94a428357be0477a3051783"><div class="ttname"><a href="class_engine.html#ab578ae77a94a428357be0477a3051783">Engine::Finalize</a></div><div class="ttdeci">static void Finalize()</div><div class="ttdoc">解放関数</div><div class="ttdef"><b>Definition:</b> <a href="_engine_8cpp_source.html#l00033">Engine.cpp:33</a></div></div>
+<div class="ttc" id="aclass_engine_html_abff67f29fc8cb13ba9591eb6a3cf5983"><div class="ttname"><a href="class_engine.html#abff67f29fc8cb13ba9591eb6a3cf5983">Engine::LoadTexture</a></div><div class="ttdeci">static int LoadTexture(const char *file_path)</div><div class="ttdoc">画像読み込み関数</div><div class="ttdef"><b>Definition:</b> <a href="_engine_8cpp_source.html#l00109">Engine.cpp:109</a></div></div>
+<div class="ttc" id="aclass_engine_html_ac3588e84ef99b6ceb91563d8cbbbe8fc"><div class="ttname"><a href="class_engine.html#ac3588e84ef99b6ceb91563d8cbbbe8fc">Engine::IsClosedWindow</a></div><div class="ttdeci">static bool IsClosedWindow()</div><div class="ttdoc">ウィンドウ終了チェック関数</div><div class="ttdef"><b>Definition:</b> <a href="_engine_8cpp_source.html#l00043">Engine.cpp:43</a></div></div>
+<div class="ttc" id="aclass_engine_html_ac84eefe06226f430a2448306e6fd2579"><div class="ttname"><a href="class_engine.html#ac84eefe06226f430a2448306e6fd2579">Engine::Update</a></div><div class="ttdeci">static void Update()</div><div class="ttdoc">更新関数</div><div class="ttdef"><b>Definition:</b> <a href="_engine_8cpp_source.html#l00027">Engine.cpp:27</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
+</small></address>
+</body>
+</html>

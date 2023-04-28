@@ -1,0 +1,16 @@
+digraph "C:/Project/GitRepos/DirectX/SimpleLibrary2D_01/SimpleLibrary2D_01/SimpleLibrary2D_01/Engine" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_01d751825de9ac13df742f0f31d92797 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="SimpleLibrary2D_01" fontname="Helvetica", fontsize="10", URL="dir_01d751825de9ac13df742f0f31d92797.html"]
+  subgraph clusterdir_d3ea5d29a1f22e9b069123525a11f5a9 {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_d3ea5d29a1f22e9b069123525a11f5a9.html"];
+    dir_d3ea5d29a1f22e9b069123525a11f5a9 [shape=plaintext label="Engine"];
+  dir_78c210f23a4e606453becb67145fefec [shape=box label="Buffer" fillcolor="white" style="filled" URL="dir_78c210f23a4e606453becb67145fefec.html"];
+  dir_adbc8a6163513055605dacbe76b010f7 [shape=box label="Graphics" fillcolor="white" style="filled" color="red" URL="dir_adbc8a6163513055605dacbe76b010f7.html"];
+  }
+  }
+  dir_adbc8a6163513055605dacbe76b010f7->dir_78c210f23a4e606453becb67145fefec [headlabel="1", labeldistance=1.5 headhref="dir_000003_000002.html"];
+  dir_d3ea5d29a1f22e9b069123525a11f5a9->dir_adbc8a6163513055605dacbe76b010f7 [headlabel="11", labeldistance=1.5 headhref="dir_000001_000003.html"];
+}

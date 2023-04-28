@@ -1,0 +1,371 @@
+\hypertarget{class_engine}{}\doxysection{Engine クラス}
+\label{class_engine}\index{Engine@{Engine}}
+
+
+{\ttfamily \#include $<$Engine.\+h$>$}
+
+\doxysubsection*{静的公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_engine_a11baa1640d1f89e3cf8d1887a9621032}{Initialize}} ()
+\begin{DoxyCompactList}\small\item\em 初期化関数 \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_engine_ab578ae77a94a428357be0477a3051783}{Finalize}} ()
+\begin{DoxyCompactList}\small\item\em 解放関数 \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_engine_ac84eefe06226f430a2448306e6fd2579}{Update}} ()
+\begin{DoxyCompactList}\small\item\em 更新関数 \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_engine_ac3588e84ef99b6ceb91563d8cbbbe8fc}{Is\+Closed\+Window}} ()
+\begin{DoxyCompactList}\small\item\em ウィンドウ終了チェック関数 \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_engine_a70836837356d5bb5ffcabc01624aeda8}{Set\+Window\+Size}} (int width\+\_\+size, int height\+\_\+size)
+\begin{DoxyCompactList}\small\item\em ウィンドウサイズ設定関数 @引数をもとにウィンドウのサイズを設定する \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_engine_aa3a3b36188c9969f24c0dda984463360}{Is\+Pushed\+Key}} (int key)
+\begin{DoxyCompactList}\small\item\em キーボード押下チェック関数 \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_engine_a4c826750649da0235b53aeaadf34f1d7}{Is\+Held\+Key}} (int key)
+\begin{DoxyCompactList}\small\item\em キーボー押下チェック関数 \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_engine_a4983f264a42532b1f6922c8f876fdf83}{Is\+Released\+Key}} (int key)
+\begin{DoxyCompactList}\small\item\em キーボー押下チェック関数 \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_engine_ab55f613dbdc08c39d5d43fb206472713}{Clear\+Screen}} ()
+\begin{DoxyCompactList}\small\item\em 描画開始関数 \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_engine_a562d4c1a3ad0632681edbdcd512b03d0}{Screen\+Flip}} ()
+\begin{DoxyCompactList}\small\item\em 描画終了関数 \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_engine_ae323015976bd06f1590236aaad56f0b9}{Draw\+Triangle}} (\mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} lower\+\_\+left, \mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} upper\+\_\+left, \mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} lower\+\_\+right)
+\begin{DoxyCompactList}\small\item\em 三角形描画関数 \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_engine_a721ab8fe17b4e13b0d6dfabddf43d2ba}{Draw\+Rect}} (\mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} lower\+\_\+left, \mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} upper\+\_\+left, \mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} upper\+\_\+right, \mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} lower\+\_\+right)
+\begin{DoxyCompactList}\small\item\em 矩形描画関数 \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{class_engine_abff67f29fc8cb13ba9591eb6a3cf5983}{Load\+Texture}} (const char $\ast$file\+\_\+path)
+\begin{DoxyCompactList}\small\item\em 画像読み込み関数 \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_engine_aa09aa98aecd91a3ea8315fd5d705444a}{Draw\+Texture}} (float pos\+\_\+x, float pos\+\_\+y, int key)
+\begin{DoxyCompactList}\small\item\em テクスチャ描画関数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+
+
+ \mbox{\hyperlink{_engine_8h_source}{Engine.\+h}} の \mbox{\hyperlink{_engine_8h_source_l00012}{12}} 行目に定義があります。
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{class_engine_ab55f613dbdc08c39d5d43fb206472713}\label{class_engine_ab55f613dbdc08c39d5d43fb206472713}} 
+\index{Engine@{Engine}!ClearScreen@{ClearScreen}}
+\index{ClearScreen@{ClearScreen}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{ClearScreen()}{ClearScreen()}}
+{\footnotesize\ttfamily void Engine\+::\+Clear\+Screen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+描画開始関数 
+
+
+\begin{DoxyPre}
+バックバッファのクリアを行う
+この関数は必ず描画処理前に実行する必要がある
+また、実行後にClearScreen関数を実行する必要がある
+\end{DoxyPre}
+ 
+
+ \mbox{\hyperlink{_engine_8cpp_source}{Engine.\+cpp}} の \mbox{\hyperlink{_engine_8cpp_source_l00089}{89}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_engine_a721ab8fe17b4e13b0d6dfabddf43d2ba}\label{class_engine_a721ab8fe17b4e13b0d6dfabddf43d2ba}} 
+\index{Engine@{Engine}!DrawRect@{DrawRect}}
+\index{DrawRect@{DrawRect}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{DrawRect()}{DrawRect()}}
+{\footnotesize\ttfamily void Engine\+::\+Draw\+Rect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}}}]{lower\+\_\+left,  }\item[{\mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}}}]{upper\+\_\+left,  }\item[{\mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}}}]{upper\+\_\+right,  }\item[{\mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}}}]{lower\+\_\+right }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+矩形描画関数 
+
+引数で受け取った頂点をもとに三角形を描画する 
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em lower\+\_\+left} & 左下頂点座標 \\
+\hline
+\mbox{\texttt{ in}}  & {\em upper\+\_\+left} & 左上頂点座標 \\
+\hline
+\mbox{\texttt{ in}}  & {\em upper\+\_\+right} & 右上頂点座標 \\
+\hline
+\mbox{\texttt{ in}}  & {\em lower\+\_\+right} & 右下頂点座標 \\
+\hline
+\end{DoxyParams}
+
+
+ \mbox{\hyperlink{_engine_8cpp_source}{Engine.\+cpp}} の \mbox{\hyperlink{_engine_8cpp_source_l00104}{104}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_engine_aa09aa98aecd91a3ea8315fd5d705444a}\label{class_engine_aa09aa98aecd91a3ea8315fd5d705444a}} 
+\index{Engine@{Engine}!DrawTexture@{DrawTexture}}
+\index{DrawTexture@{DrawTexture}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{DrawTexture()}{DrawTexture()}}
+{\footnotesize\ttfamily void Engine\+::\+Draw\+Texture (\begin{DoxyParamCaption}\item[{float}]{pos\+\_\+x,  }\item[{float}]{pos\+\_\+y,  }\item[{int}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+テクスチャ描画関数 
+
+引数で受け取った頂点をもとにテクスチャを描画する 
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em pos\+\_\+x} & 左上頂点のx座標 \\
+\hline
+\mbox{\texttt{ in}}  & {\em pos\+\_\+y} & 左上頂点のy座標 \\
+\hline
+\mbox{\texttt{ in}}  & {\em key} & 描画する画像のキー(ハンドル) \\
+\hline
+\end{DoxyParams}
+
+
+ \mbox{\hyperlink{_engine_8cpp_source}{Engine.\+cpp}} の \mbox{\hyperlink{_engine_8cpp_source_l00114}{114}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_engine_ae323015976bd06f1590236aaad56f0b9}\label{class_engine_ae323015976bd06f1590236aaad56f0b9}} 
+\index{Engine@{Engine}!DrawTriangle@{DrawTriangle}}
+\index{DrawTriangle@{DrawTriangle}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{DrawTriangle()}{DrawTriangle()}}
+{\footnotesize\ttfamily void Engine\+::\+Draw\+Triangle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}}}]{lower\+\_\+left,  }\item[{\mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}}}]{upper\+\_\+left,  }\item[{\mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}}}]{lower\+\_\+right }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+三角形描画関数 
+
+引数で受け取った頂点をもとに三角形を描画する 
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em lower\+\_\+left} & 左下頂点座標 \\
+\hline
+\mbox{\texttt{ in}}  & {\em upper\+\_\+left} & 左上頂点座標 \\
+\hline
+\mbox{\texttt{ in}}  & {\em lower\+\_\+right} & 右下頂点座標 \\
+\hline
+\end{DoxyParams}
+
+
+ \mbox{\hyperlink{_engine_8cpp_source}{Engine.\+cpp}} の \mbox{\hyperlink{_engine_8cpp_source_l00099}{99}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_engine_ab578ae77a94a428357be0477a3051783}\label{class_engine_ab578ae77a94a428357be0477a3051783}} 
+\index{Engine@{Engine}!Finalize@{Finalize}}
+\index{Finalize@{Finalize}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{Finalize()}{Finalize()}}
+{\footnotesize\ttfamily void Engine\+::\+Finalize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+解放関数 
+
+
+\begin{DoxyPre}
+エンジンの解放を行う
+この関数はゲームループ終了時に一度だけ実行する
+\end{DoxyPre}
+ 
+
+ \mbox{\hyperlink{_engine_8cpp_source}{Engine.\+cpp}} の \mbox{\hyperlink{_engine_8cpp_source_l00033}{33}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_engine_a11baa1640d1f89e3cf8d1887a9621032}\label{class_engine_a11baa1640d1f89e3cf8d1887a9621032}} 
+\index{Engine@{Engine}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool Engine\+::\+Initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+初期化関数 
+
+
+\begin{DoxyPre}
+エンジン全体(Windowクラス、Graphicsクラスの初期化)
+この関数はゲームループ開始前に一度だけ実行する
+\end{DoxyPre}
+ 
+\begin{DoxyRetVals}{戻り値}
+{\em true} & 初期化成功 \\
+\hline
+{\em false} & 初期化成功 \\
+\hline
+\end{DoxyRetVals}
+
+
+ \mbox{\hyperlink{_engine_8cpp_source}{Engine.\+cpp}} の \mbox{\hyperlink{_engine_8cpp_source_l00005}{5}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_engine_ac3588e84ef99b6ceb91563d8cbbbe8fc}\label{class_engine_ac3588e84ef99b6ceb91563d8cbbbe8fc}} 
+\index{Engine@{Engine}!IsClosedWindow@{IsClosedWindow}}
+\index{IsClosedWindow@{IsClosedWindow}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{IsClosedWindow()}{IsClosedWindow()}}
+{\footnotesize\ttfamily bool Engine\+::\+Is\+Closed\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+ウィンドウ終了チェック関数 
+
+ウィンドウが終了しているかどうかを返す 
+\begin{DoxyRetVals}{戻り値}
+{\em true} & 閉じている \\
+\hline
+{\em false} & 閉じていない \\
+\hline
+\end{DoxyRetVals}
+
+
+ \mbox{\hyperlink{_engine_8cpp_source}{Engine.\+cpp}} の \mbox{\hyperlink{_engine_8cpp_source_l00043}{43}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_engine_a4c826750649da0235b53aeaadf34f1d7}\label{class_engine_a4c826750649da0235b53aeaadf34f1d7}} 
+\index{Engine@{Engine}!IsHeldKey@{IsHeldKey}}
+\index{IsHeldKey@{IsHeldKey}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{IsHeldKey()}{IsHeldKey()}}
+{\footnotesize\ttfamily bool Engine\+::\+Is\+Held\+Key (\begin{DoxyParamCaption}\item[{int}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+キーボー押下チェック関数 
+
+キーボードが押され続けているかを検知する 
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em key} & 調べたいキーの定数 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{戻り値}
+{\em true} & 検知された \\
+\hline
+{\em false} & 検知されていない \\
+\hline
+\end{DoxyRetVals}
+
+
+ \mbox{\hyperlink{_engine_8cpp_source}{Engine.\+cpp}} の \mbox{\hyperlink{_engine_8cpp_source_l00068}{68}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_engine_aa3a3b36188c9969f24c0dda984463360}\label{class_engine_aa3a3b36188c9969f24c0dda984463360}} 
+\index{Engine@{Engine}!IsPushedKey@{IsPushedKey}}
+\index{IsPushedKey@{IsPushedKey}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{IsPushedKey()}{IsPushedKey()}}
+{\footnotesize\ttfamily bool Engine\+::\+Is\+Pushed\+Key (\begin{DoxyParamCaption}\item[{int}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+キーボード押下チェック関数 
+
+キーボードが押された瞬間を検知する 
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em key} & 調べたいキーの定数 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{戻り値}
+{\em true} & 検知された \\
+\hline
+{\em false} & 検知されていない \\
+\hline
+\end{DoxyRetVals}
+
+
+ \mbox{\hyperlink{_engine_8cpp_source}{Engine.\+cpp}} の \mbox{\hyperlink{_engine_8cpp_source_l00058}{58}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_engine_a4983f264a42532b1f6922c8f876fdf83}\label{class_engine_a4983f264a42532b1f6922c8f876fdf83}} 
+\index{Engine@{Engine}!IsReleasedKey@{IsReleasedKey}}
+\index{IsReleasedKey@{IsReleasedKey}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{IsReleasedKey()}{IsReleasedKey()}}
+{\footnotesize\ttfamily bool Engine\+::\+Is\+Released\+Key (\begin{DoxyParamCaption}\item[{int}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+キーボー押下チェック関数 
+
+キーボードが押されなくなった瞬間を検知する 
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em key} & 調べたいキーの定数 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{戻り値}
+{\em true} & 検知された \\
+\hline
+{\em false} & 検知されていない \\
+\hline
+\end{DoxyRetVals}
+
+
+ \mbox{\hyperlink{_engine_8cpp_source}{Engine.\+cpp}} の \mbox{\hyperlink{_engine_8cpp_source_l00078}{78}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_engine_abff67f29fc8cb13ba9591eb6a3cf5983}\label{class_engine_abff67f29fc8cb13ba9591eb6a3cf5983}} 
+\index{Engine@{Engine}!LoadTexture@{LoadTexture}}
+\index{LoadTexture@{LoadTexture}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{LoadTexture()}{LoadTexture()}}
+{\footnotesize\ttfamily int Engine\+::\+Load\+Texture (\begin{DoxyParamCaption}\item[{const char $\ast$}]{file\+\_\+path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+画像読み込み関数 
+
+引数で受け取ったファイルパスをもとに画像を描画する際に必要なキーを返す 
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em file\+\_\+path} & 読み込みたい画像のファイルパス \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{戻り値}
+{\em 画像のキー値} & \\
+\hline
+\end{DoxyRetVals}
+
+
+ \mbox{\hyperlink{_engine_8cpp_source}{Engine.\+cpp}} の \mbox{\hyperlink{_engine_8cpp_source_l00109}{109}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_engine_a562d4c1a3ad0632681edbdcd512b03d0}\label{class_engine_a562d4c1a3ad0632681edbdcd512b03d0}} 
+\index{Engine@{Engine}!ScreenFlip@{ScreenFlip}}
+\index{ScreenFlip@{ScreenFlip}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{ScreenFlip()}{ScreenFlip()}}
+{\footnotesize\ttfamily void Engine\+::\+Screen\+Flip (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+描画終了関数 
+
+
+\begin{DoxyPre}
+バックバッファとフロントバッファを入れ替える
+この関数は必ずClearScreenの後に実行する必要がある
+\end{DoxyPre}
+ 
+
+ \mbox{\hyperlink{_engine_8cpp_source}{Engine.\+cpp}} の \mbox{\hyperlink{_engine_8cpp_source_l00094}{94}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_engine_a70836837356d5bb5ffcabc01624aeda8}\label{class_engine_a70836837356d5bb5ffcabc01624aeda8}} 
+\index{Engine@{Engine}!SetWindowSize@{SetWindowSize}}
+\index{SetWindowSize@{SetWindowSize}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{SetWindowSize()}{SetWindowSize()}}
+{\footnotesize\ttfamily void Engine\+::\+Set\+Window\+Size (\begin{DoxyParamCaption}\item[{int}]{width\+\_\+size,  }\item[{int}]{height\+\_\+size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+ウィンドウサイズ設定関数 @引数をもとにウィンドウのサイズを設定する 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em width\+\_\+size} & ウィンドウの横幅 \\
+\hline
+\mbox{\texttt{ in}}  & {\em height\+\_\+size} & ウィンドウの縦幅 \\
+\hline
+\end{DoxyParams}
+
+
+ \mbox{\hyperlink{_engine_8cpp_source}{Engine.\+cpp}} の \mbox{\hyperlink{_engine_8cpp_source_l00048}{48}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_engine_ac84eefe06226f430a2448306e6fd2579}\label{class_engine_ac84eefe06226f430a2448306e6fd2579}} 
+\index{Engine@{Engine}!Update@{Update}}
+\index{Update@{Update}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Engine\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+更新関数 
+
+
+\begin{DoxyPre}
+エンジンの更新処理を行う
+この関数はゲームループ内で毎フレーム実行する
+\end{DoxyPre}
+ 
+
+ \mbox{\hyperlink{_engine_8cpp_source}{Engine.\+cpp}} の \mbox{\hyperlink{_engine_8cpp_source_l00027}{27}} 行目に定義があります。
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Project/\+Git\+Repos/\+Direct\+X/\+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Engine/\mbox{\hyperlink{_engine_8h}{Engine.\+h}}\item 
+C\+:/\+Project/\+Git\+Repos/\+Direct\+X/\+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Engine/\mbox{\hyperlink{_engine_8cpp}{Engine.\+cpp}}\end{DoxyCompactItemize}

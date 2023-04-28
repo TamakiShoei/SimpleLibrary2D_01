@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SimpleLibrary2D: C:/Project/GitRepos/DirectX/SimpleLibrary2D_01/SimpleLibrary2D_01/SimpleLibrary2D_01/Engine/Buffer/ConstantBuffer.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">SimpleLibrary2D
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_01d751825de9ac13df742f0f31d92797.html">SimpleLibrary2D_01</a></li><li class="navelem"><a class="el" href="dir_d3ea5d29a1f22e9b069123525a11f5a9.html">Engine</a></li><li class="navelem"><a class="el" href="dir_78c210f23a4e606453becb67145fefec.html">Buffer</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">ConstantBuffer.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_constant_buffer_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#ifndef CONSTANT_BUFFER</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#define CONSTANT_BUFFER</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;map&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;../CommonDifinition.h&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="class_constant_buffer.html">   12</a></span><span class="keyword">class </span><a class="code hl_class" href="class_constant_buffer.html">ConstantBuffer</a></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <a class="code hl_function" href="class_constant_buffer.html#a6343810db63d7c108324ee4ae9ef6af7">ConstantBuffer</a>();</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <a class="code hl_function" href="class_constant_buffer.html#aef84d67313575f7aa41745e2fe198067">~ConstantBuffer</a>();</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    ID3D12Resource* <a class="code hl_function" href="class_constant_buffer.html#a759a1a7480b71ca3a7ea5f3d6dc93f8b">Create</a>(ID3D12Device* device);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>};</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclass_constant_buffer_html"><div class="ttname"><a href="class_constant_buffer.html">ConstantBuffer</a></div><div class="ttdef"><b>Definition:</b> <a href="_constant_buffer_8h_source.html#l00012">ConstantBuffer.h:13</a></div></div>
+<div class="ttc" id="aclass_constant_buffer_html_a6343810db63d7c108324ee4ae9ef6af7"><div class="ttname"><a href="class_constant_buffer.html#a6343810db63d7c108324ee4ae9ef6af7">ConstantBuffer::ConstantBuffer</a></div><div class="ttdeci">ConstantBuffer()</div><div class="ttdef"><b>Definition:</b> <a href="_constant_buffer_8cpp_source.html#l00003">ConstantBuffer.cpp:3</a></div></div>
+<div class="ttc" id="aclass_constant_buffer_html_a759a1a7480b71ca3a7ea5f3d6dc93f8b"><div class="ttname"><a href="class_constant_buffer.html#a759a1a7480b71ca3a7ea5f3d6dc93f8b">ConstantBuffer::Create</a></div><div class="ttdeci">ID3D12Resource * Create(ID3D12Device *device)</div><div class="ttdoc">コンスタントバッファの作成</div><div class="ttdef"><b>Definition:</b> <a href="_constant_buffer_8cpp_source.html#l00013">ConstantBuffer.cpp:13</a></div></div>
+<div class="ttc" id="aclass_constant_buffer_html_aef84d67313575f7aa41745e2fe198067"><div class="ttname"><a href="class_constant_buffer.html#aef84d67313575f7aa41745e2fe198067">ConstantBuffer::~ConstantBuffer</a></div><div class="ttdeci">~ConstantBuffer()</div><div class="ttdef"><b>Definition:</b> <a href="_constant_buffer_8cpp_source.html#l00008">ConstantBuffer.cpp:8</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
+</small></address>
+</body>
+</html>

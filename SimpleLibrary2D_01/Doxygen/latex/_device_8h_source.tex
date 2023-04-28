@@ -1,0 +1,32 @@
+\hypertarget{_device_8h_source}{}\doxysection{Device.\+h}
+\label{_device_8h_source}\index{C:/Project/GitRepos/DirectX/SimpleLibrary2D\_01/SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Graphics/Device/Device.h@{C:/Project/GitRepos/DirectX/SimpleLibrary2D\_01/SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Graphics/Device/Device.h}}
+\mbox{\hyperlink{_device_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_device_8h_source_l00001}00001 \textcolor{preprocessor}{\#ifndef DEVICE\_H}}
+\DoxyCodeLine{\Hypertarget{_device_8h_source_l00002}00002 \textcolor{preprocessor}{\#define DEVICE\_H}}
+\DoxyCodeLine{\Hypertarget{_device_8h_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{_device_8h_source_l00004}00004 \textcolor{preprocessor}{\#include "{}../../CommonDifinition.h"{}}}
+\DoxyCodeLine{\Hypertarget{_device_8h_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{_device_8h_source_l00006}\mbox{\hyperlink{class_device}{00006}} \textcolor{keyword}{class }\mbox{\hyperlink{class_device}{Device}}}
+\DoxyCodeLine{\Hypertarget{_device_8h_source_l00007}00007 \{}
+\DoxyCodeLine{\Hypertarget{_device_8h_source_l00008}00008 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_device_8h_source_l00009}00009     \mbox{\hyperlink{class_device_a64ba12dcc5f4267486c5d545d04dcf68}{Device}}();}
+\DoxyCodeLine{\Hypertarget{_device_8h_source_l00010}00010     \mbox{\hyperlink{class_device_a9dabc419c8d8df3a686c33ce042bc99a}{\string~Device}}();}
+\DoxyCodeLine{\Hypertarget{_device_8h_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{_device_8h_source_l00018}00018     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_device_a3c02d7d6c6f9d4c70f598355bd5b8416}{Initialize}}(ComPtr<IDXGIFactory4> factory);}
+\DoxyCodeLine{\Hypertarget{_device_8h_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{_device_8h_source_l00023}00023     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_device_ad1301530ed5fbc8c083a3c451957bdbc}{Finalize}}();}
+\DoxyCodeLine{\Hypertarget{_device_8h_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{_device_8h_source_l00029}\mbox{\hyperlink{class_device_a86e0cdc5e8abfef1c18d5d88011e4f13}{00029}}     \textcolor{keyword}{inline} ID3D12Device* \mbox{\hyperlink{class_device_a86e0cdc5e8abfef1c18d5d88011e4f13}{Get}}()}
+\DoxyCodeLine{\Hypertarget{_device_8h_source_l00030}00030     \{}
+\DoxyCodeLine{\Hypertarget{_device_8h_source_l00031}00031         \textcolor{keywordflow}{return} this-\/>instance.Get();}
+\DoxyCodeLine{\Hypertarget{_device_8h_source_l00032}00032     \}}
+\DoxyCodeLine{\Hypertarget{_device_8h_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{_device_8h_source_l00034}00034 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_device_8h_source_l00035}00035     ComPtr<ID3D12Device> instance;}
+\DoxyCodeLine{\Hypertarget{_device_8h_source_l00036}00036     std::vector<D3D\_FEATURE\_LEVEL> levels;}
+\DoxyCodeLine{\Hypertarget{_device_8h_source_l00037}00037 \};}
+\DoxyCodeLine{\Hypertarget{_device_8h_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{_device_8h_source_l00039}00039 \textcolor{preprocessor}{\#endif  }}
+
+\end{DoxyCode}

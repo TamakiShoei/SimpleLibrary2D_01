@@ -1,0 +1,246 @@
+\hypertarget{class_basic_desc_heap}{}\doxysection{Basic\+Desc\+Heap クラス}
+\label{class_basic_desc_heap}\index{BasicDescHeap@{BasicDescHeap}}
+
+
+{\ttfamily \#include $<$Basic\+Desc\+Heap.\+h$>$}
+
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_basic_desc_heap_a5fa2896c56ab39f83360b86c747b8b57}{Basic\+Desc\+Heap}} ()
+\item 
+\mbox{\hyperlink{class_basic_desc_heap_a0be86b1f36b5c4f8e8224578a58e411e}{$\sim$\+Basic\+Desc\+Heap}} ()
+\item 
+bool \mbox{\hyperlink{class_basic_desc_heap_ac5e4a9706f96266e199733e923dca7db}{Initialize}} (ID3\+D12\+Device $\ast$device)
+\begin{DoxyCompactList}\small\item\em ディスクリプタヒープの初期化関数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_basic_desc_heap_a641623afb297030aad25236cd545d971}{Register\+CBV}} (D3\+D12\+\_\+\+CONSTANT\+\_\+\+BUFFER\+\_\+\+VIEW\+\_\+\+DESC cbv\+\_\+desc, int key, ID3\+D12\+Device $\ast$device)
+\begin{DoxyCompactList}\small\item\em ディスクリプタヒープに\+CBVを登録する関数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_basic_desc_heap_af774a73592d8ed37fd27f478518493da}{Register\+SRV}} (ID3\+D12\+Resource $\ast$buff, D3\+D12\+\_\+\+SHADER\+\_\+\+RESOURCE\+\_\+\+VIEW\+\_\+\+DESC srv\+\_\+desc, int key, ID3\+D12\+Device $\ast$device)
+\begin{DoxyCompactList}\small\item\em ディスクリプタヒープに\+SRVを登録する関数 \end{DoxyCompactList}\item 
+D3\+D12\+\_\+\+GPU\+\_\+\+DESCRIPTOR\+\_\+\+HANDLE \mbox{\hyperlink{class_basic_desc_heap_a96f52562c2570d25387290a7eda67a82}{Get\+CBVHandle}} (int key, ID3\+D12\+Device $\ast$device)
+\begin{DoxyCompactList}\small\item\em CBVのハンドルを取得する関数 \end{DoxyCompactList}\item 
+D3\+D12\+\_\+\+GPU\+\_\+\+DESCRIPTOR\+\_\+\+HANDLE \mbox{\hyperlink{class_basic_desc_heap_ad2155d765cf80e6f36dc9706f0c316e4}{Get\+SRVHandle}} (int key, ID3\+D12\+Device $\ast$device)
+\begin{DoxyCompactList}\small\item\em SRVのハンドルを取得する関数 \end{DoxyCompactList}\item 
+ID3\+D12\+Descriptor\+Heap $\ast$ \mbox{\hyperlink{class_basic_desc_heap_a43456b47ff67e09a0ab5d6ebfdc567a5}{Get}} ()
+\begin{DoxyCompactList}\small\item\em ディスクリプタヒープの先頭アドレスを取得する関数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_basic_desc_heap_a09523bba25d8f4c4de796f1fb4f24832}{Reset\+Counter}} ()
+\begin{DoxyCompactList}\small\item\em カウンターのリセット関数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_basic_desc_heap_a2afb72665daf6dd9ab15d4e3e1faff01}{Finalize}} ()
+\begin{DoxyCompactList}\small\item\em ディスクリプタヒープの解放関数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+
+
+ \mbox{\hyperlink{_basic_desc_heap_8h_source}{Basic\+Desc\+Heap.\+h}} の \mbox{\hyperlink{_basic_desc_heap_8h_source_l00007}{7}} 行目に定義があります。
+
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{class_basic_desc_heap_a5fa2896c56ab39f83360b86c747b8b57}\label{class_basic_desc_heap_a5fa2896c56ab39f83360b86c747b8b57}} 
+\index{BasicDescHeap@{BasicDescHeap}!BasicDescHeap@{BasicDescHeap}}
+\index{BasicDescHeap@{BasicDescHeap}!BasicDescHeap@{BasicDescHeap}}
+\doxysubsubsection{\texorpdfstring{BasicDescHeap()}{BasicDescHeap()}}
+{\footnotesize\ttfamily Basic\+Desc\+Heap\+::\+Basic\+Desc\+Heap (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_basic_desc_heap_8cpp_source}{Basic\+Desc\+Heap.\+cpp}} の \mbox{\hyperlink{_basic_desc_heap_8cpp_source_l00003}{3}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_basic_desc_heap_a0be86b1f36b5c4f8e8224578a58e411e}\label{class_basic_desc_heap_a0be86b1f36b5c4f8e8224578a58e411e}} 
+\index{BasicDescHeap@{BasicDescHeap}!````~BasicDescHeap@{$\sim$BasicDescHeap}}
+\index{````~BasicDescHeap@{$\sim$BasicDescHeap}!BasicDescHeap@{BasicDescHeap}}
+\doxysubsubsection{\texorpdfstring{$\sim$BasicDescHeap()}{~BasicDescHeap()}}
+{\footnotesize\ttfamily Basic\+Desc\+Heap\+::$\sim$\+Basic\+Desc\+Heap (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_basic_desc_heap_8cpp_source}{Basic\+Desc\+Heap.\+cpp}} の \mbox{\hyperlink{_basic_desc_heap_8cpp_source_l00008}{8}} 行目に定義があります。
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{class_basic_desc_heap_a2afb72665daf6dd9ab15d4e3e1faff01}\label{class_basic_desc_heap_a2afb72665daf6dd9ab15d4e3e1faff01}} 
+\index{BasicDescHeap@{BasicDescHeap}!Finalize@{Finalize}}
+\index{Finalize@{Finalize}!BasicDescHeap@{BasicDescHeap}}
+\doxysubsubsection{\texorpdfstring{Finalize()}{Finalize()}}
+{\footnotesize\ttfamily void Basic\+Desc\+Heap\+::\+Finalize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+ディスクリプタヒープの解放関数 
+
+
+
+ \mbox{\hyperlink{_basic_desc_heap_8cpp_source}{Basic\+Desc\+Heap.\+cpp}} の \mbox{\hyperlink{_basic_desc_heap_8cpp_source_l00096}{96}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_basic_desc_heap_a43456b47ff67e09a0ab5d6ebfdc567a5}\label{class_basic_desc_heap_a43456b47ff67e09a0ab5d6ebfdc567a5}} 
+\index{BasicDescHeap@{BasicDescHeap}!Get@{Get}}
+\index{Get@{Get}!BasicDescHeap@{BasicDescHeap}}
+\doxysubsubsection{\texorpdfstring{Get()}{Get()}}
+{\footnotesize\ttfamily ID3\+D12\+Descriptor\+Heap $\ast$ Basic\+Desc\+Heap\+::\+Get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+ディスクリプタヒープの先頭アドレスを取得する関数 
+
+
+\begin{DoxyRetVals}{戻り値}
+{\em ディスクリプタヒープの先頭アドレス} & \\
+\hline
+\end{DoxyRetVals}
+
+
+ \mbox{\hyperlink{_basic_desc_heap_8cpp_source}{Basic\+Desc\+Heap.\+cpp}} の \mbox{\hyperlink{_basic_desc_heap_8cpp_source_l00086}{86}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_basic_desc_heap_a96f52562c2570d25387290a7eda67a82}\label{class_basic_desc_heap_a96f52562c2570d25387290a7eda67a82}} 
+\index{BasicDescHeap@{BasicDescHeap}!GetCBVHandle@{GetCBVHandle}}
+\index{GetCBVHandle@{GetCBVHandle}!BasicDescHeap@{BasicDescHeap}}
+\doxysubsubsection{\texorpdfstring{GetCBVHandle()}{GetCBVHandle()}}
+{\footnotesize\ttfamily D3\+D12\+\_\+\+GPU\+\_\+\+DESCRIPTOR\+\_\+\+HANDLE Basic\+Desc\+Heap\+::\+Get\+CBVHandle (\begin{DoxyParamCaption}\item[{int}]{key,  }\item[{ID3\+D12\+Device $\ast$}]{device }\end{DoxyParamCaption})}
+
+
+
+CBVのハンドルを取得する関数 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em key} & 画像のハンドル \\
+\hline
+\mbox{\texttt{ in}}  & {\em device} & デバイス \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{戻り値}
+{\em CBVのハンドル} & \\
+\hline
+\end{DoxyRetVals}
+
+
+ \mbox{\hyperlink{_basic_desc_heap_8cpp_source}{Basic\+Desc\+Heap.\+cpp}} の \mbox{\hyperlink{_basic_desc_heap_8cpp_source_l00078}{78}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_basic_desc_heap_ad2155d765cf80e6f36dc9706f0c316e4}\label{class_basic_desc_heap_ad2155d765cf80e6f36dc9706f0c316e4}} 
+\index{BasicDescHeap@{BasicDescHeap}!GetSRVHandle@{GetSRVHandle}}
+\index{GetSRVHandle@{GetSRVHandle}!BasicDescHeap@{BasicDescHeap}}
+\doxysubsubsection{\texorpdfstring{GetSRVHandle()}{GetSRVHandle()}}
+{\footnotesize\ttfamily D3\+D12\+\_\+\+GPU\+\_\+\+DESCRIPTOR\+\_\+\+HANDLE Basic\+Desc\+Heap\+::\+Get\+SRVHandle (\begin{DoxyParamCaption}\item[{int}]{key,  }\item[{ID3\+D12\+Device $\ast$}]{device }\end{DoxyParamCaption})}
+
+
+
+SRVのハンドルを取得する関数 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em key} & 画像のハンドル \\
+\hline
+\mbox{\texttt{ in}}  & {\em device} & デバイス \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{戻り値}
+{\em SRVのハンドル} & \\
+\hline
+\end{DoxyRetVals}
+
+
+ \mbox{\hyperlink{_basic_desc_heap_8cpp_source}{Basic\+Desc\+Heap.\+cpp}} の \mbox{\hyperlink{_basic_desc_heap_8cpp_source_l00070}{70}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_basic_desc_heap_ac5e4a9706f96266e199733e923dca7db}\label{class_basic_desc_heap_ac5e4a9706f96266e199733e923dca7db}} 
+\index{BasicDescHeap@{BasicDescHeap}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!BasicDescHeap@{BasicDescHeap}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool Basic\+Desc\+Heap\+::\+Initialize (\begin{DoxyParamCaption}\item[{ID3\+D12\+Device $\ast$}]{device }\end{DoxyParamCaption})}
+
+
+
+ディスクリプタヒープの初期化関数 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em device} & デバイス \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{戻り値}
+{\em true} & 初期化成功 \\
+\hline
+{\em false} & 初期化失敗 \\
+\hline
+\end{DoxyRetVals}
+
+
+ \mbox{\hyperlink{_basic_desc_heap_8cpp_source}{Basic\+Desc\+Heap.\+cpp}} の \mbox{\hyperlink{_basic_desc_heap_8cpp_source_l00013}{13}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_basic_desc_heap_a641623afb297030aad25236cd545d971}\label{class_basic_desc_heap_a641623afb297030aad25236cd545d971}} 
+\index{BasicDescHeap@{BasicDescHeap}!RegisterCBV@{RegisterCBV}}
+\index{RegisterCBV@{RegisterCBV}!BasicDescHeap@{BasicDescHeap}}
+\doxysubsubsection{\texorpdfstring{RegisterCBV()}{RegisterCBV()}}
+{\footnotesize\ttfamily void Basic\+Desc\+Heap\+::\+Register\+CBV (\begin{DoxyParamCaption}\item[{D3\+D12\+\_\+\+CONSTANT\+\_\+\+BUFFER\+\_\+\+VIEW\+\_\+\+DESC}]{cbv\+\_\+desc,  }\item[{int}]{key,  }\item[{ID3\+D12\+Device $\ast$}]{device }\end{DoxyParamCaption})}
+
+
+
+ディスクリプタヒープに\+CBVを登録する関数 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em cbv\+\_\+desc} & CBVの設定 \\
+\hline
+\mbox{\texttt{ in}}  & {\em key} & 画像のハンドル \\
+\hline
+\mbox{\texttt{ in}}  & {\em device} & デバイス \\
+\hline
+\end{DoxyParams}
+
+
+ \mbox{\hyperlink{_basic_desc_heap_8cpp_source}{Basic\+Desc\+Heap.\+cpp}} の \mbox{\hyperlink{_basic_desc_heap_8cpp_source_l00032}{32}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_basic_desc_heap_af774a73592d8ed37fd27f478518493da}\label{class_basic_desc_heap_af774a73592d8ed37fd27f478518493da}} 
+\index{BasicDescHeap@{BasicDescHeap}!RegisterSRV@{RegisterSRV}}
+\index{RegisterSRV@{RegisterSRV}!BasicDescHeap@{BasicDescHeap}}
+\doxysubsubsection{\texorpdfstring{RegisterSRV()}{RegisterSRV()}}
+{\footnotesize\ttfamily void Basic\+Desc\+Heap\+::\+Register\+SRV (\begin{DoxyParamCaption}\item[{ID3\+D12\+Resource $\ast$}]{buff,  }\item[{D3\+D12\+\_\+\+SHADER\+\_\+\+RESOURCE\+\_\+\+VIEW\+\_\+\+DESC}]{srv\+\_\+desc,  }\item[{int}]{key,  }\item[{ID3\+D12\+Device $\ast$}]{device }\end{DoxyParamCaption})}
+
+
+
+ディスクリプタヒープに\+SRVを登録する関数 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em buff} & テクスチャバッファ \\
+\hline
+\mbox{\texttt{ in}}  & {\em srv\+\_\+desc} & SRVの設定 \\
+\hline
+\mbox{\texttt{ in}}  & {\em key} & 画像のハンドル \\
+\hline
+\mbox{\texttt{ in}}  & {\em device} & デバイス \\
+\hline
+\end{DoxyParams}
+
+
+ \mbox{\hyperlink{_basic_desc_heap_8cpp_source}{Basic\+Desc\+Heap.\+cpp}} の \mbox{\hyperlink{_basic_desc_heap_8cpp_source_l00051}{51}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_basic_desc_heap_a09523bba25d8f4c4de796f1fb4f24832}\label{class_basic_desc_heap_a09523bba25d8f4c4de796f1fb4f24832}} 
+\index{BasicDescHeap@{BasicDescHeap}!ResetCounter@{ResetCounter}}
+\index{ResetCounter@{ResetCounter}!BasicDescHeap@{BasicDescHeap}}
+\doxysubsubsection{\texorpdfstring{ResetCounter()}{ResetCounter()}}
+{\footnotesize\ttfamily void Basic\+Desc\+Heap\+::\+Reset\+Counter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+カウンターのリセット関数 
+
+
+\begin{DoxyPre}
+SRVやCBVの登録の際にカウンターを使ってアドレスの位置を決めているため
+毎フレームリセットをする必要がある
+\end{DoxyPre}
+ 
+
+ \mbox{\hyperlink{_basic_desc_heap_8cpp_source}{Basic\+Desc\+Heap.\+cpp}} の \mbox{\hyperlink{_basic_desc_heap_8cpp_source_l00091}{91}} 行目に定義があります。
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Project/\+Git\+Repos/\+Direct\+X/\+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Engine/\+Graphics/\+Descriptor\+Heap/\mbox{\hyperlink{_basic_desc_heap_8h}{Basic\+Desc\+Heap.\+h}}\item 
+C\+:/\+Project/\+Git\+Repos/\+Direct\+X/\+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Engine/\+Graphics/\+Descriptor\+Heap/\mbox{\hyperlink{_basic_desc_heap_8cpp}{Basic\+Desc\+Heap.\+cpp}}\end{DoxyCompactItemize}

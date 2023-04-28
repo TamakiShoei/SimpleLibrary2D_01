@@ -1,0 +1,34 @@
+digraph "C:/Project/GitRepos/DirectX/SimpleLibrary2D_01/SimpleLibrary2D_01/SimpleLibrary2D_01/Engine/Graphics" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_d3ea5d29a1f22e9b069123525a11f5a9 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="Engine" fontname="Helvetica", fontsize="10", URL="dir_d3ea5d29a1f22e9b069123525a11f5a9.html"]
+  dir_78c210f23a4e606453becb67145fefec [shape=box label="Buffer" URL="dir_78c210f23a4e606453becb67145fefec.html"];
+  subgraph clusterdir_adbc8a6163513055605dacbe76b010f7 {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_adbc8a6163513055605dacbe76b010f7.html"];
+    dir_adbc8a6163513055605dacbe76b010f7 [shape=plaintext label="Graphics"];
+  dir_d39007c7bcefc336aab8549071b2b5c3 [shape=box label="CommandAllocator" fillcolor="white" style="filled" URL="dir_d39007c7bcefc336aab8549071b2b5c3.html"];
+  dir_e0c7f79dc12c270492379da1debb1c86 [shape=box label="CommandList" fillcolor="white" style="filled" URL="dir_e0c7f79dc12c270492379da1debb1c86.html"];
+  dir_503208ef721e407df6155d719448202e [shape=box label="CommandQueue" fillcolor="white" style="filled" URL="dir_503208ef721e407df6155d719448202e.html"];
+  dir_8a1dde430a57070fe6f4dcf3109b878d [shape=box label="DescriptorHeap" fillcolor="white" style="filled" URL="dir_8a1dde430a57070fe6f4dcf3109b878d.html"];
+  dir_af0242229bb8208426b8519d8baf557e [shape=box label="Device" fillcolor="white" style="filled" URL="dir_af0242229bb8208426b8519d8baf557e.html"];
+  dir_26760e37db81c05a8191a69b06d8be2a [shape=box label="Factory" fillcolor="white" style="filled" URL="dir_26760e37db81c05a8191a69b06d8be2a.html"];
+  dir_ca9e48ec12b109784a35f1cecad122c9 [shape=box label="Fence" fillcolor="white" style="filled" URL="dir_ca9e48ec12b109784a35f1cecad122c9.html"];
+  dir_5435fed6eeba3cff26620ca8bb20cc97 [shape=box label="Pipeline" fillcolor="white" style="filled" URL="dir_5435fed6eeba3cff26620ca8bb20cc97.html"];
+  dir_125f336dc24aa3a94e4703cf2790f798 [shape=box label="RootSignature" fillcolor="white" style="filled" URL="dir_125f336dc24aa3a94e4703cf2790f798.html"];
+  dir_73d5e3105bc87eb750bd09aa951a81db [shape=box label="SwapChain" fillcolor="white" style="filled" URL="dir_73d5e3105bc87eb750bd09aa951a81db.html"];
+  }
+  }
+  dir_adbc8a6163513055605dacbe76b010f7->dir_125f336dc24aa3a94e4703cf2790f798 [headlabel="1", labeldistance=1.5 headhref="dir_000003_000012.html"];
+  dir_adbc8a6163513055605dacbe76b010f7->dir_26760e37db81c05a8191a69b06d8be2a [headlabel="1", labeldistance=1.5 headhref="dir_000003_000009.html"];
+  dir_adbc8a6163513055605dacbe76b010f7->dir_503208ef721e407df6155d719448202e [headlabel="1", labeldistance=1.5 headhref="dir_000003_000006.html"];
+  dir_adbc8a6163513055605dacbe76b010f7->dir_5435fed6eeba3cff26620ca8bb20cc97 [headlabel="1", labeldistance=1.5 headhref="dir_000003_000011.html"];
+  dir_adbc8a6163513055605dacbe76b010f7->dir_73d5e3105bc87eb750bd09aa951a81db [headlabel="1", labeldistance=1.5 headhref="dir_000003_000013.html"];
+  dir_adbc8a6163513055605dacbe76b010f7->dir_78c210f23a4e606453becb67145fefec [headlabel="1", labeldistance=1.5 headhref="dir_000003_000002.html"];
+  dir_adbc8a6163513055605dacbe76b010f7->dir_8a1dde430a57070fe6f4dcf3109b878d [headlabel="1", labeldistance=1.5 headhref="dir_000003_000007.html"];
+  dir_adbc8a6163513055605dacbe76b010f7->dir_af0242229bb8208426b8519d8baf557e [headlabel="1", labeldistance=1.5 headhref="dir_000003_000008.html"];
+  dir_adbc8a6163513055605dacbe76b010f7->dir_ca9e48ec12b109784a35f1cecad122c9 [headlabel="1", labeldistance=1.5 headhref="dir_000003_000010.html"];
+  dir_adbc8a6163513055605dacbe76b010f7->dir_d39007c7bcefc336aab8549071b2b5c3 [headlabel="1", labeldistance=1.5 headhref="dir_000003_000004.html"];
+  dir_adbc8a6163513055605dacbe76b010f7->dir_e0c7f79dc12c270492379da1debb1c86 [headlabel="1", labeldistance=1.5 headhref="dir_000003_000005.html"];
+}

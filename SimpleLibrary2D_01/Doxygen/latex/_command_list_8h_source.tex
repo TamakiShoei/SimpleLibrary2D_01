@@ -1,0 +1,31 @@
+\hypertarget{_command_list_8h_source}{}\doxysection{Command\+List.\+h}
+\label{_command_list_8h_source}\index{C:/Project/GitRepos/DirectX/SimpleLibrary2D\_01/SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Graphics/CommandList/CommandList.h@{C:/Project/GitRepos/DirectX/SimpleLibrary2D\_01/SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Graphics/CommandList/CommandList.h}}
+\mbox{\hyperlink{_command_list_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_command_list_8h_source_l00001}00001 \textcolor{preprocessor}{\#ifndef COMMAND\_LIST\_H}}
+\DoxyCodeLine{\Hypertarget{_command_list_8h_source_l00002}00002 \textcolor{preprocessor}{\#define COMMAND\_LIST\_H}}
+\DoxyCodeLine{\Hypertarget{_command_list_8h_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{_command_list_8h_source_l00004}00004 \textcolor{preprocessor}{\#include "{}../../CommonDifinition.h"{}}}
+\DoxyCodeLine{\Hypertarget{_command_list_8h_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{_command_list_8h_source_l00006}\mbox{\hyperlink{class_command_list}{00006}} \textcolor{keyword}{class }\mbox{\hyperlink{class_command_list}{CommandList}}}
+\DoxyCodeLine{\Hypertarget{_command_list_8h_source_l00007}00007 \{}
+\DoxyCodeLine{\Hypertarget{_command_list_8h_source_l00008}00008 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_command_list_8h_source_l00009}00009     \mbox{\hyperlink{class_command_list_aa5cc72c5c68da1d3e18f808da93025c6}{CommandList}}();}
+\DoxyCodeLine{\Hypertarget{_command_list_8h_source_l00010}00010     \mbox{\hyperlink{class_command_list_aada18ff9b6162b3ca25b9e4c28a05031}{\string~CommandList}}();}
+\DoxyCodeLine{\Hypertarget{_command_list_8h_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{_command_list_8h_source_l00019}00019     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_command_list_a2abf02d45ba082ad7229dc1aa22d7586}{Initialize}}(ComPtr<ID3D12Device> device, ComPtr<ID3D12CommandAllocator> command\_allocator);}
+\DoxyCodeLine{\Hypertarget{_command_list_8h_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{_command_list_8h_source_l00024}00024     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_command_list_adaca2bd4c4e77cfc8aaa3bb3f0ddfc9a}{Finalize}}();}
+\DoxyCodeLine{\Hypertarget{_command_list_8h_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{_command_list_8h_source_l00030}\mbox{\hyperlink{class_command_list_a297db4c19f784be2668f1b182b249625}{00030}}     \textcolor{keyword}{inline} ID3D12GraphicsCommandList* \mbox{\hyperlink{class_command_list_a297db4c19f784be2668f1b182b249625}{Get}}()}
+\DoxyCodeLine{\Hypertarget{_command_list_8h_source_l00031}00031     \{}
+\DoxyCodeLine{\Hypertarget{_command_list_8h_source_l00032}00032         \textcolor{keywordflow}{return} this-\/>instance.Get();}
+\DoxyCodeLine{\Hypertarget{_command_list_8h_source_l00033}00033     \}}
+\DoxyCodeLine{\Hypertarget{_command_list_8h_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{_command_list_8h_source_l00035}00035 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_command_list_8h_source_l00036}00036     ComPtr<ID3D12GraphicsCommandList> instance;}
+\DoxyCodeLine{\Hypertarget{_command_list_8h_source_l00037}00037 \};}
+\DoxyCodeLine{\Hypertarget{_command_list_8h_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{_command_list_8h_source_l00039}00039 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

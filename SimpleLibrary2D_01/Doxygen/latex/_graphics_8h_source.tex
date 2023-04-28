@@ -1,0 +1,97 @@
+\hypertarget{_graphics_8h_source}{}\doxysection{Graphics.\+h}
+\label{_graphics_8h_source}\index{C:/Project/GitRepos/DirectX/SimpleLibrary2D\_01/SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Graphics/Graphics.h@{C:/Project/GitRepos/DirectX/SimpleLibrary2D\_01/SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Graphics/Graphics.h}}
+\mbox{\hyperlink{_graphics_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00008}00008 \textcolor{preprocessor}{\#ifndef GRAPHICS\_H}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00009}00009 \textcolor{preprocessor}{\#define GRAPHICS\_H}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00011}00011 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00012}00012 \textcolor{preprocessor}{\#include "{}../CommonDifinition.h"{}}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00013}00013 \textcolor{preprocessor}{\#include "{}../Buffer/BufferManager.h"{}}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_factory_8h}{Factory/Factory.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00015}00015 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_device_8h}{Device/Device.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00016}00016 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_command_queue_8h}{CommandQueue/CommandQueue.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00017}00017 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_swap_chain_8h}{SwapChain/SwapChain.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00018}00018 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_root_signature_8h}{RootSignature/RootSignature.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00019}00019 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_pipeline_8h}{Pipeline/Pipeline.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00020}00020 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_command_allocator_8h}{CommandAllocator/CommandAllocator.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00021}00021 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_command_list_8h}{CommandList/CommandList.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00022}00022 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_fence_8h}{Fence/Fence.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00023}00023 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_basic_desc_heap_8h}{DescriptorHeap/BasicDescHeap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00025}\mbox{\hyperlink{class_graphics}{00025}} \textcolor{keyword}{class }\mbox{\hyperlink{class_graphics}{Graphics}} : \mbox{\hyperlink{class_vertex_buffer}{VertexBuffer}}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00026}00026 \{}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00027}00027 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00028}\mbox{\hyperlink{class_graphics_af2e8fe67fd31ec263c843a6e28b29d3c}{00028}}     \mbox{\hyperlink{class_graphics_af2e8fe67fd31ec263c843a6e28b29d3c}{Graphics}}()}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00029}00029     \{}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00030}00030     \}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00031}\mbox{\hyperlink{class_graphics_a7841c9a961ac9bca33bd30ddf8066cdb}{00031}}     \mbox{\hyperlink{class_graphics_a7841c9a961ac9bca33bd30ddf8066cdb}{\string~Graphics}}()}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00032}00032     \{}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00033}00033     \}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00041}00041     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_graphics_a4fe5fdb8aa64479fb68f6c7a1ea4d5fb}{Initialize}}();}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00051}00051     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graphics_ac8545dc7e80c28157dde0d0cb7a6d326}{ClearScreen}}();}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00060}00060     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graphics_a3bef45c4daec0ba45716bb41f2d87a6c}{ScreenFlip}}();}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00061}00061     }
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00069}00069     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graphics_a787dab34b4820f794d1dd1480c17ff0c}{DrawTriangle}}(\mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} lower\_left, \mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} upper\_left, \mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} lower\_right);}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00079}00079     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graphics_a6c981307a85117a1cae57b4fcf11e277}{DrawRect}}(\mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} lower\_left, \mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} upper\_left, \mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} upper\_right, \mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} lower\_right);}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00080}00080 }
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00087}00087     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_graphics_aeb7026b4d19c506cf902d10c02b7878c}{LoadTexture}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* file\_path);}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00088}00088 }
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00096}00096     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graphics_aaba07cd1ce2c67fed84e4bf7594b38c1}{DrawTexture}}(\textcolor{keywordtype}{float} pos\_x, \textcolor{keywordtype}{float} pos\_y, \textcolor{keywordtype}{int} key);}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00097}00097 }
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00102}00102     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graphics_a403aee6ef2996a9872c3c1706c75afee}{WaitForPreviousFrame}}();}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00103}00103 }
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00107}00107     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graphics_a2ba30c7b27677668b5f343ab6b6be82e}{Finalize}}();}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00108}00108 }
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00109}00109 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00110}00110 }
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00115}00115     \textcolor{keywordtype}{void} SetDrawArea();}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00116}00116 }
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00123}00123     \textcolor{keywordtype}{bool} CreateRtvDescHeap();}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00124}00124 }
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00131}00131     \textcolor{keywordtype}{bool} CreateRenderTargetView();}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00132}00132 }
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00133}00133 \textcolor{keyword}{private}:    }
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00134}00134     CD3DX12\_CPU\_DESCRIPTOR\_HANDLE rtvHandle;}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00135}00135     CD3DX12\_RESOURCE\_BARRIER barrier;}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00136}00136     D3D12\_COMMAND\_QUEUE\_DESC commandQueueDesc = \{\};}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00137}00137     D3D12\_DESCRIPTOR\_HEAP\_DESC rtvHeapDesc = \{\};}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00138}00138     DXGI\_SWAP\_CHAIN\_DESC1 swapChainDesc = \{\};}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00139}00139     UINT64  fenceValue;     \textcolor{comment}{//フェンス値}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00140}00140 }
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00141}00141     \textcolor{comment}{//フレームカウントは最低2から(フロントバッファ・バックバッファ)}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00142}00142     \textcolor{keyword}{static} \textcolor{keyword}{const} UINT frameCount = 2;}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00143}00143 }
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00144}00144     \textcolor{comment}{//GPU同期オブジェクト}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00145}00145     UINT                frameIndex = 0; \textcolor{comment}{//フレームインデックス}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00146}00146     HANDLE              fenceEvent;     \textcolor{comment}{//フェンスハンドル}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00147}00147     \textcolor{comment}{//ComPtr<ID3D12Fence>   fence;          //フェンス(GPUと同期して実行完了待ちを行う)}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00148}00148 }
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00149}00149     \textcolor{comment}{//パイプラインオブジェクト}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00150}00150     \mbox{\hyperlink{class_factory}{Factory}} factory;}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00151}00151     \mbox{\hyperlink{class_device}{Device}}                                device;}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00152}00152     \mbox{\hyperlink{class_command_queue}{CommandQueue}}                        commandQueue;}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00153}00153     \mbox{\hyperlink{class_swap_chain}{SwapChain}}                          swapChain;}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00154}00154     \mbox{\hyperlink{class_root_signature}{RootSignature}}                      rootSignature;}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00155}00155     \mbox{\hyperlink{class_pipeline}{Pipeline}}                            pipeline;}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00156}00156     \mbox{\hyperlink{class_command_allocator}{CommandAllocator}}                    commandAllocator;}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00157}00157     \mbox{\hyperlink{class_command_list}{CommandList}}                          commandList;}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00158}00158     \mbox{\hyperlink{class_fence}{Fence}}                              fence;}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00159}00159     ComPtr<ID3D12Resource>              renderTargets[frameCount];}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00160}00160     ComPtr<ID3D12DescriptorHeap>        rtvHeap;}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00161}00161     \mbox{\hyperlink{class_basic_desc_heap}{BasicDescHeap}}                      basicHeap;}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00162}00162     UINT                                rtvDescriptorSize = 0;}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00163}00163 }
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00164}00164     D3D12\_VIEWPORT viewport;}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00165}00165     D3D12\_RECT scissorRect;}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00166}00166 \};}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00167}00167 }
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00168}00168 }
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00169}00169 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

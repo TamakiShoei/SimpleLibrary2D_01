@@ -1,0 +1,119 @@
+\hypertarget{class_pipeline}{}\doxysection{Pipeline クラス}
+\label{class_pipeline}\index{Pipeline@{Pipeline}}
+
+
+{\ttfamily \#include $<$Pipeline.\+h$>$}
+
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pipeline_a79e49366358f823b8812658f8bf3a9e8}{Pipeline}} ()
+\item 
+\mbox{\hyperlink{class_pipeline_a527044d53a20f851d0579fbf313a2dec}{$\sim$\+Pipeline}} ()
+\item 
+bool \mbox{\hyperlink{class_pipeline_a8a51c464a339fb3dc5a6bba31e309718}{Initialize}} (Com\+Ptr$<$ ID3\+D12\+Device $>$ device, Com\+Ptr$<$ ID3\+D12\+Root\+Signature $>$ root\+\_\+signature)
+\begin{DoxyCompactList}\small\item\em パイプラインの初期化関数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pipeline_af9b713c06e5781f18a5db114b58419b4}{Finalize}} ()
+\begin{DoxyCompactList}\small\item\em パイプラインの解放関数 \end{DoxyCompactList}\item 
+ID3\+D12\+Pipeline\+State $\ast$ \mbox{\hyperlink{class_pipeline_a03fbb0dc848eee8b39a998e44c0be287}{Get}} ()
+\begin{DoxyCompactList}\small\item\em パイプラインの取得関数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+
+
+ \mbox{\hyperlink{_pipeline_8h_source}{Pipeline.\+h}} の \mbox{\hyperlink{_pipeline_8h_source_l00006}{6}} 行目に定義があります。
+
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{class_pipeline_a79e49366358f823b8812658f8bf3a9e8}\label{class_pipeline_a79e49366358f823b8812658f8bf3a9e8}} 
+\index{Pipeline@{Pipeline}!Pipeline@{Pipeline}}
+\index{Pipeline@{Pipeline}!Pipeline@{Pipeline}}
+\doxysubsubsection{\texorpdfstring{Pipeline()}{Pipeline()}}
+{\footnotesize\ttfamily Pipeline\+::\+Pipeline (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_pipeline_8cpp_source}{Pipeline.\+cpp}} の \mbox{\hyperlink{_pipeline_8cpp_source_l00003}{3}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_pipeline_a527044d53a20f851d0579fbf313a2dec}\label{class_pipeline_a527044d53a20f851d0579fbf313a2dec}} 
+\index{Pipeline@{Pipeline}!````~Pipeline@{$\sim$Pipeline}}
+\index{````~Pipeline@{$\sim$Pipeline}!Pipeline@{Pipeline}}
+\doxysubsubsection{\texorpdfstring{$\sim$Pipeline()}{~Pipeline()}}
+{\footnotesize\ttfamily Pipeline\+::$\sim$\+Pipeline (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_pipeline_8cpp_source}{Pipeline.\+cpp}} の \mbox{\hyperlink{_pipeline_8cpp_source_l00008}{8}} 行目に定義があります。
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{class_pipeline_af9b713c06e5781f18a5db114b58419b4}\label{class_pipeline_af9b713c06e5781f18a5db114b58419b4}} 
+\index{Pipeline@{Pipeline}!Finalize@{Finalize}}
+\index{Finalize@{Finalize}!Pipeline@{Pipeline}}
+\doxysubsubsection{\texorpdfstring{Finalize()}{Finalize()}}
+{\footnotesize\ttfamily void Pipeline\+::\+Finalize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+パイプラインの解放関数 
+
+
+
+ \mbox{\hyperlink{_pipeline_8cpp_source}{Pipeline.\+cpp}} の \mbox{\hyperlink{_pipeline_8cpp_source_l00100}{100}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_pipeline_a03fbb0dc848eee8b39a998e44c0be287}\label{class_pipeline_a03fbb0dc848eee8b39a998e44c0be287}} 
+\index{Pipeline@{Pipeline}!Get@{Get}}
+\index{Get@{Get}!Pipeline@{Pipeline}}
+\doxysubsubsection{\texorpdfstring{Get()}{Get()}}
+{\footnotesize\ttfamily ID3\+D12\+Pipeline\+State $\ast$ Pipeline\+::\+Get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+パイプラインの取得関数 
+
+
+\begin{DoxyRetVals}{戻り値}
+{\em インスタンス} & \\
+\hline
+\end{DoxyRetVals}
+
+
+ \mbox{\hyperlink{_pipeline_8h_source}{Pipeline.\+h}} の \mbox{\hyperlink{_pipeline_8h_source_l00030}{30}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_pipeline_a8a51c464a339fb3dc5a6bba31e309718}\label{class_pipeline_a8a51c464a339fb3dc5a6bba31e309718}} 
+\index{Pipeline@{Pipeline}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Pipeline@{Pipeline}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool Pipeline\+::\+Initialize (\begin{DoxyParamCaption}\item[{Com\+Ptr$<$ ID3\+D12\+Device $>$}]{device,  }\item[{Com\+Ptr$<$ ID3\+D12\+Root\+Signature $>$}]{root\+\_\+signature }\end{DoxyParamCaption})}
+
+
+
+パイプラインの初期化関数 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em device} & デバイス \\
+\hline
+\mbox{\texttt{ in}}  & {\em root\+\_\+signature} & ルートシグネチャ \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{戻り値}
+{\em true} & 初期化成功 \\
+\hline
+{\em false} & 初期化失敗 \\
+\hline
+\end{DoxyRetVals}
+
+
+ \mbox{\hyperlink{_pipeline_8cpp_source}{Pipeline.\+cpp}} の \mbox{\hyperlink{_pipeline_8cpp_source_l00016}{16}} 行目に定義があります。
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Project/\+Git\+Repos/\+Direct\+X/\+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Engine/\+Graphics/\+Pipeline/\mbox{\hyperlink{_pipeline_8h}{Pipeline.\+h}}\item 
+C\+:/\+Project/\+Git\+Repos/\+Direct\+X/\+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Engine/\+Graphics/\+Pipeline/\mbox{\hyperlink{_pipeline_8cpp}{Pipeline.\+cpp}}\end{DoxyCompactItemize}

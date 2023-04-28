@@ -1,0 +1,117 @@
+\hypertarget{class_factory}{}\doxysection{Factory クラス}
+\label{class_factory}\index{Factory@{Factory}}
+
+
+{\ttfamily \#include $<$Factory.\+h$>$}
+
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_factory_ac792bf88cfb7b6804b479529da5308cc}{Factory}} ()
+\item 
+\mbox{\hyperlink{class_factory_a8f71456f48e4df402c778a44191ff40e}{$\sim$\+Factory}} ()
+\item 
+bool \mbox{\hyperlink{class_factory_aa90c15656822de0b6efe657dbba7e376}{Initialize}} (UINT factory\+\_\+flags)
+\begin{DoxyCompactList}\small\item\em ファクトリーの初期化関数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_factory_aace70b2d54259048cfd150c5f29d207d}{Finalize}} ()
+\begin{DoxyCompactList}\small\item\em ファクトリーの解放関数 \end{DoxyCompactList}\item 
+Com\+Ptr$<$ IDXGIFactory4 $>$ \mbox{\hyperlink{class_factory_a4c3e2c766de87cffed6b68ac66514107}{Get}} ()
+\begin{DoxyCompactList}\small\item\em ファクトリーの取得関数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+
+
+ \mbox{\hyperlink{_factory_8h_source}{Factory.\+h}} の \mbox{\hyperlink{_factory_8h_source_l00006}{6}} 行目に定義があります。
+
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{class_factory_ac792bf88cfb7b6804b479529da5308cc}\label{class_factory_ac792bf88cfb7b6804b479529da5308cc}} 
+\index{Factory@{Factory}!Factory@{Factory}}
+\index{Factory@{Factory}!Factory@{Factory}}
+\doxysubsubsection{\texorpdfstring{Factory()}{Factory()}}
+{\footnotesize\ttfamily Factory\+::\+Factory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_factory_8cpp_source}{Factory.\+cpp}} の \mbox{\hyperlink{_factory_8cpp_source_l00003}{3}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_factory_a8f71456f48e4df402c778a44191ff40e}\label{class_factory_a8f71456f48e4df402c778a44191ff40e}} 
+\index{Factory@{Factory}!````~Factory@{$\sim$Factory}}
+\index{````~Factory@{$\sim$Factory}!Factory@{Factory}}
+\doxysubsubsection{\texorpdfstring{$\sim$Factory()}{~Factory()}}
+{\footnotesize\ttfamily Factory\+::$\sim$\+Factory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_factory_8cpp_source}{Factory.\+cpp}} の \mbox{\hyperlink{_factory_8cpp_source_l00008}{8}} 行目に定義があります。
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{class_factory_aace70b2d54259048cfd150c5f29d207d}\label{class_factory_aace70b2d54259048cfd150c5f29d207d}} 
+\index{Factory@{Factory}!Finalize@{Finalize}}
+\index{Finalize@{Finalize}!Factory@{Factory}}
+\doxysubsubsection{\texorpdfstring{Finalize()}{Finalize()}}
+{\footnotesize\ttfamily void Factory\+::\+Finalize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+ファクトリーの解放関数 
+
+
+
+ \mbox{\hyperlink{_factory_8cpp_source}{Factory.\+cpp}} の \mbox{\hyperlink{_factory_8cpp_source_l00036}{36}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_factory_a4c3e2c766de87cffed6b68ac66514107}\label{class_factory_a4c3e2c766de87cffed6b68ac66514107}} 
+\index{Factory@{Factory}!Get@{Get}}
+\index{Get@{Get}!Factory@{Factory}}
+\doxysubsubsection{\texorpdfstring{Get()}{Get()}}
+{\footnotesize\ttfamily Com\+Ptr$<$ IDXGIFactory4 $>$ Factory\+::\+Get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ファクトリーの取得関数 
+
+
+\begin{DoxyRetVals}{戻り値}
+{\em インスタンス} & \\
+\hline
+\end{DoxyRetVals}
+
+
+ \mbox{\hyperlink{_factory_8h_source}{Factory.\+h}} の \mbox{\hyperlink{_factory_8h_source_l00029}{29}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_factory_aa90c15656822de0b6efe657dbba7e376}\label{class_factory_aa90c15656822de0b6efe657dbba7e376}} 
+\index{Factory@{Factory}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Factory@{Factory}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool Factory\+::\+Initialize (\begin{DoxyParamCaption}\item[{UINT}]{factory\+\_\+flags }\end{DoxyParamCaption})}
+
+
+
+ファクトリーの初期化関数 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em factory\+\_\+flag} & ファクトリーフラグ \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{戻り値}
+{\em true} & 初期化成功 \\
+\hline
+{\em false} & 初期化失敗 \\
+\hline
+\end{DoxyRetVals}
+
+
+ \mbox{\hyperlink{_factory_8cpp_source}{Factory.\+cpp}} の \mbox{\hyperlink{_factory_8cpp_source_l00016}{16}} 行目に定義があります。
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Project/\+Git\+Repos/\+Direct\+X/\+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Engine/\+Graphics/\+Factory/\mbox{\hyperlink{_factory_8h}{Factory.\+h}}\item 
+C\+:/\+Project/\+Git\+Repos/\+Direct\+X/\+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Engine/\+Graphics/\+Factory/\mbox{\hyperlink{_factory_8cpp}{Factory.\+cpp}}\end{DoxyCompactItemize}

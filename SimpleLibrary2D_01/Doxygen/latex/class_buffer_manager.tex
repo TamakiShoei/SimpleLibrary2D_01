@@ -1,0 +1,224 @@
+\hypertarget{class_buffer_manager}{}\doxysection{Buffer\+Manager クラス}
+\label{class_buffer_manager}\index{BufferManager@{BufferManager}}
+
+
+{\ttfamily \#include $<$Buffer\+Manager.\+h$>$}
+
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_buffer_manager_a81b53436fd8a2c4a2ddf9f3e3bb046fc}{Create\+Sprite}} (Direct\+X\+::\+Tex\+Metadata metadata, const Direct\+X\+::\+Image $\ast$img, ID3\+D12\+Device $\ast$device)
+\begin{DoxyCompactList}\small\item\em キャンバスの作成関数 \end{DoxyCompactList}\item 
+ID3\+D12\+Resource $\ast$ \mbox{\hyperlink{class_buffer_manager_a6bf4a0c12d96e8afd728ed8f232a13e3}{Get\+Vertex\+Buffer}} (int key, ID3\+D12\+Device $\ast$device)
+\begin{DoxyCompactList}\small\item\em 頂点バッファの取得関数 \end{DoxyCompactList}\item 
+ID3\+D12\+Resource $\ast$ \mbox{\hyperlink{class_buffer_manager_ad5edd44577869c3ac711a3c3a17cf721}{Get\+Index\+Buffer}} (int key)
+\begin{DoxyCompactList}\small\item\em インデックスバッファの取得関数 \end{DoxyCompactList}\item 
+ID3\+D12\+Resource $\ast$ \mbox{\hyperlink{class_buffer_manager_abdf8b3b1206a592ab2ffd4c7c3f37458}{Get\+Tex\+Buffer}} (int key)
+\begin{DoxyCompactList}\small\item\em インデックスバッファの取得関数 \end{DoxyCompactList}\item 
+ID3\+D12\+Resource $\ast$ \mbox{\hyperlink{class_buffer_manager_a96d27cf7f0a1886a8ace078ef06382b6}{Get\+Constant\+Buffer}} (int key)
+\begin{DoxyCompactList}\small\item\em インデックスバッファの取得関数 \end{DoxyCompactList}\item 
+Direct\+X\+::\+Tex\+Metadata \mbox{\hyperlink{class_buffer_manager_a86560cd4665bae81f9e2c61226a2d0e2}{Get\+Metadata}} (int key)
+\begin{DoxyCompactList}\small\item\em メタデータの取得関数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_buffer_manager_a595c6c4f9c99745a4ed5e4008c094785}{Reset\+Use\+Counter}} ()
+\begin{DoxyCompactList}\small\item\em 頂点バッファクラスの\+Use\+Counterのリセット関数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_buffer_manager_a00c0ed1a88ac5c86755ef115ab80cf17}{Finalize}} ()
+\begin{DoxyCompactList}\small\item\em リソース解放関数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{静的公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_buffer_manager}{Buffer\+Manager}} $\ast$ \mbox{\hyperlink{class_buffer_manager_ae88562553e9939fd8d06657f687a0ea1}{Instance}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+
+
+ \mbox{\hyperlink{_buffer_manager_8h_source}{Buffer\+Manager.\+h}} の \mbox{\hyperlink{_buffer_manager_8h_source_l00028}{28}} 行目に定義があります。
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{class_buffer_manager_a81b53436fd8a2c4a2ddf9f3e3bb046fc}\label{class_buffer_manager_a81b53436fd8a2c4a2ddf9f3e3bb046fc}} 
+\index{BufferManager@{BufferManager}!CreateSprite@{CreateSprite}}
+\index{CreateSprite@{CreateSprite}!BufferManager@{BufferManager}}
+\doxysubsubsection{\texorpdfstring{CreateSprite()}{CreateSprite()}}
+{\footnotesize\ttfamily int Buffer\+Manager\+::\+Create\+Sprite (\begin{DoxyParamCaption}\item[{Direct\+X\+::\+Tex\+Metadata}]{metadata,  }\item[{const Direct\+X\+::\+Image $\ast$}]{img,  }\item[{ID3\+D12\+Device $\ast$}]{device }\end{DoxyParamCaption})}
+
+
+
+キャンバスの作成関数 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em metadata} & 画像のメタデータ \\
+\hline
+\mbox{\texttt{ in}}  & {\em img} & 画像の生データ \\
+\hline
+\mbox{\texttt{ in}}  & {\em device} & デバイス \\
+\hline
+\end{DoxyParams}
+
+
+ \mbox{\hyperlink{_buffer_manager_8cpp_source}{Buffer\+Manager.\+cpp}} の \mbox{\hyperlink{_buffer_manager_8cpp_source_l00004}{4}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_buffer_manager_a00c0ed1a88ac5c86755ef115ab80cf17}\label{class_buffer_manager_a00c0ed1a88ac5c86755ef115ab80cf17}} 
+\index{BufferManager@{BufferManager}!Finalize@{Finalize}}
+\index{Finalize@{Finalize}!BufferManager@{BufferManager}}
+\doxysubsubsection{\texorpdfstring{Finalize()}{Finalize()}}
+{\footnotesize\ttfamily void Buffer\+Manager\+::\+Finalize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+リソース解放関数 
+
+
+
+ \mbox{\hyperlink{_buffer_manager_8cpp_source}{Buffer\+Manager.\+cpp}} の \mbox{\hyperlink{_buffer_manager_8cpp_source_l00082}{82}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_buffer_manager_a96d27cf7f0a1886a8ace078ef06382b6}\label{class_buffer_manager_a96d27cf7f0a1886a8ace078ef06382b6}} 
+\index{BufferManager@{BufferManager}!GetConstantBuffer@{GetConstantBuffer}}
+\index{GetConstantBuffer@{GetConstantBuffer}!BufferManager@{BufferManager}}
+\doxysubsubsection{\texorpdfstring{GetConstantBuffer()}{GetConstantBuffer()}}
+{\footnotesize\ttfamily ID3\+D12\+Resource $\ast$ Buffer\+Manager\+::\+Get\+Constant\+Buffer (\begin{DoxyParamCaption}\item[{int}]{key }\end{DoxyParamCaption})}
+
+
+
+インデックスバッファの取得関数 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em key} & キー値 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{戻り値}
+{\em コンスタントバッファデータ} & \\
+\hline
+\end{DoxyRetVals}
+
+
+ \mbox{\hyperlink{_buffer_manager_8cpp_source}{Buffer\+Manager.\+cpp}} の \mbox{\hyperlink{_buffer_manager_8cpp_source_l00060}{60}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_buffer_manager_ad5edd44577869c3ac711a3c3a17cf721}\label{class_buffer_manager_ad5edd44577869c3ac711a3c3a17cf721}} 
+\index{BufferManager@{BufferManager}!GetIndexBuffer@{GetIndexBuffer}}
+\index{GetIndexBuffer@{GetIndexBuffer}!BufferManager@{BufferManager}}
+\doxysubsubsection{\texorpdfstring{GetIndexBuffer()}{GetIndexBuffer()}}
+{\footnotesize\ttfamily ID3\+D12\+Resource $\ast$ Buffer\+Manager\+::\+Get\+Index\+Buffer (\begin{DoxyParamCaption}\item[{int}]{key }\end{DoxyParamCaption})}
+
+
+
+インデックスバッファの取得関数 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em key} & キー値 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{戻り値}
+{\em インデックスバッファデータ} & \\
+\hline
+\end{DoxyRetVals}
+
+
+ \mbox{\hyperlink{_buffer_manager_8cpp_source}{Buffer\+Manager.\+cpp}} の \mbox{\hyperlink{_buffer_manager_8cpp_source_l00042}{42}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_buffer_manager_a86560cd4665bae81f9e2c61226a2d0e2}\label{class_buffer_manager_a86560cd4665bae81f9e2c61226a2d0e2}} 
+\index{BufferManager@{BufferManager}!GetMetadata@{GetMetadata}}
+\index{GetMetadata@{GetMetadata}!BufferManager@{BufferManager}}
+\doxysubsubsection{\texorpdfstring{GetMetadata()}{GetMetadata()}}
+{\footnotesize\ttfamily Direct\+X\+::\+Tex\+Metadata Buffer\+Manager\+::\+Get\+Metadata (\begin{DoxyParamCaption}\item[{int}]{key }\end{DoxyParamCaption})}
+
+
+
+メタデータの取得関数 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em key} & キー値 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{戻り値}
+{\em メタデータ} & \\
+\hline
+\end{DoxyRetVals}
+
+
+ \mbox{\hyperlink{_buffer_manager_8cpp_source}{Buffer\+Manager.\+cpp}} の \mbox{\hyperlink{_buffer_manager_8cpp_source_l00069}{69}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_buffer_manager_abdf8b3b1206a592ab2ffd4c7c3f37458}\label{class_buffer_manager_abdf8b3b1206a592ab2ffd4c7c3f37458}} 
+\index{BufferManager@{BufferManager}!GetTexBuffer@{GetTexBuffer}}
+\index{GetTexBuffer@{GetTexBuffer}!BufferManager@{BufferManager}}
+\doxysubsubsection{\texorpdfstring{GetTexBuffer()}{GetTexBuffer()}}
+{\footnotesize\ttfamily ID3\+D12\+Resource $\ast$ Buffer\+Manager\+::\+Get\+Tex\+Buffer (\begin{DoxyParamCaption}\item[{int}]{key }\end{DoxyParamCaption})}
+
+
+
+インデックスバッファの取得関数 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em key} & キー値 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{戻り値}
+{\em テクスチャバッファデータ} & \\
+\hline
+\end{DoxyRetVals}
+
+
+ \mbox{\hyperlink{_buffer_manager_8cpp_source}{Buffer\+Manager.\+cpp}} の \mbox{\hyperlink{_buffer_manager_8cpp_source_l00051}{51}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_buffer_manager_a6bf4a0c12d96e8afd728ed8f232a13e3}\label{class_buffer_manager_a6bf4a0c12d96e8afd728ed8f232a13e3}} 
+\index{BufferManager@{BufferManager}!GetVertexBuffer@{GetVertexBuffer}}
+\index{GetVertexBuffer@{GetVertexBuffer}!BufferManager@{BufferManager}}
+\doxysubsubsection{\texorpdfstring{GetVertexBuffer()}{GetVertexBuffer()}}
+{\footnotesize\ttfamily ID3\+D12\+Resource $\ast$ Buffer\+Manager\+::\+Get\+Vertex\+Buffer (\begin{DoxyParamCaption}\item[{int}]{key,  }\item[{ID3\+D12\+Device $\ast$}]{device }\end{DoxyParamCaption})}
+
+
+
+頂点バッファの取得関数 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em key} & キー値 \\
+\hline
+\mbox{\texttt{ in}}  & {\em device} & デバイス \\
+\hline
+\end{DoxyParams}
+
+
+ \mbox{\hyperlink{_buffer_manager_8cpp_source}{Buffer\+Manager.\+cpp}} の \mbox{\hyperlink{_buffer_manager_8cpp_source_l00028}{28}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_buffer_manager_ae88562553e9939fd8d06657f687a0ea1}\label{class_buffer_manager_ae88562553e9939fd8d06657f687a0ea1}} 
+\index{BufferManager@{BufferManager}!Instance@{Instance}}
+\index{Instance@{Instance}!BufferManager@{BufferManager}}
+\doxysubsubsection{\texorpdfstring{Instance()}{Instance()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_buffer_manager}{Buffer\+Manager}} $\ast$ Buffer\+Manager\+::\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+ \mbox{\hyperlink{_buffer_manager_8h_source}{Buffer\+Manager.\+h}} の \mbox{\hyperlink{_buffer_manager_8h_source_l00031}{31}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_buffer_manager_a595c6c4f9c99745a4ed5e4008c094785}\label{class_buffer_manager_a595c6c4f9c99745a4ed5e4008c094785}} 
+\index{BufferManager@{BufferManager}!ResetUseCounter@{ResetUseCounter}}
+\index{ResetUseCounter@{ResetUseCounter}!BufferManager@{BufferManager}}
+\doxysubsubsection{\texorpdfstring{ResetUseCounter()}{ResetUseCounter()}}
+{\footnotesize\ttfamily void Buffer\+Manager\+::\+Reset\+Use\+Counter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+頂点バッファクラスの\+Use\+Counterのリセット関数 
+
+
+
+ \mbox{\hyperlink{_buffer_manager_8cpp_source}{Buffer\+Manager.\+cpp}} の \mbox{\hyperlink{_buffer_manager_8cpp_source_l00074}{74}} 行目に定義があります。
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Project/\+Git\+Repos/\+Direct\+X/\+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Engine/\+Buffer/\mbox{\hyperlink{_buffer_manager_8h}{Buffer\+Manager.\+h}}\item 
+C\+:/\+Project/\+Git\+Repos/\+Direct\+X/\+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Engine/\+Buffer/\mbox{\hyperlink{_buffer_manager_8cpp}{Buffer\+Manager.\+cpp}}\end{DoxyCompactItemize}

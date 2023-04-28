@@ -1,0 +1,123 @@
+\hypertarget{_engine_8cpp_source}{}\doxysection{Engine.\+cpp}
+\label{_engine_8cpp_source}\index{C:/Project/GitRepos/DirectX/SimpleLibrary2D\_01/SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Engine.cpp@{C:/Project/GitRepos/DirectX/SimpleLibrary2D\_01/SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Engine.cpp}}
+\mbox{\hyperlink{_engine_8cpp}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_engine_8h}{Engine.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00003}00003 \mbox{\hyperlink{class_engine}{Engine}}* Engine::instance = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00004}00004 }
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00005}\mbox{\hyperlink{class_engine_a11baa1640d1f89e3cf8d1887a9621032}{00005}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_engine_a11baa1640d1f89e3cf8d1887a9621032}{Engine::Initialize}}()}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00006}00006 \{}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00007}00007     \textcolor{keywordflow}{if} (instance == \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00008}00008     \{}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00009}00009         instance = \textcolor{keyword}{new} \mbox{\hyperlink{class_engine}{Engine}}();}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00010}00010     \}}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00012}00012     \textcolor{keywordflow}{if} (\mbox{\hyperlink{_common_difinition_8h_a782fab65591e3bce2e23af7ec58fef26}{B\_FAILED}}(instance-\/>window.\mbox{\hyperlink{class_window_a41cab6dae60380563b8bc593e87f0c87}{Initialize}}()))}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00013}00013     \{}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00014}00014         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00015}00015     \}}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00016}00016     \textcolor{keywordflow}{if} (\mbox{\hyperlink{_common_difinition_8h_a782fab65591e3bce2e23af7ec58fef26}{B\_FAILED}}(instance-\/>graphics.\mbox{\hyperlink{class_graphics_a4fe5fdb8aa64479fb68f6c7a1ea4d5fb}{Initialize}}()))}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00017}00017     \{}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00018}00018         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00019}00019     \}}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00020}00020     \textcolor{keywordflow}{if} (\mbox{\hyperlink{_common_difinition_8h_a782fab65591e3bce2e23af7ec58fef26}{B\_FAILED}}(instance-\/>input.\mbox{\hyperlink{class_input_af199ca433ec1f709fc9e0791fb5b5311}{Initialize}}()))}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00021}00021     \{}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00022}00022         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00023}00023     \}}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00024}00024     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00025}00025 \}}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00027}\mbox{\hyperlink{class_engine_ac84eefe06226f430a2448306e6fd2579}{00027}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_engine_ac84eefe06226f430a2448306e6fd2579}{Engine::Update}}()}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00028}00028 \{}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00029}00029     instance-\/>input.\mbox{\hyperlink{class_input_af80dcfde6dbfe39bf3bc0345c75595ce}{Update}}();}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00030}00030     instance-\/>window.\mbox{\hyperlink{class_window_ab8d28dce3166c70eb5744466460795df}{Update}}();}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00031}00031 \}}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00033}\mbox{\hyperlink{class_engine_ab578ae77a94a428357be0477a3051783}{00033}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_engine_ab578ae77a94a428357be0477a3051783}{Engine::Finalize}}()}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00034}00034 \{}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00035}00035     UnregisterClass(\mbox{\hyperlink{_common_difinition_8h_a50267f06977d60b462f43ad330ffcf33}{WINDOW\_CLASS\_NAME}}, GetModuleHandle(\textcolor{keyword}{nullptr}));}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00036}00036     instance-\/>graphics.\mbox{\hyperlink{class_graphics_a403aee6ef2996a9872c3c1706c75afee}{WaitForPreviousFrame}}();}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00037}00037     instance-\/>input.\mbox{\hyperlink{class_input_ac6f5ce9a2bde76bad12b7c78d1c5e972}{Finalize}}();}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00038}00038     \mbox{\hyperlink{class_buffer_manager_ae88562553e9939fd8d06657f687a0ea1}{BufferManager::Instance}}()-\/>\mbox{\hyperlink{class_buffer_manager_a00c0ed1a88ac5c86755ef115ab80cf17}{Finalize}}();}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00039}00039     instance-\/>graphics.\mbox{\hyperlink{class_graphics_a2ba30c7b27677668b5f343ab6b6be82e}{Finalize}}();}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00040}00040 \}}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00042}00042 \textcolor{comment}{//Windowクラス関係の関数}}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00043}\mbox{\hyperlink{class_engine_ac3588e84ef99b6ceb91563d8cbbbe8fc}{00043}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_engine_ac3588e84ef99b6ceb91563d8cbbbe8fc}{Engine::IsClosedWindow}}()}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00044}00044 \{}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00045}00045     \textcolor{keywordflow}{return} instance-\/>window.\mbox{\hyperlink{class_window_a4025633243fff688f55b55ed1778f906}{IsClosed}}();}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00046}00046 \}}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00048}\mbox{\hyperlink{class_engine_a70836837356d5bb5ffcabc01624aeda8}{00048}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_engine_a70836837356d5bb5ffcabc01624aeda8}{Engine::SetWindowSize}}(\textcolor{keywordtype}{int} width\_size, \textcolor{keywordtype}{int} height\_size)}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00049}00049 \{}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00050}00050     \textcolor{keywordflow}{if} (instance == \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00051}00051     \{}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00052}00052         instance = \textcolor{keyword}{new} \mbox{\hyperlink{class_engine}{Engine}}();}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00053}00053     \}}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00055}00055     \textcolor{keywordflow}{return} instance-\/>window.\mbox{\hyperlink{class_window_a6fa7f6fe8ae43755295f78f658bc79cc}{SetWindowSize}}(width\_size, height\_size);}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00056}00056 \}}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00058}\mbox{\hyperlink{class_engine_aa3a3b36188c9969f24c0dda984463360}{00058}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_engine_aa3a3b36188c9969f24c0dda984463360}{Engine::IsPushedKey}}(\textcolor{keywordtype}{int} key)}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00059}00059 \{}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00060}00060     \textcolor{keywordflow}{if} (instance-\/>input.\mbox{\hyperlink{class_input_a5f44e8a3613dd865cd7e64b77f1a902a}{IsPushed}}(key) == \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00061}00061     \{}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00062}00062         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00063}00063     \}}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00065}00065     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00066}00066 \}}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00068}\mbox{\hyperlink{class_engine_a4c826750649da0235b53aeaadf34f1d7}{00068}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_engine_a4c826750649da0235b53aeaadf34f1d7}{Engine::IsHeldKey}}(\textcolor{keywordtype}{int} key)}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00069}00069 \{}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00070}00070     \textcolor{keywordflow}{if} (instance-\/>input.\mbox{\hyperlink{class_input_a7de1ee2d0b9c2e33d65b5df271695b30}{IsHeld}}(key) == \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00071}00071     \{}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00072}00072         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00073}00073     \}}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00074}00074 }
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00075}00075     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00076}00076 \}}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00078}\mbox{\hyperlink{class_engine_a4983f264a42532b1f6922c8f876fdf83}{00078}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_engine_a4983f264a42532b1f6922c8f876fdf83}{Engine::IsReleasedKey}}(\textcolor{keywordtype}{int} key)}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00079}00079 \{}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00080}00080     \textcolor{keywordflow}{if} (instance-\/>input.\mbox{\hyperlink{class_input_ae5fa8b108484ebea826bd350f6fa5f1d}{IsReleased}}(key) == \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00081}00081     \{}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00082}00082         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00083}00083     \}}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00084}00084 }
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00085}00085     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00086}00086 \}}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00087}00087 }
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00088}00088 \textcolor{comment}{//Graphicsクラス関係の関数}}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00089}\mbox{\hyperlink{class_engine_ab55f613dbdc08c39d5d43fb206472713}{00089}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_engine_ab55f613dbdc08c39d5d43fb206472713}{Engine::ClearScreen}}()}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00090}00090 \{}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00091}00091     instance-\/>graphics.\mbox{\hyperlink{class_graphics_ac8545dc7e80c28157dde0d0cb7a6d326}{ClearScreen}}();}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00092}00092 \}}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00093}00093 }
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00094}\mbox{\hyperlink{class_engine_a562d4c1a3ad0632681edbdcd512b03d0}{00094}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_engine_a562d4c1a3ad0632681edbdcd512b03d0}{Engine::ScreenFlip}}()}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00095}00095 \{}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00096}00096     instance-\/>graphics.\mbox{\hyperlink{class_graphics_a3bef45c4daec0ba45716bb41f2d87a6c}{ScreenFlip}}();}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00097}00097 \}}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00098}00098 }
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00099}\mbox{\hyperlink{class_engine_ae323015976bd06f1590236aaad56f0b9}{00099}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_engine_ae323015976bd06f1590236aaad56f0b9}{Engine::DrawTriangle}}(\mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} lower\_left, \mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} upper\_left, \mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} lower\_right)}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00100}00100 \{}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00101}00101     instance-\/>graphics.\mbox{\hyperlink{class_graphics_a787dab34b4820f794d1dd1480c17ff0c}{DrawTriangle}}(lower\_left, upper\_left, lower\_right);}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00102}00102 \}}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00103}00103 }
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00104}\mbox{\hyperlink{class_engine_a721ab8fe17b4e13b0d6dfabddf43d2ba}{00104}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_engine_a721ab8fe17b4e13b0d6dfabddf43d2ba}{Engine::DrawRect}}(\mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} lower\_left, \mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} upper\_left, \mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} upper\_right, \mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} lower\_right)}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00105}00105 \{}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00106}00106     instance-\/>graphics.\mbox{\hyperlink{class_graphics_a6c981307a85117a1cae57b4fcf11e277}{DrawRect}}(lower\_left, upper\_left, upper\_right, lower\_right);}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00107}00107 \}}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00108}00108 }
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00109}\mbox{\hyperlink{class_engine_abff67f29fc8cb13ba9591eb6a3cf5983}{00109}} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_engine_abff67f29fc8cb13ba9591eb6a3cf5983}{Engine::LoadTexture}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* file\_path)}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00110}00110 \{}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00111}00111     \textcolor{keywordflow}{return} instance-\/>graphics.\mbox{\hyperlink{class_graphics_aeb7026b4d19c506cf902d10c02b7878c}{LoadTexture}}(file\_path);}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00112}00112 \}}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00113}00113 }
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00114}\mbox{\hyperlink{class_engine_aa09aa98aecd91a3ea8315fd5d705444a}{00114}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_engine_aa09aa98aecd91a3ea8315fd5d705444a}{Engine::DrawTexture}}(\textcolor{keywordtype}{float} pos\_x, \textcolor{keywordtype}{float} pos\_y, \textcolor{keywordtype}{int} key)}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00115}00115 \{}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00116}00116     instance-\/>graphics.\mbox{\hyperlink{class_graphics_aaba07cd1ce2c67fed84e4bf7594b38c1}{DrawTexture}}(pos\_x, pos\_y, key);}
+\DoxyCodeLine{\Hypertarget{_engine_8cpp_source_l00117}00117 \}}
+
+\end{DoxyCode}

@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SimpleLibrary2D: C:/Project/GitRepos/DirectX/SimpleLibrary2D_01/SimpleLibrary2D_01/SimpleLibrary2D_01/Engine/Graphics/Pipeline/Pipeline.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">SimpleLibrary2D
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_01d751825de9ac13df742f0f31d92797.html">SimpleLibrary2D_01</a></li><li class="navelem"><a class="el" href="dir_d3ea5d29a1f22e9b069123525a11f5a9.html">Engine</a></li><li class="navelem"><a class="el" href="dir_adbc8a6163513055605dacbe76b010f7.html">Graphics</a></li><li class="navelem"><a class="el" href="dir_5435fed6eeba3cff26620ca8bb20cc97.html">Pipeline</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">Pipeline.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_pipeline_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef PIPELINE_SIGNATURE_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define PIPELINE_SIGNATURE_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;../../CommonDifinition.h&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="class_pipeline.html">    6</a></span><span class="keyword">class </span><a class="code hl_class" href="class_pipeline.html">Pipeline</a></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>{</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <a class="code hl_function" href="class_pipeline.html#a79e49366358f823b8812658f8bf3a9e8">Pipeline</a>();</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <a class="code hl_function" href="class_pipeline.html#a527044d53a20f851d0579fbf313a2dec">~Pipeline</a>();</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_pipeline.html#a8a51c464a339fb3dc5a6bba31e309718">Initialize</a>(ComPtr&lt;ID3D12Device&gt; device, ComPtr&lt;ID3D12RootSignature&gt; root_signature);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_pipeline.html#af9b713c06e5781f18a5db114b58419b4">Finalize</a>();</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="class_pipeline.html#a03fbb0dc848eee8b39a998e44c0be287">   30</a></span>    ID3D12PipelineState* <a class="code hl_function" href="class_pipeline.html#a03fbb0dc848eee8b39a998e44c0be287">Get</a>()</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keywordflow">return</span> this-&gt;instance.Get();</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    }</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    ComPtr&lt;ID3D12PipelineState&gt; instance;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>};</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclass_pipeline_html"><div class="ttname"><a href="class_pipeline.html">Pipeline</a></div><div class="ttdef"><b>Definition:</b> <a href="_pipeline_8h_source.html#l00006">Pipeline.h:7</a></div></div>
+<div class="ttc" id="aclass_pipeline_html_a03fbb0dc848eee8b39a998e44c0be287"><div class="ttname"><a href="class_pipeline.html#a03fbb0dc848eee8b39a998e44c0be287">Pipeline::Get</a></div><div class="ttdeci">ID3D12PipelineState * Get()</div><div class="ttdoc">パイプラインの取得関数</div><div class="ttdef"><b>Definition:</b> <a href="_pipeline_8h_source.html#l00030">Pipeline.h:30</a></div></div>
+<div class="ttc" id="aclass_pipeline_html_a527044d53a20f851d0579fbf313a2dec"><div class="ttname"><a href="class_pipeline.html#a527044d53a20f851d0579fbf313a2dec">Pipeline::~Pipeline</a></div><div class="ttdeci">~Pipeline()</div><div class="ttdef"><b>Definition:</b> <a href="_pipeline_8cpp_source.html#l00008">Pipeline.cpp:8</a></div></div>
+<div class="ttc" id="aclass_pipeline_html_a79e49366358f823b8812658f8bf3a9e8"><div class="ttname"><a href="class_pipeline.html#a79e49366358f823b8812658f8bf3a9e8">Pipeline::Pipeline</a></div><div class="ttdeci">Pipeline()</div><div class="ttdef"><b>Definition:</b> <a href="_pipeline_8cpp_source.html#l00003">Pipeline.cpp:3</a></div></div>
+<div class="ttc" id="aclass_pipeline_html_a8a51c464a339fb3dc5a6bba31e309718"><div class="ttname"><a href="class_pipeline.html#a8a51c464a339fb3dc5a6bba31e309718">Pipeline::Initialize</a></div><div class="ttdeci">bool Initialize(ComPtr&lt; ID3D12Device &gt; device, ComPtr&lt; ID3D12RootSignature &gt; root_signature)</div><div class="ttdoc">パイプラインの初期化関数</div><div class="ttdef"><b>Definition:</b> <a href="_pipeline_8cpp_source.html#l00016">Pipeline.cpp:16</a></div></div>
+<div class="ttc" id="aclass_pipeline_html_af9b713c06e5781f18a5db114b58419b4"><div class="ttname"><a href="class_pipeline.html#af9b713c06e5781f18a5db114b58419b4">Pipeline::Finalize</a></div><div class="ttdeci">void Finalize()</div><div class="ttdoc">パイプラインの解放関数</div><div class="ttdef"><b>Definition:</b> <a href="_pipeline_8cpp_source.html#l00100">Pipeline.cpp:100</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
+</small></address>
+</body>
+</html>

@@ -1,0 +1,58 @@
+\hypertarget{_engine_8h_source}{}\doxysection{Engine.\+h}
+\label{_engine_8h_source}\index{C:/Project/GitRepos/DirectX/SimpleLibrary2D\_01/SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Engine.h@{C:/Project/GitRepos/DirectX/SimpleLibrary2D\_01/SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Engine.h}}
+\mbox{\hyperlink{_engine_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00005}00005 \textcolor{preprocessor}{\#ifndef ENGINE\_H}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00006}00006 \textcolor{preprocessor}{\#define ENGINE\_H}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00008}00008 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_common_difinition_8h}{CommonDifinition.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00009}00009 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_graphics_8h}{Graphics/Graphics.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00010}00010 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_window_8h}{Window.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00012}\mbox{\hyperlink{class_engine}{00012}} \textcolor{keyword}{class }\mbox{\hyperlink{class_engine}{Engine}}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00013}00013 \{}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00014}00014 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00015}00015     \textcolor{comment}{//エンジン関係の関数}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00025}00025 \textcolor{comment}{}    \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_engine_a11baa1640d1f89e3cf8d1887a9621032}{Initialize}}();}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00034}00034     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_engine_ab578ae77a94a428357be0477a3051783}{Finalize}}();}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00043}00043     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_engine_ac84eefe06226f430a2448306e6fd2579}{Update}}();}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00045}00045     \textcolor{comment}{//ウィンドウ関係の関数}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00052}00052 \textcolor{comment}{}    \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_engine_ac3588e84ef99b6ceb91563d8cbbbe8fc}{IsClosedWindow}}();}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00060}00060     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_engine_a70836837356d5bb5ffcabc01624aeda8}{SetWindowSize}}(\textcolor{keywordtype}{int} width\_size, \textcolor{keywordtype}{int} height\_size);}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00069}00069     \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_engine_aa3a3b36188c9969f24c0dda984463360}{IsPushedKey}}(\textcolor{keywordtype}{int} key);}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00070}00070     }
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00078}00078     \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_engine_a4c826750649da0235b53aeaadf34f1d7}{IsHeldKey}}(\textcolor{keywordtype}{int} key);}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00087}00087     \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_engine_a4983f264a42532b1f6922c8f876fdf83}{IsReleasedKey}}(\textcolor{keywordtype}{int} key);}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00088}00088 }
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00089}00089     \textcolor{comment}{//描画関係の関数}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00098}00098 \textcolor{comment}{}    \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_engine_ab55f613dbdc08c39d5d43fb206472713}{ClearScreen}}();}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00099}00099 }
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00107}00107     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_engine_a562d4c1a3ad0632681edbdcd512b03d0}{ScreenFlip}}();}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00108}00108 }
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00116}00116     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_engine_ae323015976bd06f1590236aaad56f0b9}{DrawTriangle}}(\mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} lower\_left, \mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} upper\_left, \mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} lower\_right);}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00117}00117 }
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00126}00126     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_engine_a721ab8fe17b4e13b0d6dfabddf43d2ba}{DrawRect}}(\mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} lower\_left, \mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} upper\_left, \mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} upper\_right, \mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}} lower\_right);}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00127}00127 }
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00134}00134     \textcolor{keyword}{static} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_engine_abff67f29fc8cb13ba9591eb6a3cf5983}{LoadTexture}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* file\_path);}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00135}00135 }
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00143}00143     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_engine_aa09aa98aecd91a3ea8315fd5d705444a}{DrawTexture}}(\textcolor{keywordtype}{float} pos\_x, \textcolor{keywordtype}{float} pos\_y, \textcolor{keywordtype}{int} key);}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00144}00144 }
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00145}00145 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00146}00146     \textcolor{keyword}{static} \mbox{\hyperlink{class_engine}{Engine}}* instance;}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00147}00147 }
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00148}00148     \mbox{\hyperlink{class_window}{Window}} window;}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00149}00149     \mbox{\hyperlink{class_input}{Input}} input;}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00150}00150     \mbox{\hyperlink{class_graphics}{Graphics}} graphics;}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00151}00151 \};}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00152}00152 }
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00153}00153 }
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00154}00154 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

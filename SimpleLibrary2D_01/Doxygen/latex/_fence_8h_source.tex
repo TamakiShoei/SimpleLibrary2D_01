@@ -1,0 +1,35 @@
+\hypertarget{_fence_8h_source}{}\doxysection{Fence.\+h}
+\label{_fence_8h_source}\index{C:/Project/GitRepos/DirectX/SimpleLibrary2D\_01/SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Graphics/Fence/Fence.h@{C:/Project/GitRepos/DirectX/SimpleLibrary2D\_01/SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Graphics/Fence/Fence.h}}
+\mbox{\hyperlink{_fence_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_fence_8h_source_l00001}00001 \textcolor{preprocessor}{\#ifndef FENCE\_H}}
+\DoxyCodeLine{\Hypertarget{_fence_8h_source_l00002}00002 \textcolor{preprocessor}{\#define FENCE\_H}}
+\DoxyCodeLine{\Hypertarget{_fence_8h_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{_fence_8h_source_l00004}00004 \textcolor{preprocessor}{\#include "{}../../CommonDifinition.h"{}}}
+\DoxyCodeLine{\Hypertarget{_fence_8h_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{_fence_8h_source_l00006}\mbox{\hyperlink{class_fence}{00006}} \textcolor{keyword}{class }\mbox{\hyperlink{class_fence}{Fence}}}
+\DoxyCodeLine{\Hypertarget{_fence_8h_source_l00007}00007 \{}
+\DoxyCodeLine{\Hypertarget{_fence_8h_source_l00008}00008 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_fence_8h_source_l00009}00009     \mbox{\hyperlink{class_fence_a34919d705a73b4fe84462953ee8b115f}{Fence}}();}
+\DoxyCodeLine{\Hypertarget{_fence_8h_source_l00010}00010     \mbox{\hyperlink{class_fence_a542d1f0e5b80afc0b19865071cd6c616}{\string~Fence}}();}
+\DoxyCodeLine{\Hypertarget{_fence_8h_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{_fence_8h_source_l00018}00018     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_fence_ae0eeac08d268da11047b9665482020de}{Initialize}}(ComPtr<ID3D12Device> device);}
+\DoxyCodeLine{\Hypertarget{_fence_8h_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{_fence_8h_source_l00025}00025     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_fence_a5fc3afe99f4c4bd40f6500358fee3d53}{WaitForPreviousFrame}}(ComPtr<ID3D12CommandQueue> command\_queue);}
+\DoxyCodeLine{\Hypertarget{_fence_8h_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{_fence_8h_source_l00027}00027     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_fence_a820afe4dc303cf15b6cc0278e7b8685b}{Finalize}}();}
+\DoxyCodeLine{\Hypertarget{_fence_8h_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{_fence_8h_source_l00033}\mbox{\hyperlink{class_fence_a596fa872a2f921626b231480c90608c0}{00033}}     \textcolor{keyword}{inline} ID3D12Fence* \mbox{\hyperlink{class_fence_a596fa872a2f921626b231480c90608c0}{Get}}()}
+\DoxyCodeLine{\Hypertarget{_fence_8h_source_l00034}00034     \{}
+\DoxyCodeLine{\Hypertarget{_fence_8h_source_l00035}00035         \textcolor{keywordflow}{return} this-\/>instance.Get();}
+\DoxyCodeLine{\Hypertarget{_fence_8h_source_l00036}00036     \}}
+\DoxyCodeLine{\Hypertarget{_fence_8h_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{_fence_8h_source_l00038}00038 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_fence_8h_source_l00039}00039     ComPtr<ID3D12Fence> instance;}
+\DoxyCodeLine{\Hypertarget{_fence_8h_source_l00040}00040     UINT fenceValue;}
+\DoxyCodeLine{\Hypertarget{_fence_8h_source_l00041}00041     HANDLE fenceEvent;      \textcolor{comment}{//フェンスハンドル}}
+\DoxyCodeLine{\Hypertarget{_fence_8h_source_l00042}00042 \};}
+\DoxyCodeLine{\Hypertarget{_fence_8h_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{_fence_8h_source_l00044}00044 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

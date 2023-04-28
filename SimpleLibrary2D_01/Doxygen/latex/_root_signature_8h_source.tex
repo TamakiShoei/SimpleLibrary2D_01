@@ -1,0 +1,31 @@
+\hypertarget{_root_signature_8h_source}{}\doxysection{Root\+Signature.\+h}
+\label{_root_signature_8h_source}\index{C:/Project/GitRepos/DirectX/SimpleLibrary2D\_01/SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Graphics/RootSignature/RootSignature.h@{C:/Project/GitRepos/DirectX/SimpleLibrary2D\_01/SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Graphics/RootSignature/RootSignature.h}}
+\mbox{\hyperlink{_root_signature_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_root_signature_8h_source_l00001}00001 \textcolor{preprocessor}{\#ifndef ROOT\_SIGNATURE\_H}}
+\DoxyCodeLine{\Hypertarget{_root_signature_8h_source_l00002}00002 \textcolor{preprocessor}{\#define ROOT\_SIGNATURE\_H}}
+\DoxyCodeLine{\Hypertarget{_root_signature_8h_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{_root_signature_8h_source_l00004}00004 \textcolor{preprocessor}{\#include "{}../../CommonDifinition.h"{}}}
+\DoxyCodeLine{\Hypertarget{_root_signature_8h_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{_root_signature_8h_source_l00006}\mbox{\hyperlink{class_root_signature}{00006}} \textcolor{keyword}{class }\mbox{\hyperlink{class_root_signature}{RootSignature}}}
+\DoxyCodeLine{\Hypertarget{_root_signature_8h_source_l00007}00007 \{}
+\DoxyCodeLine{\Hypertarget{_root_signature_8h_source_l00008}00008 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_root_signature_8h_source_l00009}00009     \mbox{\hyperlink{class_root_signature_ac7e523f868fcaa15b6ef1d2d832396a4}{RootSignature}}();}
+\DoxyCodeLine{\Hypertarget{_root_signature_8h_source_l00010}00010     \mbox{\hyperlink{class_root_signature_a8007fe3581f6e8dfb5e8d8fc57263000}{\string~RootSignature}}();}
+\DoxyCodeLine{\Hypertarget{_root_signature_8h_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{_root_signature_8h_source_l00018}00018     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_root_signature_a8e8070de42252e0d32628730a85ffcf8}{Initialize}}(ComPtr<ID3D12Device> device);}
+\DoxyCodeLine{\Hypertarget{_root_signature_8h_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{_root_signature_8h_source_l00023}00023     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_root_signature_a7709f6429b642077a693b9a6632b9aa5}{Finalize}}();}
+\DoxyCodeLine{\Hypertarget{_root_signature_8h_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{_root_signature_8h_source_l00029}\mbox{\hyperlink{class_root_signature_a35b6c9dc965a7ac8878433be0733d8a1}{00029}}     ID3D12RootSignature* \mbox{\hyperlink{class_root_signature_a35b6c9dc965a7ac8878433be0733d8a1}{Get}}()}
+\DoxyCodeLine{\Hypertarget{_root_signature_8h_source_l00030}00030     \{}
+\DoxyCodeLine{\Hypertarget{_root_signature_8h_source_l00031}00031         \textcolor{keywordflow}{return} this-\/>instance.Get();}
+\DoxyCodeLine{\Hypertarget{_root_signature_8h_source_l00032}00032     \}}
+\DoxyCodeLine{\Hypertarget{_root_signature_8h_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{_root_signature_8h_source_l00034}00034 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_root_signature_8h_source_l00035}00035     ComPtr<ID3D12RootSignature> instance;}
+\DoxyCodeLine{\Hypertarget{_root_signature_8h_source_l00036}00036 \};}
+\DoxyCodeLine{\Hypertarget{_root_signature_8h_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{_root_signature_8h_source_l00038}00038 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

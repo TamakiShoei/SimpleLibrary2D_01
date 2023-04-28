@@ -1,0 +1,151 @@
+\hypertarget{class_swap_chain}{}\doxysection{Swap\+Chain クラス}
+\label{class_swap_chain}\index{SwapChain@{SwapChain}}
+
+
+{\ttfamily \#include $<$Swap\+Chain.\+h$>$}
+
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_swap_chain_ab1e68cac26bb0b4e97b68b9e4a3086a4}{Swap\+Chain}} ()
+\item 
+\mbox{\hyperlink{class_swap_chain_a58c288346a3fa211fbcc2cec594bfa68}{$\sim$\+Swap\+Chain}} ()
+\item 
+bool \mbox{\hyperlink{class_swap_chain_a37abbe37c0a5c8b747f1b120e5de83cf}{Initialize}} (Com\+Ptr$<$ IDXGIFactory4 $>$ factory, Com\+Ptr$<$ ID3\+D12\+Command\+Queue $>$ command\+\_\+queue)
+\begin{DoxyCompactList}\small\item\em スワップチェインの初期化関数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_swap_chain_aa88d9c408d7aa5540aab836710b949c1}{Update\+Frame\+Index}} ()
+\begin{DoxyCompactList}\small\item\em 描画先のバッファをバックバッファに設定 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_swap_chain_a98650759217b43f1a85909242a0a8e40}{Finalize}} ()
+\begin{DoxyCompactList}\small\item\em スワップチェインの解放関数 \end{DoxyCompactList}\item 
+IDXGISwap\+Chain4 $\ast$ \mbox{\hyperlink{class_swap_chain_a4a8e0427ca7908dd15ac07fb32680c9f}{Get}} ()
+\begin{DoxyCompactList}\small\item\em スワップチェインの取得関数 \end{DoxyCompactList}\item 
+UINT \mbox{\hyperlink{class_swap_chain_a0cf69c4a4f3516438b0cdca132c74ec9}{Get\+Frame\+Index}} ()
+\begin{DoxyCompactList}\small\item\em 現在のフレームのインデックスを取得する関数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+
+
+ \mbox{\hyperlink{_swap_chain_8h_source}{Swap\+Chain.\+h}} の \mbox{\hyperlink{_swap_chain_8h_source_l00006}{6}} 行目に定義があります。
+
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{class_swap_chain_ab1e68cac26bb0b4e97b68b9e4a3086a4}\label{class_swap_chain_ab1e68cac26bb0b4e97b68b9e4a3086a4}} 
+\index{SwapChain@{SwapChain}!SwapChain@{SwapChain}}
+\index{SwapChain@{SwapChain}!SwapChain@{SwapChain}}
+\doxysubsubsection{\texorpdfstring{SwapChain()}{SwapChain()}}
+{\footnotesize\ttfamily Swap\+Chain\+::\+Swap\+Chain (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_swap_chain_8cpp_source}{Swap\+Chain.\+cpp}} の \mbox{\hyperlink{_swap_chain_8cpp_source_l00003}{3}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_swap_chain_a58c288346a3fa211fbcc2cec594bfa68}\label{class_swap_chain_a58c288346a3fa211fbcc2cec594bfa68}} 
+\index{SwapChain@{SwapChain}!````~SwapChain@{$\sim$SwapChain}}
+\index{````~SwapChain@{$\sim$SwapChain}!SwapChain@{SwapChain}}
+\doxysubsubsection{\texorpdfstring{$\sim$SwapChain()}{~SwapChain()}}
+{\footnotesize\ttfamily Swap\+Chain\+::$\sim$\+Swap\+Chain (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_swap_chain_8cpp_source}{Swap\+Chain.\+cpp}} の \mbox{\hyperlink{_swap_chain_8cpp_source_l00008}{8}} 行目に定義があります。
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{class_swap_chain_a98650759217b43f1a85909242a0a8e40}\label{class_swap_chain_a98650759217b43f1a85909242a0a8e40}} 
+\index{SwapChain@{SwapChain}!Finalize@{Finalize}}
+\index{Finalize@{Finalize}!SwapChain@{SwapChain}}
+\doxysubsubsection{\texorpdfstring{Finalize()}{Finalize()}}
+{\footnotesize\ttfamily void Swap\+Chain\+::\+Finalize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+スワップチェインの解放関数 
+
+
+
+ \mbox{\hyperlink{_swap_chain_8cpp_source}{Swap\+Chain.\+cpp}} の \mbox{\hyperlink{_swap_chain_8cpp_source_l00058}{58}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_swap_chain_a4a8e0427ca7908dd15ac07fb32680c9f}\label{class_swap_chain_a4a8e0427ca7908dd15ac07fb32680c9f}} 
+\index{SwapChain@{SwapChain}!Get@{Get}}
+\index{Get@{Get}!SwapChain@{SwapChain}}
+\doxysubsubsection{\texorpdfstring{Get()}{Get()}}
+{\footnotesize\ttfamily IDXGISwap\+Chain4 $\ast$ Swap\+Chain\+::\+Get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+スワップチェインの取得関数 
+
+
+\begin{DoxyRetVals}{戻り値}
+{\em インスタンス} & \\
+\hline
+\end{DoxyRetVals}
+
+
+ \mbox{\hyperlink{_swap_chain_8h_source}{Swap\+Chain.\+h}} の \mbox{\hyperlink{_swap_chain_8h_source_l00035}{35}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_swap_chain_a0cf69c4a4f3516438b0cdca132c74ec9}\label{class_swap_chain_a0cf69c4a4f3516438b0cdca132c74ec9}} 
+\index{SwapChain@{SwapChain}!GetFrameIndex@{GetFrameIndex}}
+\index{GetFrameIndex@{GetFrameIndex}!SwapChain@{SwapChain}}
+\doxysubsubsection{\texorpdfstring{GetFrameIndex()}{GetFrameIndex()}}
+{\footnotesize\ttfamily UINT Swap\+Chain\+::\+Get\+Frame\+Index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+現在のフレームのインデックスを取得する関数 
+
+
+
+ \mbox{\hyperlink{_swap_chain_8h_source}{Swap\+Chain.\+h}} の \mbox{\hyperlink{_swap_chain_8h_source_l00043}{43}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_swap_chain_a37abbe37c0a5c8b747f1b120e5de83cf}\label{class_swap_chain_a37abbe37c0a5c8b747f1b120e5de83cf}} 
+\index{SwapChain@{SwapChain}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!SwapChain@{SwapChain}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool Swap\+Chain\+::\+Initialize (\begin{DoxyParamCaption}\item[{Com\+Ptr$<$ IDXGIFactory4 $>$}]{factory,  }\item[{Com\+Ptr$<$ ID3\+D12\+Command\+Queue $>$}]{command\+\_\+queue }\end{DoxyParamCaption})}
+
+
+
+スワップチェインの初期化関数 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em factory} & ファクトリー \\
+\hline
+\mbox{\texttt{ in}}  & {\em command\+\_\+queue} & コマンドキュー \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{戻り値}
+{\em true} & 初期化成功 \\
+\hline
+{\em false} & 初期化失敗 \\
+\hline
+\end{DoxyRetVals}
+
+
+ \mbox{\hyperlink{_swap_chain_8cpp_source}{Swap\+Chain.\+cpp}} の \mbox{\hyperlink{_swap_chain_8cpp_source_l00016}{16}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_swap_chain_aa88d9c408d7aa5540aab836710b949c1}\label{class_swap_chain_aa88d9c408d7aa5540aab836710b949c1}} 
+\index{SwapChain@{SwapChain}!UpdateFrameIndex@{UpdateFrameIndex}}
+\index{UpdateFrameIndex@{UpdateFrameIndex}!SwapChain@{SwapChain}}
+\doxysubsubsection{\texorpdfstring{UpdateFrameIndex()}{UpdateFrameIndex()}}
+{\footnotesize\ttfamily void Swap\+Chain\+::\+Update\+Frame\+Index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+描画先のバッファをバックバッファに設定 
+
+
+
+ \mbox{\hyperlink{_swap_chain_8cpp_source}{Swap\+Chain.\+cpp}} の \mbox{\hyperlink{_swap_chain_8cpp_source_l00053}{53}} 行目に定義があります。
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Project/\+Git\+Repos/\+Direct\+X/\+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Engine/\+Graphics/\+Swap\+Chain/\mbox{\hyperlink{_swap_chain_8h}{Swap\+Chain.\+h}}\item 
+C\+:/\+Project/\+Git\+Repos/\+Direct\+X/\+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Engine/\+Graphics/\+Swap\+Chain/\mbox{\hyperlink{_swap_chain_8cpp}{Swap\+Chain.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,63 @@
+\hypertarget{_tex_buffer_8cpp_source}{}\doxysection{Tex\+Buffer.\+cpp}
+\label{_tex_buffer_8cpp_source}\index{C:/Project/GitRepos/DirectX/SimpleLibrary2D\_01/SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Buffer/TexBuffer.cpp@{C:/Project/GitRepos/DirectX/SimpleLibrary2D\_01/SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Buffer/TexBuffer.cpp}}
+\mbox{\hyperlink{_tex_buffer_8cpp}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_tex_buffer_8h}{TexBuffer.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00003}\mbox{\hyperlink{class_tex_buffer_a8e30343a9008ce1962744fd6e5bd5f54}{00003}} \mbox{\hyperlink{class_tex_buffer_a8e30343a9008ce1962744fd6e5bd5f54}{TexBuffer::TexBuffer}}()}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00004}00004 \{}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00006}00006 \}}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00008}\mbox{\hyperlink{class_tex_buffer_a73c2fef429083cac2e0386d41e44b8ea}{00008}} \mbox{\hyperlink{class_tex_buffer_a73c2fef429083cac2e0386d41e44b8ea}{TexBuffer::\string~TexBuffer}}()}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00009}00009 \{}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00011}00011 \}}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00013}\mbox{\hyperlink{class_tex_buffer_a9995ed68eb16242fc8eaaa501aa8ea7c}{00013}} ID3D12Resource* \mbox{\hyperlink{class_tex_buffer_a9995ed68eb16242fc8eaaa501aa8ea7c}{TexBuffer::Create}}(ID3D12Device* device, DirectX::TexMetadata metadata, \textcolor{keyword}{const} DirectX::Image* img)}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00014}00014 \{}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00015}00015     \textcolor{comment}{//WriteToSubresourceで転送するためのヒープ設定}}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00016}00016     D3D12\_HEAP\_PROPERTIES heapProp = \{\};}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00017}00017     heapProp.Type = D3D12\_HEAP\_TYPE\_CUSTOM;     \textcolor{comment}{//Typeはカスタム}}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00018}00018     heapProp.CPUPageProperty = D3D12\_CPU\_PAGE\_PROPERTY\_WRITE\_BACK;}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00019}00019     heapProp.MemoryPoolPreference = D3D12\_MEMORY\_POOL\_L0;       \textcolor{comment}{//転送はCPU側から}}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00020}00020     \textcolor{comment}{//単一アダプターのため0}}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00021}00021     heapProp.CreationNodeMask = 0;}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00022}00022     heapProp.VisibleNodeMask = 0;}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00024}00024     D3D12\_RESOURCE\_DESC resDesc = \{\};}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00025}00025     resDesc.Format = metadata.format; \textcolor{comment}{//画像データのフォーマット}}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00026}00026     resDesc.Width = metadata.width;}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00027}00027     resDesc.Height = metadata.height;}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00028}00028     resDesc.DepthOrArraySize = metadata.arraySize;  \textcolor{comment}{//2Dで配列でもないため1}}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00029}00029     resDesc.SampleDesc.Count = 1;   \textcolor{comment}{//アンチエイリアシングしない}}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00030}00030     resDesc.SampleDesc.Quality = 0; \textcolor{comment}{//クオリティは最低}}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00031}00031     resDesc.MipLevels = metadata.mipLevels; \textcolor{comment}{//ミップマップしないのでミップ数は1}}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00032}00032     resDesc.Dimension = \textcolor{keyword}{static\_cast<}D3D12\_RESOURCE\_DIMENSION\textcolor{keyword}{>}(metadata.dimension);  \textcolor{comment}{//2Dテクスチャ用}}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00033}00033     resDesc.Layout = D3D12\_TEXTURE\_LAYOUT\_UNKNOWN;  \textcolor{comment}{//レイアウトは決定しない}}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00034}00034     resDesc.Flags = D3D12\_RESOURCE\_FLAG\_NONE;}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00036}00036     ID3D12Resource* tmp = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00038}00038     \textcolor{keywordflow}{if} (FAILED(device-\/>CreateCommittedResource(}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00039}00039         \&heapProp,}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00040}00040         D3D12\_HEAP\_FLAG\_NONE,}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00041}00041         \&resDesc,}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00042}00042         D3D12\_RESOURCE\_STATE\_PIXEL\_SHADER\_RESOURCE,}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00043}00043         \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00044}00044         IID\_PPV\_ARGS(\&tmp))))}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00045}00045     \{}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00046}00046         \textcolor{keywordflow}{return} tmp;}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00047}00047     \}}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00049}00049     tmp-\/>WriteToSubresource(}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00050}00050         0,}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00051}00051         \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00052}00052         img-\/>pixels,        \textcolor{comment}{//全データのアドレス}}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00053}00053         img-\/>rowPitch,      \textcolor{comment}{//1ラインサイズ}}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00054}00054         img-\/>slicePitch);   \textcolor{comment}{//一枚のサイズ}}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00056}00056     \textcolor{keywordflow}{return} tmp;}
+\DoxyCodeLine{\Hypertarget{_tex_buffer_8cpp_source_l00057}00057 \}}
+
+\end{DoxyCode}

@@ -1,0 +1,43 @@
+\hypertarget{_basic_desc_heap_8h_source}{}\doxysection{Basic\+Desc\+Heap.\+h}
+\label{_basic_desc_heap_8h_source}\index{C:/Project/GitRepos/DirectX/SimpleLibrary2D\_01/SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Graphics/DescriptorHeap/BasicDescHeap.h@{C:/Project/GitRepos/DirectX/SimpleLibrary2D\_01/SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Graphics/DescriptorHeap/BasicDescHeap.h}}
+\mbox{\hyperlink{_basic_desc_heap_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00001}00001 \textcolor{preprocessor}{\#ifndef DESCRIPTOR\_HEAP\_H}}
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00002}00002 \textcolor{preprocessor}{\#define DESCRIPTOR\_HEAP\_H}}
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00004}00004 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00005}00005 \textcolor{preprocessor}{\#include "{}../../CommonDifinition.h"{}}}
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00007}\mbox{\hyperlink{class_basic_desc_heap}{00007}} \textcolor{keyword}{class }\mbox{\hyperlink{class_basic_desc_heap}{BasicDescHeap}}}
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00008}00008 \{}
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00009}00009 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00010}00010     \mbox{\hyperlink{class_basic_desc_heap_a5fa2896c56ab39f83360b86c747b8b57}{BasicDescHeap}}();}
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00011}00011     \mbox{\hyperlink{class_basic_desc_heap_a0be86b1f36b5c4f8e8224578a58e411e}{\string~BasicDescHeap}}();}
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00019}00019     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_basic_desc_heap_ac5e4a9706f96266e199733e923dca7db}{Initialize}}(ID3D12Device* device);}
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00027}00027     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_basic_desc_heap_a641623afb297030aad25236cd545d971}{RegisterCBV}}(D3D12\_CONSTANT\_BUFFER\_VIEW\_DESC cbv\_desc, \textcolor{keywordtype}{int} key, ID3D12Device* device);}
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00036}00036     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_basic_desc_heap_af774a73592d8ed37fd27f478518493da}{RegisterSRV}}(ID3D12Resource* buff, D3D12\_SHADER\_RESOURCE\_VIEW\_DESC srv\_desc, \textcolor{keywordtype}{int} key, ID3D12Device* device);}
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00037}00037     }
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00044}00044     D3D12\_GPU\_DESCRIPTOR\_HANDLE \mbox{\hyperlink{class_basic_desc_heap_a96f52562c2570d25387290a7eda67a82}{GetCBVHandle}}(\textcolor{keywordtype}{int} key, ID3D12Device* device);}
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00052}00052     D3D12\_GPU\_DESCRIPTOR\_HANDLE \mbox{\hyperlink{class_basic_desc_heap_ad2155d765cf80e6f36dc9706f0c316e4}{GetSRVHandle}}(\textcolor{keywordtype}{int} key, ID3D12Device* device);}
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00058}00058     ID3D12DescriptorHeap* \mbox{\hyperlink{class_basic_desc_heap_a43456b47ff67e09a0ab5d6ebfdc567a5}{Get}}();}
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00067}00067     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_basic_desc_heap_a09523bba25d8f4c4de796f1fb4f24832}{ResetCounter}}();}
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00072}00072     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_basic_desc_heap_a2afb72665daf6dd9ab15d4e3e1faff01}{Finalize}}();}
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00074}00074 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00075}00075     ComPtr<ID3D12DescriptorHeap> instance;}
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00076}00076     D3D12\_CPU\_DESCRIPTOR\_HANDLE handle;}
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00077}00077     std::map<int, int> cbvDictionaly;}
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00078}00078     std::map<int, int> srvDictionaly;}
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00079}00079     \textcolor{keywordtype}{int} registerCounter;}
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00080}00080 \};}
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{_basic_desc_heap_8h_source_l00082}00082 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

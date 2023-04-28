@@ -1,0 +1,54 @@
+\hypertarget{_common_difinition_8h_source}{}\doxysection{Common\+Difinition.\+h}
+\label{_common_difinition_8h_source}\index{C:/Project/GitRepos/DirectX/SimpleLibrary2D\_01/SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/CommonDifinition.h@{C:/Project/GitRepos/DirectX/SimpleLibrary2D\_01/SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/CommonDifinition.h}}
+\mbox{\hyperlink{_common_difinition_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00005}00005 \textcolor{preprocessor}{\#ifndef COMMON\_DIFINITION\_H }}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00006}00006 \textcolor{preprocessor}{\#define COMMON\_DIFINITION\_H}}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00008}00008 \textcolor{preprocessor}{\#include <windows.h>}}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00009}00009 \textcolor{preprocessor}{\#include <wrl.h>}}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00011}00011 \textcolor{comment}{//DirectX12のコードセット}}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00012}00012 \textcolor{preprocessor}{\#include <d3d12.h>}}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00013}00013 \textcolor{preprocessor}{\#include <dxgi1\_6.h>}}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00014}00014 \textcolor{preprocessor}{\#include <d3dcompiler.h>}}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00015}00015 \textcolor{preprocessor}{\#include <DirectXTex.h>}}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00016}00016 \textcolor{preprocessor}{\#include "{}d3dx12.h"{}}}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00017}00017 \textcolor{preprocessor}{\#include "{}DirectXMath.h"{}}}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00019}00019 \textcolor{comment}{//ライブラリ}}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00020}00020 \textcolor{preprocessor}{\#pragma comment(lib, "{}d3d12.lib"{}})}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00021}00021 \textcolor{preprocessor}{\#pragma comment(lib, "{}dxgi.lib"{}})}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00022}00022 \textcolor{preprocessor}{\#pragma comment(lib, "{}dxguid.lib"{}})}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00023}00023 \textcolor{preprocessor}{\#pragma comment(lib, "{}d3dcompiler.lib"{}})}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00024}00024 \textcolor{preprocessor}{\#pragma comment(lib, "{}DirectXTex.lib"{}})}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00026}00026 \textcolor{comment}{//usingディレクティブ}}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00027}00027 \textcolor{keyword}{using} Microsoft::WRL::ComPtr;}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00029}00029 \textcolor{comment}{//引数がtrueかを判定}}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00030}\mbox{\hyperlink{_common_difinition_8h_a2dd729037e2530769b13e1260da41cd7}{00030}} \textcolor{preprocessor}{\#define B\_SUCCEEDED(val)   (((bool)(val)) >= 0)}}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00031}00031 \textcolor{comment}{//引数がfalseかを判定}}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00032}\mbox{\hyperlink{_common_difinition_8h_a782fab65591e3bce2e23af7ec58fef26}{00032}} \textcolor{preprocessor}{\#define B\_FAILED(val)      (((bool)(val)) < 0)}}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00034}\mbox{\hyperlink{struct_v_e_c_t_o_r}{00034}} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_v_e_c_t_o_r}{VECTOR}}}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00035}00035 \{}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00036}\mbox{\hyperlink{struct_v_e_c_t_o_r_a089769eb3e23fb95cda35b45b3434cd5}{00036}}     \textcolor{keywordtype}{float} \mbox{\hyperlink{struct_v_e_c_t_o_r_a089769eb3e23fb95cda35b45b3434cd5}{x}};}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00037}\mbox{\hyperlink{struct_v_e_c_t_o_r_a4ec1837e436862330f4c0ea543ba08b6}{00037}}     \textcolor{keywordtype}{float} \mbox{\hyperlink{struct_v_e_c_t_o_r_a4ec1837e436862330f4c0ea543ba08b6}{y}};}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00038}\mbox{\hyperlink{struct_v_e_c_t_o_r_a95f342c4402f2ef9755ae8c515db31cd}{00038}}     \textcolor{keywordtype}{float} \mbox{\hyperlink{struct_v_e_c_t_o_r_a95f342c4402f2ef9755ae8c515db31cd}{z}};}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00039}00039 \};}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00041}\mbox{\hyperlink{struct_vertex}{00041}} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_vertex}{Vertex}}}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00042}00042 \{}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00043}\mbox{\hyperlink{struct_vertex_a69cf645360f7ac64788aedf0e1d6d416}{00043}}     DirectX::XMFLOAT3 \mbox{\hyperlink{struct_vertex_a69cf645360f7ac64788aedf0e1d6d416}{pos}};   \textcolor{comment}{//xyz座標}}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00044}\mbox{\hyperlink{struct_vertex_a167f97347af2a31a7f7e8f721942b2a6}{00044}}     DirectX::XMFLOAT2 \mbox{\hyperlink{struct_vertex_a167f97347af2a31a7f7e8f721942b2a6}{uv}}; \textcolor{comment}{//uv座標}}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00045}00045 \};}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00047}\mbox{\hyperlink{_common_difinition_8h_a69a7b43710a71690389a91cb5c5add1f}{00047}} \textcolor{preprocessor}{\#define WINDOW\_CLASS        L"{}DirectX12 自作ライブラリ"{}}}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00048}\mbox{\hyperlink{_common_difinition_8h_a3adf7b7b13572f2baf3379a8f2f4220a}{00048}} \textcolor{preprocessor}{\#define WINDOW\_TITLE        WINDOW\_CLASS}}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00049}\mbox{\hyperlink{_common_difinition_8h_a50267f06977d60b462f43ad330ffcf33}{00049}} \textcolor{preprocessor}{\#define WINDOW\_CLASS\_NAME   WINDOW\_CLASS}}
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{_common_difinition_8h_source_l00051}00051 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

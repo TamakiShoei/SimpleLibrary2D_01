@@ -1,0 +1,72 @@
+\hypertarget{_buffer_manager_8h_source}{}\doxysection{Buffer\+Manager.\+h}
+\label{_buffer_manager_8h_source}\index{C:/Project/GitRepos/DirectX/SimpleLibrary2D\_01/SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Buffer/BufferManager.h@{C:/Project/GitRepos/DirectX/SimpleLibrary2D\_01/SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Buffer/BufferManager.h}}
+\mbox{\hyperlink{_buffer_manager_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00008}00008 \textcolor{preprocessor}{\#ifndef BUFFER\_MANAGER\_H}}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00009}00009 \textcolor{preprocessor}{\#define BUFFER\_MANAGER\_H}}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00011}00011 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00012}00012 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00013}00013 \textcolor{preprocessor}{\#include "{}../CommonDifinition.h"{}}}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_vertex_buffer_8h}{VertexBuffer.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00015}00015 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_index_buffer_8h}{IndexBuffer.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00016}00016 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_tex_buffer_8h}{TexBuffer.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00017}00017 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_constant_buffer_8h}{ConstantBuffer.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00019}\mbox{\hyperlink{struct_sprite_data}{00019}} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_sprite_data}{SpriteData}}}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00020}00020 \{}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00021}\mbox{\hyperlink{struct_sprite_data_a0f649f4d166a353bd364ceabf970c312}{00021}}     DirectX::TexMetadata \mbox{\hyperlink{struct_sprite_data_a0f649f4d166a353bd364ceabf970c312}{metadata}};}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00022}\mbox{\hyperlink{struct_sprite_data_a18ad094f0a1810f8cb58274ea67622c9}{00022}}     std::vector<ID3D12Resource*> \mbox{\hyperlink{struct_sprite_data_a18ad094f0a1810f8cb58274ea67622c9}{vertBuff}};}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00023}\mbox{\hyperlink{struct_sprite_data_a7ddb62a4077a0c735a1047fe1ea67d65}{00023}}     ID3D12Resource* \mbox{\hyperlink{struct_sprite_data_a7ddb62a4077a0c735a1047fe1ea67d65}{indexBuff}};}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00024}\mbox{\hyperlink{struct_sprite_data_a3a085125fb77be6346ff54dcb89d7532}{00024}}     ID3D12Resource* \mbox{\hyperlink{struct_sprite_data_a3a085125fb77be6346ff54dcb89d7532}{texBuff}};}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00025}\mbox{\hyperlink{struct_sprite_data_a570dfadfe201e473cc827ca861eeccd4}{00025}}     ID3D12Resource* \mbox{\hyperlink{struct_sprite_data_a570dfadfe201e473cc827ca861eeccd4}{constBuff}};}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00026}00026 \};}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00028}\mbox{\hyperlink{class_buffer_manager}{00028}} \textcolor{keyword}{class }\mbox{\hyperlink{class_buffer_manager}{BufferManager}}}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00029}00029 \{}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00030}00030 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00031}\mbox{\hyperlink{class_buffer_manager_ae88562553e9939fd8d06657f687a0ea1}{00031}}     \textcolor{keyword}{static} \mbox{\hyperlink{class_buffer_manager}{BufferManager}}* \mbox{\hyperlink{class_buffer_manager_ae88562553e9939fd8d06657f687a0ea1}{Instance}}()}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00032}00032     \{}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00033}00033         \textcolor{keyword}{static} \mbox{\hyperlink{class_buffer_manager}{BufferManager}} instance;}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00034}00034         \textcolor{keywordflow}{return} \&instance;}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00035}00035     \}}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00043}00043     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_buffer_manager_a81b53436fd8a2c4a2ddf9f3e3bb046fc}{CreateSprite}}(DirectX::TexMetadata metadata, \textcolor{keyword}{const} DirectX::Image* img, ID3D12Device* device);}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00050}00050     ID3D12Resource* \mbox{\hyperlink{class_buffer_manager_a6bf4a0c12d96e8afd728ed8f232a13e3}{GetVertexBuffer}}(\textcolor{keywordtype}{int} key, ID3D12Device* device);}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00057}00057     ID3D12Resource* \mbox{\hyperlink{class_buffer_manager_ad5edd44577869c3ac711a3c3a17cf721}{GetIndexBuffer}}(\textcolor{keywordtype}{int} key);}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00064}00064     ID3D12Resource* \mbox{\hyperlink{class_buffer_manager_abdf8b3b1206a592ab2ffd4c7c3f37458}{GetTexBuffer}}(\textcolor{keywordtype}{int} key);}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00071}00071     ID3D12Resource* \mbox{\hyperlink{class_buffer_manager_a96d27cf7f0a1886a8ace078ef06382b6}{GetConstantBuffer}}(\textcolor{keywordtype}{int} key);}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00078}00078     DirectX::TexMetadata \mbox{\hyperlink{class_buffer_manager_a86560cd4665bae81f9e2c61226a2d0e2}{GetMetadata}}(\textcolor{keywordtype}{int} key);}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00083}00083     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_buffer_manager_a595c6c4f9c99745a4ed5e4008c094785}{ResetUseCounter}}();}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00084}00084 }
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00088}00088     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_buffer_manager_a00c0ed1a88ac5c86755ef115ab80cf17}{Finalize}}();}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00089}00089 }
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00090}00090 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00091}00091     \mbox{\hyperlink{class_vertex_buffer}{VertexBuffer}} vertBuff;}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00092}00092     \mbox{\hyperlink{class_index_buffer}{IndexBuffer}} indexBuff;}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00093}00093     \mbox{\hyperlink{class_tex_buffer}{TexBuffer}} texBuff;}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00094}00094     \mbox{\hyperlink{class_constant_buffer}{ConstantBuffer}} constBuff;}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00095}00095     \textcolor{keywordtype}{int} key;}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00096}00096     std::map<int, SpriteData> spriteData;}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00097}00097     std::map<int, int> useCounter;}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00098}00098 }
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00099}00099 \textcolor{keyword}{private}:    \textcolor{comment}{//インスタンスの制限}}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00100}00100     \mbox{\hyperlink{class_buffer_manager}{BufferManager}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00101}00101     \mbox{\hyperlink{class_buffer_manager}{\string~BufferManager}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00102}00102 }
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00103}00103     \mbox{\hyperlink{class_buffer_manager}{BufferManager}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_buffer_manager}{BufferManager}}\&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00104}00104     \mbox{\hyperlink{class_buffer_manager}{BufferManager}}\& operator = (\textcolor{keyword}{const} \mbox{\hyperlink{class_buffer_manager}{BufferManager}}\&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00105}00105     \mbox{\hyperlink{class_buffer_manager}{BufferManager}}(\mbox{\hyperlink{class_buffer_manager}{BufferManager}}\&\&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00106}00106     \mbox{\hyperlink{class_buffer_manager}{BufferManager}}\& operator = (\mbox{\hyperlink{class_buffer_manager}{BufferManager}}\&\&) = \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00107}00107 \};}
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00108}00108 }
+\DoxyCodeLine{\Hypertarget{_buffer_manager_8h_source_l00109}00109 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

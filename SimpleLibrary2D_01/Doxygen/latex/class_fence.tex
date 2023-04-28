@@ -1,0 +1,134 @@
+\hypertarget{class_fence}{}\doxysection{Fence クラス}
+\label{class_fence}\index{Fence@{Fence}}
+
+
+{\ttfamily \#include $<$Fence.\+h$>$}
+
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_fence_a34919d705a73b4fe84462953ee8b115f}{Fence}} ()
+\item 
+\mbox{\hyperlink{class_fence_a542d1f0e5b80afc0b19865071cd6c616}{$\sim$\+Fence}} ()
+\item 
+bool \mbox{\hyperlink{class_fence_ae0eeac08d268da11047b9665482020de}{Initialize}} (Com\+Ptr$<$ ID3\+D12\+Device $>$ device)
+\begin{DoxyCompactList}\small\item\em フェンスの初期化関数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_fence_a5fc3afe99f4c4bd40f6500358fee3d53}{Wait\+For\+Previous\+Frame}} (Com\+Ptr$<$ ID3\+D12\+Command\+Queue $>$ command\+\_\+queue)
+\begin{DoxyCompactList}\small\item\em GPU処理待ち関数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_fence_a820afe4dc303cf15b6cc0278e7b8685b}{Finalize}} ()
+\item 
+ID3\+D12\+Fence $\ast$ \mbox{\hyperlink{class_fence_a596fa872a2f921626b231480c90608c0}{Get}} ()
+\begin{DoxyCompactList}\small\item\em フェンスの取得関数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+
+
+ \mbox{\hyperlink{_fence_8h_source}{Fence.\+h}} の \mbox{\hyperlink{_fence_8h_source_l00006}{6}} 行目に定義があります。
+
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{class_fence_a34919d705a73b4fe84462953ee8b115f}\label{class_fence_a34919d705a73b4fe84462953ee8b115f}} 
+\index{Fence@{Fence}!Fence@{Fence}}
+\index{Fence@{Fence}!Fence@{Fence}}
+\doxysubsubsection{\texorpdfstring{Fence()}{Fence()}}
+{\footnotesize\ttfamily Fence\+::\+Fence (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_fence_8cpp_source}{Fence.\+cpp}} の \mbox{\hyperlink{_fence_8cpp_source_l00003}{3}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_fence_a542d1f0e5b80afc0b19865071cd6c616}\label{class_fence_a542d1f0e5b80afc0b19865071cd6c616}} 
+\index{Fence@{Fence}!````~Fence@{$\sim$Fence}}
+\index{````~Fence@{$\sim$Fence}!Fence@{Fence}}
+\doxysubsubsection{\texorpdfstring{$\sim$Fence()}{~Fence()}}
+{\footnotesize\ttfamily Fence\+::$\sim$\+Fence (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_fence_8cpp_source}{Fence.\+cpp}} の \mbox{\hyperlink{_fence_8cpp_source_l00008}{8}} 行目に定義があります。
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{class_fence_a820afe4dc303cf15b6cc0278e7b8685b}\label{class_fence_a820afe4dc303cf15b6cc0278e7b8685b}} 
+\index{Fence@{Fence}!Finalize@{Finalize}}
+\index{Finalize@{Finalize}!Fence@{Fence}}
+\doxysubsubsection{\texorpdfstring{Finalize()}{Finalize()}}
+{\footnotesize\ttfamily void Fence\+::\+Finalize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_fence_8cpp_source}{Fence.\+cpp}} の \mbox{\hyperlink{_fence_8cpp_source_l00053}{53}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_fence_a596fa872a2f921626b231480c90608c0}\label{class_fence_a596fa872a2f921626b231480c90608c0}} 
+\index{Fence@{Fence}!Get@{Get}}
+\index{Get@{Get}!Fence@{Fence}}
+\doxysubsubsection{\texorpdfstring{Get()}{Get()}}
+{\footnotesize\ttfamily ID3\+D12\+Fence $\ast$ Fence\+::\+Get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+フェンスの取得関数 
+
+
+\begin{DoxyRetVals}{戻り値}
+{\em インスタンス} & \\
+\hline
+\end{DoxyRetVals}
+
+
+ \mbox{\hyperlink{_fence_8h_source}{Fence.\+h}} の \mbox{\hyperlink{_fence_8h_source_l00033}{33}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_fence_ae0eeac08d268da11047b9665482020de}\label{class_fence_ae0eeac08d268da11047b9665482020de}} 
+\index{Fence@{Fence}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Fence@{Fence}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool Fence\+::\+Initialize (\begin{DoxyParamCaption}\item[{Com\+Ptr$<$ ID3\+D12\+Device $>$}]{device }\end{DoxyParamCaption})}
+
+
+
+フェンスの初期化関数 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em device} & デバイス \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{戻り値}
+{\em true} & 初期化成功 \\
+\hline
+{\em false} & 初期化失敗 \\
+\hline
+\end{DoxyRetVals}
+
+
+ \mbox{\hyperlink{_fence_8cpp_source}{Fence.\+cpp}} の \mbox{\hyperlink{_fence_8cpp_source_l00016}{16}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_fence_a5fc3afe99f4c4bd40f6500358fee3d53}\label{class_fence_a5fc3afe99f4c4bd40f6500358fee3d53}} 
+\index{Fence@{Fence}!WaitForPreviousFrame@{WaitForPreviousFrame}}
+\index{WaitForPreviousFrame@{WaitForPreviousFrame}!Fence@{Fence}}
+\doxysubsubsection{\texorpdfstring{WaitForPreviousFrame()}{WaitForPreviousFrame()}}
+{\footnotesize\ttfamily void Fence\+::\+Wait\+For\+Previous\+Frame (\begin{DoxyParamCaption}\item[{Com\+Ptr$<$ ID3\+D12\+Command\+Queue $>$}]{command\+\_\+queue }\end{DoxyParamCaption})}
+
+
+
+GPU処理待ち関数 
+
+毎フレームの最後に呼び出す必要がある 
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em command\+\_\+queue} & コマンドキュー \\
+\hline
+\end{DoxyParams}
+
+
+ \mbox{\hyperlink{_fence_8cpp_source}{Fence.\+cpp}} の \mbox{\hyperlink{_fence_8cpp_source_l00039}{39}} 行目に定義があります。
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Project/\+Git\+Repos/\+Direct\+X/\+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Engine/\+Graphics/\+Fence/\mbox{\hyperlink{_fence_8h}{Fence.\+h}}\item 
+C\+:/\+Project/\+Git\+Repos/\+Direct\+X/\+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Engine/\+Graphics/\+Fence/\mbox{\hyperlink{_fence_8cpp}{Fence.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,117 @@
+\hypertarget{class_command_queue}{}\doxysection{Command\+Queue クラス}
+\label{class_command_queue}\index{CommandQueue@{CommandQueue}}
+
+
+{\ttfamily \#include $<$Command\+Queue.\+h$>$}
+
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_command_queue_a80d86eb1a3b1dd57ea84bde88fd295ee}{Command\+Queue}} ()
+\item 
+\mbox{\hyperlink{class_command_queue_a4575d426ec483ab4778da0650c0556bb}{$\sim$\+Command\+Queue}} ()
+\item 
+bool \mbox{\hyperlink{class_command_queue_a9d63e155ebe35c6df6febb90109395b7}{Initialize}} (Com\+Ptr$<$ ID3\+D12\+Device $>$ device)
+\begin{DoxyCompactList}\small\item\em コマンドキューの初期化関数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_command_queue_a174cb6b7552efa7effb141efb3c2f859}{Finalize}} ()
+\begin{DoxyCompactList}\small\item\em コマンドキューの解放関数 \end{DoxyCompactList}\item 
+ID3\+D12\+Command\+Queue $\ast$ \mbox{\hyperlink{class_command_queue_ac0dc0d9c0f0baa32115f143eb92ee5fe}{Get}} ()
+\begin{DoxyCompactList}\small\item\em コマンドキューの取得関数 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+
+
+ \mbox{\hyperlink{_command_queue_8h_source}{Command\+Queue.\+h}} の \mbox{\hyperlink{_command_queue_8h_source_l00006}{6}} 行目に定義があります。
+
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{class_command_queue_a80d86eb1a3b1dd57ea84bde88fd295ee}\label{class_command_queue_a80d86eb1a3b1dd57ea84bde88fd295ee}} 
+\index{CommandQueue@{CommandQueue}!CommandQueue@{CommandQueue}}
+\index{CommandQueue@{CommandQueue}!CommandQueue@{CommandQueue}}
+\doxysubsubsection{\texorpdfstring{CommandQueue()}{CommandQueue()}}
+{\footnotesize\ttfamily Command\+Queue\+::\+Command\+Queue (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_command_queue_8cpp_source}{Command\+Queue.\+cpp}} の \mbox{\hyperlink{_command_queue_8cpp_source_l00003}{3}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_command_queue_a4575d426ec483ab4778da0650c0556bb}\label{class_command_queue_a4575d426ec483ab4778da0650c0556bb}} 
+\index{CommandQueue@{CommandQueue}!````~CommandQueue@{$\sim$CommandQueue}}
+\index{````~CommandQueue@{$\sim$CommandQueue}!CommandQueue@{CommandQueue}}
+\doxysubsubsection{\texorpdfstring{$\sim$CommandQueue()}{~CommandQueue()}}
+{\footnotesize\ttfamily Command\+Queue\+::$\sim$\+Command\+Queue (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_command_queue_8cpp_source}{Command\+Queue.\+cpp}} の \mbox{\hyperlink{_command_queue_8cpp_source_l00008}{8}} 行目に定義があります。
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{class_command_queue_a174cb6b7552efa7effb141efb3c2f859}\label{class_command_queue_a174cb6b7552efa7effb141efb3c2f859}} 
+\index{CommandQueue@{CommandQueue}!Finalize@{Finalize}}
+\index{Finalize@{Finalize}!CommandQueue@{CommandQueue}}
+\doxysubsubsection{\texorpdfstring{Finalize()}{Finalize()}}
+{\footnotesize\ttfamily void Command\+Queue\+::\+Finalize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+コマンドキューの解放関数 
+
+
+
+ \mbox{\hyperlink{_command_queue_8cpp_source}{Command\+Queue.\+cpp}} の \mbox{\hyperlink{_command_queue_8cpp_source_l00033}{33}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_command_queue_ac0dc0d9c0f0baa32115f143eb92ee5fe}\label{class_command_queue_ac0dc0d9c0f0baa32115f143eb92ee5fe}} 
+\index{CommandQueue@{CommandQueue}!Get@{Get}}
+\index{Get@{Get}!CommandQueue@{CommandQueue}}
+\doxysubsubsection{\texorpdfstring{Get()}{Get()}}
+{\footnotesize\ttfamily ID3\+D12\+Command\+Queue $\ast$ Command\+Queue\+::\+Get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+コマンドキューの取得関数 
+
+
+\begin{DoxyRetVals}{戻り値}
+{\em インスタンス} & \\
+\hline
+\end{DoxyRetVals}
+
+
+ \mbox{\hyperlink{_command_queue_8h_source}{Command\+Queue.\+h}} の \mbox{\hyperlink{_command_queue_8h_source_l00029}{29}} 行目に定義があります。
+
+\mbox{\Hypertarget{class_command_queue_a9d63e155ebe35c6df6febb90109395b7}\label{class_command_queue_a9d63e155ebe35c6df6febb90109395b7}} 
+\index{CommandQueue@{CommandQueue}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!CommandQueue@{CommandQueue}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily bool Command\+Queue\+::\+Initialize (\begin{DoxyParamCaption}\item[{Com\+Ptr$<$ ID3\+D12\+Device $>$}]{device }\end{DoxyParamCaption})}
+
+
+
+コマンドキューの初期化関数 
+
+
+\begin{DoxyParams}[1]{引数}
+\mbox{\texttt{ in}}  & {\em device} & デバイス \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{戻り値}
+{\em true} & 初期化成功 \\
+\hline
+{\em false} & 初期化失敗 \\
+\hline
+\end{DoxyRetVals}
+
+
+ \mbox{\hyperlink{_command_queue_8cpp_source}{Command\+Queue.\+cpp}} の \mbox{\hyperlink{_command_queue_8cpp_source_l00016}{16}} 行目に定義があります。
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Project/\+Git\+Repos/\+Direct\+X/\+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Engine/\+Graphics/\+Command\+Queue/\mbox{\hyperlink{_command_queue_8h}{Command\+Queue.\+h}}\item 
+C\+:/\+Project/\+Git\+Repos/\+Direct\+X/\+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Simple\+Library2\+D\+\_\+01/\+Engine/\+Graphics/\+Command\+Queue/\mbox{\hyperlink{_command_queue_8cpp}{Command\+Queue.\+cpp}}\end{DoxyCompactItemize}

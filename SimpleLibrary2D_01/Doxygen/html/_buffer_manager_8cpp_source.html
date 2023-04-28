@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SimpleLibrary2D: C:/Project/GitRepos/DirectX/SimpleLibrary2D_01/SimpleLibrary2D_01/SimpleLibrary2D_01/Engine/Buffer/BufferManager.cpp ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">SimpleLibrary2D
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_01d751825de9ac13df742f0f31d92797.html">SimpleLibrary2D_01</a></li><li class="navelem"><a class="el" href="dir_d3ea5d29a1f22e9b069123525a11f5a9.html">Engine</a></li><li class="navelem"><a class="el" href="dir_78c210f23a4e606453becb67145fefec.html">Buffer</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">BufferManager.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_buffer_manager_8cpp.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="_buffer_manager_8h.html">BufferManager.h</a>&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;random&gt;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="class_buffer_manager.html#a81b53436fd8a2c4a2ddf9f3e3bb046fc">    4</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="class_buffer_manager.html#a81b53436fd8a2c4a2ddf9f3e3bb046fc">BufferManager::CreateSprite</a>(DirectX::TexMetadata metadata, <span class="keyword">const</span> DirectX::Image* img, ID3D12Device* device)</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>{</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    srand((<span class="keywordtype">unsigned</span>)time(NULL));</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <a class="code hl_struct" href="struct_sprite_data.html">SpriteData</a> data;</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    data.<a class="code hl_variable" href="struct_sprite_data.html#a18ad094f0a1810f8cb58274ea67622c9">vertBuff</a>.push_back(vertBuff.<a class="code hl_function" href="class_vertex_buffer.html#ad2f389e2ce49252dfb1d69242e820332">Create</a>(device));</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    data.<a class="code hl_variable" href="struct_sprite_data.html#a7ddb62a4077a0c735a1047fe1ea67d65">indexBuff</a> = indexBuff.<a class="code hl_function" href="class_index_buffer.html#ae9de2c14cfbeb99e67a022e63c3b9bcd">Create</a>(device);</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    data.<a class="code hl_variable" href="struct_sprite_data.html#a3a085125fb77be6346ff54dcb89d7532">texBuff</a> = texBuff.<a class="code hl_function" href="class_tex_buffer.html#a9995ed68eb16242fc8eaaa501aa8ea7c">Create</a>(device, metadata, img);</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    data.<a class="code hl_variable" href="struct_sprite_data.html#a570dfadfe201e473cc827ca861eeccd4">constBuff</a> = constBuff.<a class="code hl_function" href="class_constant_buffer.html#a759a1a7480b71ca3a7ea5f3d6dc93f8b">Create</a>(device);</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    data.<a class="code hl_variable" href="struct_sprite_data.html#a0f649f4d166a353bd364ceabf970c312">metadata</a> = metadata;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordflow">do</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    {</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        key = rand() % 100000;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    } <span class="keywordflow">while</span> (spriteData.contains(key));</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    spriteData.insert(std::make_pair(key, data));</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    useCounter.insert(std::make_pair(key, 0));</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordflow">return</span> key;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="class_buffer_manager.html#a6bf4a0c12d96e8afd728ed8f232a13e3">   28</a></span>ID3D12Resource* <a class="code hl_function" href="class_buffer_manager.html#a6bf4a0c12d96e8afd728ed8f232a13e3">BufferManager::GetVertexBuffer</a>(<span class="keywordtype">int</span> key, ID3D12Device* device)</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>{</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordflow">if</span> (<a class="code hl_define" href="_common_difinition_8h.html#a782fab65591e3bce2e23af7ec58fef26">B_FAILED</a>(spriteData.contains(key)))</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    }</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordflow">if</span> (spriteData.at(key).vertBuff.size() &lt;= useCounter.at(key))</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    {</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        spriteData.at(key).vertBuff.push_back(vertBuff.<a class="code hl_function" href="class_vertex_buffer.html#ad2f389e2ce49252dfb1d69242e820332">Create</a>(device));</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    }</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    useCounter.at(key) += 1;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordflow">return</span> spriteData.at(key).vertBuff.at(useCounter.at(key) - 1);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>}</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="class_buffer_manager.html#ad5edd44577869c3ac711a3c3a17cf721">   42</a></span>ID3D12Resource* <a class="code hl_function" href="class_buffer_manager.html#ad5edd44577869c3ac711a3c3a17cf721">BufferManager::GetIndexBuffer</a>(<span class="keywordtype">int</span> key)</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>{</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordflow">if</span> (<a class="code hl_define" href="_common_difinition_8h.html#a782fab65591e3bce2e23af7ec58fef26">B_FAILED</a>(spriteData.contains(key)))</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    {</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    }</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordflow">return</span> spriteData.at(key).indexBuff;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>}</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="class_buffer_manager.html#abdf8b3b1206a592ab2ffd4c7c3f37458">   51</a></span>ID3D12Resource* <a class="code hl_function" href="class_buffer_manager.html#abdf8b3b1206a592ab2ffd4c7c3f37458">BufferManager::GetTexBuffer</a>(<span class="keywordtype">int</span> key)</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>{</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordflow">if</span> (<a class="code hl_define" href="_common_difinition_8h.html#a782fab65591e3bce2e23af7ec58fef26">B_FAILED</a>(spriteData.contains(key)))</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    {</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    }</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordflow">return</span> spriteData.at(key).texBuff;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>}</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="class_buffer_manager.html#a96d27cf7f0a1886a8ace078ef06382b6">   60</a></span>ID3D12Resource* <a class="code hl_function" href="class_buffer_manager.html#a96d27cf7f0a1886a8ace078ef06382b6">BufferManager::GetConstantBuffer</a>(<span class="keywordtype">int</span> key)</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>{</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordflow">if</span> (<a class="code hl_define" href="_common_difinition_8h.html#a782fab65591e3bce2e23af7ec58fef26">B_FAILED</a>(spriteData.contains(key)))</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    }</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordflow">return</span> spriteData.at(key).constBuff;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>}</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="class_buffer_manager.html#a86560cd4665bae81f9e2c61226a2d0e2">   69</a></span>DirectX::TexMetadata <a class="code hl_function" href="class_buffer_manager.html#a86560cd4665bae81f9e2c61226a2d0e2">BufferManager::GetMetadata</a>(<span class="keywordtype">int</span> key)</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>{</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordflow">return</span> spriteData.at(key).metadata;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>}</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="class_buffer_manager.html#a595c6c4f9c99745a4ed5e4008c094785">   74</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_buffer_manager.html#a595c6c4f9c99745a4ed5e4008c094785">BufferManager::ResetUseCounter</a>()</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>{</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; itr : useCounter)</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    {</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        itr.second = 0;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    }</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>}</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="class_buffer_manager.html#a00c0ed1a88ac5c86755ef115ab80cf17">   82</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_buffer_manager.html#a00c0ed1a88ac5c86755ef115ab80cf17">BufferManager::Finalize</a>()</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>{</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; itr : spriteData)</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    {</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; vert : itr.second.vertBuff)</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        {</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            vert-&gt;Release();</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            vert = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        }</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        itr.second.vertBuff.clear();</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        itr.second.indexBuff-&gt;Release();</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        itr.second.indexBuff = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        itr.second.texBuff-&gt;Release();</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        itr.second.texBuff = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        itr.second.constBuff-&gt;Release();</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        itr.second.constBuff = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    }</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>}</div>
+<div class="ttc" id="a_buffer_manager_8h_html"><div class="ttname"><a href="_buffer_manager_8h.html">BufferManager.h</a></div></div>
+<div class="ttc" id="a_common_difinition_8h_html_a782fab65591e3bce2e23af7ec58fef26"><div class="ttname"><a href="_common_difinition_8h.html#a782fab65591e3bce2e23af7ec58fef26">B_FAILED</a></div><div class="ttdeci">#define B_FAILED(val)</div><div class="ttdef"><b>Definition:</b> <a href="_common_difinition_8h_source.html#l00032">CommonDifinition.h:32</a></div></div>
+<div class="ttc" id="aclass_buffer_manager_html_a00c0ed1a88ac5c86755ef115ab80cf17"><div class="ttname"><a href="class_buffer_manager.html#a00c0ed1a88ac5c86755ef115ab80cf17">BufferManager::Finalize</a></div><div class="ttdeci">void Finalize()</div><div class="ttdoc">リソース解放関数</div><div class="ttdef"><b>Definition:</b> <a href="_buffer_manager_8cpp_source.html#l00082">BufferManager.cpp:82</a></div></div>
+<div class="ttc" id="aclass_buffer_manager_html_a595c6c4f9c99745a4ed5e4008c094785"><div class="ttname"><a href="class_buffer_manager.html#a595c6c4f9c99745a4ed5e4008c094785">BufferManager::ResetUseCounter</a></div><div class="ttdeci">void ResetUseCounter()</div><div class="ttdoc">頂点バッファクラスのUseCounterのリセット関数</div><div class="ttdef"><b>Definition:</b> <a href="_buffer_manager_8cpp_source.html#l00074">BufferManager.cpp:74</a></div></div>
+<div class="ttc" id="aclass_buffer_manager_html_a6bf4a0c12d96e8afd728ed8f232a13e3"><div class="ttname"><a href="class_buffer_manager.html#a6bf4a0c12d96e8afd728ed8f232a13e3">BufferManager::GetVertexBuffer</a></div><div class="ttdeci">ID3D12Resource * GetVertexBuffer(int key, ID3D12Device *device)</div><div class="ttdoc">頂点バッファの取得関数</div><div class="ttdef"><b>Definition:</b> <a href="_buffer_manager_8cpp_source.html#l00028">BufferManager.cpp:28</a></div></div>
+<div class="ttc" id="aclass_buffer_manager_html_a81b53436fd8a2c4a2ddf9f3e3bb046fc"><div class="ttname"><a href="class_buffer_manager.html#a81b53436fd8a2c4a2ddf9f3e3bb046fc">BufferManager::CreateSprite</a></div><div class="ttdeci">int CreateSprite(DirectX::TexMetadata metadata, const DirectX::Image *img, ID3D12Device *device)</div><div class="ttdoc">キャンバスの作成関数</div><div class="ttdef"><b>Definition:</b> <a href="_buffer_manager_8cpp_source.html#l00004">BufferManager.cpp:4</a></div></div>
+<div class="ttc" id="aclass_buffer_manager_html_a86560cd4665bae81f9e2c61226a2d0e2"><div class="ttname"><a href="class_buffer_manager.html#a86560cd4665bae81f9e2c61226a2d0e2">BufferManager::GetMetadata</a></div><div class="ttdeci">DirectX::TexMetadata GetMetadata(int key)</div><div class="ttdoc">メタデータの取得関数</div><div class="ttdef"><b>Definition:</b> <a href="_buffer_manager_8cpp_source.html#l00069">BufferManager.cpp:69</a></div></div>
+<div class="ttc" id="aclass_buffer_manager_html_a96d27cf7f0a1886a8ace078ef06382b6"><div class="ttname"><a href="class_buffer_manager.html#a96d27cf7f0a1886a8ace078ef06382b6">BufferManager::GetConstantBuffer</a></div><div class="ttdeci">ID3D12Resource * GetConstantBuffer(int key)</div><div class="ttdoc">インデックスバッファの取得関数</div><div class="ttdef"><b>Definition:</b> <a href="_buffer_manager_8cpp_source.html#l00060">BufferManager.cpp:60</a></div></div>
+<div class="ttc" id="aclass_buffer_manager_html_abdf8b3b1206a592ab2ffd4c7c3f37458"><div class="ttname"><a href="class_buffer_manager.html#abdf8b3b1206a592ab2ffd4c7c3f37458">BufferManager::GetTexBuffer</a></div><div class="ttdeci">ID3D12Resource * GetTexBuffer(int key)</div><div class="ttdoc">インデックスバッファの取得関数</div><div class="ttdef"><b>Definition:</b> <a href="_buffer_manager_8cpp_source.html#l00051">BufferManager.cpp:51</a></div></div>
+<div class="ttc" id="aclass_buffer_manager_html_ad5edd44577869c3ac711a3c3a17cf721"><div class="ttname"><a href="class_buffer_manager.html#ad5edd44577869c3ac711a3c3a17cf721">BufferManager::GetIndexBuffer</a></div><div class="ttdeci">ID3D12Resource * GetIndexBuffer(int key)</div><div class="ttdoc">インデックスバッファの取得関数</div><div class="ttdef"><b>Definition:</b> <a href="_buffer_manager_8cpp_source.html#l00042">BufferManager.cpp:42</a></div></div>
+<div class="ttc" id="aclass_constant_buffer_html_a759a1a7480b71ca3a7ea5f3d6dc93f8b"><div class="ttname"><a href="class_constant_buffer.html#a759a1a7480b71ca3a7ea5f3d6dc93f8b">ConstantBuffer::Create</a></div><div class="ttdeci">ID3D12Resource * Create(ID3D12Device *device)</div><div class="ttdoc">コンスタントバッファの作成</div><div class="ttdef"><b>Definition:</b> <a href="_constant_buffer_8cpp_source.html#l00013">ConstantBuffer.cpp:13</a></div></div>
+<div class="ttc" id="aclass_index_buffer_html_ae9de2c14cfbeb99e67a022e63c3b9bcd"><div class="ttname"><a href="class_index_buffer.html#ae9de2c14cfbeb99e67a022e63c3b9bcd">IndexBuffer::Create</a></div><div class="ttdeci">ID3D12Resource * Create(ID3D12Device *device)</div><div class="ttdoc">インデックスバッファの作成</div><div class="ttdef"><b>Definition:</b> <a href="_index_buffer_8cpp_source.html#l00013">IndexBuffer.cpp:13</a></div></div>
+<div class="ttc" id="aclass_tex_buffer_html_a9995ed68eb16242fc8eaaa501aa8ea7c"><div class="ttname"><a href="class_tex_buffer.html#a9995ed68eb16242fc8eaaa501aa8ea7c">TexBuffer::Create</a></div><div class="ttdeci">ID3D12Resource * Create(ID3D12Device *device, DirectX::TexMetadata metadata, const DirectX::Image *img)</div><div class="ttdoc">テクスチャバッファの作成</div><div class="ttdef"><b>Definition:</b> <a href="_tex_buffer_8cpp_source.html#l00013">TexBuffer.cpp:13</a></div></div>
+<div class="ttc" id="aclass_vertex_buffer_html_ad2f389e2ce49252dfb1d69242e820332"><div class="ttname"><a href="class_vertex_buffer.html#ad2f389e2ce49252dfb1d69242e820332">VertexBuffer::Create</a></div><div class="ttdeci">ID3D12Resource * Create(ID3D12Device *device)</div><div class="ttdoc">頂点バッファの作成</div><div class="ttdef"><b>Definition:</b> <a href="_vertex_buffer_8cpp_source.html#l00013">VertexBuffer.cpp:13</a></div></div>
+<div class="ttc" id="astruct_sprite_data_html"><div class="ttname"><a href="struct_sprite_data.html">SpriteData</a></div><div class="ttdef"><b>Definition:</b> <a href="_buffer_manager_8h_source.html#l00019">BufferManager.h:20</a></div></div>
+<div class="ttc" id="astruct_sprite_data_html_a0f649f4d166a353bd364ceabf970c312"><div class="ttname"><a href="struct_sprite_data.html#a0f649f4d166a353bd364ceabf970c312">SpriteData::metadata</a></div><div class="ttdeci">DirectX::TexMetadata metadata</div><div class="ttdef"><b>Definition:</b> <a href="_buffer_manager_8h_source.html#l00021">BufferManager.h:21</a></div></div>
+<div class="ttc" id="astruct_sprite_data_html_a18ad094f0a1810f8cb58274ea67622c9"><div class="ttname"><a href="struct_sprite_data.html#a18ad094f0a1810f8cb58274ea67622c9">SpriteData::vertBuff</a></div><div class="ttdeci">std::vector&lt; ID3D12Resource * &gt; vertBuff</div><div class="ttdef"><b>Definition:</b> <a href="_buffer_manager_8h_source.html#l00022">BufferManager.h:22</a></div></div>
+<div class="ttc" id="astruct_sprite_data_html_a3a085125fb77be6346ff54dcb89d7532"><div class="ttname"><a href="struct_sprite_data.html#a3a085125fb77be6346ff54dcb89d7532">SpriteData::texBuff</a></div><div class="ttdeci">ID3D12Resource * texBuff</div><div class="ttdef"><b>Definition:</b> <a href="_buffer_manager_8h_source.html#l00024">BufferManager.h:24</a></div></div>
+<div class="ttc" id="astruct_sprite_data_html_a570dfadfe201e473cc827ca861eeccd4"><div class="ttname"><a href="struct_sprite_data.html#a570dfadfe201e473cc827ca861eeccd4">SpriteData::constBuff</a></div><div class="ttdeci">ID3D12Resource * constBuff</div><div class="ttdef"><b>Definition:</b> <a href="_buffer_manager_8h_source.html#l00025">BufferManager.h:25</a></div></div>
+<div class="ttc" id="astruct_sprite_data_html_a7ddb62a4077a0c735a1047fe1ea67d65"><div class="ttname"><a href="struct_sprite_data.html#a7ddb62a4077a0c735a1047fe1ea67d65">SpriteData::indexBuff</a></div><div class="ttdeci">ID3D12Resource * indexBuff</div><div class="ttdef"><b>Definition:</b> <a href="_buffer_manager_8h_source.html#l00023">BufferManager.h:23</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
+</small></address>
+</body>
+</html>

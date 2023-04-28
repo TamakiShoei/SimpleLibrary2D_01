@@ -1,0 +1,39 @@
+\hypertarget{_swap_chain_8h_source}{}\doxysection{Swap\+Chain.\+h}
+\label{_swap_chain_8h_source}\index{C:/Project/GitRepos/DirectX/SimpleLibrary2D\_01/SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Graphics/SwapChain/SwapChain.h@{C:/Project/GitRepos/DirectX/SimpleLibrary2D\_01/SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Graphics/SwapChain/SwapChain.h}}
+\mbox{\hyperlink{_swap_chain_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_swap_chain_8h_source_l00001}00001 \textcolor{preprocessor}{\#ifndef SWAP\_CHAIN}}
+\DoxyCodeLine{\Hypertarget{_swap_chain_8h_source_l00002}00002 \textcolor{preprocessor}{\#define SWAP\_CHAIN}}
+\DoxyCodeLine{\Hypertarget{_swap_chain_8h_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{_swap_chain_8h_source_l00004}00004 \textcolor{preprocessor}{\#include "{}../../CommonDifinition.h"{}}}
+\DoxyCodeLine{\Hypertarget{_swap_chain_8h_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{_swap_chain_8h_source_l00006}\mbox{\hyperlink{class_swap_chain}{00006}} \textcolor{keyword}{class }\mbox{\hyperlink{class_swap_chain}{SwapChain}}}
+\DoxyCodeLine{\Hypertarget{_swap_chain_8h_source_l00007}00007 \{}
+\DoxyCodeLine{\Hypertarget{_swap_chain_8h_source_l00008}00008 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_swap_chain_8h_source_l00009}00009     \mbox{\hyperlink{class_swap_chain_ab1e68cac26bb0b4e97b68b9e4a3086a4}{SwapChain}}();}
+\DoxyCodeLine{\Hypertarget{_swap_chain_8h_source_l00010}00010     \mbox{\hyperlink{class_swap_chain_a58c288346a3fa211fbcc2cec594bfa68}{\string~SwapChain}}();}
+\DoxyCodeLine{\Hypertarget{_swap_chain_8h_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{_swap_chain_8h_source_l00019}00019     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_swap_chain_a37abbe37c0a5c8b747f1b120e5de83cf}{Initialize}}(ComPtr<IDXGIFactory4> factory, ComPtr<ID3D12CommandQueue> command\_queue);}
+\DoxyCodeLine{\Hypertarget{_swap_chain_8h_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{_swap_chain_8h_source_l00024}00024     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_swap_chain_aa88d9c408d7aa5540aab836710b949c1}{UpdateFrameIndex}}();}
+\DoxyCodeLine{\Hypertarget{_swap_chain_8h_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{_swap_chain_8h_source_l00029}00029     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_swap_chain_a98650759217b43f1a85909242a0a8e40}{Finalize}}();}
+\DoxyCodeLine{\Hypertarget{_swap_chain_8h_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{_swap_chain_8h_source_l00035}\mbox{\hyperlink{class_swap_chain_a4a8e0427ca7908dd15ac07fb32680c9f}{00035}}     \textcolor{keyword}{inline} IDXGISwapChain4* \mbox{\hyperlink{class_swap_chain_a4a8e0427ca7908dd15ac07fb32680c9f}{Get}}()}
+\DoxyCodeLine{\Hypertarget{_swap_chain_8h_source_l00036}00036     \{}
+\DoxyCodeLine{\Hypertarget{_swap_chain_8h_source_l00037}00037         \textcolor{keywordflow}{return} this-\/>instance.Get();}
+\DoxyCodeLine{\Hypertarget{_swap_chain_8h_source_l00038}00038     \}}
+\DoxyCodeLine{\Hypertarget{_swap_chain_8h_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{_swap_chain_8h_source_l00043}\mbox{\hyperlink{class_swap_chain_a0cf69c4a4f3516438b0cdca132c74ec9}{00043}}     \textcolor{keyword}{inline} UINT \mbox{\hyperlink{class_swap_chain_a0cf69c4a4f3516438b0cdca132c74ec9}{GetFrameIndex}}()}
+\DoxyCodeLine{\Hypertarget{_swap_chain_8h_source_l00044}00044     \{}
+\DoxyCodeLine{\Hypertarget{_swap_chain_8h_source_l00045}00045         \textcolor{keywordflow}{return} this-\/>frameIndex;}
+\DoxyCodeLine{\Hypertarget{_swap_chain_8h_source_l00046}00046     \}}
+\DoxyCodeLine{\Hypertarget{_swap_chain_8h_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{_swap_chain_8h_source_l00048}00048 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_swap_chain_8h_source_l00049}00049     ComPtr<IDXGISwapChain4> instance;}
+\DoxyCodeLine{\Hypertarget{_swap_chain_8h_source_l00050}00050     UINT frameIndex;}
+\DoxyCodeLine{\Hypertarget{_swap_chain_8h_source_l00051}00051 \};}
+\DoxyCodeLine{\Hypertarget{_swap_chain_8h_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{_swap_chain_8h_source_l00053}00053 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

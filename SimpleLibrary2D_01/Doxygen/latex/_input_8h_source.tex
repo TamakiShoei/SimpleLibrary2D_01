@@ -1,0 +1,51 @@
+\hypertarget{_input_8h_source}{}\doxysection{Input.\+h}
+\label{_input_8h_source}\index{C:/Project/GitRepos/DirectX/SimpleLibrary2D\_01/SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Input.h@{C:/Project/GitRepos/DirectX/SimpleLibrary2D\_01/SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Input.h}}
+\mbox{\hyperlink{_input_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00008}00008 \textcolor{preprocessor}{\#ifndef INPUT\_H}}
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00009}00009 \textcolor{preprocessor}{\#define INPUT\_H}}
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00011}00011 \textcolor{preprocessor}{\#include <Windows.h>}}
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00012}00012 \textcolor{preprocessor}{\#include <dinput.h>}}
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00013}00013 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_common_difinition_8h}{CommonDifinition.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00015}00015 \textcolor{preprocessor}{\#pragma comment(lib, "{}dinput8.lib"{}})}
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00017}\mbox{\hyperlink{_input_8h_a1d7ab29fdefabdb4e7e7cd27ac4c9934}{00017}} \textcolor{preprocessor}{\#define DIRECTINPUT\_VERSION 0x0800  }\textcolor{comment}{//バージョン}}
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00018}\mbox{\hyperlink{_input_8h_a3cb816ed7690a32c5d6f67d7cb615ca4}{00018}} \textcolor{preprocessor}{\#define MAX\_KEY 256}}
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00020}\mbox{\hyperlink{struct_key_state}{00020}} \textcolor{keyword}{struct }\mbox{\hyperlink{struct_key_state}{KeyState}}}
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00021}00021 \{}
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00022}00022     \textcolor{comment}{// キー情報 => 押された or 押されていない}}
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00023}\mbox{\hyperlink{struct_key_state_ac9980126d3b141d524271afae983f884}{00023}}     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_key_state_ac9980126d3b141d524271afae983f884}{IsPrevPushed}};      \textcolor{comment}{// 1フレーム前のキー情報}}
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00024}\mbox{\hyperlink{struct_key_state_a0c240fe59bd962e1c8a8867a10683fc2}{00024}}     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_key_state_a0c240fe59bd962e1c8a8867a10683fc2}{IsCurrentPushed}};    \textcolor{comment}{// 今のフレームのキー情報}}
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00025}00025 \};}
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00027}\mbox{\hyperlink{class_input}{00027}} \textcolor{keyword}{class }\mbox{\hyperlink{class_input}{Input}}}
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00028}00028 \{}
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00029}00029 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00030}00030     \mbox{\hyperlink{class_input_abae3f379d3f157cf42dc857309832dba}{Input}}();}
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00031}00031     \mbox{\hyperlink{class_input_af2db35ba67c8a8ccd23bef6a482fc291}{\string~Input}}();}
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00039}00039     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_input_af199ca433ec1f709fc9e0791fb5b5311}{Initialize}}();}
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00045}00045     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_input_af80dcfde6dbfe39bf3bc0345c75595ce}{Update}}();}
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00051}00051     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_input_ac6f5ce9a2bde76bad12b7c78d1c5e972}{Finalize}}();}
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00060}00060     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_input_a5f44e8a3613dd865cd7e64b77f1a902a}{IsPushed}}(\textcolor{keywordtype}{int} key);}
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00069}00069     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_input_a7de1ee2d0b9c2e33d65b5df271695b30}{IsHeld}}(\textcolor{keywordtype}{int} key);}
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00070}00070     }
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00078}00078     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_input_ae5fa8b108484ebea826bd350f6fa5f1d}{IsReleased}}(\textcolor{keywordtype}{int} key);}
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00080}00080 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00081}00081     LPDIRECTINPUT8 directInput = NULL;}
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00082}00082     LPDIRECTINPUTDEVICE8 keyboard;}
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00083}00083     \mbox{\hyperlink{struct_key_state}{KeyState}} keyStates[\mbox{\hyperlink{_input_8h_a3cb816ed7690a32c5d6f67d7cb615ca4}{MAX\_KEY}}];}
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00084}00084 \};}
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00085}00085 }
+\DoxyCodeLine{\Hypertarget{_input_8h_source_l00086}00086 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

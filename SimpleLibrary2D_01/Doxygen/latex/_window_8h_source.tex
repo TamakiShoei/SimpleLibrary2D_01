@@ -1,0 +1,45 @@
+\hypertarget{_window_8h_source}{}\doxysection{Window.\+h}
+\label{_window_8h_source}\index{C:/Project/GitRepos/DirectX/SimpleLibrary2D\_01/SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Window.h@{C:/Project/GitRepos/DirectX/SimpleLibrary2D\_01/SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Window.h}}
+\mbox{\hyperlink{_window_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00008}00008 \textcolor{preprocessor}{\#ifndef WINDOW\_H}}
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00009}00009 \textcolor{preprocessor}{\#define WINDOW\_H}}
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00011}00011 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_common_difinition_8h}{CommonDifinition.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00012}00012 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_input_8h}{Input.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00014}\mbox{\hyperlink{class_window}{00014}} \textcolor{keyword}{class }\mbox{\hyperlink{class_window}{Window}}}
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00015}00015 \{}
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00016}00016 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00017}\mbox{\hyperlink{class_window_a74e6087da23d3c24e9fac0245e5ec92c}{00017}}     \mbox{\hyperlink{class_window_a74e6087da23d3c24e9fac0245e5ec92c}{Window}}() : }
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00018}00018         isClosed(false), }
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00019}00019         isRecievedMessage(false),}
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00020}00020         width(800),}
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00021}00021         height(600)}
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00022}00022     \{}
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00023}00023     \}}
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00033}00033     \textcolor{keyword}{static} LRESULT CALLBACK \mbox{\hyperlink{class_window_aab45bd148de464c6d2c1665762bdde3a}{WindowProc}}(HWND hwnd, UINT n\_msg, WPARAM w\_param, LPARAM l\_param);}
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00041}00041     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_window_a41cab6dae60380563b8bc593e87f0c87}{Initialize}}();}
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00047}00047     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_window_ab8d28dce3166c70eb5744466460795df}{Update}}();}
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00055}00055     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_window_a6fa7f6fe8ae43755295f78f658bc79cc}{SetWindowSize}}(\textcolor{keywordtype}{int} width\_size, \textcolor{keywordtype}{int} height\_size);}
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00063}\mbox{\hyperlink{class_window_a4025633243fff688f55b55ed1778f906}{00063}}     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_window_a4025633243fff688f55b55ed1778f906}{IsClosed}}()}
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00064}00064     \{}
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00065}00065         \textcolor{keywordflow}{return} isClosed;}
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00066}00066     \}}
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00068}00068 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00069}00069     \textcolor{keywordtype}{int} width;}
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00070}00070     \textcolor{keywordtype}{int} height;}
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00071}00071     \textcolor{keywordtype}{bool} isClosed;}
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00072}00072     \textcolor{keywordtype}{bool} isRecievedMessage;}
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00073}00073 \};}
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00074}00074 }
+\DoxyCodeLine{\Hypertarget{_window_8h_source_l00075}00075 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

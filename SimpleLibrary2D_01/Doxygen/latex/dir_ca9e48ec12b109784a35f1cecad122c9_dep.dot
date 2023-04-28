@@ -1,0 +1,9 @@
+digraph "C:/Project/GitRepos/DirectX/SimpleLibrary2D_01/SimpleLibrary2D_01/SimpleLibrary2D_01/Engine/Graphics/Fence" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_adbc8a6163513055605dacbe76b010f7 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="Graphics" fontname="Helvetica", fontsize="10", URL="dir_adbc8a6163513055605dacbe76b010f7.html"]
+  dir_ca9e48ec12b109784a35f1cecad122c9 [shape=box, label="Fence", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_ca9e48ec12b109784a35f1cecad122c9.html"];
+  }
+}

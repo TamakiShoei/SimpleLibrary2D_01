@@ -1,0 +1,96 @@
+\hypertarget{_window_8cpp_source}{}\doxysection{Window.\+cpp}
+\label{_window_8cpp_source}\index{C:/Project/GitRepos/DirectX/SimpleLibrary2D\_01/SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Window.cpp@{C:/Project/GitRepos/DirectX/SimpleLibrary2D\_01/SimpleLibrary2D\_01/SimpleLibrary2D\_01/Engine/Window.cpp}}
+\mbox{\hyperlink{_window_8cpp}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_window_8h}{Window.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_engine_8h}{Engine.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00004}\mbox{\hyperlink{class_window_aab45bd148de464c6d2c1665762bdde3a}{00004}} LRESULT CALLBACK \mbox{\hyperlink{class_window_aab45bd148de464c6d2c1665762bdde3a}{Window::WindowProc}}(HWND hwnd, UINT msg, WPARAM w\_param, LPARAM l\_param)}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00005}00005 \{}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00006}00006     \textcolor{keywordflow}{switch} (msg)}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00007}00007     \{}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00008}00008     \textcolor{keywordflow}{case} WM\_DESTROY:    \textcolor{comment}{//終了時}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00009}00009         PostQuitMessage(0);}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00010}00010         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00011}00011     \}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00013}00013     \textcolor{comment}{//switch文が処理しなかったメッセージを処理}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00014}00014     \textcolor{keywordflow}{return} DefWindowProc(hwnd, msg, w\_param, l\_param);}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00015}00015 \}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00017}\mbox{\hyperlink{class_window_a41cab6dae60380563b8bc593e87f0c87}{00017}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_window_a41cab6dae60380563b8bc593e87f0c87}{Window::Initialize}}()}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00018}00018 \{}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00019}00019     WNDCLASSEX windowClass;}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00020}00020     RECT windowRect;}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00022}00022     \textcolor{comment}{//ウィンドウクラスの初期化}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00023}00023     windowClass = \{\};}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00024}00024     windowClass.cbSize = \textcolor{keyword}{sizeof}(WNDCLASSEX);}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00025}00025     windowClass.style = CS\_HREDRAW | CS\_VREDRAW;}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00026}00026     windowClass.lpfnWndProc = \mbox{\hyperlink{class_window_aab45bd148de464c6d2c1665762bdde3a}{WindowProc}};}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00027}00027     windowClass.hInstance = GetModuleHandle(\textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00028}00028     windowClass.lpszClassName = \mbox{\hyperlink{_common_difinition_8h_a50267f06977d60b462f43ad330ffcf33}{WINDOW\_CLASS\_NAME}};}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00029}00029     windowClass.hCursor = LoadCursor(NULL, IDC\_ARROW);}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00030}00030     windowClass.lpszClassName = \mbox{\hyperlink{_common_difinition_8h_a69a7b43710a71690389a91cb5c5add1f}{WINDOW\_CLASS}};}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00031}00031     RegisterClassEx(\&windowClass);}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00033}00033     \textcolor{comment}{//ウィンドウのサイズを求める}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00034}00034     windowRect = \{ 0, 0, width, height\};}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00035}00035     AdjustWindowRect(\&windowRect, WS\_OVERLAPPEDWINDOW, FALSE);}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00037}00037     HWND hwnd;}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00038}00038     \textcolor{comment}{//ウィンドウハンドルを作成}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00039}00039     hwnd = CreateWindow(}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00040}00040         \mbox{\hyperlink{_common_difinition_8h_a69a7b43710a71690389a91cb5c5add1f}{WINDOW\_CLASS}},}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00041}00041         \mbox{\hyperlink{_common_difinition_8h_a3adf7b7b13572f2baf3379a8f2f4220a}{WINDOW\_TITLE}},}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00042}00042         WS\_OVERLAPPEDWINDOW,}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00043}00043         CW\_USEDEFAULT,}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00044}00044         CW\_USEDEFAULT,}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00045}00045         windowRect.right -\/ windowRect.left,}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00046}00046         windowRect.bottom -\/ windowRect.top,}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00047}00047         \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00048}00048         \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00049}00049         GetModuleHandle(\textcolor{keyword}{nullptr}),}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00050}00050         \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00051}00051     \textcolor{keywordflow}{if} (hwnd == \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00052}00052     \{}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00053}00053         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00054}00054     \}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00056}00056     \textcolor{comment}{//ウィンドウの表示}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00057}00057     ShowWindow(FindWindow(\mbox{\hyperlink{_common_difinition_8h_a3adf7b7b13572f2baf3379a8f2f4220a}{WINDOW\_TITLE}}, \textcolor{keyword}{nullptr}), SW\_SHOW);}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00059}00059     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00060}00060 \}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00062}\mbox{\hyperlink{class_window_a6fa7f6fe8ae43755295f78f658bc79cc}{00062}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_window_a6fa7f6fe8ae43755295f78f658bc79cc}{Window::SetWindowSize}}(\textcolor{keywordtype}{int} width\_size, \textcolor{keywordtype}{int} height\_size)}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00063}00063 \{}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00064}00064     width = width\_size;}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00065}00065     height = height\_size;}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00066}00066 \}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00068}\mbox{\hyperlink{class_window_ab8d28dce3166c70eb5744466460795df}{00068}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_window_ab8d28dce3166c70eb5744466460795df}{Window::Update}}()}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00069}00069 \{}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00070}00070     MSG msg = \{\};}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00071}00071     \textcolor{comment}{//メインループ}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00072}00072             \textcolor{comment}{//キュー内のメッセージを処理}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00073}00073     \textcolor{keywordflow}{if} (PeekMessage(\&msg, NULL, 0, 0, PM\_REMOVE))}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00074}00074     \{}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00075}00075         \textcolor{keywordflow}{if} (msg.message == WM\_QUIT)}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00076}00076         \{}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00077}00077             isClosed = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00078}00078         \}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00079}00079         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00080}00080         \{}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00081}00081             TranslateMessage(\&msg);}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00082}00082             DispatchMessage(\&msg);}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00083}00083         \}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00084}00084         isRecievedMessage = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00085}00085     \}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00086}00086     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00087}00087     \{}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00088}00088         isRecievedMessage = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00089}00089     \}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00090}00090 \}}
+
+\end{DoxyCode}

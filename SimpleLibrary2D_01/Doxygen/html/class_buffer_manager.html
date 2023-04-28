@@ -1,0 +1,411 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SimpleLibrary2D: BufferManager クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">SimpleLibrary2D
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">公開メンバ関数</a> &#124;
+<a href="#pub-static-methods">静的公開メンバ関数</a> &#124;
+<a href="class_buffer_manager-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle"><div class="title">BufferManager クラス</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_buffer_manager_8h_source.html">BufferManager.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:a81b53436fd8a2c4a2ddf9f3e3bb046fc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_buffer_manager.html#a81b53436fd8a2c4a2ddf9f3e3bb046fc">CreateSprite</a> (DirectX::TexMetadata metadata, const DirectX::Image *img, ID3D12Device *device)</td></tr>
+<tr class="memdesc:a81b53436fd8a2c4a2ddf9f3e3bb046fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">キャンバスの作成関数  <a href="class_buffer_manager.html#a81b53436fd8a2c4a2ddf9f3e3bb046fc">[詳解]</a><br /></td></tr>
+<tr class="separator:a81b53436fd8a2c4a2ddf9f3e3bb046fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bf4a0c12d96e8afd728ed8f232a13e3"><td class="memItemLeft" align="right" valign="top">ID3D12Resource *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_buffer_manager.html#a6bf4a0c12d96e8afd728ed8f232a13e3">GetVertexBuffer</a> (int key, ID3D12Device *device)</td></tr>
+<tr class="memdesc:a6bf4a0c12d96e8afd728ed8f232a13e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">頂点バッファの取得関数  <a href="class_buffer_manager.html#a6bf4a0c12d96e8afd728ed8f232a13e3">[詳解]</a><br /></td></tr>
+<tr class="separator:a6bf4a0c12d96e8afd728ed8f232a13e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5edd44577869c3ac711a3c3a17cf721"><td class="memItemLeft" align="right" valign="top">ID3D12Resource *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_buffer_manager.html#ad5edd44577869c3ac711a3c3a17cf721">GetIndexBuffer</a> (int key)</td></tr>
+<tr class="memdesc:ad5edd44577869c3ac711a3c3a17cf721"><td class="mdescLeft">&#160;</td><td class="mdescRight">インデックスバッファの取得関数  <a href="class_buffer_manager.html#ad5edd44577869c3ac711a3c3a17cf721">[詳解]</a><br /></td></tr>
+<tr class="separator:ad5edd44577869c3ac711a3c3a17cf721"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdf8b3b1206a592ab2ffd4c7c3f37458"><td class="memItemLeft" align="right" valign="top">ID3D12Resource *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_buffer_manager.html#abdf8b3b1206a592ab2ffd4c7c3f37458">GetTexBuffer</a> (int key)</td></tr>
+<tr class="memdesc:abdf8b3b1206a592ab2ffd4c7c3f37458"><td class="mdescLeft">&#160;</td><td class="mdescRight">インデックスバッファの取得関数  <a href="class_buffer_manager.html#abdf8b3b1206a592ab2ffd4c7c3f37458">[詳解]</a><br /></td></tr>
+<tr class="separator:abdf8b3b1206a592ab2ffd4c7c3f37458"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96d27cf7f0a1886a8ace078ef06382b6"><td class="memItemLeft" align="right" valign="top">ID3D12Resource *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_buffer_manager.html#a96d27cf7f0a1886a8ace078ef06382b6">GetConstantBuffer</a> (int key)</td></tr>
+<tr class="memdesc:a96d27cf7f0a1886a8ace078ef06382b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">インデックスバッファの取得関数  <a href="class_buffer_manager.html#a96d27cf7f0a1886a8ace078ef06382b6">[詳解]</a><br /></td></tr>
+<tr class="separator:a96d27cf7f0a1886a8ace078ef06382b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86560cd4665bae81f9e2c61226a2d0e2"><td class="memItemLeft" align="right" valign="top">DirectX::TexMetadata&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_buffer_manager.html#a86560cd4665bae81f9e2c61226a2d0e2">GetMetadata</a> (int key)</td></tr>
+<tr class="memdesc:a86560cd4665bae81f9e2c61226a2d0e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">メタデータの取得関数  <a href="class_buffer_manager.html#a86560cd4665bae81f9e2c61226a2d0e2">[詳解]</a><br /></td></tr>
+<tr class="separator:a86560cd4665bae81f9e2c61226a2d0e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a595c6c4f9c99745a4ed5e4008c094785"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_buffer_manager.html#a595c6c4f9c99745a4ed5e4008c094785">ResetUseCounter</a> ()</td></tr>
+<tr class="memdesc:a595c6c4f9c99745a4ed5e4008c094785"><td class="mdescLeft">&#160;</td><td class="mdescRight">頂点バッファクラスのUseCounterのリセット関数  <a href="class_buffer_manager.html#a595c6c4f9c99745a4ed5e4008c094785">[詳解]</a><br /></td></tr>
+<tr class="separator:a595c6c4f9c99745a4ed5e4008c094785"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00c0ed1a88ac5c86755ef115ab80cf17"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_buffer_manager.html#a00c0ed1a88ac5c86755ef115ab80cf17">Finalize</a> ()</td></tr>
+<tr class="memdesc:a00c0ed1a88ac5c86755ef115ab80cf17"><td class="mdescLeft">&#160;</td><td class="mdescRight">リソース解放関数  <a href="class_buffer_manager.html#a00c0ed1a88ac5c86755ef115ab80cf17">[詳解]</a><br /></td></tr>
+<tr class="separator:a00c0ed1a88ac5c86755ef115ab80cf17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+静的公開メンバ関数</h2></td></tr>
+<tr class="memitem:ae88562553e9939fd8d06657f687a0ea1"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_buffer_manager.html">BufferManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_buffer_manager.html#ae88562553e9939fd8d06657f687a0ea1">Instance</a> ()</td></tr>
+<tr class="separator:ae88562553e9939fd8d06657f687a0ea1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock">
+<p class="definition"> <a class="el" href="_buffer_manager_8h_source.html">BufferManager.h</a> の <a class="el" href="_buffer_manager_8h_source.html#l00028">28</a> 行目に定義があります。</p>
+</div><h2 class="groupheader">関数詳解</h2>
+<a id="a81b53436fd8a2c4a2ddf9f3e3bb046fc" name="a81b53436fd8a2c4a2ddf9f3e3bb046fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81b53436fd8a2c4a2ddf9f3e3bb046fc">&#9670;&nbsp;</a></span>CreateSprite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int BufferManager::CreateSprite </td>
+          <td>(</td>
+          <td class="paramtype">DirectX::TexMetadata&#160;</td>
+          <td class="paramname"><em>metadata</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const DirectX::Image *&#160;</td>
+          <td class="paramname"><em>img</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ID3D12Device *&#160;</td>
+          <td class="paramname"><em>device</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>キャンバスの作成関数 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">metadata</td><td>画像のメタデータ </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">img</td><td>画像の生データ </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">device</td><td>デバイス </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition"> <a class="el" href="_buffer_manager_8cpp_source.html">BufferManager.cpp</a> の <a class="el" href="_buffer_manager_8cpp_source.html#l00004">4</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a00c0ed1a88ac5c86755ef115ab80cf17" name="a00c0ed1a88ac5c86755ef115ab80cf17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00c0ed1a88ac5c86755ef115ab80cf17">&#9670;&nbsp;</a></span>Finalize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BufferManager::Finalize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>リソース解放関数 </p>
+
+<p class="definition"> <a class="el" href="_buffer_manager_8cpp_source.html">BufferManager.cpp</a> の <a class="el" href="_buffer_manager_8cpp_source.html#l00082">82</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a96d27cf7f0a1886a8ace078ef06382b6" name="a96d27cf7f0a1886a8ace078ef06382b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96d27cf7f0a1886a8ace078ef06382b6">&#9670;&nbsp;</a></span>GetConstantBuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ID3D12Resource * BufferManager::GetConstantBuffer </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>key</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>インデックスバッファの取得関数 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>キー値 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>戻り値</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">コンスタントバッファデータ</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition"> <a class="el" href="_buffer_manager_8cpp_source.html">BufferManager.cpp</a> の <a class="el" href="_buffer_manager_8cpp_source.html#l00060">60</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="ad5edd44577869c3ac711a3c3a17cf721" name="ad5edd44577869c3ac711a3c3a17cf721"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5edd44577869c3ac711a3c3a17cf721">&#9670;&nbsp;</a></span>GetIndexBuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ID3D12Resource * BufferManager::GetIndexBuffer </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>key</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>インデックスバッファの取得関数 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>キー値 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>戻り値</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">インデックスバッファデータ</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition"> <a class="el" href="_buffer_manager_8cpp_source.html">BufferManager.cpp</a> の <a class="el" href="_buffer_manager_8cpp_source.html#l00042">42</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a86560cd4665bae81f9e2c61226a2d0e2" name="a86560cd4665bae81f9e2c61226a2d0e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86560cd4665bae81f9e2c61226a2d0e2">&#9670;&nbsp;</a></span>GetMetadata()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DirectX::TexMetadata BufferManager::GetMetadata </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>key</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>メタデータの取得関数 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>キー値 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>戻り値</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">メタデータ</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition"> <a class="el" href="_buffer_manager_8cpp_source.html">BufferManager.cpp</a> の <a class="el" href="_buffer_manager_8cpp_source.html#l00069">69</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="abdf8b3b1206a592ab2ffd4c7c3f37458" name="abdf8b3b1206a592ab2ffd4c7c3f37458"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdf8b3b1206a592ab2ffd4c7c3f37458">&#9670;&nbsp;</a></span>GetTexBuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ID3D12Resource * BufferManager::GetTexBuffer </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>key</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>インデックスバッファの取得関数 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>キー値 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>戻り値</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">テクスチャバッファデータ</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition"> <a class="el" href="_buffer_manager_8cpp_source.html">BufferManager.cpp</a> の <a class="el" href="_buffer_manager_8cpp_source.html#l00051">51</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a6bf4a0c12d96e8afd728ed8f232a13e3" name="a6bf4a0c12d96e8afd728ed8f232a13e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bf4a0c12d96e8afd728ed8f232a13e3">&#9670;&nbsp;</a></span>GetVertexBuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ID3D12Resource * BufferManager::GetVertexBuffer </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ID3D12Device *&#160;</td>
+          <td class="paramname"><em>device</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>頂点バッファの取得関数 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>キー値 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">device</td><td>デバイス </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition"> <a class="el" href="_buffer_manager_8cpp_source.html">BufferManager.cpp</a> の <a class="el" href="_buffer_manager_8cpp_source.html#l00028">28</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="ae88562553e9939fd8d06657f687a0ea1" name="ae88562553e9939fd8d06657f687a0ea1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae88562553e9939fd8d06657f687a0ea1">&#9670;&nbsp;</a></span>Instance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_buffer_manager.html">BufferManager</a> * BufferManager::Instance </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"> <a class="el" href="_buffer_manager_8h_source.html">BufferManager.h</a> の <a class="el" href="_buffer_manager_8h_source.html#l00031">31</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<a id="a595c6c4f9c99745a4ed5e4008c094785" name="a595c6c4f9c99745a4ed5e4008c094785"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a595c6c4f9c99745a4ed5e4008c094785">&#9670;&nbsp;</a></span>ResetUseCounter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BufferManager::ResetUseCounter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>頂点バッファクラスのUseCounterのリセット関数 </p>
+
+<p class="definition"> <a class="el" href="_buffer_manager_8cpp_source.html">BufferManager.cpp</a> の <a class="el" href="_buffer_manager_8cpp_source.html#l00074">74</a> 行目に定義があります。</p>
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li>C:/Project/GitRepos/DirectX/SimpleLibrary2D_01/SimpleLibrary2D_01/SimpleLibrary2D_01/Engine/Buffer/<a class="el" href="_buffer_manager_8h_source.html">BufferManager.h</a></li>
+<li>C:/Project/GitRepos/DirectX/SimpleLibrary2D_01/SimpleLibrary2D_01/SimpleLibrary2D_01/Engine/Buffer/<a class="el" href="_buffer_manager_8cpp_source.html">BufferManager.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
+</small></address>
+</body>
+</html>
