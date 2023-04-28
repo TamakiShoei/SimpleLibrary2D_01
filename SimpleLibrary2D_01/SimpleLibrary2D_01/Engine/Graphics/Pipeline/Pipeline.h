@@ -9,9 +9,24 @@ public:
 	Pipeline();
 	~Pipeline();
 
-	bool Initialize(ComPtr<ID3D12Device> device, ComPtr<ID3D12RootSignature> rootSignature);
+	/**
+	* @brief パイプラインの初期化関数
+	* @param[in] device デバイス
+	* @param[in] root_signature ルートシグネチャ
+	* @retval true 初期化成功
+	* @retval false 初期化失敗
+	*/
+	bool Initialize(ComPtr<ID3D12Device> device, ComPtr<ID3D12RootSignature> root_signature);
+
+	/**
+	* @brief パイプラインの解放関数
+	*/
 	void Finalize();
 
+	/**
+	* @brief パイプラインの取得関数
+	* @retval インスタンス
+	*/
 	ID3D12PipelineState* Get()
 	{
 		return this->instance.Get();

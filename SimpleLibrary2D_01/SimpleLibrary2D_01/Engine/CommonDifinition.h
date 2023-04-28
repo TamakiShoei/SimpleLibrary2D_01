@@ -1,4 +1,8 @@
-﻿#ifndef COMMON_DIFINITION_H 
+﻿/**
+* @file CommonDefinition.h
+* @brief 汎用的な構造体の宣言やヘッダーのインクルード等
+*/
+#ifndef COMMON_DIFINITION_H 
 #define	COMMON_DIFINITION_H
 
 #include <windows.h>

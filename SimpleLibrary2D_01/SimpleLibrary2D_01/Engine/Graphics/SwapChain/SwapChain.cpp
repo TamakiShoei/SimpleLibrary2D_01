@@ -13,7 +13,7 @@ SwapChain::~SwapChain()
 	}
 }
 
-bool SwapChain::Initialize(ComPtr<IDXGIFactory4> factory, ComPtr<ID3D12CommandQueue> commandQueue)
+bool SwapChain::Initialize(ComPtr<IDXGIFactory4> factory, ComPtr<ID3D12CommandQueue> command_queue)
 {
 	RECT rect;
 	GetClientRect(FindWindow(WINDOW_TITLE, nullptr), &rect);
@@ -35,7 +35,7 @@ bool SwapChain::Initialize(ComPtr<IDXGIFactory4> factory, ComPtr<ID3D12CommandQu
 
 	//スワップチェインを作成
 	ComPtr<IDXGISwapChain1>	tmpSwapChain;
-	if (FAILED(factory->CreateSwapChainForHwnd(commandQueue.Get(), FindWindow(WINDOW_TITLE, nullptr), &desc, nullptr, nullptr, tmpSwapChain.GetAddressOf())))
+	if (FAILED(factory->CreateSwapChainForHwnd(command_queue.Get(), FindWindow(WINDOW_TITLE, nullptr), &desc, nullptr, nullptr, tmpSwapChain.GetAddressOf())))
 	{
 		MessageBox(NULL, L"スワップチェインを作成できませんでした。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
 		return false;

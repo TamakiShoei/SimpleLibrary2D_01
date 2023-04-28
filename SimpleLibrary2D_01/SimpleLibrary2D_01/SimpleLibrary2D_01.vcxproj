@@ -60,7 +60,6 @@
     <ClInclude Include="Engine\Graphics\RootSignature\RootSignature.h" />
     <ClInclude Include="Engine\Graphics\SwapChain\SwapChain.h" />
     <ClInclude Include="Engine\Input.h" />
-    <ClInclude Include="Engine\InputDataDefinition.h" />
     <ClInclude Include="Engine\Window.h" />
   </ItemGroup>
   <ItemGroup>

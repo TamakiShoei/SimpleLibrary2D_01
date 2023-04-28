@@ -1,3 +1,7 @@
+/**
+* @file TexBuffer.h
+* @brief テクスチャバッファークラスの宣言
+*/
 #ifndef TEX_BUFFER
 #define TEX_BUFFER
 
@@ -15,8 +19,7 @@ public:
 	* @param[in] device デバイス
 	* @param[in] metadata メタデータ
 	* @param[in] img 画像生データ
-	* @retval true 生成成功
-	* @retval false 生成失敗
+	* @retval テクスチャバッファのインスタンス
 	*/
 	ID3D12Resource* Create(ID3D12Device* device, DirectX::TexMetadata metadata, const DirectX::Image* img);
 };

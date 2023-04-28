@@ -1,3 +1,7 @@
+/**
+* @file VertexBuffer.h
+* @brief 頂点バッファクラスの宣言
+*/
 #ifndef VERTEX_BUFFER
 #define VERTEX_BUFFER
 
@@ -13,8 +17,7 @@ public:
 	/**
 	* @brief 頂点バッファの作成
 	* @param[in] デバイス
-	* @retval true 生成成功
-	* @retval false 生成失敗
+	* @retval 頂点バッファのインスタンス
 	*/
 	ID3D12Resource* Create(ID3D12Device* device);
 };

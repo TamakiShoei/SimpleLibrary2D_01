@@ -3,6 +3,7 @@
 * @brief <pre>
 * グラフィッククラスの宣言
 * Engineクラスでインスタンスを作成するため、使用者が宣言する必要はない
+* </pre>
 */
 #ifndef GRAPHICS_H
 #define	GRAPHICS_H
@@ -81,7 +82,7 @@ public:
 	* @brief 画像読み込み関数
 	* @details 引数で受け取ったファイルパスをもとに画像を描画する際に必要なキーを返す
 	* @param[in] file_path 読み込みたい画像のファイルパス
-	* @retval キー値
+	* @retval 画像のキー値
 	*/
 	int LoadTexture(const char* file_path);
 
@@ -90,6 +91,7 @@ public:
 	* @details 引数で受け取った頂点をもとにテクスチャを描画する
 	* @param[in] pos_x 左下頂点x座標
 	* @param[in] pos_y 左上頂点y座標
+	* @param[in] key 描画する画像のキー値(ハンドル)
 	*/
 	void DrawTexture(float pos_x, float pos_y, int key);
 

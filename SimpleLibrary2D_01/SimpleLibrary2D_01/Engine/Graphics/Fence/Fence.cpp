@@ -36,10 +36,10 @@ bool Fence::Initialize(ComPtr<ID3D12Device> device)
 	return true;
 }
 
-void Fence::WaitForPreviousFrame(ComPtr<ID3D12CommandQueue> commandQueue)
+void Fence::WaitForPreviousFrame(ComPtr<ID3D12CommandQueue> command_queue)
 {
 	const UINT64 tmpFence = fenceValue;
-	commandQueue.Get()->Signal(instance.Get(), tmpFence);
+	command_queue.Get()->Signal(instance.Get(), tmpFence);
 	fenceValue++;
 
 	// 前のフレームが終了するまで待機

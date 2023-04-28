@@ -1,3 +1,7 @@
+/**
+* @file IndexBuffer.h
+* @brief インデックスバッファークラスの宣言
+*/
 #ifndef INDEX_BUFFER
 #define INDEX_BUFFER
 
@@ -13,8 +17,7 @@ public:
 	/**
 	* @brief インデックスバッファの作成
 	* @param[in] デバイス
-	* @retval true 生成成功　
-	* @retval false 生成失敗
+	* @retval インデックスバッファのインスタンス
 	*/
 	ID3D12Resource* Create(ID3D12Device* device);
 };

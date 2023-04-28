@@ -13,10 +13,10 @@ CommandList::~CommandList()
 	}
 }
 
-bool CommandList::Initialize(ComPtr<ID3D12Device> device, ComPtr<ID3D12CommandAllocator> commandAllocator)
+bool CommandList::Initialize(ComPtr<ID3D12Device> device, ComPtr<ID3D12CommandAllocator> command_allocator)
 {
 	// コマンドリストを作成
-	if (FAILED(device->CreateCommandList(0, D3D12_COMMAND_LIST_TYPE_DIRECT, commandAllocator.Get(), nullptr, IID_PPV_ARGS(instance.GetAddressOf()))))
+	if (FAILED(device->CreateCommandList(0, D3D12_COMMAND_LIST_TYPE_DIRECT, command_allocator.Get(), nullptr, IID_PPV_ARGS(instance.GetAddressOf()))))
 	{
 		MessageBox(NULL, L"コマンドリストを作成できませんでした。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
 		return false;

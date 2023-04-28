@@ -1,3 +1,10 @@
+/**
+* @file Input.h
+* @brief <pre>
+* インプット関係の処理を持つクラスの宣言
+* Engineクラスでインスタンスを作成するため、使用者が宣言する必要はない
+* </pre>
+*/
 #ifndef INPUT_H
 #define INPUT_H
 

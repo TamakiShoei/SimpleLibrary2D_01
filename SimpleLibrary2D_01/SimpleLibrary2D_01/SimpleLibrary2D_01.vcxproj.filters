@@ -123,9 +123,6 @@
     <ClInclude Include="Engine\Input.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\InputDataDefinition.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Window.h">
       <Filter>Engine</Filter>
     </ClInclude>

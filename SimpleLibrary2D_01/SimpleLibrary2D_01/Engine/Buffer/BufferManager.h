@@ -1,3 +1,10 @@
+/**
+* @file BufferManager.h
+* @brief <pre>
+* バッファマネージャークラスの宣言
+* シングルトン化されたオブジェクト
+* </pre>
+*/
 #ifndef BUFFER_MANAGER_H
 #define BUFFER_MANAGER_H
 

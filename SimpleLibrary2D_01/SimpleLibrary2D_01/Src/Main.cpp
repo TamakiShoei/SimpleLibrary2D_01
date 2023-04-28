@@ -14,7 +14,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int)
 	}
 
 	int handle = Engine::LoadTexture("Res/Texture/Test4.jpg");
-	int handle2 = Engine::LoadTexture("Res/Texture/Test3.png");
+	int handle2 = Engine::LoadTexture("Res/Texture/Test2.png");
 	int handle3 = Engine::LoadTexture("Res/Texture/Test.png");
 
 	while (Engine::IsClosedWindow() == false)
@@ -31,12 +31,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int)
 		Engine::DrawTexture(posx, 0.0f, handle);
 		Engine::DrawTexture(0.0f, 100.0f, handle2);
 		Engine::DrawTexture(400.0f, 400.0f, handle);
-
-		VECTOR lower_left = { 0.0f, 1.0f, 0.0f };
-		VECTOR upper_left = { 0.0f, 0.0f, 0.0f };
-		VECTOR upper_right = { 0.5f, 0.0f, 0.0f };
-		VECTOR lower_right = { 0.5f, 1.0f, 0.0f };
-		Engine::DrawRect(lower_left, upper_left, upper_right, lower_right);
 
 		Engine::ScreenFlip();
 	}

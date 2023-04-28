@@ -6,7 +6,6 @@
 #define	ENGINE_H
 
 #include "CommonDifinition.h"
-#include "InputDataDefinition.h"
 #include "Graphics/Graphics.h"
 #include "Window.h"
 
@@ -130,7 +129,7 @@ public:
 	* @brief 画像読み込み関数
 	* @details 引数で受け取ったファイルパスをもとに画像を描画する際に必要なキーを返す
 	* @param[in] file_path 読み込みたい画像のファイルパス
-	* @retval キー値
+	* @retval 画像のキー値
 	*/
 	static int LoadTexture(const char* file_path);
 
@@ -139,6 +138,7 @@ public:
 	* @details 引数で受け取った頂点をもとにテクスチャを描画する
 	* @param[in] pos_x 左上頂点のx座標
 	* @param[in] pos_y 左上頂点のy座標
+	* @param[in] key 描画する画像のキー(ハンドル)
 	*/
 	static void DrawTexture(float pos_x, float pos_y, int key);
 

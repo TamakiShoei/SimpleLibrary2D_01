@@ -13,7 +13,7 @@ Pipeline::~Pipeline()
 	}
 }
 
-bool Pipeline::Initialize(ComPtr<ID3D12Device> device, ComPtr<ID3D12RootSignature> rootSignature)
+bool Pipeline::Initialize(ComPtr<ID3D12Device> device, ComPtr<ID3D12RootSignature> root_signature)
 {
 	ID3DBlob* vsBlob;
 	ID3DBlob* psBlob;
@@ -65,7 +65,7 @@ bool Pipeline::Initialize(ComPtr<ID3D12Device> device, ComPtr<ID3D12RootSignatur
 	renderTargetBlendDesc.RenderTargetWriteMask = D3D12_COLOR_WRITE_ENABLE_ALL;
 
 	D3D12_GRAPHICS_PIPELINE_STATE_DESC graphicsPipeline = {};
-	graphicsPipeline.pRootSignature = rootSignature.Get();
+	graphicsPipeline.pRootSignature = root_signature.Get();
 	graphicsPipeline.VS.pShaderBytecode = vsBlob->GetBufferPointer();
 	graphicsPipeline.VS.BytecodeLength = vsBlob->GetBufferSize();
 	graphicsPipeline.PS.pShaderBytecode = psBlob->GetBufferPointer();
